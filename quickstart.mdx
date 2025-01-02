@@ -1,86 +1,150 @@
 ---
-title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
+title: "Quickstart"
+description: "This document is designed to help all new Actionabl users learn the system's basic concepts, processes, and actions."
 ---
 
-## Setup your development
+## Overview
 
-Learn how to update your docs locally and deploy them to the public.
+Actionabl.ai is a platform that automates your business processes and alerts users whenever human intervention is needed.
 
-### Edit and preview
+To get started, your team will work with Actionabl to define the business processes, artifacts (documents and records), and workflows. The Actionabl team (or your IT team) then implements those processes and artifacts into the platform on your behalf and then tests that implementation with your team.
 
-<AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
-  </Accordion>
-</AccordionGroup>
+When you begin using the platform in production, it’s pre-populated with your data and process – all you need to do is respond to alerts and (if you’re an admin) make minor adjustments.
 
-### Deploy your changes
+## KEY CONCEPTS AND TERMS
 
-<AccordionGroup>
+### Alerts
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
-</Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
-  Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
-</Accordion>
+Actionabl alerts users whenever a process needs human intervention. This happens in two cases:
 
-</AccordionGroup>
+- **\* A step in the process that cannot (or should not) be automated.\_** For example,
+  one of your vendors may require payment using a non-standard method such as a physical
+  check, or a printing process might need an expert to review and sign off on a proof.
+  This also includes quality check and review steps.
 
-## Update your docs
+- **\* An error in an automated step.\_** For example, automation reconciles a vendor’s
+  invoice against your purchase order and applies specific business rules; when the
+  invoices fails reconciliation, your invoice manager needs to review and investigate
+  before payment can proceed. This case also covers when something goes wrong, such
+  as Actionabl not getting a response from an integrated system or encountering a
+  missing document in a task step.
 
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
+### Users
 
-<CardGroup>
+### User Types
 
-<Card title="Style Your Docs" icon="paintbrush" href="/settings/global">
-  Add flair to your docs with personalized branding.
-</Card>
+The Actionabl system has two user classifications: Business and Technical.
 
-<Card
-  title="Add API Endpoints"
-  icon="square-code"
-  href="/api-playground/configuration"
->
-  Implement your OpenAPI spec and enable API user interaction.
-</Card>
+- **_Business Users_** handle tasks such as quality assurance, offline process steps, and issues related to the “content” of your business process. They are generally not in charge of managing a function or technical component of the system.
 
-<Card
-  title="Integrate Analytics"
-  icon="chart-mixed"
-  href="/analytics/supported-integrations"
->
-  Draw insights from user interactions with your documentation.
-</Card>
+  Examples: Accounts receivable associates, production coordinators, customer support representatives, sales team, and quality assurance specialists.
 
-<Card
-  title="Host on a Custom Domain"
-  icon="browser"
-  href="/settings/custom-domain/subdomain"
->
-  Keep your docs on your own website's subdomain.
-</Card>
+- **_Technical Users_** monitor the operation of the processes and the system itself and respond to errors that indicate something may not work correctly. For example, they resolve error codes or investigate the lack of a success response from an API call. Technical users may also take a proactive role in configuring parts of the workflow or user notifications.
 
-</CardGroup>
+Examples: Process managers, system engineers, manufacturing plant managers, and system administrators.
+
+### User Groups
+
+When your administrator sets up your login, they assign it to one or more “groups” in the system. Your group assignment sets the boundaries for what you see by default and what you can access within the system.
+
+Your group helps you avoid noise associated with tasks that don’t relate to your role. For example, if you are in the Accounting group, you won’t see tasks or alerts relating to manufacturing processes.
+
+## Dashboards
+
+There are two main user dashboards within the Actionabl platform: **_Task Master_** and **_Controller_**. There is also an **_Admin_** dashboard available only to admin-level users; its use is covered in the System Administration guide.
+
+### Task Master
+
+The Task Master dashboard provides its users with a clear focus on the tasks flowing through the workflow. It alerts users to any action that is needed to resolve an error or complete an offline business process.
+
+Task Master is organized into modules for each type of task (user, error, etc.) and has robust search and filtering capabilities. It also has the “My Tasks” module, where a user can access all tasks that are assigned to them.
+
+**_User Types:_** Business and Technical Users
+
+> The Task Master dashboard and its functionality is covered in detail in the Business User Guide.
+
+### Controller
+
+The Controller dashboard manages workflow elements such as scheduling and task configuration. It also contains reporting, analytics, and a module for accessing and resolving Error Reports. Like Task Master, it offers robust searching and filtering.
+
+**_User Types:_** Technical Users
+
+> The Controller dashboard and its functionality is covered in detail in the Technical User Guide
+
+## Process View
+
+The Process View is a special way of looking at a workflow and its components like stages and tasks.
+
+A **_process_** is a complete end-to-end workflow that accomplishes a set of goals..
+
+- For example:
+  **_Vendor Invoice Process_** starts with receiving an invoice for payment from a vendor, checking that invoice against purchase order data to be sure it’s accurate and complete, validating it against a set of business rules, and queuing it for action by the accounts payable team.
+
+Within a process, there are typically multiple stages. A stage is a group of tasks that loop through a meaningful part of the process. Using the Vendor Invoice Process example:
+
+- The **_Extract_** stage takes the invoice document and runs it through OCR to pull the relevant data, organize it, and save it for the next step in the process to use
+- The **_Validate_** stage then compares that data to a set of business rules to ensure it matches what was ordered, what you agreed to pay, the status of the items ordered, and so on. If discrepancies are found, this stage might include a human quality control check on the invoice.
+
+Each stage contains one or more **_tasks_**, the core elements of all workflows. A task may be executed by a system, application, or human, but it always has some action (and status) associated with it. For example:
+
+- The **_Validate Invoice Data_** task looks at the total amount, items, and quantity data from the invoice and compares it to the data in the purchase order sent to the vendor. If it matches, that task is complete, and the process moves on to the next step. If it doesn’t match, the task creates a QA Task for the accounts payable team to resolve.
+
+The Process View module provides a visual way of understanding the flow within a process, showing these stages and tasks as a flowchart.
+
+<Frame>
+  <img src="/images/process view module.jpg" />
+</Frame>
+
+## Tasks
+
+Within Actionabl, tasks can have the following types:
+
+- **_Decisions:_** Assess whether a condition has been met so the next step in a workflow can be performed, like checking whether an invoice amount is greater than a certain threshold to determine whether the invoice needs Accounting review.
+- **_User:_** A step that must always be completed by a human, like reviewing a proof or shipping a sample.
+- **_Quality Control (QC):_** A task whose output must be double-checked by a human, like issuing a payment to a vendor.
+- **_App:_** Action taken by a third-party application, such as sending an email or creating a PDF file.
+- **_OCR:_** Optical character recognition to extract data from a scanned document. For example, reading a scanned paper invoice and putting that data into the database.
+- **_RPA:_** Robotic process automation that allows the software to mimic a human that is using web or desktop applications, like having the system update Quickbooks Online with invoice details.
+- **_Machine Learning:_** Tasks executed by specialized apps like face or voice recognition or text classification.
+- **_Bot:_** Automated, repetitive tasks like scheduling data backups or running a process at the same time every day.
+- **_Rule:_** Checking the content of a process or document against business rules to determine the next action or update another field’s contents. For example, checking an invoice to see if it exceeds a certain monetary threshold for that vendor that might require additional human oversight.
+- **_Sub-Task:_** A task started within another task, like looking up a recipient’s full name to include while generating an automated email.
+- **_ERROR:_** A system-generated task alerting a user to a failure to process a step correctly within the workflow.
+
+Examples of tasks:
+
+- **_Extract invoice data._** Receives a PDF of an invoice and extracts the data from it. (Automated)
+- **_Validate invoice data._** Compares the extracted invoice data to the business rules to determine if it’s correct, complete, and ready to process. (Automated)
+- **_Quality control check._** Shows an accounting user a proposed vendor payment and its backing documents to determine if it is OK for payment by funds transfer. (QC)
+- **_Resolve routing block._** Alert production that no manufacturer is available for the items in an order so they can manually route or cancel the order. (User)
+- **_No response from API._** Alerts production that an order was sent to the vendor’s API, but the system did not receive a success response. (Error)
+
+### Working On Tasks
+
+For most users, the primary activity in the system is working on and resolving a task.
+
+#### Alerts
+
+When a process encounters a step that requires human intervention, it creates a **_task alert_**. That alert is then shown to all users whose Group allows them to see it.
+
+The number of alerts is shown in the colored banner to the right of the module’s name. Click the module name to see the list of alerts.
+
+<Frame>
+  <img src="/images/alerts.png" />
+</Frame>
+
+#### Task Details
+
+Click any task in the list to open the **_Task Details_** view, which will show you all of the data in the system regarding the task.
+
+At the top right of the Task Details view, you’ll see the list of actions available for that task. This list is governed by:
+
+- Your user group and role
+- The task’s status
+- Business logic rules
+
+#### Claiming and Unclaiming a Task
+
+To work on a task, you must first own it. You can **_Claim_** a task for yourself, or a manager can **_Assign_** a task to you.
+
+Once you own a task, it will appear in your **_My Tasks_** module at the top of the dashboard.
