@@ -1,11 +1,13 @@
 ---
 title: "Getting Started With Actionabl"
 description: "This document is designed to help all new Actionabl users learn the system's basic concepts, processes, and actions."
+sidebarTitle: "Getting Started"
+icon: "360-degrees"
 ---
 
-# Overview
+# **OVERVIEW**
 
-Actionabl.ai is a platform that automates your business processes and alerts users whenever human intervention is needed. 
+[Actionabl.ai](http://Actionabl.ai) is a platform that automates your business processes and alerts users whenever human intervention is needed. 
 
 To get started, your team will work with Actionabl to define the business processes, artifacts (documents and records), and workflows. The Actionabl team (or your IT team) then implements those processes and artifacts into the platform on your behalf and then tests that implementation with your team. 
 
@@ -13,43 +15,43 @@ When you begin using the platform in production, it’s pre-populated with your 
 
 # **KEY CONCEPTS AND TERMS**
 
-## Alerts
+## **Alerts**
 
 Actionabl alerts users whenever a process needs human intervention. This happens in two cases:
 
-* **A step in the process that cannot (or should not) be automated**. For example, one of your vendors may require payment using a non-standard method such as a physical check, or a printing process might need an expert to review and sign off on a proof. This also includes quality checks and review steps.
+- **A step in the process that cannot (or should not) be automated**. For example, one of your vendors may require payment using a non-standard method such as a physical check, or a printing process might need an expert to review and sign off on a proof. This also includes quality checks and review steps.
+- **An error in an automated step**. For example, automation reconciles a vendor’s invoice against your purchase order and applies specific business rules; when the invoices fails reconciliation, your invoice manager needs to review and investigate before payment can proceed. This case also covers when something goes wrong, such as Actionabl not getting a response from an integrated system or encountering a missing document in a task step.
 
-* **An error in an automated step**. For example, automation reconciles a vendor’s invoice against your purchase order and applies specific business rules; when the invoices fails reconciliation, your invoice manager needs to review and investigate before payment can proceed. This case also covers when something goes wrong, such as Actionabl not getting a response from an integrated system or encountering a missing document in a task step.
-
-## Users
+## **Users**
 
 ### User Types
 
 The Actionabl system has two user classifications: Business and Technical. 
 
-* **Business Users** handle tasks such as quality assurance, offline process steps, and issues related to the “content” of your business process. They are generally not in charge of managing a function or technical component of the system.
+- **Business Users** handle tasks such as quality assurance, offline process steps, and issues related to the “content” of your business process. They are generally not in charge of managing a function or technical component of the system.
 
-<Note>
-  Examples:  Accounts receivable associates, production coordinators, customer support representatives, sales team, and quality assurance specialists.Callout Content
-</Note>
+Examples:  Accounts receivable associates, production coordinators, customer support representatives, sales team, and quality assurance specialists.
 
-* **Technical Users** monitor the operation of the processes and the system itself and respond to errors that indicate something may not work correctly. For example, they resolve error codes or investigate the lack of a success response from an API call. Technical users may also take a proactive role in configuring parts of the workflow or user notifications. 
+- **Technical Users** monitor the operation of the processes and the system itself and respond to errors that indicate something may not work correctly. For example, they resolve error codes or investigate the lack of a success response from an API call. Technical users may also take a proactive role in configuring parts of the workflow or user notifications. 
 
-<Note>
-  Examples:  Process managers, system engineers, manufacturing plant managers, and system administrators.
-</Note>
+Examples:  Process managers, system engineers, manufacturing plant managers, and system administrators.
 
 ### User Groups
 
 When your administrator sets up your login, they assign it to one or more “groups” in the system. Your group assignment sets the boundaries for what you see by default and what you can access within the system.
 
-Your group helps you avoid noise associated with tasks that don’t relate to your role. For example, if you are in the Accounting group, you won’t see tasks or alerts relating to manufacturing processes.
+Your group helps you avoid noise associated with tasks that don’t relate to your role. For example, if you are in the Accounting group, you won’t see tasks or alerts relating to manufacturing processes. 
 
 ### Departments
 
-Your team may also use Departments to group users and manage their permissions. Departments, like groups, are granted the rights to certain assets in the system. They can also be used to notify groups of users through a shared email address like "support@yourcompany.com" or "hr@yourcompany.com".
+Your team may also use Departments to group users and manage their permissions. Departments, like groups, are granted the rights to certain assets in the system. They can also be used for notifications through a shared email address like "[support@yourcompany.com](mailto:support@yourcompany.com)" or "[hr@yourcompany.com](mailto:hr@yourcompany.com)".
 
-## Dashboards
+<Info>
+  **User, Group, and Department management is covered in detail in \
+  the User Management Guide.**
+</Info>
+
+## **Dashboards**
 
 The Actionabl platform has two primary user dashboards: **Task Master** and **Controller**. An **Admin** dashboard is also available only to admin-level users; its use is covered in the System Administration guide.
 
@@ -61,318 +63,50 @@ The Task Master dashboard clearly focuses users on the tasks flowing through the
 
 Task Master is organized into modules for each type of task (user, error, etc.) and has robust search and filtering capabilities. It also has the “My Tasks” module, where a user can access all tasks that are assigned to them. 
 
-***User Types:***  Business and Technical Users
+**_User Types:_**  Business and Technical Users
 
 <Info>
-  **The Task Master dashboard and its functionality is covered**
-  &#x20;**in detail in the Task Management for Business Users Guide.**
+  **The Task Master dashboard and its functionality is covered in detail in the Task Management Guide.**
 </Info>
 
 ### Controller
 
 The Controller dashboard manages workflow elements such as scheduling and task configuration. It also contains reporting, analytics, and a module for accessing and resolving Error Reports. Like Task Master, it offers robust searching and filtering.
 
-***User Types:*** Technical Users
+**_User Types:_** Technical Users
 
 <Info>
-  **The Controller dashboard and its functionality is covered**&#x20;
-  **in detail in the Controller Guide** 
+  **The Controller dashboard and its functionality is covered in detail in the \
+  Controller Guide**
 </Info>
 
 ## **Process View**
 
 The Process View is a special way of looking at a workflow and its components like stages and tasks.
 
-A **process** is a complete end-to-end workflow that accomplishes a set of goals.
+A **process** is a complete end-to-end workflow that accomplishes a set of goals. Here's an example:
 
-<Note>
-  For example:
-
-  **Bank Invoice Process** starts with receiving an invoice from a vendor, extracting is data, validating that invoice against purchase order data and a set of business rules, sending it for possible user review by the Accounts Payable team, then recording it in the accounting system or sending a rejection email if it doesn’t meet requirements.
-</Note>
+<Card title="Bank Invoice Process" icon="sparkles">
+  The **Bank Invoice Process** starts with receiving an invoice from a vendor, extracting its data, validating that invoice against purchase order data and a set of business rules, sending it for possible user review by the Accounts Payable team, then recording it in the accounting system or sending a rejection email if it doesn't meet requirements
+</Card>
 
 Within a process, there are typically multiple **stages**.  A stage is a group of tasks that loop through a meaningful part of the process. Using the Bank Invoice Process example:
 
-* The **Extract** stage takes the invoice document and runs it through OCR to pull the relevant data, organize it, and save it for the next step in the process to use
-
-* The **Validate** stage then compares that data to a set of business rules to ensure it matches what was ordered, what you agreed to pay, the status of the items ordered, and so on. If discrepancies are found, this stage might include a human quality control check on the invoice.
+<CardGroup cols={2}>
+  <Card title="Extract Stage" icon="sparkles">
+    The **Extract** stage takes the invoice document and runs it through OCR to pull the relevant data, organize it, and save it for the next step in the process to use
+  </Card>
+  <Card title="Validate Stage" icon="sparkles">
+    The **Validate** stage then compares that data to a set of business rules to ensure it matches what was ordered, what you agreed to pay, the status of the items ordered, and so on. If discrepancies are found, this stage might include a human quality control check on the invoice.
+  </Card>
+</CardGroup>
 
 Each stage contains one or more **tasks**, the core elements of all workflows. A task may be executed by a system, application, or human, but it always has some action (and status) associated with it. For example:
 
-* The **Validate Invoice Data** task in the Validate stage looks at the total amount, items, and quantity data from the invoice and compares it to the data in the purchase order sent to the vendor. If it matches, that task is complete, and the process moves on to the next step. If it doesn’t match, the task creates a new QA Task for the accounts payable team to resolve.
+<Card title="Validate Invoice Data Task" icon="sparkles">
+  The **Validate Invoice Data** task in the Validate stage looks at the total amount, items, and quantity data from the invoice and compares it to the data in the purchase order sent to the vendor. If it matches, that task is complete, and the process moves on to the next step. If it doesn’t match, the task creates a new QA Task for the accounts payable team to resolve.
+</Card>
 
-The **Process View module** provides a visual way of understanding the flow within a process, showing these stages and tasks as a flowchart.
+The Process View module provides a visual way of understanding the flow within a process, showing these stages and tasks as a flowchart.
 
-![](/images/GS1-ProcessView.jpg)
-
-## **Tasks** 
-
-Within Actionabl, tasks can have the following types:
-
-* **Decisions**: Assess whether a condition has been met so the next step in a workflow can be performed, like checking whether an invoice amount is greater than a certain threshold to determine whether the invoice needs Accounting review. 
-
-* **User:** A step that must always be completed by a human, like reviewing a proof or shipping a sample.
-
-* **Quality Control (QC):** A task whose output must be double-checked by a human, like issuing a payment to a vendor.
-
-* **App:** Action taken by a third-party application, such as sending an email or creating a PDF file.
-
-* **OCR:** Optical character recognition to extract data from a scanned document. For example, reading a scanned paper invoice and putting that data into the database.
-
-* **RPA:** Robotic process automation that allows the software to mimic a human that is using web or desktop applications, like having the system update Quickbooks Online with invoice details.
-
-* **Machine Learning:** Tasks executed by specialized apps like face or voice recognition or text classification.
-
-* **Bot:** Automated, repetitive tasks like scheduling data backups or running a process at the same time every day.
-
-* **Rule:** Checking the content of a process or document against business rules to determine the next action or update another field’s contents. For example, checking an invoice to see if it exceeds a certain monetary threshold for that vendor that might require additional human oversight.
-
-* **Sub-Task:** A task started within another task, like looking up a recipient’s full name to include while generating an automated email.
-
-* **ERROR**: A system-generated task alerting a user to a failure to process a step correctly within the workflow.
-
-Examples of tasks:
-
-* **Extract invoice data**. Receives a PDF of an invoice and extracts the data from it. (*Automated*)
-
-* **Validate invoice data**. Compares the extracted invoice data to the business rules to determine if it’s correct, complete, and ready to process. (*Automated*)
-
-* **Quality control check**. Shows an accounting user a proposed vendor payment and its backing documents to determine if it is OK for payment by funds transfer. (*QC*)
-
-* **Resolve routing block**. Alert production that no manufacturer is available for the items in an order so they can manually route or cancel the order. (*User*)
-
-**No response from API**. Alerts production that an order was sent to the vendor’s API, but the system did not receive a success response. (*Error*)
-
-### Working On Tasks
-
-For most users, the primary activity in the system is working on and resolving a task. 
-
-#### <u>Alerts</u>
-
-When a process encounters a step that requires human intervention, it creates a **task alert**. That alert is then shown to all users whose Group allows them to see it.
-
-The number of alerts is shown in the colored banner to the right of the module’s name. Click the module name to see the list of alerts.
-
-![](/images/GS2-TaskDashboard.jpg)
-
-#### <u>Task Details</u>
-
-Click any task in the list to open the **Task Details** view, which will show you all of the data in the system regarding the task.
-
-![](/images/GS3-taskdetail.jpg)At the top right of the Task Details view, you’ll see the list of actions (such as Complete, Validate, and Claim) available for that task. This list is governed by:
-
-* Your user group and role
-
-* The task’s status
-
-* Business logic rules
-
-#### <u>Claiming and Unclaiming a Task</u>
-
-To work on a task, you must first own it. You can **Claim** a task for yourself, or a manager can **Assign** a task to you.
-
-Once you own a task, it will appear in your **My Tasks** module at the top of the dashboard.
-
-![](/images/GS4-MyTasksList.jpg)
-
-When you view a task that you own, you can take specific actions with it.
-
-* **Edit** the task.
-
-* **Complete** the task to save and close out the task's action (including any changes you may have made). This indicates that all steps required for the task are complete (<u>without further verification</u>), so the task moves to the next step in the workflow.
-
-* **Validate** checks the task’s input data (including your changes) against the business process rules of this step to see if everything is correct and will process without error on resubmission. It does not save and complete the task or move on to the next step. 
-
-<Tip>
-  **Validate before completing**
-
-  Validating before completing is a recommended and handy way to check your work before completing tasks.
-</Tip>
-
-* You can **Unclaim** a task to release it for others to work on.
-
-# **LOGGING IN AND OUT**
-
-* Open your browser and go to the link provided by your team to log in.
-
-* Enter the credentials provided by your system administrator in the dialog and click **Submit**.
-
-![](/images/GS5-Login.jpg)
-
-If you are prompted, change your password. Each Actionabl client organization sets its own password rules, so consult with your system administrator for details on your requirements.
-
-<Tip>
-  **Forgotten Password?**
-
-  If you’ve forgotten your password, click **Forgot Password** and enter your registered email address for a password reset link. If the email address you enter is NOT registered, no email will be sent, and no error message will be generated (for security purposes).content here
-</Tip>
-
- When you log in for the first time, you’ll be taken to the Task Master dashboard by default. It will look something like this:&#x20;
-
-![](/images/GS6-FirstLoginScreen.jpg)
-
-Click the **down** **arrow** next to your username at the bottom to see your personal account menu.
-
-![](/images/GS6A-Profileaccess.jpg)
-
-> **NOTE**: You’ll only see the roles that you are authorized to use, so don’t be surprised if you only see a few of the ones shown here.
-
-Click **My Profile** to open your user profile, where you can select your Default Auth Group to select the dashboard you use most. This is shown whenever you log in from a new browser. However, if you’ve previously logged in on this browser, you’ll go to the Dashboard that you last used. 
-
-> **NOTE**: You will NOT see any alert notifications until you click into a module for the first time unless you have a default Dashboard set in your profile. 
-
-To log out, click the **arrow** next to your username and select **Log Out** from the menu.
-
-![](/images/GS7-Logout.jpg)
-
-# **MANAGING YOUR PROFILE**
-
-Your Actionabl user profile contains more than your username and password. It’s essential to your interaction with the system, workflows, and your team.
-
-* Click the arrow next to your username, then select **My Profile**. Three tabs are available: **Profile**, **Password**, and **Settings**. 
-
-## **The Profile Tab**
-
-![](/images/GS8-Profile.jpg)
-
-* Your **User Name** describes you throughout the system. It appears on your profile, task lists, emails, and menus. It is <u>not</u> the user ID you use to log in (although they may match).
-
-* **Email** is the email address at which you receive notifications from the system. You can update this as you wish.
-
-* **Phone** is an optional field where you can include a phone number that the system can use to send automated SMS or WhatsApp notifications for errors. If the process administrator has enabled that functionality, these notifications are sent. 
-
-* **Status** optionally sets your availability to receive automated task assignments if the process administrator enables auto-assign for this process. The system checks your group and this status to determine eligibility for the assignment.
-
-* **Skills** - reserved for future functionality. Please do not enter anything in this field.
-
-**Default Auth Group** lists the dashboards that you are authorized to use. Select the one that you would prefer to see first whenever you log into the system.
-
-![](/images/GS8A-Profiledefaultauth.jpg)
-
-* **Last Login On** shows the date and time you logged into the system. You cannot change this.
-
-* **Upload Picture** is where you can upload a profile picture. The recommended dimensions are 110px by 110px. File formats supported are JPG and PNG.
-
-## **Changing Your Password**&#x9;
-
-Click the Password tab at the top of the profile dialog.
-
-![](/images/GS9-PasswordChange.jpg)
-
-1. Enter your current password in the top box.
-
-2. Enter your new password in the following box and then re-enter it in the Confirm Password box. If the entries do not match, you will see an alert.
-
-3. If you need to see the passwords entered, click the “eye” icon to the right of the input. 
-
-4. To exit without making a change, click **Close**. Otherwise, click **Save** to proceed.
-
-5. You’ll see the message “*Your password has been changed successfully*” displayed at the bottom of your screen for a few seconds once the change is made.
-
-## **Your Settings**
-
-The Settings tab shows technical settings relating to your user account. These are for information only. **Do not make changes** here unless instructed to do so by technical support or an administrator.
-
-## **Your Notifications**
-
-This tab records all notifications you’ve received from the system.&#x20;
-
-![](/images/GS11-Notifications.jpg)
-
-# **SEARCHING AND FILTERING**
-
-There are several different ways to search and filter tasks within Actionabl. As each has a different scope and will yield different results, it’s important to understand how to select between them.
-
-* **Searching** is used when you know what you’re looking for.  It’s especially useful if you have specific information, like a record ID or a person’s name. 
-
-* **Filtering** is better when you’re trying to narrow down a view to see a set of results that match your criteria, like seeing all invoices received within a range of dates or all tasks due next week.
-
-On all task lists, you’ll see an **Overdue Only** switch in the top center area. Turning this toggle on quickly filters the displayed results to show only items whose due date is in the past.
-
-![](/images/GS12-overdueonlyfilter.jpg)
-
-## **Quick Search vs Full Search**
-
-There are two sets of search and filtering functions, and they each act a bit differently.
-
-On any list of task alerts, you’ll see a Search and a Filter icon at the top right of the list. These are the “**Quick**” options.
-
-On the dashboard’s menu, you’ll see Active Search and Archive Search. These are the “**Full**” search and filtering tools.
-
-![](/images/GS13-QuickSearchandFilter.jpg)
-
-The scope of information searched by these tools differs.
-
-| **Quick Search and Filter**                                            | **Full Search and Filter**            |
-| ---------------------------------------------------------------------- | ------------------------------------- |
-| Searches **only** the columns (fields) currently displayed on the list | Can search ALL columns in the record. |
-
-If a list being searched spans multiple pages of results, both the Quick and Full searches automatically look through all of the pages of the list.
-
-## **Quick Search**
-
-When you are on any list of records, using the search at the top right of that screen looks through all the records found on that list (even if it spans multiple pages) to find a match for the term in any of the fields displayed in the results. It finds the records instantly as you type.&#x20;
-
-![](/images/GS14-QuickSearchcopy.jpg)
-
-<Tip>
-  **Finding Hidden Data**
-
-  If the data you are looking for is contained in a column that is *not visibly displayed* in the results, it will not be found by Quick Search. In that case, use Full Search.
-</Tip>
-
-## **Quick Filters**
-
-On any screen of records, there are two sets of filters available to you: Process and Results.
-
-* In the center top of the navigation is a **Process Filter**. This narrows the result set to items that are in the process selected.
-
-![](/images/GS15-ProcessFiltercopy.jpg)
-
-* The **Result Filter** is a powerful tool that enables you to select across other fields and criteria to narrow down your results.
-
-![](/images/GS16-ResultFiltercopy.jpg)
-
-Once you select a process in this filter, you’ll see a set of fields relating to that process, which you can use to build robust criteria for your results.
-
-![](/images/GS16A-resultfilterselectprocess.jpg)
-
-![](/images/GS16B-Resultfilterfields.jpg)
-
-<Tip>
-  As with Quick Search, the filters available only work on the columns visually displayed in the result set. Use Full Search to search across all fields.
-</Tip>
-
-## **Full Searches and Filters**
-
-In the menu bar, you’ll see **Active Search** and **Archive Search**. These functions are identical in use; their results differ only in returning currently active records vs. older records that have been archived. 
-
-Unlike Quick Search and Quick Filter, these search and filtering functions have access to <u>all</u> of the data stored for a particular record, even if that data is not displayed on the result list.
-
-<Tip>
-  **Searching Effectively**
-
-  Use only as many criteria as you need to narrow down the results to meet your goals. Including too many criteria may narrow your results more than desired - start with the minimum selection criteria and then add more to narrow further if needed.
-</Tip>
-
-![](/images/GS17-FullSearchcopy.jpg)
-
-The tabs across the top specify the span of data to be searched: an entire process, a task, or a custom search. 
-
-<Note>
-  **NOTE**: Only a custom search allows you to save the query in a folder for future use.
-</Note>
-
-# **NEXT STEPS**
-
-## **User Guides**
-
-Detailed User Guides are available for both business and technical users. These guides provide comprehensive information about your actions in the system, including real-world examples using everyday scenarios.
-
-**For Business Users:**&#x20;
-
-Task Management for Business Users
-
-***For Technical Users:***
-
-Controller Guide
+![/images/GettingStarted/GS1- Process View.jpg+\_existingInIndexedDbMintlify](/images/GettingStarted/GS1-ProcessView.jpg)
