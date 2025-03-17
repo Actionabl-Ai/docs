@@ -27,6 +27,8 @@
   },
   "tabs": [
     {
+      "name": "Task Management",
+      "url": "task-manager"
     }
   ],
   "anchors": [
