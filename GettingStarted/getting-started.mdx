@@ -47,8 +47,7 @@ Your group helps you avoid noise associated with tasks that don’t relate to yo
 Your team may also use Departments to group users and manage their permissions. Departments, like groups, are granted the rights to certain assets in the system. They can also be used for notifications through a shared email address like "[support@yourcompany.com](mailto:support@yourcompany.com)" or "[hr@yourcompany.com](mailto:hr@yourcompany.com)".
 
 <Info>
-  **User, Group, and Department management is covered in detail in \
-  the User Management Guide.**
+  \*\*User, Group, and Department management is covered in detail in the User Management Guide\*\*
 </Info>
 
 ## **Dashboards**
@@ -63,7 +62,7 @@ The Task Master dashboard clearly focuses users on the tasks flowing through the
 
 Task Master is organized into modules for each type of task (user, error, etc.) and has robust search and filtering capabilities. It also has the “My Tasks” module, where a user can access all tasks that are assigned to them. 
 
-**_User Types:_**  Business and Technical Users
+**_User Types_**:  Business and Technical Users
 
 <Info>
   **The Task Master dashboard and its functionality is covered in detail in the Task Management Guide.**
@@ -73,11 +72,10 @@ Task Master is organized into modules for each type of task (user, error, etc.) 
 
 The Controller dashboard manages workflow elements such as scheduling and task configuration. It also contains reporting, analytics, and a module for accessing and resolving Error Reports. Like Task Master, it offers robust searching and filtering.
 
-**_User Types:_** Technical Users
+**_User Types_**:  Technical Users
 
 <Info>
-  **The Controller dashboard and its functionality is covered in detail in the \
-  Controller Guide**
+  \*\*The Controller dashboard and its functionality is covered in detail in the Controller Guide\*\*
 </Info>
 
 ## **Process View**
@@ -92,7 +90,7 @@ A **process** is a complete end-to-end workflow that accomplishes a set of goals
 
 Within a process, there are typically multiple **stages**.  A stage is a group of tasks that loop through a meaningful part of the process. Using the Bank Invoice Process example:
 
-<CardGroup cols={2}>
+<CardGroup cols="2">
   <Card title="Extract Stage" icon="sparkles">
     The **Extract** stage takes the invoice document and runs it through OCR to pull the relevant data, organize it, and save it for the next step in the process to use
   </Card>
@@ -109,4 +107,83 @@ Each stage contains one or more **tasks**, the core elements of all workflows. A
 
 The Process View module provides a visual way of understanding the flow within a process, showing these stages and tasks as a flowchart.
 
-![/images/GettingStarted/GS1- Process View.jpg+\_existingInIndexedDbMintlify](/images/GettingStarted/GS1-ProcessView.jpg)
+![/images/GS1-ProcessView.jpg+\_existingInIndexedDbMintlify](/images/GS1-ProcessView.jpg)
+
+**Tasks **
+
+Within Actionabl, tasks can have the following types:
+
+- **Decisions**: Assess whether a condition has been met so the next step in a workflow can be performed, like checking whether an invoice amount is greater than a certain threshold to determine whether the invoice needs Accounting review. 
+- **User:** A step that must always be completed by a human, like reviewing a proof or shipping a sample.
+- **Quality Control (QC):** A task whose output must be double-checked by a human, like issuing a payment to a vendor.
+- **App: **Action taken by a third-party application, such as sending an email or creating a PDF file.
+- **OCR:** Optical character recognition to extract data from a scanned document. For example, reading a scanned paper invoice and putting that data into the database.
+- **RPA:** Robotic process automation that allows the software to mimic a human that is using web or desktop applications, like having the system update Quickbooks Online with invoice details.
+- **Machine Learning:** Tasks executed by specialized apps like face or voice recognition or text classification.
+- **Bot:** Automated, repetitive tasks like scheduling data backups or running a process at the same time every day.
+- **Rule:** Checking the content of a process or document against business rules to determine the next action or update another field’s contents. For example, checking an invoice to see if it exceeds a certain monetary threshold for that vendor that might require additional human oversight.
+- **Sub-Task:** A task started within another task, like looking up a recipient’s full name to include while generating an automated email.
+- **ERROR**: A system-generated task alerting a user to a failure to process a step correctly within the workflow.
+
+  > - Examples of tasks:
+  >   - **Extract invoice data**. Receives a PDF of an invoice and extracts the data from it. (_Automated_)
+  >   - **Validate invoice data**. Compares the extracted invoice data to the business rules to determine if it’s correct, complete, and ready to process. (_Automated_)
+  >   - **Quality control check**. Shows an accounting user a proposed vendor payment and its backing documents to determine if it is OK for payment by funds transfer. (_QC_)
+  >   - **Resolve routing block**. Alert production that no manufacturer is available for the items in an order so they can manually route or cancel the order. (_User_)
+  >   - **No response from API**. Alerts production that an order was sent to the vendor’s API, but the system did not receive a success response. (_Error_)
+
+### Working On Tasks
+
+For most users, the primary activity in the system is working on and resolving a task. 
+
+#### _Alerts_
+
+When a process encounters a step that requires human intervention, it creates a **task alert**. That alert is then shown to all users whose Group allows them to see it.
+
+The number of alerts is shown in the colored banner to the right of the module’s name. Click the module name to see the list of alerts.
+
+![/images/GS2-TaskDashboard.jpg+\_existingInIndexedDbMintlify](/images/GS2-TaskDashboard.jpg)
+
+#### _Task Details_
+
+Click any task in the list to open the **Task Details** view, which will show you all of the task's data in the system.
+
+![/images/GS3-taskdetail.jpg+\_existingInIndexedDbMintlify](/images/GS3-taskdetail.jpg)
+
+At the top right of the Task Details view, you’ll see the list of actions (such as Complete, Validate, and Claim) available for that task. This list is governed by:
+
+- Your user group and role
+- The task’s status
+- Business logic rules
+
+#### _Claiming and Unclaiming a Task_
+
+To work on a task, you must first own it. You can **Claim** a task for yourself, or a manager can **Assign** a task to you.
+
+Once you own a task, it will appear in your **My Tasks** module at the top of the dashboard.
+
+![/images/GS4-MyTasksList.jpg+\_existingInIndexedDbMintlify](/images/GS4-MyTasksList.jpg)
+
+When you view a task that you own, you can take specific actions with it.
+
+- **Edit** the task.
+- **Complete** the task to save and close out the task's action (including any changes you may have made). This indicates that all steps required for the task are complete (<u>without further verification</u>), so the task moves to the next step in the workflow.
+- **Validate** checks the task’s input data (including your changes) against the business process rules of this step to see if everything is correct and will process without error on resubmission. It does not save and complete the task or move on to the next step. 
+  - **HINT**: Validating before completing is a recommended and handy way to check your work before completing tasks.
+- You can **Unclaim** a task to release it for others to work on.
+
+# **LOGGING IN AND OUT**
+
+1. Open your browser and go to the link provided by your team to log in.
+2. Enter the credentials provided by your system administrator in the dialog and click **Submit**.\
+   ![/images/GS5-Login.jpg+\_existingInIndexedDbMintlify](/images/GS5-Login.jpg)
+
+   If you are prompted, change your password. Each Actionabl client organization sets its own password rules, so consult with your system administrator for details on your requirements.
+
+   <Tip>
+     **HINT**: If you’ve forgotten your password, click **Forgot Password** and enter your registered email address for a password reset link. If the email address you enter is NOT registered, no email will be sent, and no error message will be generated (for security purposes).
+   </Tip>
+3. When you log in for the first time, you’ll be taken to the Task Master dashboard by default. It will look something like this:\
+   ![/images/GS6-FirstLoginScreen.jpg+\_existingInIndexedDbMintlify](/images/GS6-FirstLoginScreen.jpg)
+4. Click the **down** **arrow** next to your username at the bottom to see your personal account menu.\
+   ![/images/GS6A-Profileaccess.jpg+\_existingInIndexedDbMintlify](/images/GS6A-Profileaccess.jpg)
