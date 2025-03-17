@@ -27,15 +27,13 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
     }
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Getting Started Guide",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "https://actionabl.mintlify.app/GettingStarted"
     },
     {
       "name": "Community",
