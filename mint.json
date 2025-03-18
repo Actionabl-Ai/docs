@@ -36,16 +36,6 @@
       "name": "Getting Started Guide",
       "icon": "book-open-cover",
       "url": "https://actionabl.mintlify.app/GettingStarted/getting-started"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
     }
   ],
   "navigation": [
@@ -53,35 +43,23 @@
       "group": "Get Started",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "/GettingStarted/getting-started"
       ]
     },
     {
       "group": "Essentials",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "essentials/task-management",
+        "essentials/controller",
+        "essentials/user-management"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Administration",
       "pages": [
-        "api-reference/introduction"
+        "admin/automation-management"
       ]
     },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
-    }
   ],
   "footerSocials": {
     "x": "https://x.com/mintlify",
