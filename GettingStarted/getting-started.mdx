@@ -62,9 +62,7 @@ The Task Master dashboard clearly focuses users on the tasks flowing through the
 
 Task Master is organized into modules for each type of task (user, error, etc.) and has robust search and filtering capabilities. It also has the “My Tasks” module, where a user can access all tasks that are assigned to them. 
 
-User Types
-
-:  Business and Technical Users
+_User Types_:  Business and Technical Users
 
 <Info>
   **The Task Master dashboard and its functionality is covered in detail in the Task Management Guide.**
@@ -90,7 +88,7 @@ A **process** is a complete end-to-end workflow that accomplishes a set of goals
   The **Bank Invoice Process** starts with receiving an invoice from a vendor, extracting its data, validating that invoice against purchase order data and a set of business rules, sending it for possible user review by the Accounts Payable team, then recording it in the accounting system or sending a rejection email if it doesn't meet requirements
 </Card>
 
-Within a process, there are typically multiple **stages**.  A stage is a group of tasks that loop through a meaningful part of the process. Using the Bank Invoice Process example:
+Within a process, there are typically multiple **stages**.  A stage is a group of tasks that loops through a meaningful part of the process. Using the Bank Invoice Process example:
 
 <CardGroup cols="2">
   <Card title="Extract Stage" icon="sparkles">
@@ -169,11 +167,11 @@ Once you own a task, it will appear in your **My Tasks** module at the top of th
 When you view a task that you own, you can take specific actions with it.
 
 - **Edit** the task.
-- **Complete** the task to save and close out the task's action (including any changes you may have made). This indicates that all steps required for the task are complete (without further verification
-
-  ), so the task moves to the next step in the workflow.
+- **Complete** the task to save and close out the task's action (including any changes you may have made). This indicates that all steps required for the task are complete (without further verification), so the task moves to the next step in the workflow.
 - **Validate** checks the task’s input data (including your changes) against the business process rules of this step to see if everything is correct and will process without error on resubmission. It does not save and complete the task or move on to the next step. 
-  - **HINT**: Validating before completing is a recommended and handy way to check your work before completing tasks.
+  <Tip>
+  **HINT**: Validating before completing is a recommended and handy way to check your work before completing tasks.
+  </Tip>
 - You can **Unclaim** a task to release it for others to work on.
 
 # **LOGGING IN AND OUT**
@@ -239,7 +237,7 @@ This tab records all notifications you’ve received from the system.
 
 # ![/images/GettingStarted/GS11-Notifications.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS11-Notifications.jpg)
 
-**SEARCHING AND FILTERING**
+### **SEARCHING AND FILTERING**
 
 There are several different ways to search and filter tasks within Actionabl. As each has a different scope and will yield different results, it’s important to understand how to select between them.
 
@@ -250,7 +248,7 @@ On all task lists, you’ll see an **Overdue Only** switch in the top center are
 
 ## ![/images/GettingStarted/GS12-overdueonlyfilter.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS12-overdueonlyfilter.jpg)
 
-**Quick Search vs Full Search**
+#### **Quick Search vs Full Search**
 
 There are two sets of search and filtering functions, and they each act a bit differently.
 
@@ -262,9 +260,12 @@ On the dashboard’s menu, you’ll see Active Search and Archive Search. These 
 
 The scope of information searched by these tools differs.
 
-| |                                       |
+| Quick Search and Filter | 
+Full Search and Filter |
 | --- | ------------------------------------- |
-| | Can search ALL columns in the record. |
+| Searches only the columns (fields) currently displayed on the list |
+Can search ALL columns in the record. |
+
 
 If a list being searched spans multiple pages of results, both the Quick and Full searches automatically look through all of the pages of the list.
 
