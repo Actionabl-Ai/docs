@@ -62,7 +62,9 @@ The Task Master dashboard clearly focuses users on the tasks flowing through the
 
 Task Master is organized into modules for each type of task (user, error, etc.) and has robust search and filtering capabilities. It also has the “My Tasks” module, where a user can access all tasks that are assigned to them. 
 
-**_User Types_**:  Business and Technical Users
+User Types
+
+:  Business and Technical Users
 
 <Info>
   **The Task Master dashboard and its functionality is covered in detail in the Task Management Guide.**
@@ -72,7 +74,7 @@ Task Master is organized into modules for each type of task (user, error, etc.) 
 
 The Controller dashboard manages workflow elements such as scheduling and task configuration. It also contains reporting, analytics, and a module for accessing and resolving Error Reports. Like Task Master, it offers robust searching and filtering.
 
-**_User Types_**:  Technical Users
+_User Types_:  Technical Users
 
 <Info>
   **The Controller dashboard and its functionality is covered in detail in the Controller Guide**
@@ -107,16 +109,16 @@ Each stage contains one or more **tasks**, the core elements of all workflows. A
 
 The Process View module provides a visual way of understanding the flow within a process, showing these stages and tasks as a flowchart.
 
-![/images/GS1-ProcessView.jpg+_existingInIndexedDbMintlify](/images/GS1-ProcessView.jpg)
+![/images/GettingStarted/GS1-ProcessView.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS1-ProcessView.jpg)
 
-**Tasks **
+## Tasks
 
 Within Actionabl, tasks can have the following types:
 
 - **Decisions**: Assess whether a condition has been met so the next step in a workflow can be performed, like checking whether an invoice amount is greater than a certain threshold to determine whether the invoice needs Accounting review. 
 - **User:** A step that must always be completed by a human, like reviewing a proof or shipping a sample.
 - **Quality Control (QC):** A task whose output must be double-checked by a human, like issuing a payment to a vendor.
-- **App: **Action taken by a third-party application, such as sending an email or creating a PDF file.
+- **App**: Action taken by a third-party application, such as sending an email or creating a PDF file.
 - **OCR:** Optical character recognition to extract data from a scanned document. For example, reading a scanned paper invoice and putting that data into the database.
 - **RPA:** Robotic process automation that allows the software to mimic a human that is using web or desktop applications, like having the system update Quickbooks Online with invoice details.
 - **Machine Learning:** Tasks executed by specialized apps like face or voice recognition or text classification.
@@ -125,12 +127,12 @@ Within Actionabl, tasks can have the following types:
 - **Sub-Task:** A task started within another task, like looking up a recipient’s full name to include while generating an automated email.
 - **ERROR**: A system-generated task alerting a user to a failure to process a step correctly within the workflow.
 
-  > - Examples of tasks:
-  >   - **Extract invoice data**. Receives a PDF of an invoice and extracts the data from it. (_Automated_)
-  >   - **Validate invoice data**. Compares the extracted invoice data to the business rules to determine if it’s correct, complete, and ready to process. (_Automated_)
-  >   - **Quality control check**. Shows an accounting user a proposed vendor payment and its backing documents to determine if it is OK for payment by funds transfer. (_QC_)
-  >   - **Resolve routing block**. Alert production that no manufacturer is available for the items in an order so they can manually route or cancel the order. (_User_)
-  >   - **No response from API**. Alerts production that an order was sent to the vendor’s API, but the system did not receive a success response. (_Error_)
+  > Examples of tasks:
+  > - **Extract invoice data**. Receives a PDF of an invoice and extracts the data from it. (_Automated_)
+  > - **Validate invoice data**. Compares the extracted invoice data to the business rules to determine if it’s correct, complete, and ready to process. (_Automated_)
+  > - **Quality control check**. Shows an accounting user a proposed vendor payment and its backing documents to determine if it is OK for payment by funds transfer. (_QC_)
+  > - **Resolve routing block**. Alert production that no manufacturer is available for the items in an order so they can manually route or cancel the order. (_User_)
+  > - **No response from API**. Alerts production that an order was sent to the vendor’s API, but the system did not receive a success response. (_Error_)
 
 ### Working On Tasks
 
@@ -167,7 +169,9 @@ Once you own a task, it will appear in your **My Tasks** module at the top of th
 When you view a task that you own, you can take specific actions with it.
 
 - **Edit** the task.
-- **Complete** the task to save and close out the task's action (including any changes you may have made). This indicates that all steps required for the task are complete (<u>without further verification</u>), so the task moves to the next step in the workflow.
+- **Complete** the task to save and close out the task's action (including any changes you may have made). This indicates that all steps required for the task are complete (without further verification
+
+  ), so the task moves to the next step in the workflow.
 - **Validate** checks the task’s input data (including your changes) against the business process rules of this step to see if everything is correct and will process without error on resubmission. It does not save and complete the task or move on to the next step. 
   - **HINT**: Validating before completing is a recommended and handy way to check your work before completing tasks.
 - You can **Unclaim** a task to release it for others to work on.
@@ -187,5 +191,105 @@ When you view a task that you own, you can take specific actions with it.
    ![/images/GS6-FirstLoginScreen.jpg+_existingInIndexedDbMintlify](/images/GS6-FirstLoginScreen.jpg)
 4. Click the **down** **arrow** next to your username at the bottom to see your personal account menu.\
    ![/images/GS6A-Profileaccess.jpg+_existingInIndexedDbMintlify](/images/GS6A-Profileaccess.jpg)
+5. Click **My Profile** to open your user profile.
 
-Test
+   <Note>
+     **NOTE**: You will NOT see any alert notifications until you click into a module for the first time unless you have a default Dashboard set in your profile.
+   </Note>
+
+To log out, click the **arrow** next to your username and select **Log Out** from the menu.\
+![/images/GettingStarted/GS7-Logout.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS7-Logout.jpg)
+
+# **MANAGING YOUR PROFILE**
+
+Your Actionabl user profile contains more than your username and password. It’s essential to your interaction with the system, workflows, and your team.
+
+- Click the arrow next to your username, then select **My Profile**. Three tabs are available: **Profile**, **Password**, and **Settings**. 
+
+## **The Profile Tab**
+
+![/images/GettingStarted/GS8-Profile.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS8-Profile.jpg)
+
+- **User Name** is the login name you use for the system. It must be unique, so use caution if attempting to change it.
+- **Email** is the email address at which you receive notifications from the system. You can update this as you wish.
+- **Phone** is an optional field where you can include a phone number that the system can use to send automated SMS or WhatsApp notifications for errors. If the process administrator has enabled that functionality, these notifications are sent. 
+- **Status** optionally sets your availability to receive automated task assignments if the process administrator enables auto-assign for this process. The system checks your group and this status to determine eligibility for the assignment.
+- **Skills** - reserved for future functionality. Please do not enter anything in this field.
+- **Default Auth Group** lists the dashboards that you are authorized to use. There is no need to set a default here; this function is deprecated and will be removed in a future release.
+- **Last Login On** shows the date and time you logged into the system. You cannot change this.
+- **Upload Picture** is where you can upload a profile picture. Recommended dimensions are 110px by 110px. File formats supported are:  JPG and PNG.
+
+## **Changing Your Password**
+
+1. Click the Password tab at the top of the profile dialog.\
+   ![/images/GettingStarted/GS9-PasswordChange.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS9-PasswordChange.jpg)
+2. Enter your current password in the top box.
+3. Enter your new password in the following box, then re-enter it in the Confirm Password box. You will see an alert if the entries do not match.
+4. If you need to see the passwords entered, click the “eye” iconto the right of the input.
+5. To exit without making a change, click Close. Otherwise, click Save to proceed.
+   You’ll see the message “Your password has been changed successfully” displayed at the bottom of your screen for a few seconds once the change is made.
+
+## **Your Settings**
+
+The Settings tab shows technical settings relating to your user account. These are for information only. **Do not make changes** here unless instructed to do so by technical support or an administrator.
+
+## **Your Notifications**
+
+This tab records all notifications you’ve received from the system.
+
+# ![/images/GettingStarted/GS11-Notifications.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS11-Notifications.jpg)
+
+**SEARCHING AND FILTERING**
+
+There are several different ways to search and filter tasks within Actionabl. As each has a different scope and will yield different results, it’s important to understand how to select between them.
+
+- **Searching** is used when you know what you’re looking for.  It’s especially useful if you have specific information, like a record ID or a person’s name. 
+- **Filtering** is better when you’re trying to narrow down a view to see a set of results that match your criteria, like seeing all invoices received within a range of dates or all tasks due next week.
+
+On all task lists, you’ll see an **Overdue Only** switch in the top center area. Turning this toggle on quickly filters the displayed results to show only items whose due date is in the past.
+
+## ![/images/GettingStarted/GS12-overdueonlyfilter.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS12-overdueonlyfilter.jpg)
+
+**Quick Search vs Full Search**
+
+There are two sets of search and filtering functions, and they each act a bit differently.
+
+On any list of task alerts, you’ll see a Search and a Filter icon at the top right of the list. These are the “**Quick**” options.
+
+On the dashboard’s menu, you’ll see Active Search and Archive Search. These are the “**Full**” search and filtering tools.
+
+![/images/GettingStarted/GS13-QuickSearchandFilter.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS13-QuickSearchandFilter.jpg)
+
+The scope of information searched by these tools differs.
+
+| |                                       |
+| --- | ------------------------------------- |
+| | Can search ALL columns in the record. |
+
+If a list being searched spans multiple pages of results, both the Quick and Full searches automatically look through all of the pages of the list.
+
+## **Quick Search**
+
+When you are on any list of records, using the search at the top right of that screen looks through all the records found on that list (even if it spans multiple pages) to find a match for the term in any of the fields displayed in the results. It finds the records instantly as you type.
+
+![/images/GettingStarted/GS14-QuickSearch.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS14-QuickSearch.jpg)
+
+<Tip>
+  HINT: If the data you are looking for is contained in a column that is _not visibly displayed_ in the results, it will not be found by Quick Search. In that case, use Full Search.
+</Tip>
+
+## **Quick Filters**
+
+On any screen of records, there are two sets of filters available to you: Process and Results.
+
+- In the center top of the navigation is a **Process Filter**. This narrows the result set to items that are in the process selected.
+
+![/images/GettingStarted/GS15-ProcessFilter.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS15-ProcessFilter.jpg)
+
+- The **Result Filter** is a powerful tool that enables you to select across other fields and criteria to narrow down your results.
+
+![/images/GettingStarted/GS16-ResultFilter.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS16-ResultFilter.jpg)
+
+- Once you select a process in this filter, you’ll see a set of fields relating to that process, which you can use to build robust criteria for your results.
+
+![/images/GettingStarted/GS16A-resultfilterselectprocess.jpg+_existingInIndexedDbMintlify](/images/GettingStarted/GS16A-resultfilterselectprocess.jpg)
