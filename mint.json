@@ -35,7 +35,7 @@
     {
       "name": "Documentation Home",
       "icon": "house",
-      "url": "introduction"
+      "url": "/introduction"
     }
   ],
   "navigation": [
