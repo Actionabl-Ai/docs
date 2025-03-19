@@ -40,18 +40,11 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Business and Technical Users",
       "pages": [
         "introduction",
-        "/GettingStarted/getting-started"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/task-management",
-        "essentials/controller",
-        "UserManagement/user-management"
+        "/GettingStarted/getting-started",
+        "/UserManagement/user-management"
       ]
     },
     {
