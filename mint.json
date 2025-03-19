@@ -51,7 +51,7 @@
       "pages": [
         "essentials/task-management",
         "essentials/controller",
-        "essentials/user-management"
+        "UserManagement/user-management"
       ]
     },
     {
