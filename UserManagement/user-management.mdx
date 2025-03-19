@@ -1,6 +1,6 @@
 ---
-title: "New file"
-description: "Description of your new file."
+title: "User Management Guide"
+description: "This document is a guide to User Management functionality and processes, which are usually performed by Supervisory users."
 ---
 
 # **OVERVIEW**
@@ -43,3 +43,80 @@ User permissions include:
 User functions are found under “Access Control” on the Admin dashboard in your account. 
 
 1. Click the up-arrow **^** next to your name in the bottom left corner of the screen. This will open your Profile menu.
+
+![/images/UserManagement/UM1-Adminuseraccess1.jpg+_existingInIndexedDbMintlify](/images/UserManagement/UM1-Adminuseraccess1.jpg)
+
+1. Select **Admin** at the top of that menu. This is how you move between different dashboards that are available to your user. (Only the dashboards that you have permission to use are shown on your list.)
+2. Click **Admin Controls**, then select **Access Control** to manage users and groups.
+
+   ![/images/UserManagement/UM3-accesscontrol.jpg+_existingInIndexedDbMintlify](/images/UserManagement/UM3-accesscontrol.jpg)
+3. When you open Access Control, you see four tabs across the top: **User**, **Group**, **Department**, and **Asset**.
+
+![/images/UserManagement/UM4-accesscontroltabs.jpg+_existingInIndexedDbMintlify](/images/UserManagement/UM4-accesscontroltabs.jpg)
+
+- **User**: Add, edit, activate, and deactivate user accounts in the system. This is the default tab when you click Access Control.
+- **Group**: Edit or deactivate a group and assign users to the group, which allows for cross-department permissions or process routing. For Authorization groups, this is also where you specify which assets the group can access.
+- **Department**: Create or edit a department, assign users to the department, and set a department as being active or inactive.
+- **Asset**: Create a new asset and manage the groups who can access the asset. Assets can be actions, menus, processes, or portals.
+
+## **Understanding Groups, Departments, and Users**
+
+When putting together the access plan for your business, we build it based on a set of assets, which are then put into groups and departments. Users have groups and (sometimes) departments assigned to them.
+
+This looks something like this:
+
+![/images/CHARTS/CHART-accesscontrolschema.jpg+_existingInIndexedDbMintlify](/images/CHARTS/CHART-accesscontrolschema.jpg)
+
+In this access plan, 
+
+- User 1 has access only in Process 2, where they have fairly restrictive (green) user tasks (searching and claiming tasks). Their Marketing department role also gives them a supervisory task (managing attachments).
+- User 2 has access in both processes. They have a (blue) supervisory task (managing attachments) and can also claim and search. 
+- User 3 only can claim and search, but they can do it in both processes
+
+This arrangement enables us to create a granular set of permissions so users see and can act on only the items within their assigned roles.
+
+## **Understanding Assets**
+
+Assets are the actions, menus, processes, portals, and spaces within the system. The Assets menu enables you to assign or restrict specific assets to specify what the members of a User Group can do.
+
+![/images/UserManagement/UM24-addingasset.jpg+_existingInIndexedDbMintlify](/images/UserManagement/UM24-addingasset.jpg)
+
+Select the **Asset Type** from the dropdown, then give it a human-friendly name. Click **Save** to save it.
+
+Simply creating an asset in the list does <u>not</u> cause any access or restriction to happen. This simply maps the access name to a group. 
+
+To define the action that the asset takes, work with your system administrator, who will create the necessary rules and code that will be needed.
+
+## **Managing Groups**
+
+There are two types of Groups: **Authorization** and **Task**.
+
+- **Authorization** groups allow a user to access a dashboard in the system, such as TaskMaster or Controller. A user account must have at least one of these groups to log in.
+- **Task** groups specify the tasks and modules that the user can access.
+
+**Only users who are members of the Super Auth group can edit a group’s assets or add a new group to the system**. Other Supervisory users can see which assets the group can use and can add or remove users from the group.
+
+Each system has certain pre-defined groups; your administrator may add more but cannot delete these groups.
+
+| **Predefined Group** | **Type**      | **Permissions**                                                                                                                                                  |
+| :------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accelerator          | Authorization | Access to Accelerator dashboard                                                                                                                                  |
+| Admin                | Authorization | Full Access to all dashboards in Actionabl. Cannot edit or create Groups and Assets.                                                                             |
+| Automation Builder   | Authorization | Access to the Automation Builder dashboard and tools                                                                                                             |
+| Controller           | Authorization | Access to Controller dashboard                                                                                                                                   |
+| Customer Service     | Authorization | Access to external user and customer information and can perform certain customer-focused actions (usually through buttons in the interface) like sending emails |
+| Designer             | Authorization | Access to Accelerator, Automation Builder, and Designer dashboards                                                                                               |
+| Dev Tools            | Authorization | Access to Dev Tools dashboard and other development tools accessible only via URL                                                                                |
+| Super Auth           | Authorization | Full Access to all dashboards in Actionabl, plus permission to create and edit Groups and Assets.                                                                |
+| TaskMaster           | Authorization | Access to the TaskMaster dashboard                                                                                                                               |
+| Automated Tasks      | Task          | Access to automated task items                                                                                                                                   |
+| Default              | Task          | Access to My Tasks module and items                                                                                                                              |
+| Error                | Task          | Access to Error Tasks module and items                                                                                                                           |
+| QC                   | Task          | Access to QC Tasks module and items                                                                                                                              |
+| User                 | Task          | Access to User Tasks module and items                                                                                                                            |
+
+### **_Viewing A Group’s Assigned Assets_**
+
+Before assigning users to a group, it’s important to see the assets that are available for use to ensure they are appropriate for the user’s responsibilities.
+
+1. Click the expander icon next to the group to open its details.
