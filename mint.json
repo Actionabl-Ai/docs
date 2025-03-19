@@ -33,16 +33,15 @@
   ],
   "anchors": [
     {
-      "name": "Getting Started Guide",
-      "icon": "book-open-cover",
-      "url": "https://actionabl.mintlify.app/GettingStarted/getting-started"
+      "name": "Documentation Home",
+      "icon": "house",
+      "url": "introduction"
     }
   ],
   "navigation": [
     {
       "group": "Business and Technical Users",
       "pages": [
-        "introduction",
         "/GettingStarted/getting-started",
         "/UserManagement/user-management"
       ]
