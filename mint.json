@@ -27,8 +27,8 @@
   },
   "tabs": [
     {
-      "name": "Task Management",
-      "url": "task-manager"
+      "name": "",
+      "url": ""
     }
   ],
   "anchors": [
@@ -42,9 +42,7 @@
     {
       "group": "Getting Started",
       "pages": [
-        "/introduction",
         "/GettingStarted/getting-started"
-
       ]
     },
        {
