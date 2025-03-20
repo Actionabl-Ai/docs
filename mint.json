@@ -40,9 +40,16 @@
   ],
   "navigation": [
     {
+      "group": "Getting Started",
+      "pages": [
+        "/introduction",
+        "/GettingStarted/getting-started"
+
+      ]
+    },
+       {
       "group": "Business and Technical Users",
       "pages": [
-        "/GettingStarted/getting-started",
         "/UserManagement/user-management"
       ]
     },
