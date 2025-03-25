@@ -181,7 +181,7 @@ There are cases where you will want an automation rule to be selective about whe
 ![CG7C Ruledetails Jp](/images/ControllerGuide/CG7C-Ruledetails.jpg)
 
 <Tip>
-  If you need to adjust a rule’s definition, remember that **changes you make here will take effect in <u>ALL</u> automations that use this rule**.
+  If you need to adjust a rule’s definition, remember that **<u>changes you make here will take effect in ALL automations that use this rule</u>**.
 </Tip>
 
 1. Click the green **Duplicate** button to create a new copy of the rule if the changes apply only to this automation. The copy appears immediately below the existing one. Make changes in this NEW copy, then save and select the new rule.
@@ -210,12 +210,49 @@ If none of the rules match what you need, you can create a new disable rule. The
 
 ![CG7G Duplicaterules Viewexisting Jp](/images/ControllerGuide/CG7G-Duplicaterules-viewexisting.jpg)
 
-1. Click the expand icon to the right of any of the rules to see its details. 
+1. Click the expand icon to the right of any of the rules to see its details.
 
 ![C10 Disable Rule Selection Detailview Pn](/images/ControllerGuide/C10-DisableRuleSelectionDetailview.png)
 
-1. If one is fairly close to the rule you want to create, click the green Duplicate button while viewing the rule. This makes a copy that will open just underneath the original rule.
+1. If one is fairly close to the rule you want to create, click the green Duplicate button while viewing the rule. This makes a copy that will open just underneath the original rule. \
+   \
+   Edit the rule as needed, then save it to activate it in the Automation.
 
 ![CG7H Duplicatedruleblank Jp](/images/ControllerGuide/CG7H-Duplicatedruleblank.jpg)
 
-1. If no rules in the list are close to the one you need, create a new rule from scratch by clicking the green plus sign at the top right of the popup.
+### Creating a Rule from Scratch
+
+If no rules in the list are close to the one you need, create a new rule from scratch by clicking the green plus sign at the top right of the popup.
+
+![C11A Disable Rule From Scratch Step1 Jp](/images/ControllerGuide/C11A-DisableRuleFromScratchStep1.jpg)
+
+1. Select a **Category** for the new rule.
+
+![C19 Create Rule Category Select Jp](/images/ControllerGuide/C19-CreateRuleCategorySelect.jpg)
+
+1. Select the rule’s **Type**. This determines the fields you have available to build the logic for the rule. Details of the logic available for each type are covered in the next section,_Building Rule Logic_ .
+
+![C20 Create Rule Type Select Jp](/images/ControllerGuide/C20-CreateRuleTypeSelect.jpg)
+
+1. Enter a unique **ID**. This id is restricted to letters, numbers, and underscores. No spaces or special characters are allowed.
+2. Enter the rule’s **Name**. This is what appears on the popups when you select a rule or when you view an automation’s configuration, so it should be unique and clearly describe the rule’s scope. For example, “Amount LT 1000” or “Opted out of daily invoices”
+
+<Info>
+  **NOTE**: Names must contain no special characters other than underscore (\_), dash (-), and period (.). They can contain spaces and alphanumeric characters.
+</Info>
+
+1. Click the “**Active**” box (if it is not already selected) to indicate that the rule should apply when it is saved and the automation is restarted.
+
+### Building Rule Logic
+
+Actionabl looks at the values and criteria defined here in the logic section and bypasses the automation for any record that evaluates “YES” against these criteria. The logic section, where you build this logic, changes depending on the Type selected in the top line.
+
+Regardless of the rule type, click the green plus sign to the right of the criteria header to get started adding the logic:
+
+![C21 Create Rule Critera Add Pn](/images/ControllerGuide/C21-CreateRuleCriteraAdd.png)
+
+**Default Rule**
+
+This defines a **condition** that, when matched, causes the item to be bypassed when the automation runs. 
+
+In this example, attached to the “AutoPay” automation, any invoice with a total amount greater than or equal to $1000 will disable the AutoPay automation.
