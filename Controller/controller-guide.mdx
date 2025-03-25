@@ -1,0 +1,177 @@
+---
+title: "Controller Guide"
+description: "This document is a User Guide to functionality and processes for the Controller dashboard functions. It is intended primarily for technical, supervisory, and administrative users of the Actionabl system."
+---
+
+# **OVERVIEW**
+
+[Actionabl.ai](http://Actionabl.ai) is a platform that automates your business processes and alerts users whenever human intervention is needed. 
+
+This guide covers the **Controller Dashboard**, which is central to managing the flow of automated processes through the system and enables monitoring and reporting on the workflows being managed in Actionabl.
+
+<Tip>
+  **\_If you are a new technical or supervisory user of Actionabl, you may find it helpful to first review \_**[**_<u>Getting Started with Actionabl</u>_**](/GettingStarted/getting-started)**\_ to familiarize yourself with the critical concepts and terms used throughout this document.\_**
+</Tip>
+
+_Related Documents:_
+
+- **<u>\_Task Management (COMING SOON) \_</u>**covers all aspects of the Task Manager dashboard, which includes:
+  - Process and Task concepts, organization, and management
+  - Process View basics
+  - Automation management, including processes, tasks, connectors, and rules 
+- [**<u>User Management</u>**](/UserManagement/user-management) includes asset and access control for users through Groups and Departments
+- [**<u>Automation, Task, & Rule Administration</u>**](https://docs.google.com/document/u/2/d/17g1pfNOkCyJ6qZxXOF0myNoj4YA0Xsri-XOTfPOlnW0/edit) (COMING SOON) covers the core of setting up and managing the tasks, automations, connectors, and rules that make up the process flows.
+
+# **CONTROLLER DASHBOARD OVERVIEW**
+
+Two modules are unique to the Controller dashboard: **Control Center** and **Process Analytics**. 
+
+For convenience, you can also access the \*\*Search \*\*tools, **Process View**, and **Error Tasks** queue directly from the Controller menu. 
+
+# ![C1 Controllermenu Pn](/images/ControllerGuide/C1-Controllermenu.png)
+
+**CONTROL CENTER**
+
+The Control Center can be thought of as air traffic control at a busy airport. This is where you: 
+
+- Manage the flow of data and items through the system via automations and tasks
+- Schedule routine and repetitive operations through cron jobs
+- Manage the AI Spaces that automate machine-learning tasks by checking their status, pausing them, or starting them.
+
+## **Automation Manager**
+
+The Automation Manager module shows you all automations and tasks configured in the system, with an at-a-glance view of their status (running, paused, failed, etc.).
+
+It contains 2 tabs:  
+
+- **Automations** tab is the overview of all tasks and processes running in the system. 
+- **Schedules** tab lists all of the schedules that can be used to manage a task or process listed on the Automations tab.
+
+![C2 Automation Manager Pn](/images/ControllerGuide/C2-AutomationManager.png)
+
+Each automation or task shows:
+
+- The process it’s running within
+- The task associated with it
+- How it is executing (Standalone, Call, External, or Polling)
+- Its current status and last run time
+
+In the Process Name or Task Name fields, an asterisk (**\***) indicates that the automation is a “**Common Process Automation**.” This means that it runs across all processes or tasks, so any change in its status will affect all items flowing through the system. Examples include data or report archives, which run across the entire system.
+
+To see all of the automations and tasks relating to a specific process, select the process from the dropdown at the top left. This activates the process filter; when this filter is on, you will not see any Common Process Automations listed.
+
+![C3 Process Filter Pn](/images/ControllerGuide/C3-ProcessFilter.png)
+
+**_Pausing An Automation_**
+
+This should be done whenever you make changes to an automation or task configuration, ensuring that items queued for processing follow the new configuration. 
+
+To pause an automation, click the green indicator on its right.
+
+When it has been fully paused, the indicator will turn red.
+
+### **_Restarting A Paused Automation_**
+
+If a status is in Paused mode, there will be a red indicator on its right side. 
+
+To restart the automation, click its indicator. Once it has restarted, the indicator turns green.
+
+### **_Refreshing Automation Status_**
+
+To refresh any automation, click the yellow “refresh” icon on the far right of the line. This will pause the current job and restart it. This can be useful in troubleshooting if a process or item appears “stuck.”
+
+## **Automation Scheduler**
+
+The Automation Scheduler is where you build or edit the schedules that manage the automations and tasks listed in the Automation Manager.
+
+![C4 Automation Schedules Pn](/images/ControllerGuide/C4-AutomationSchedules.png)
+
+The list shows all of the existing schedules. There are both _standalone_ and _process-specific_ schedules in the list.
+
+- **Standalone schedules** are applied to any matching item flowing through the system, regardless of the process or task it is in.
+
+  In the example, the Standalone schedule “Read Support Emails” runs each time a new email is received that matches the definition within the schedule.
+- **Process-specific schedules** only examine items while they are flowing through the specified process or task. If they match during that time, the schedule applies to them.  
+
+  In the example, the Process schedule “Task Notification Email” will be run only against items currently in the send_notification process and the send_email task.
+
+### **_Viewing and Editing Automation Schedule Details_**
+
+<Steps>
+  
+</Steps>
+
+1. To see a schedule’s details, click the expand icon on its right.
+2. The automation editor popup will appear. The popup will show different options for each type of automation (by execution mode). This is an example of a “Call” automation.
+
+![C5 Call Automation Example Pn](/images/ControllerGuide/C5-CallAutomationExample.png)
+
+<Steps>
+  <Step title="Change Automation Configuration" stepNumber="3">
+    1. Click the blue **Edit** button to change the automation’s configuration. Click the gray **Cancel** button to cancel without saving any changes.
+    2. The\*\*Schedule Type \*\* can be set to ****process orstandalone**** , as previously described. For **process** automations, you must specify the process and (optionally) task to which the schedule should apply. If the automation should span all processes and/or tasks, enter an asterisk (\*) in the appropriate field.
+
+       <Info>
+         **NOTE**: The Process Name and the Task Name must exactly match the way those items are shown in the Process View, including capitalization. This will happen automatically if you select “Create Automation Schedules” while you’re deploying the process.
+       </Info>
+    3. All automations require a **Connector**. Click the selection icon to pick the connector from the list.
+
+       <Tip>
+         **HINT**: Configure connectors on the Task Manager dashboard (for users with technical, supervisory, or system admin rights). Details are in the <u>Task Manager</u> guide (COMING SOON).
+       </Tip>
+  </Step>
+  <Step title="Set an Execution Mode" stepNumber="4">
+    1. The **Execution Mode** for the automation determines how it runs. The options are:
+
+    - **Call** automations run on-demand when an item flowing through the system triggers the appropriate criteria. Some examples would be sending an email or updating a database entry.
+    - **External** - The task is started when it is called by an external process using the API. It is called and controlled using the token that can be generated here.
+    - **Recurrent** automations run on a fixed schedule. Examples are checking for new items or inbound emails.
+
+    ![C6 Recurrent Schedule Pn](/images/ControllerGuide/C6-RecurrentSchedule.png)
+
+    1. To determine the schedule, specify either a Cron schedule or set a Recurrent Frequency and Recurrent Time Unit.
+
+    - A **Recurrent schedule**, defined by its Frequency and Time Unit, schedules the job to run based on a wait interval after the last run of the job is completed.
+    - A **Cron** schedules the job to run periodically at a specific scheduled time, date, or interval, like every day at 3 AM or on the 15th of each month.
+
+    <Tip>
+      **Hint**: Cron jobs do <u>not</u> check to see if the previous run of the job has been completed, so scheduling runs too close together for long items like backups could result in overlapping runs and errors.
+    </Tip>
+  </Step>
+  <Step title="Set up a Recurrent Schedule or Cron" stepNumber="5">
+    1. Select **Run Interval** from the dropdown:
+
+    ![C7 Recurrence Settings Jp](/images/ControllerGuide/C7-RecurrenceSettings.jpg)
+
+    1. Enter a **Recurrence Frequency** (in milliseconds). This is the wait time between the <u>end</u> of one execution and the <u>start</u> of the next.
+
+       **_OR_**
+    2. Select a **Cron Schedule** by clicking  the selection icon in the field. Making a selection here overrides any entries in the Run Interval.
+
+    ![C8 Cron Schedule Selection Pn](/images/ControllerGuide/C8-CronScheduleSelection.png)
+
+    1. **Max Concurrent Runs** specifies how many instances of this automation can run simultaneously (maximum is 25). This is an optional field used only when you need to fine-tune the performance of your system. For processing-intense automations, you may choose to set this to a lower number to avoid system slowdowns. 
+    2. **Disable Rule** is available only on Process automations. Click the selection icon to set the conditional rules in which this automation <u>doesn't</u> run. See _<u>Configuring Disable Rules</u>_ (below) for details on how to create and edit these rules.
+    3. **Disabled/Paused** toggle indicates whether the automation is running within the system. You can pause an automation for troubleshooting, editing, or similar temporary situations and then restart it when you are ready for it to begin processing again.
+    4. **Active** indicates whether the automation is even available to the automation manager. When you deactivate an automation, it is considered to be in a “pre-deletion” status, pending future cleanup and removal. The automation will no longer show up in lists or reports. 
+    5. **Updated By** and **Updated At** shows the user who last made edits to this automation and when they were done.
+  </Step>
+</Steps>
+
+### **_Configuring Disable Rules for Automations_**
+
+There are cases where you will want an automation rule to be selective about when and how it runs within a process. Some examples include:
+
+- You want to notify customers about proofing only if an invoice exceeds a threshold amount.
+- Certain vendors have asked not to receive emails about individual order invoice payments because they prefer an end-of-month summary statement.
+- You want a conditional case that alerts a user and shows new fields if a field has a specific value. For example, in processing a loan application, if a user has input “Owns” for home ownership, pause the automation and display new fields asking about mortgage balances, real estate taxes, etc.
+
+#### **Using An Existing Rule**
+
+1. In the Automation Scheduler list, click the expander icon to the right of the automation you want to apply the rule to.
+2. Click the blue **Edit** button to enter Edit mode.
+
+![CG7A Existingruleedit Jp](/images/ControllerGuide/CG7A-existingruleedit.jpg)
+
+1. Click the selection icon in the **Disable Rule** field.
+2. View the existing rules in the list. Click on the expand icon to the right of any rule to see its details.
