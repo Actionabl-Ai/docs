@@ -15,7 +15,7 @@ This guide covers the **Controller Dashboard**, which is central to managing the
 
 _Related Documents:_
 
-- **<u>\_Task Management (COMING SOON) \_</u>**covers all aspects of the Task Manager dashboard, which includes:
+- \*\*<u>\_Task Management (COMING SOON) \_</u>\*\*covers all aspects of the Task Manager dashboard, which includes:
   - Process and Task concepts, organization, and management
   - Process View basics
   - Automation management, including processes, tasks, connectors, and rules 
@@ -175,3 +175,47 @@ There are cases where you will want an automation rule to be selective about whe
 
 1. Click the selection icon in the **Disable Rule** field.
 2. View the existing rules in the list. Click on the expand icon to the right of any rule to see its details.
+
+![CG7B Exiting Ruleseedetails1 Jp](/images/ControllerGuide/CG7B-ExitingRuleseedetails1.jpg)
+
+![CG7C Ruledetails Jp](/images/ControllerGuide/CG7C-Ruledetails.jpg)
+
+<Tip>
+  If you need to adjust a rule’s definition, remember that **changes you make here will take effect in <u>ALL</u> automations that use this rule**.
+</Tip>
+
+1. Click the green **Duplicate** button to create a new copy of the rule if the changes apply only to this automation. The copy appears immediately below the existing one. Make changes in this NEW copy, then save and select the new rule.
+
+![CG7D Duplicaterulecreen Jp](/images/ControllerGuide/CG7D-Duplicaterulecreen.jpg)
+
+After saving your change to the rule, **reactivate the automation** so it restarts with the new rule definitions.
+
+1. Go to**Automation Manager**  in the Control Center.
+2. Find the automation on the list.
+3. If you deactivated it before making changes, all you need to do is click the red **play** button to restart it.
+4. If you did not deactivate it first, you need to refresh it so the changes take effect. This will stop the automation and restart it. Click the orange **refresh** button on the right of the rule, then click **Yes** in the popup. You will see the automation’s status change to “Restarting” for a few seconds and then back to “Running” once the refresh is complete
+
+![CG7F Restartautomationconfirmation Jp](/images/ControllerGuide/CG7F-Restartautomationconfirmation.jpg)
+
+#### **Creating a New Disable Rule**
+
+If none of the rules match what you need, you can create a new disable rule. There are two ways to do this:
+
+- **Duplicate an existing rule as a starting point**. This is recommended where possible as it will save you time and promote better consistency.
+- **Create a rule from scratch**. Best used when no existing rules are close to your desired result.
+
+1. In the Automation Scheduler list, click the expand icon to the right of the automation you want to apply the rule to.
+2. Click the blue **Edit** button to enter Edit mode.
+3. Click the selection icon in the **Disable Rule** field and view the existing rules in the list.
+
+![CG7G Duplicaterules Viewexisting Jp](/images/ControllerGuide/CG7G-Duplicaterules-viewexisting.jpg)
+
+1. Click the expand icon to the right of any of the rules to see its details. 
+
+![C10 Disable Rule Selection Detailview Pn](/images/ControllerGuide/C10-DisableRuleSelectionDetailview.png)
+
+1. If one is fairly close to the rule you want to create, click the green Duplicate button while viewing the rule. This makes a copy that will open just underneath the original rule.
+
+![CG7H Duplicatedruleblank Jp](/images/ControllerGuide/CG7H-Duplicatedruleblank.jpg)
+
+1. If no rules in the list are close to the one you need, create a new rule from scratch by clicking the green plus sign at the top right of the popup.
