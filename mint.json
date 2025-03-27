@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Actionbl Documentation",
   "logo": {
     "dark": "/logo/actionabl_logo_dark.svg",
     "light": "/logo/actionabl_logo_light.svg"
@@ -18,26 +18,13 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@actionabl.com"
     }
   ],
   "topbarCtaButton": {
     "name": "Docs Home",
     "url": "https://actionabl.mintlify.app/introduction"
   },
-  "tabs": [
-    {
-      "name": " ",
-      "url": " "
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation Home",
-      "icon": "house",
-      "url": "/introduction"
-    }
-  ],
   "navigation": [
     {
       "group": "Getting Started",
