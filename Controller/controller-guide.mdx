@@ -10,27 +10,27 @@ description: "This document is a User Guide to functionality and processes for t
 This guide covers the **Controller Dashboard**, which is central to managing the flow of automated processes through the system and enables monitoring and reporting on the workflows being managed in Actionabl.
 
 <Tip>
-  **\_If you are a new technical or supervisory user of Actionabl, you may find it helpful to first review \_**[**_<u>Getting Started with Actionabl</u>_**](/GettingStarted/getting-started)**\_ to familiarize yourself with the critical concepts and terms used throughout this document.\_**
+  If you are a new technical or supervisory user of Actionabl, you may find it helpful to first review [<u>Getting Started with Actionabl</u>](/GettingStarted/getting-started) to familiarize yourself with the critical concepts and terms used throughout this document.
 </Tip>
 
 _Related Documents:_
 
-- \*\*<u>\_Task Management (COMING SOON) \_</u>\*\*covers all aspects of the Task Manager dashboard, which includes:
+- **Task Management** (COMING SOON) covers all aspects of the Task Manager dashboard, which includes:
   - Process and Task concepts, organization, and management
   - Process View basics
   - Automation management, including processes, tasks, connectors, and rules 
 - [**<u>User Management</u>**](/UserManagement/user-management) includes asset and access control for users through Groups and Departments
-- [**<u>Automation, Task, & Rule Administration</u>**](https://docs.google.com/document/u/2/d/17g1pfNOkCyJ6qZxXOF0myNoj4YA0Xsri-XOTfPOlnW0/edit) (COMING SOON) covers the core of setting up and managing the tasks, automations, connectors, and rules that make up the process flows.
+- **Automation, Task, & Rule Administration** (COMING SOON) covers the core of setting up and managing the tasks, automations, connectors, and rules that make up the process flows.
 
 # **CONTROLLER DASHBOARD OVERVIEW**
 
 Two modules are unique to the Controller dashboard: **Control Center** and **Process Analytics**. 
 
-For convenience, you can also access the \*\*Search \*\*tools, **Process View**, and **Error Tasks** queue directly from the Controller menu. 
+For convenience, you can also access the **Search** tools, **Process View**, and **Error Tasks** queue directly from the Controller menu. 
 
-# ![C1 Controllermenu Pn](/images/ControllerGuide/C1-Controllermenu.png)
+![C1 Controllermenu Pn](/images/ControllerGuide/C1-Controllermenu.png)
 
-**CONTROL CENTER**
+## **CONTROL CENTER**
 
 The Control Center can be thought of as air traffic control at a busy airport. This is where you: 
 
@@ -109,7 +109,7 @@ The list shows all of the existing schedules. There are both _standalone_ and _p
 <Steps>
   <Step title="Change Automation Configuration" stepNumber="3">
     1. Click the blue **Edit** button to change the automation’s configuration. Click the gray **Cancel** button to cancel without saving any changes.
-    2. The\*\*Schedule Type \*\* can be set to ****process orstandalone**** , as previously described. For **process** automations, you must specify the process and (optionally) task to which the schedule should apply. If the automation should span all processes and/or tasks, enter an asterisk (\*) in the appropriate field.
+    2. The **Schedule Type** can be set to **process **or**standalone**  , as previously described. For **process** automations, you must specify the process and (optionally) task to which the schedule should apply. If the automation should span all processes and/or tasks, enter an asterisk (\*) in the appropriate field.
 
        <Info>
          **NOTE**: The Process Name and the Task Name must exactly match the way those items are shown in the Process View, including capitalization. This will happen automatically if you select “Create Automation Schedules” while you’re deploying the process.
@@ -154,7 +154,7 @@ The list shows all of the existing schedules. There are both _standalone_ and _p
     2. **Disable Rule** is available only on Process automations. Click the selection icon to set the conditional rules in which this automation <u>doesn't</u> run. See _<u>Configuring Disable Rules</u>_ (below) for details on how to create and edit these rules.
     3. **Disabled/Paused** toggle indicates whether the automation is running within the system. You can pause an automation for troubleshooting, editing, or similar temporary situations and then restart it when you are ready for it to begin processing again.
     4. **Active** indicates whether the automation is even available to the automation manager. When you deactivate an automation, it is considered to be in a “pre-deletion” status, pending future cleanup and removal. The automation will no longer show up in lists or reports. 
-    5. **Updated By** and **Updated At** shows the user who last made edits to this automation and when they were done.
+    5. **Updated By** and **Updated At** show the user who last edited this automation and when they were done.
   </Step>
 </Steps>
 
@@ -174,7 +174,7 @@ There are cases where you will want an automation rule to be selective about whe
 ![CG7A Existingruleedit Jp](/images/ControllerGuide/CG7A-existingruleedit.jpg)
 
 1. Click the selection icon in the **Disable Rule** field.
-2. View the existing rules in the list. Click on the expand icon to the right of any rule to see its details.
+2. The existing rules are displayed in the list. To view their details, click on the expand icon to the right of any rule.
 
 ![CG7B Exiting Ruleseedetails1 Jp](/images/ControllerGuide/CG7B-ExitingRuleseedetails1.jpg)
 
@@ -190,7 +190,7 @@ There are cases where you will want an automation rule to be selective about whe
 
 After saving your change to the rule, **reactivate the automation** so it restarts with the new rule definitions.
 
-1. Go to**Automation Manager**  in the Control Center.
+1. Go to **Automation Manager**  in the Control Center.
 2. Find the automation on the list.
 3. If you deactivated it before making changes, all you need to do is click the red **play** button to restart it.
 4. If you did not deactivate it first, you need to refresh it so the changes take effect. This will stop the automation and restart it. Click the orange **refresh** button on the right of the rule, then click **Yes** in the popup. You will see the automation’s status change to “Restarting” for a few seconds and then back to “Running” once the refresh is complete
@@ -230,7 +230,7 @@ If no rules in the list are close to the one you need, create a new rule from sc
 
 ![C19 Create Rule Category Select Jp](/images/ControllerGuide/C19-CreateRuleCategorySelect.jpg)
 
-1. Select the rule’s **Type**. This determines the fields you have available to build the logic for the rule. Details of the logic available for each type are covered in the next section,_Building Rule Logic_ .
+1. Select the rule’s **Type**. This determines the fields you have available to build the logic for the rule. Details of the logic available for each type are covered in the next section, _Building Rule Logic_.
 
 ![C20 Create Rule Type Select Jp](/images/ControllerGuide/C20-CreateRuleTypeSelect.jpg)
 
@@ -270,7 +270,7 @@ The green “grouping” icon next to the green plus lets you add a **condition 
 3. The following example uses grouping. It disables autopay for invoices greater than or equal to $1000 <u>but ONLY</u> if they are Manually Completed <u>OR</u> from supplier VendX.\
    ![CG29 Groupconditions Jp](/images/ControllerGuide/CG29-Groupconditions.jpg)
 
-**_Defining Additional Actions_**
+### **_Defining Additional Actions_**
 
 You may also define additional actions that happen when these conditions are met. These actions are taken after the automation is disabled and can be: 
 
@@ -291,13 +291,13 @@ Click **Save** to finish, and then select the rule you just created to apply it 
 
 This rule will now also be available in the Disable Automation list for all other tasks and can be selected for reuse there.
 
-**Expression Rule**
+### **Expression Rule**
 
 Expression rules are built using the same techniques as the default rule, but instead of selecting fields and values to match, you define those conditions using Javascript expressions.
 
 ![CG34 Replacement Expressionrule Jp](/images/ControllerGuide/CG34-replacement-expressionrule.jpg)
 
-**Javascript Rule**
+### **Javascript Rule**
 
 This rule type uses Javascript (either in an attached file or a function entered directly here) to determine the eligibility of a record to run this automation.
 
@@ -332,8 +332,7 @@ Details of an AI space include whether it is running, the mode(s) enabled, and a
 - **Status**: _Not started_ or _Running_. A running space is available for use within a process. If a required space is not running, any process that depends on it will fail.
 - **API Mode**: The space is set up to be accessible via an API connection.
 - **Worker Mode**: The space allows multiple threads to run simultaneously for parallel processing.
-
-**Worker Count**: This shows how many worker threads are actively running in the space.
+- **Worker Count**: This shows how many worker threads are actively running in the space.
 
 # **Cron Job Scheduler**
 
@@ -349,11 +348,11 @@ To set up a new cron job schedule, click the green plus icon at the top right of
 
 ![CG51 Crons Newblankjob Jp](/images/ControllerGuide/CG51-Crons-newblankjob.jpg)
 
-The**Type**  is either _Report_, \_Batch Job, _or_Task Event_ . When you pick one, the appropriate additional fields appear to set it up.
+The **Type**  is either _Report_, _Batch Job_, or_Task Event_ . When you pick one, the appropriate additional fields appear to set it up.
 
 ## **_Report Cron Setup_**
 
-1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, bank_invoice_process_run_daily_2am
+1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, _bank_invoice_process_run_daily_2am_
 2. Click the browse bracket in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.
 
 ![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
@@ -366,7 +365,7 @@ The**Type**  is either _Report_, \_Batch Job, _or_Task Event_ . When you pick on
 ## **_Batch Job Cron Setup_**
 
 1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, bank_invoice_process_run_daily_2am
-2. Click the browse brackets  in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.
+2. Click the browse brackets in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.
 
 ![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
 
