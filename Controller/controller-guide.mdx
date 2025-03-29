@@ -256,3 +256,63 @@ Regardless of the rule type, click the green plus sign to the right of the crite
 This defines a **condition** that, when matched, causes the item to be bypassed when the automation runs. 
 
 In this example, attached to the “AutoPay” automation, any invoice with a total amount greater than or equal to $1000 will disable the AutoPay automation.
+
+![CG26 Inv Gt1000rule Jp](/images/ControllerGuide/CG26-InvGT1000Rule.jpg)
+
+You can “stack” additional conditions onto this rule. At the top of the condition list, select whether the conditions should be boolean AND or OR, and click the green plus sign to add a new row.
+
+The green “grouping” icon next to the green plus lets you add a **condition group**. A condition group is treated as a single condition in evaluating the boolean AND/OR above it. Let’s look at some examples to clarify this.
+
+1. This example disables autopay for any invoice greater than or equal to $1000.\
+   ![CG27 GT1000 Jp](/images/ControllerGuide/CG27-GT1000.jpg)
+2. This example disables autopay for invoices greater than $1000 <u>plus</u> ANY invoice from supplier “VendX” for any amount. Using boolean OR matches against either one of these conditions.\
+   ![CG28 O Rcondition Jp](/images/ControllerGuide/CG28-ORcondition.jpg)
+3. The following example uses grouping. It disables autopay for invoices greater than or equal to $1000 <u>but ONLY</u> if they are Manually Completed <u>OR</u> from supplier VendX.\
+   ![CG29 Groupconditions Jp](/images/ControllerGuide/CG29-Groupconditions.jpg)
+
+**_Defining Additional Actions_**
+
+You may also define additional actions that happen when these conditions are met. These actions are taken after the automation is disabled and can be: 
+
+- Setting a field value that is saved on the record
+
+
+- Setting an error message that generates an error task and stops further execution
+- Calculating a value that can be used within this process (for example, in a Javascript expression)
+
+Click the green plus sign on the right of the “**Action**” field to define more actions.
+
+![CG31 Additional Actions1 Jp](/images/ControllerGuide/CG31-AdditionalActions1.jpg)
+
+In the following example, Error Message is the action type, which generates an error task for the user to resolve and stops the task's execution.\
+![CG32 Actionserrormessage Jp](/images/ControllerGuide/CG32-Actionserrormessage.jpg)
+
+Click **Save** to finish, and then select the rule you just created to apply it to the task.
+
+![CG33 Disableruleonautomation Jp](/images/ControllerGuide/CG33-disableruleonautomation.jpg)
+
+This rule will now also be available in the Disable Automation list for all other tasks and can be selected for reuse there.
+
+**Expression Rule**
+
+Expression rules are built using the same techniques as the default rule, but instead of selecting fields and values to match, you define those conditions using Javascript expressions.
+
+![CG34 Replacement Expressionrule Jp](/images/ControllerGuide/CG34-replacement-expressionrule.jpg)
+
+**Javascript Rule**
+
+This rule type uses Javascript (either in an attached file or a function entered directly here) to determine the eligibility of a record to run this automation.
+
+Either click the [] icon in the Script File field to select an existing script file or enter the javascript code directly in the “Script” field.
+
+<Tip>
+  HINT: Script files are added directly to the deployed folder in your system. If that folder is under source control, such as Github, follow your company's practices.
+</Tip>
+
+![CG36 J Sruleentryselectfile Jp](/images/ControllerGuide/CG36-JSruleentryselectfile.jpg)
+
+Once you’ve selected a file or entered a script, you can set parameters that govern how that script should behave. Click the green plus sign to the right of **Rule Parameters** to open that section.
+
+![CG37 Ruleparameters1 Jp](/images/ControllerGuide/CG37-ruleparameters1.jpg)
+
+![CG38 Rule Parametersdefinition Jp](/images/ControllerGuide/CG38-RuleParametersdefinition.jpg)
