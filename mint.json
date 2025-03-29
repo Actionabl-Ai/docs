@@ -37,6 +37,7 @@
       "pages": [
         "/UserManagement/user-management",
         "/Controller/controller-guide"
+        "/TaskManagement/task-management"
       ]
     },
     {
