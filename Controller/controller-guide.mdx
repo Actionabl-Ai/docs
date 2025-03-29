@@ -38,7 +38,7 @@ The Control Center can be thought of as air traffic control at a busy airport. T
 - Schedule routine and repetitive operations through cron jobs
 - Manage the AI Spaces that automate machine-learning tasks by checking their status, pausing them, or starting them.
 
-## **Automation Manager**
+# **Automation Manager**
 
 The Automation Manager module shows you all automations and tasks configured in the system, with an at-a-glance view of their status (running, paused, failed, etc.).
 
@@ -80,7 +80,7 @@ To restart the automation, click its indicator. Once it has restarted, the indic
 
 To refresh any automation, click the yellow “refresh” icon on the far right of the line. This will pause the current job and restart it. This can be useful in troubleshooting if a process or item appears “stuck.”
 
-## **Automation Scheduler**
+# **Automation Scheduler**
 
 The Automation Scheduler is where you build or edit the schedules that manage the automations and tasks listed in the Automation Manager.
 
@@ -275,8 +275,6 @@ The green “grouping” icon next to the green plus lets you add a **condition 
 You may also define additional actions that happen when these conditions are met. These actions are taken after the automation is disabled and can be: 
 
 - Setting a field value that is saved on the record
-
-
 - Setting an error message that generates an error task and stops further execution
 - Calculating a value that can be used within this process (for example, in a Javascript expression)
 
@@ -316,3 +314,122 @@ Once you’ve selected a file or entered a script, you can set parameters that g
 ![CG37 Ruleparameters1 Jp](/images/ControllerGuide/CG37-ruleparameters1.jpg)
 
 ![CG38 Rule Parametersdefinition Jp](/images/ControllerGuide/CG38-RuleParametersdefinition.jpg)
+
+# **AI Space Manager**
+
+AI spaces are components that are part of the machine-learning tasks within a process. The computing needs of an AI space are usually intense, so they are set up as separate-but-trusted environments that work as components within Actionabl.
+
+AI spaces are typically used for classification or language detection models. These trained models sit separately from the core of Actionabl but are used by Actionabl within a process. In many ways, they run like an external component, but they are trusted items.
+
+When the Actionabl team sets up your system, the AI spaces are also set up as part of that process, so client users cannot edit. 
+
+AI Space Manager is used simply to check the status, pause, or start one of the AI spaces, as needed.
+
+![CG99 AI Space Manager Jp](/images/CG99-AISpaceManager.jpg)
+
+Details of an AI space include whether it is running, the mode(s) enabled, and a count of the current workers running in the space.
+
+- **Status**: _Not started_ or _Running_. A running space is available for use within a process. If a required space is not running, any process that depends on it will fail.
+- **API Mode**: The space is set up to be accessible via an API connection.
+- **Worker Mode**: The space allows multiple threads to run simultaneously for parallel processing.
+
+**Worker Count**: This shows how many worker threads are actively running in the space.
+
+# **Cron Job Scheduler**
+
+The **Cron Job Scheduler** in Actionabl is where you set up a task to run and match it with a schedule you’ve defined under **Cron Schedules**. This process creates a cron job.
+
+Cron jobs are tasks that are managed by a time-based scheduler that is built into all Unix-based operating systems. You use a cron schedule to specify precisely when and with what frequency the task or script should execute, like every 15 minutes or every other Thursday at 2 PM.
+
+The Cron Job Scheduler shows all cron jobs currently set up:
+
+![CG50 Crons Scheduler1 Jp](/images/ControllerGuide/CG50-CronsScheduler1.jpg)
+
+To set up a new cron job schedule, click the green plus icon at the top right of the screen.
+
+![CG51 Crons Newblankjob Jp](/images/ControllerGuide/CG51-Crons-newblankjob.jpg)
+
+The**Type**  is either _Report_, \_Batch Job, _or_Task Event_ . When you pick one, the appropriate additional fields appear to set it up.
+
+## **_Report Cron Setup_**
+
+1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, bank_invoice_process_run_daily_2am
+2. Click the browse bracket in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.
+
+![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
+
+1. Click on the browse brackets in the **Report Definition** field to select the report script to schedule. 
+2. **Email template** can be left blank to use the default in the system. Alternatively, click the browse brackets to select a different template.
+
+![CG59 Cron Reports Completed Jp](/images/ControllerGuide/CG59-CronReportsCompleted.jpg)
+
+## **_Batch Job Cron Setup_**
+
+1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, bank_invoice_process_run_daily_2am
+2. Click the browse brackets  in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.
+
+![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
+
+1. Click on the browse brackets in the **Batch Job Script** field to select the script to schedule. 
+
+![CG55 Cron Task Event Jp](/images/ControllerGuide/CG55-CronTaskEvent.jpg)
+
+- In the list of locations, browse to select the script file you want to schedule. If an item shows as a **_Folder_** type, click it to see the files inside it. Click the double dots **..** to go up a level in browsing. When you find the script file you want, click it to select it.
+
+![CG56 Cron Batch Select Script Jp](/images/ControllerGuide/CG56-CronBatchSelectScript.jpg)
+
+- Click the green **Save** button. If the script is marked **Active** it will run on the next scheduled cron time.
+
+## **_Task Event Cron Setup_**
+
+1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, _send_docusign_daily_9am_
+2. Select the Event Type. Events are predefined in the system by your system administrator.
+
+![CG58 Cron Task Eventsetup Jp](/images/ControllerGuide/CG58-CronTaskEventsetup.jpg)
+
+1. Click the browse brackets in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon  at the top right of the screen.
+
+# ![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
+
+**Cron Schedules**
+
+The Cron Schedules module defines all of the possible schedules that a task could use for its run schedule. It is prepopulated with some common schedules.
+
+## ![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
+
+**_Add A New Cron Schedule_**
+
+1. Click the green plus sign at the top right of the screen.
+2. Enter a **unique ID** for the schedule. The ID must contain only letters and numbers, underscores, and dashes. It cannot contain any spaces.
+
+![CG61 Cron Schedulenew1 Jp](/images/ControllerGuide/CG61-CronSchedulenew1.jpg)
+
+1. Type a **Name** for this schedule. The name will appear to users on the list of schedules.
+2. Ensure that **Active** is checked.
+3. Click the plus sign on the right of the cron schedules to start setting up the parameters.
+
+![CG62 Cron Schednew Parameters Jp](/images/ControllerGuide/CG62-CronSchednew-parameters.jpg)
+
+- You can specify an optional **Effective Start Date** and **Effective End Date** for the schedule, which is helpful if you create a temporary cron job.
+- Likewise, you can specify an **Effective Start Time** and **Effective End Time**. If you leave these fields blank and specify a start and end date, the job will start at midnight on the start date and end at 11:59 PM on the end date.
+- Click the browse brackets to specify **Disable Rule(s)** that disqualify items from being included in this cron job. See [**_<u>Configuring Disable Rules for Automations</u>_**](https://docs.google.com/document/d/1P-TO70rqYfM1HmydmtE3XgnMgwAzoAgutgInby3bnio/edit?tab=t.z38ggzyxt3cf#heading=h.drhvuiacy6wr) for details about defining rules.
+- Click the browse brackets next to **Cron Expression** to set up the schedule for jobs to run.
+
+![CG63 Cron Schedblank Jp](/images/ControllerGuide/CG63-CronSchedblank.jpg)
+
+- Check each appropriate box to build the schedule you want. You can select single or multiple options in each section or select “No Restriction” for sections that do not apply. \
+  \
+  The following example sets the schedule to run daily at 9 PM:
+
+![CG64 Cronschedcomplete Jp](/images/ControllerGuide/CG64-Cronschedcomplete.jpg)
+
+<Tip>
+  **HINT**: If you are used to setting up cron jobs using crontab code, the code generated by the schedule is shown at the bottom for ease of verification.
+</Tip>
+
+- Click **Save** at the top right to save this parameter.
+
+![CG65 Cronschedulesave1 Jp](/images/ControllerGuide/CG65-Cronschedulesave1.jpg)
+
+- You can continue adding parameters to this cron schedule if you need.
+- When the schedule contains all of the necessary parameters, click the green Save button to save it. If the “Active” box at the top is checked, this also activates the schedule.
