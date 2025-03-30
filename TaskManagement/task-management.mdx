@@ -1,6 +1,176 @@
 ---
-title: 'Task Management'
+title: "Task Management"
 sidebarTitle: "Task Management (Coming Soon)"
 icon: "list-check"
+description: "This document is a User Guide to Task Management functionality and processes. These tasks are primarily assigned to Actionabl Business Users, but they may also be assigned to Technical users."
 ---
 
+# **OVERVIEW**
+
+[Actionabl.ai](http://Actionabl.ai) is a platform that automates your business processes and alerts users whenever human intervention is needed. 
+
+This guide covers Tasks reviewed and resolved by Business users, including:
+
+- **User Tasks** - a task that must always be completed by a human, like reviewing a proof.
+- **Quality Control (QC) Tasks** - a task whose output must be double-checked by a human, like issuing a payment to a vendor.
+
+**Error tasks** may also be routed to a Business User when they involve business process errors, such as a missing document, a document that fails OCR because of poor scanning quality, or an invoice that fails content validation against business rules.
+
+<Tip>
+  If you are a new user of Actionabl, you should review [<u>Getting Started with Actionabl</u>](/GettingStarted/getting-started) to familiarize yourself with key concepts and terms used throughout this document.
+</Tip>
+
+# **PROCESSES AND TASKS**
+
+There are three accordions in this section:
+
+<AccordionGroup>
+  <Accordion title="The Process/Task/Stage Structure" description="Learn how the elements of a process come together and get organized into tasks" icon="arrow-progress">
+    ## **The Process / Task / Stage Structure**
+
+    Actionabl is all about automating your business **processes**. Those processes are composed of **tasks** that are grouped into **stages**. **Items** move through the process stages and are acted on within the tasks.
+
+    Within your Actionabl account, you will likely have several automated processes. 
+
+    While each process has its own flow and tasks, your dashboard and the modules show you an overview spanning all processes. Use filters and searches to narrow down the tasks shown, focus on a specific process, or locate a specific task or group of tasks.
+
+    ### **_Processes_**
+
+    A process is best visualized as a workflow with a clear starting point and a well-defined goal. It may contain branches of logic to account for decisions and conditions, or it might be a straight-through flow of information. 
+
+    Here’s an example of a simple business process where a vendor sends an invoice, we validate the information and then record the payment or send a rejection notice.
+
+    ![Bank Invoice Process Steps Pn](/images/BankInvoiceProcessSteps.png)
+
+    A process always has:
+
+    - A goal (process the invoice)
+    - A status (pending, in progress, complete)
+    - A starting point (vendor sends the invoice)
+    - One or more stages (acknowledge, extract, validate, review, resolve)
+    - One or more tasks within each stage (perform quality checks, validate the data, conduct a manual review)
+    - A completion point (record the invoice or send a rejection email)
+
+    When you begin working with Actionabl, our team works with your business to clearly define each process to be automated. We then implement (or work with your IT team to implement) the automation in our system. Integrations with your systems monitor and move items (such as emails, documents, purchase orders, and data) through the stages and tasks within the process. 
+
+    When human intervention is needed along the way, the system creates alerts and provides the data and tools needed to resolve the alert and move the item along to the next step. There are two usual reasons for human intervention:
+
+    - **A step in the process that cannot be automated**. This is typically an offline process, such as shipping a physical product or signing off on a proof. It can also include filing in missing form fields.
+    - **An error during processing**. This could be business-related, such as a missing document or a poor-quality scan that can’t be read through OCR, or it could be a technical problem, like not getting a “success” message back from an API call to an integrated system.
+
+    #### **Process Examples For Training**
+
+    Throughout our guides and training, we use two process examples called **bank invoice processing** and **send notification**.
+
+    The following sections describe these processes in common business terms and show how they are translated and displayed within Actionabl. While these are fictional and simplified processes, understanding how they are implemented in Actionabl will help you visualize how your own processes translate from real-world action to automation.
+
+    #### **Bank Invoice Processing**
+
+    **Goal**: Pay the vendor for their work and post the accounting in our systems. In most cases, this is where the process ends, but it can also end with an invoice being canceled, usually due to a mistake or dispute, in which case we also want to notify the vendor..
+
+    **Business Users**: Accounting or financial staff, production management
+
+    **Stages and Tasks:**
+
+    - **Starting Point:** Invoice is received from a vendor who has produced and shipped a customer’s order, based on a Purchase Order the business sent to them.
+    - **Acknowledge**
+      - Send the vendor an acknowledgment that the invoice was received and will be processed.
+    - **Extract**
+      - Process the emailed invoice through OCR.
+      - Read relevant data (vendor code, vendor name, date of invoice, list of items, etc.).
+      - Store data in the database.
+    - **Validate**
+      - Does invoice data match basic requirements?
+      - Is any required data missing?
+      - Perform automated quality control checking.
+    - **Review**
+      - Does data meet the business rules or require intervention?
+      - Does the invoice or data qualify for manual review?
+    - **Resolve**
+      - If the invoice is approved, 
+        - enter it into the accounting system for payment
+        - notify the vendor.
+        - update the records for the invoice and its original purchase  order in the system
+      - If the invoice is rejected, notify the vendor.
+
+    **Business Rules**: 
+
+    1. The invoice must be from a valid vendor and have appropriate dates (cannot be from future dates or dates older than 6 months in the past).
+    2. Some invoices will always require special review:
+       - If they are from certain vendors
+       - If they exceed certain thresholds in size or scope.
+    3. Some invoices will never require manual review:
+       - If they are below a certain threshold
+       - If they are from VIP vendors who are highly trusted
+
+    When this process and its rules have been coded into Actionabl, it produces a process flow that looks like this in Process View:
+
+    ![TMB1 Process Flow Jp](/images/TaskManagement/TMB1-ProcessFlow.jpg)
+
+    **_Tasks_**
+
+    A **task** is a single, specific action that occurs within the process. Tasks have a triggering event, item, action, outcome, and status. For example:
+
+    The **Validate Invoice Data** task in the Bank Invoice process looks at the total amount, items, and quantity data from the invoice and ensures:
+
+    1. If it’s a required field, it contains data
+    2. The data in each field is in the correct format (number, text, currency, etc.)
+    3. The data in each field is “valid,” if appropriate—for example, ZIP codes are validated against the USPS database, emails are in the appropriate format, vendor name and ID match against the company’s list of vendors, etc.
+
+    A task always has:
+
+    - **Triggering event**: Successful OCR scanning of invoice received from vendor
+    - **Item**: Invoice
+    - **Action**: Validate invoice data elements
+    - **Outcome**: Invoice moves into an automated quality check
+    - **Status**: Complete
+
+    Within Actionabl, tasks can have the following types:
+
+    | **Type**                  | **Definition**                                                                                                                                                                                                                        | **Icon**                             |
+    | :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------- |
+    | **Decision**              | Assess whether a condition has been met, like checking whether an email has been received or if a value matches a criterion.                                                                                                          |                                      |
+    | **User**                  | This task must always be completed by a human, like reviewing a proof or shipping a product. Your company may also define some types of errors to be user tasks, such as resolving an invoice that doesn’t match the expected amount. |                                      |
+    | **Email**                 | This task sends an email, either internally or externally.                                                                                                                                                                            | ![Email Sv](/images/ICONS/Email.svg) |
+    | **SMS**                   | This task sends an SMS text message.                                                                                                                                                                                                  | ![SMS Sv](/images/ICONS/SMS.svg)     |
+    | **Chat**                  | This task reads or sends a message in a chat window.                                                                                                                                                                                  | ![SMS Sv](/images/ICONS/Chat.svg)    |
+    | **Quality Control (QC)**  | A task that allows the output of the previous task to be double-checked by a human, like reviewing invoice data after it’s extracted by the OCR tool.                                                                                 | ![QC Sv](/images/ICONS/QC.svg)       |
+    | **App**                   | Action taken by an external application, like sending email or creating a document.                                                                                                                                                   | ![AP Sv](/images/ICONS/AP.svg)       |
+    | **OCR**                   | Optical character recognition to extract data from a scanned document.                                                                                                                                                                |                                      |
+    | **RPA**                   | Robotic process automation to allow the software to mimic a human action in a web browser or desktop application, like filling in data in Quickbooks Online.                                                                          |                                      |
+    | **Machine Learning (ML)** | Tasks completed by specialized apps, like face or voice recognition, that build the application’s knowledge for future tasks.                                                                                                         |                                      |
+    | **Bot**                   | Automated, repetitive tasks like scheduling data backups or running a process at the same time every day.                                                                                                                             |                                      |
+    | **SQL**                   | Tasks that interact with the database via reading, writing, or updating records.                                                                                                                                                      | ![Sql Sv](/images/ICONS/Sql.svg)     |
+    | **Rule**                  | Validation of an item’s data against business rules and logical conditions.                                                                                                                                                           |                                      |
+    | **Sub-Task**              | A task (or set of tasks) that is started within another task, like looking up a recipient’s full name so it can be included in an automated email.                                                                                    |                                      |
+    | **ERROR**                 | A system-generated task alerting a user to a failure in processing an automated step correctly.                                                                                                                                       | N/A                                  |
+
+    Examples of tasks:
+
+    - **Extract invoice data**. Receives a PDF of an invoice and extracts the data from it. (_Automated_)
+    - **Validate invoice data**. Compares the extracted invoice data to the business rules to determine if it’s correct, complete, and ready to process. (_Automated_)
+    - **Quality control check**. Shows an accounting user a proposed vendor payment and its backing documents to determine if it is OK for payment by funds transfer. (_QC_)
+    - **Resolve underwriting block**. Fill in missing data from a loan form after contacting the customer. (_User_)
+    - **No response from API**. Alerts accounting that an invoice was sent to the Odoo API, but the system did not receive a “Success” response. (_Error_)
+
+    ### **_Stages_**
+
+    Within each process, tasks are grouped into **stages**, which makes it easier for people to understand and communicate about the progress of the task. 
+
+    A stage may contain just one task or can loop through multiple tasks and logic branches. The key is that it represents a meaningful part of the overall process in the way human users visualize the process.
+
+    <Tip>
+      **NOTE: Stages are NOT the same as statuses**. Statuses communicate the progress of an item through the various tasks within the process and report on the success or failure of the task.  Stages are groupings of tasks within the process, like “validate” or “pay.”
+    </Tip>
+    Let’s look at part of the Bank Invoice Process example:
+
+    - The “**Extract**” stage receives the invoice from the vendor via email and processes it through OCR to extract the data from the document, organize it, and save it into the database. This stage has a single OCR task.
+    - The “**Validate**” stage in that flow first checks to make sure the invoice isn’t a duplicate or already paid or canceled, then does basic data validations on the invoice’s data fields. Once that’s complete, it moves the invoice into an automated Quality Control check to see whether it matches what was ordered, has the right unit prices, is billing for a correct quantity, and whether the total matches the allowed total for the PO. This stage has multiple Rules and Decisions, as well as the potential for User tasks.
+  </Accordion>
+  <Accordion title="Organizing Your Tasks" description="Learn about how tasks are grouped and move through processes" icon="sitemap">
+    
+  </Accordion>
+  <Accordion title="Understanding the Task Detail View" description="Take a deep dive into the screen where you’ll spend the majority of your time." icon="magnifying-glass-chart">
+    
+  </Accordion>
+</AccordionGroup>
