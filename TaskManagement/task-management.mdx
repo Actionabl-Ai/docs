@@ -168,9 +168,324 @@ There are three accordions in this section:
     - The “**Validate**” stage in that flow first checks to make sure the invoice isn’t a duplicate or already paid or canceled, then does basic data validations on the invoice’s data fields. Once that’s complete, it moves the invoice into an automated Quality Control check to see whether it matches what was ordered, has the right unit prices, is billing for a correct quantity, and whether the total matches the allowed total for the PO. This stage has multiple Rules and Decisions, as well as the potential for User tasks.
   </Accordion>
   <Accordion title="Organizing Your Tasks" description="Learn about how tasks are grouped and move through processes" icon="sitemap">
+    ## **Organizing Your Tasks**
+
+    At any time, there are many items flowing through a process and its tasks and stages. In a typical workflow, you will only need to be aware of a few of them, so hiding the “noise” of the others is important. The modules and alerts in the dashboard are designed to help you focus on the items and tasks that require human attention, while letting all of the others flow through the automation without distraction.
+
+    ### **_Dashboard View_**
+
+    The Task Master dashboard in Actionabl is divided into four modules that organize your tasks, plus two search tools and a process view. It looks something like this:
+
+    ![TMB2 Menu Jp](/images/TaskManagement/TMB2-Menu.jpg)
+
+    As an item moves through the process flow and reaches a human task (User, QC, or Error), it creates an alert and places it in the appropriate module. A count of these tasks is shown in the colored bubble next to each module’s title; if there are none in that module, no bubble is shown.
+
+    ### **_Task Statuses_**
+
+    Tasks can have the following statuses:
+
+    | **Status**      | **Meaning**                                                                                                                                                                                                                                                                   |
+    | :-------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Open**        | The task is actively in progress within the workflow. This includes not only active automation processes but also QC or User tasks that are waiting for human action.                                                                                                         |
+    | **Error**       | Something unexpected has occurred in the process. This can be a system problem (such as a missing API response or a failed document upload) or a business rule failure (like invalid or missing data).                                                                        |
+    | **Completed**   | The task was completed successfully. If this was done manually, it means that all automated steps in the process were either done manually or were not needed.                                                                                                                |
+    | **Discarded**   | A user explicitly eliminated this item from the workflow.  For example, if the user processes invoices and “discards” one that is repeatedly erroring, that invoice is removed from the workflow.  The item is still visible under Active Search with the status “discarded.” |
+    | **Resubmitted** | A user corrected an item’s data while processing an alert on this task and has resubmitted the item for automated execution.                                                                                                                                                  |
+
+    ### **_Task Alerts_**
+
+    As an item moves through the process, the system creates an alert when it reaches a task that requires human intervention (User, QC, or Error).
+
+    <Tip>
+      **HINT**: Regardless of where you view the alerts, you will only see tasks that are available to your user group.
+    </Tip>
+    #### **Modules and Alerts**
+
+    Alerts are automatically sorted into their appropriate module on the dashboard. A count of these tasks across _all processes_ in the system is shown in the colored bubble next to each module’s title; if there are no tasks in that module, no bubble is shown.
+
+    Alerts for tasks you’ve claimed or a manager has assigned to you appear in your **My Tasks** view. 
+
+    To see all tasks in a module, click the module’s name or the bubble. Here’s an example of the Error Tasks list.
+
+    ![TMB3 Error Task Queue Jp](/images/TaskManagement/TMB3-ErrorTaskQueue.jpg)
+
+    **Process View Alerts**
+
+    Task alerts are also shown on the Process View, where they use the same color-coded bubbles. The count of items shown in the Process View is not expected to match those in the sidebar for two reasons. The Process View bubbles:
+
+    - Include <u>only</u> the alerts related to this specific process.
+    - May also include items that are in queue for automated processing, such as when there is a backlog of items in a particular step. 
+
+    ![TMB4 Processview Alerts Jp](/images/TaskManagement/TMB4-ProcessviewAlerts.jpg)
+
+    Click any colored bubble on the Process View to see the items for that specific task <u>and</u> process.
+
+    ![TMB5 Processalert Details Jp](/images/TaskManagement/TMB5-processalert-details.jpg)
+
+    **_Communications Portal_**
+
+    The Communications portal on the sidebar is where you’ll see various notifications from the system.
+
+    ![TMB6A Communications Portal Jp](/images/TMB6A-CommunicationsPortal.jpg)
+
+    - **Notifications** are the process notifications generated by automations in the system, as well as incoming emails.
+
+
+    - **Threads** are internal messaging pertaining to specific tasks. They are also available in the Content & History section on the tasks themselves.
+    - **Sent Mails** shows the history of email that you’ve sent through the system.
+
+    ### **_Searching and Filtering_**
+
+    It’s frequently helpful to be able to find a specific task or to narrow down a large list of tasks to ones that meet a set of criteria. Searching and filtering functions are designed to help you do this.
+
+    On any list of task alerts, you’ll see Search and Filter icons at the top right of the list. These are the “**Quick**” options.
+
+    On the dashboard’s menu, the Active Search and Archive Search are the “**Full**” search and filtering tools.
+
+    ![TMB6A Typesofsearches Jp](/images/TaskManagement/TMB6A-typesofsearches.jpg)
+
+    The scope of information searched by these tools differs.
+
+    | **Quick Search and Filter**                                            | **Full Search and Filter**            |
+    | :--------------------------------------------------------------------- | :------------------------------------ |
+    | Searches **only** the columns (fields) currently displayed on the list | Can search ALL columns in the record. |
+
+    If a list being searched spans multiple pages of results, both the Quick and Full searches automatically look through all of the pages.
+
+    #### **Searching and Filtering On Lists**
+
+    Each list view has three or more functions to narrow down the results shown.
+
+    **Overdue Only** is a toggle in the top center section. Turning it on immediately filters the results to show only items with a due date in the past.
+
+    ![TMB8 Tasks Overdue Filter Jp](/images/TaskManagement/TMB8-TasksOverdueFilter.jpg)
+
+    **Process Filter** is at the top right. Select a process from the list and it will only show tasks that are part of that process.
+
+    ![TMB9 Process Filter Jp](/images/TaskManagement/TMB9-ProcessFilter.jpg)
+
+    **Quick Search** is on the top right of each page. It is a dynamic and immediate search function that finds matches across all pages of the displayed list. You can use it in combination with the Process Filter or by itself. It shows matches immediately as you type.
+
+    <Tip>
+      **NOTE**: Quick Search only looks through the data in columns that are visually displayed in the list.
+    </Tip>
+    ![TMB10 Quick Table Search Jp](/images/TaskManagement/TMB10-QuickTableSearch.jpg)
+
+    To **clear** a search term from these views, click the X in the box next to the term. For the Process Filter, you must hover over the field to see the X.
+
+    ![TMB11 Clear Searches Jp](/images/TaskManagement/TMB11-ClearSearches.jpg)
+
+    **Quick Filter** is on the top right of each task list. It helps you build more complex filters for the result set including boolean logic (AND/OR) conditions. If you have not yet specified a process in the Process Filter, you must select one here as the first step because the filterable fields available to you are process-specific.
+
+    ![TMB12 Quick Filter Jp](/images/TaskManagement/TMB12-QuickFilter.jpg)
+
+    ![TMB13 Filter Jp](/images/TaskManagement/TMB13-filter.jpg)
+
+    When you’ve entered your criteria, click **Apply** at the top right to filter the list.
+
+    ![TMB15 Filter Actions Jp](/images/TaskManagement/TMB15-FilterActions.jpg)
+
+    **Full Searching and Filtering Tools**
+
+    In the Dashboard menu, you’ll see **Active Search** and **Archive Search**, which are the “Full” versions of these tools. They enable you to search across processes, statuses, and types of tasks to create a customized list that you can interact with and/or download.
+
+    These two tools act identically, with the exception that Archive Search looks only at data that is in an Archived state. Data is archived automatically based on how each process is defined and can also be manually archived. Archived data is _<u>not</u>_ included when you use Active Search and vice versa.
+
+    The full search and filtering tools automatically look at all of the data fields stored for any item, regardless of that field’s display status. If a match is found, the item is included in the search results even if the field containing that data isn’t displayed on the list.
+
+    The Search Tool has three tabs at the top: **Process Search**, **Task Search**, and **Custom Search**. By default, Process Search is displayed when you open the tool. These tabs specify the span of data to be searched - in all cases, what is returned is a list of tasks that match the criteria.
+
+    ![TMB13 Filter Jp](/images/TaskManagement/TMB13-filter.jpg)
+
+    Selecting a **Process Search** allows you to specify only a process and then other criteria at the process level.  Selecting **Task Search** lets you specify a specific task within a process, further narrowing the data returned. 
+
+    **Custom Search** starts with a blank slate and enables you to build a complex query with boolean logic and save that query for future use.
+
+    On the Process and Task Search tools, select <u>two or more</u> criteria (in addition to the Process) to use for searching. The screen matches against ALL criteria.
+
+    <Tip>
+      HINT: **Start with minimal criteria** and then add more if needed. This strategy helps you avoid missing any data by being too narrow with your search terms. If you are not sure what to use for your second criteria, consider Status or Created Date.
+    </Tip>
+    <Tip>
+      HINT: **You must select two or more items in this section**. Criteria entered in the Advanced Options section do not count toward this minimum.
+    </Tip>
+    #### **Advanced Options**
+
+    **Advanced Options** are available on both the Process Search and Task Search tabs once you select a process. If you need to narrow things down further or look for items that match a data point that is not shown at the top of the screen, click Advanced Options.
+
+    ![TMB9A Advanced Search Jp](/images/TaskManagement/TMB9A-AdvancedSearch.jpg)
+
+    This expanded view gives you access to <u>all</u> of the data fields available in the selected process, as well as the ability to build a more complex search query. 
+
+    ![TMB9B Advanced Search Open Jp](/images/TaskManagement/TMB9B-AdvancedSearchOpen.jpg)
+
+    **_Customizing the data displayed in results_**
+
+    At the bottom of the screen is the **Display Columns** area containing a list of all of the fields, with checkboxes beside each one.
+
+    1. Click the box beside each column to turn it on or off in the results display. You cannot change the order of the columns in the display.
+    2. Click the reset icon on the gray Display Columns bar to reset the selection to default settings.
+
+    **_Building a complex query_**
+
+    The center section of the page is the **Data Filter** construction area, where you build more complex search queries.
+
+    1. ![TMB13 Filter Criteria Jp](/images/TaskManagement/TMB13-FilterCriteria.jpg)
+
+       Click the green plus box to add the **first query criterion**. Your screen should look  like this:
+
+       ![TMB13A Inputfields Jp](/images/TaskManagement/TMB13A-Inputfields.jpg)
+    2. Select the first field to be searched from the list in the **Field Name** box. This list contains all fields in the process selected at the top of the screen.
+    3. Select the **Match Type**. The match type governs how the contents of the Field Name is compared with the data in the Match Value field. <u>The match types available relate directly to the type of data in the Field Name being searched</u>. 
+       - **Text and ID fields** are expected to contain only letters and numbers. However, if numbers are present, they cannot be used in any math or processing. They might be a numeric ID or a SKU code, for example, but not a price or a date.\
+         \
+         Assume the data being searched is the following five records:\
+           	_The Civil War\
+          	Civility 101\
+          	life as a civilan\
+          	civil litigation\
+         	civil_
+
+    <table style="min-width: 100px"><colgroup><col style="min-width: 25px"><col style="min-width: 25px"><col style="min-width: 25px"><col style="min-width: 25px"></colgroup><tbody><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#351c75;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Match Type</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#351c75;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Meaning</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#351c75;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Search For</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#351c75;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>RESULT</strong></p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Equals</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The full data in the field exactly matches the search string, including case and leading/trailing spaces</p></td><td colspan="1" rowspan="4" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Civil</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>Nothing found</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Equals ignore case</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The full data in the field exactly matches the search string, including leading/trailing spaces. However, the capitalization of the content is ignored.</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><em>civil</em></p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Includes</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The data in the field contains an exact match for the search string, including its capitalization. However, that string may be anywhere in the field, not just at the beginning. Leading and trailing spaces are ignored.&nbsp;</p><p><br></p><p>Partial-word matches are found when using “Includes.”&nbsp;</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><em>Civil</em></p><p><em>The Civil War</em></p><p><em>Civility 101</em></p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Includes ignore case</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The data in the field contains an exact match for the search string, regardless of its capitalization. However, that string may be anywhere in the field, not just at the beginning. Leading and trailing spaces are ignored.&nbsp;</p><p><br></p><p>Partial-word matches are found when using “Includes.”&nbsp;</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><em>The Civil War</em></p><p><em>civil litigation</em></p><p><em>Civil</em></p><p><em>Civility 101</em></p><p><em>life as a civilian</em></p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Is not null</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The field contains any content.</p><p></p></td><td colspan="1" rowspan="2" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>BLANK</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><em>The Civil War</em></p><p><em>Civility 101</em></p><p><em>life as a civilian</em></p><p><em>civil litigation</em></p><p><em>civil</em></p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Is null</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The field is completely empty. It doesn’t contain spaces or invisible special characters.</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>Nothing found</p></td></tr></tbody></table>
+
+    - **Numeric fields** contain only numbers, which may include decimals. The field cannot contain dollar signs or other currency symbols. The numbers may be positive or negative.
+
+      Assume the data being searched is these four records:\
+        	_10.00\
+      	0.5897\
+      	-130.45\
+      	123_
+
+    | **Match Type**            | **Meaning**                                                                                                                                                                                                                               | **Search For** | **RESULT**                          |
+    | :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------- | :---------------------------------- |
+    | **Equals**                | The field’s value is exactly equal to the Match Value.                                                                                                                                                                                    | 0.5897         | 0.5897                              |
+    | **Greater than or equal** | The field’s value is either equal to or greater than the Match Value.                                                                                                                                                                     | -131           | _-130.45_  _0.5897_  _10.00_  _123_ |
+    | **Less than or equal**    | The field’s value is either less than or equal to the Match Value.                                                                                                                                                                        | 10 - 125       | _10.00_  _0.5897_  _-130.45_        |
+    | **Between**               | The field’s value must be between two values entered in the Match Value field.  The search considers the terms to be greater/less than or equal to the match value, so the values entered in the Match Value are included in the matches. | 10 - 125       | _10.00_  _123_                      |
+    | **Is not null**           | The field contains any value.                                                                                                                                                                                                             | **BLANK**      | All records                         |
+    | **Is null**               | The field is completely empty. It doesn’t contain spaces or invisible special characters.                                                                                                                                                 | **BLANK**      | Nothing found                       |
+
+    - **Date fields **are special types of numeric fields that evaluate dates entered as _DD-MM-YYYY hh:mm aa_  (_Day-Month-Year hours:minutes am/pm_).
+      - Hours are entered in 12-hour format (since AM/PM is appended to the string).
+      - **You must specify a time in addition to a date**. To select a full day, use:
+
+    **Start**           : DD-MM-YYYY 12:00 AM\
+               **End**: DD-MM-YYYY 12:59 PM
+
+    All dates in the system use the server’s **time zone** setting. This is set by your system administrator when they configure the environment. If you are not sure what the time zone is set to, please contact your admin, as it may differ from your local working time zone. (For example, you may work in Pacific time but the server is on Eastern time.)
+
+    Assume the data being searched is these three records:\
+      	_13-12-1968 09:26 AM\
+    	07-07-2023 12:26 PM\
+    	02-15-1995 01:47 PM_
+
+    <table style="min-width: 100px"><colgroup><col style="min-width: 25px"><col style="min-width: 25px"><col style="min-width: 25px"><col style="min-width: 25px"></colgroup><tbody><tr><th colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#351c75;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Match Type</strong></p></th><th colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#351c75;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Meaning</strong></p></th><th colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#351c75;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Search for</strong></p></th><th colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#351c75;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>RESULT</strong></p></th></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Equals</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The field’s value is exactly equal to the Match Value.</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>02-15-1995 12:00 AM</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>02-15-1995 12:00 AM</p><p></p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Greater than or equal</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The field’s value is either equal to or greater than the Match Value.</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>02-15-1995 12:00 AM</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><em>07-07-2023 12:26 PM<br>02-15-1995 01:47 PM</em></p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Less than or equal</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The field’s value is either less than or equal to the Match Value.</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>02-15-1995 12:00 AM</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><em>13-12-1968 09:26 AM</em></p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Between</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The field’s value must be between two values entered in the Match Value field, inclusive.</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><em>02-15-1995 12:00 AM&nbsp;</em></p><p><strong><em>to</em></strong><em>&nbsp;</em></p><p><em>07-07-2023 12:30 PM</em></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><em>07-07-2023 12:26 PM<br>02-15-19</em>95 01:47 PM</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Past current time</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The field’s value must be later than the <em>DD-MM-YYYY hh:mm</em> when the user clicks Search.<br><br></p><p>No Match Value is entered.</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>If Current time&nbsp; is</strong>:&nbsp;</p><p><em>07-07-2023 12:25 PM</em></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><em>07-07-2023 12:26 PM</em></p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Is not null</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The field contains any value.&nbsp;</p><p></p></td><td colspan="1" rowspan="2" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>BLANK</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>All records</p></td></tr><tr><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p><strong>Is null</strong></p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>The field is completely empty. It doesn’t contain spaces or invisible special characters.</p></td><td colspan="1" rowspan="1" style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;"><p>Nothing found<br><br></p></td></tr></tbody></table>
+
+    - **Boolean fields** allow only true-false content. You should not enter a Match Value for these fields. (For practical purposes, Yes = True, No = False)
+
+    | **Selection**   | **Meaning**                              |
+    | :-------------- | :--------------------------------------- |
+    | **Is true**     | The field’s value is True.               |
+    | **Is false**    | The field’s value is False.              |
+    | **Is not null** | The field contains either True or False. |
+    | **Is null**     | The field is completely empty.           |
+
+    - Next, input the value to be searched for in the **Match Value** field.
+
+    If you need additional criteria, click the green plus symbol to add another line, and build that criterion just as you did the first one. (You can continue clicking the plus and adding search criteria as needed.)
+
+    <Tip>
+      HINT: **The criteria in this section do not count toward the minimum of two items required for the search**. Select two or more items in the main Search section (above Advanced Options).
+    </Tip>
+    1. Indicate the way that these search phrases should be evaluated: as boolean **AND** or **OR** statements.\
+       \
+       Boolean**AND**  means that <u>both</u> searches must evaluate as TRUE, which translates to returning only the records that match both searches. **OR** means that <u>either</u> search can be TRUE, so it returns all results that match one or the other (or both) of the criteria. \
+       \
+       **Example**\
+       Criteria 1 	    **Field Name**: Active   	 | 	**Match Type**: Is TRUE\
+       Criteria 2 	**Field Name**: Due Date  | 	**Match Type**: Past Current Time\
+       \
+       **AND** returns all records that are Active and also have a Due Date that is past the current time.  \
+       \
+       **OR** returns all active records (including those with due dates in the past), as well as all records with future due dates (even if the record is Inactive).
+
+    Click **Search **at the top right of the page to execute the Search. 
+
+    **_Query Grouping (Grouped Conditions)_**
+
+    You can build increasingly complex queries by using **query grouping**.
+
+    Click the **group** button and the system will add a box to build a nested group of query criteria.  
+
+    To better visualize how to use this, consider the following goal.  
+
+    Find all invoices in the system that meet the following criteria:
+
+    - Haven’t been paid
+    - Are dated as received within the last 30 days
+    - Originate with vendors A or B and are greater than $1000, **OR **originate with vendors C or H and are greater than $5000
+
+    We would group these conditions like this:
+
+    ```
+    (Invoice = unpaid) AND
     
+    (Invoice age >= 30 days) AND
+    
+    [ (Vendor = A) OR (Vendor = B) AND amount > $1000 ]	OR
+    
+    [ (Vendor = C) OR (Vendor = H) AND amount > $5000 ]
+    ```
+
+    Query groups are most useful in two circumstances:
+
+    - You need to mix AND and OR statements within a larger set of criteria, such as the differing monetary thresholds for vendors here.
+    - You have many criteria, and grouping may give you some efficiency in organizing or managing the data.
+
+    ## ![Tmb99 Criteria Group Jp](/images/tmb99-CriteriaGroup.jpg)
+
+    **_Task Lists_**
+
+    Task lists are where you select, view, and act on tasks. All the matching items are presented in a table.
+
+    #### **Sorting Task Lists**
+
+    By default, tasks are sorted with the highest priority at the top of the list (as shown by the up-arrow next to Priority in the column name) and then by their ID in ascending order. 
+
+    You can sort “up” or “down” by any column by clicking on the column’s name at the top. You will then see an arrow by the column name indicating that it’s the sort column (and the sort direction).
+
+    ![Tmb17tasklistsort Jp](/images/TaskManagement/TMB17tasklistsort.jpg)
+
+    **Overdue Only**
+
+    You can quickly view only overdue items by toggling the **Overdue Only** button in the top center of the page.
+
+    ![TMB18 Overdue Only Jp](/images/TaskManagement/TMB18-OverdueOnly.jpg)
+
+    **Bulk Actions**
+
+    The Bulk Actions toggle turns on the ability to select multiple items from the list and take action on all of them at once. Details on this function are found under **Taking Action on Tasks**. 
+
+    #### **Auto-load Tasks**
+
+    The **Auto-load Tasks** toggle in the top center of the page turns on the ability for you to page through all of the detail pages for the tasks on the list without returning to the list view to select the next task.
+
+    ![TMB19 Auto Loadtasks Jp](/images/TaskManagement/TMB19-Auto-loadtasks.jpg)
+
+    1. Click to turn on**Auto-load Tasks** .
+    2. Click the first task you want to see. Its details screen opens.
+    3. Besides the regular action items in the menu, you’ll see a **Skip** button. Click that button to load the next task from the list.
+    4. ![TMB20 Task Skip Jp](/images/TaskManagement/TMB20-TaskSkip.jpg)
+
+       After scrolling through tasks, click **Close** to return to the task list.
   </Accordion>
   <Accordion title="Understanding the Task Detail View" description="Take a deep dive into the screen where you’ll spend the majority of your time." icon="magnifying-glass-chart">
-    
+    ## **Understanding The Task Detail View**
+
+    Click any task in a list to open its **Task** **Detail **view.
+
+    ### **_Details_**
+
+    The Task Detail view has six main sections: **Actions**, **Summary**, **Progress**, **Error**, **Data**, and **Content & History**.
   </Accordion>
 </AccordionGroup>
