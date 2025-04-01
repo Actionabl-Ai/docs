@@ -342,7 +342,7 @@ There are three accordions in this section:
          _Civility 101_     \
          _life as a civilian_     \
          _civil litigation_     \
-         _civil_     
+         _civil_
 
     | **Match Type**           | **Meaning**                                                                                                                                                                                                                                                                           | **Search For** | **RESULT**                                                                         |
     | :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------- | :--------------------------------------------------------------------------------- |
@@ -382,17 +382,17 @@ There are three accordions in this section:
     Assume the data being searched is these three records:\
       	_13-12-1968 09:26 AM_\
     _07-07-2023 12:26 PM_     \
-    _02-15-1995 01:47 PM_     
+    _02-15-1995 01:47 PM_
 
-    | **Match Type**            | **Meaning**                                                                                                          | **Search For**                                             | **RESULT**                                     |
-    | :------------------------ | :------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------- | :--------------------------------------------- |
-    | **Equals**                | The field’s value is exactly equal to the Match Value.                                                               | 02-15-1995 12:00 AM                                        | 02-15-1995 12:00 AM                            |
-    | **Greater than or equal** | The field’s value is either equal to or greater than the Match Value.                                                | 02-15-1995 12:00 AM                                        | _07-07-2023 12:26 PM_\ _\ 02-15-1995 01:47 PM_ |
-    | **Less than or equal**    | The field’s value is either less than or equal to the Match Value.                                                   | 02-15-1995 12:00 AM                                        | _13-12-1968 09:26 AM_                          |
-    | **Between**               | The field’s value must be between two values entered in the Match Value field, inclusive.                            | _02-15-1995 12:00 AM _  **_to_**_ _  _07-07-2023 12:30 PM_ | _07-07-2023 12:26 PM_\ _\ 02-15-19_95 01:47 PM |
-    | **Past current time**     | The field’s value must be later than the _DD-MM-YYYY hh:mm_ when the user clicks Search.  No Match Value is entered. | **If Current time  is**:   _07-07-2023 12:25 PM_           | _07-07-2023 12:26 PM_                          |
-    | **Is not null**           | The field contains any value.                                                                                        | **BLANK**                                                  | All records                                    |
-    | **Is null**               | The field is completely empty. It doesn’t contain spaces or invisible special characters.                            | **BLANK**                                                  | Nothing found                                  |
+    | **Match Type**            | **Meaning**                                                                                                          | **Search For**                                               | **RESULT**                                        |
+    | :------------------------ | :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------ |
+    | **Equals**                | The field’s value is exactly equal to the Match Value.                                                               | 02-15-1995 12:00 AM                                          | 02-15-1995 12:00 AM                               |
+    | **Greater than or equal** | The field’s value is either equal to or greater than the Match Value.                                                | 02-15-1995 12:00 AM                                          | _07-07-2023 12:26 PM_\\ _\\ 02-15-1995 01:47 PM_  |
+    | **Less than or equal**    | The field’s value is either less than or equal to the Match Value.                                                   | 02-15-1995 12:00 AM                                          | _13-12-1968 09:26 AM_                             |
+    | **Between**               | The field’s value must be between two values entered in the Match Value field, inclusive.                            | ****02-15-1995 12:00 AM \_  to**** \_  _07-07-2023 12:30 PM_ | _07-07-2023 12:26 PM_\\ \_\\ 02-15-19_95 01:47 PM |
+    | **Past current time**     | The field’s value must be later than the _DD-MM-YYYY hh:mm_ when the user clicks Search.  No Match Value is entered. | **If Current time  is**:   _07-07-2023 12:25 PM_             | _07-07-2023 12:26 PM_                             |
+    | **Is not null**           | The field contains any value.                                                                                        | **BLANK**                                                    | All records                                       |
+    | **Is null**               | The field is completely empty. It doesn’t contain spaces or invisible special characters.                            | **BLANK**                                                    | Nothing found                                     |
 
     - **Boolean fields** allow only true-false content. You should not enter a Match Value for these fields. (For practical purposes, Yes = True, No = False)
 
@@ -436,7 +436,9 @@ There are three accordions in this section:
 
     - Haven’t been paid
     - Are dated as received within the last 30 days
-    - Originate with vendors A or B and are greater than $1000, **OR** originate with vendors C or H and are greater than $5000
+    - Originate with vendors A or B and are greater than $$1000, \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*OR\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* originate with vendors C or H and are greater than $$
+
+      5000
 
     We would group these conditions like this:
 
@@ -500,5 +502,464 @@ There are three accordions in this section:
     ### **_Details_**
 
     The Task Detail view has six main sections: **Actions**, **Summary**, **Progress**, **Error**, **Data**, and **Content & History**.
+
+    ![TMB12 Quick Filter Jp](/images/TaskManagement/TMB12-QuickFilter.jpg)
+
+    | **Section**             | **Definition**                                                                                                                                                                                                                                                                                                                                                                                     |
+    | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Actions**             | The actions available for you to take on this record. This will vary by not only the item being displayed but also its status and your role.                                                                                                                                                                                                                                                       |
+    | **Summary**             | Summarizes the item’s ID, due date, created and update dates, who last updated the item, and its status.                                                                                                                                                                                                                                                                                           |
+    | **Progress**            | Shows which stage the item is in in the overall process workflow.                                                                                                                                                                                                                                                                                                                                  |
+    | **Error Description**   | If the item is in an error state, the error message and any descriptive information is shown here. Otherwise, this section does not appear.                                                                                                                                                                                                                                                        |
+    | **Data**                | The current state of the item’s data. Comparing this to any error message may quickly highlight the problem and how to fix it.                                                                                                                                                                                                                                                                     |
+    | **Content and History** | Clicking on the bar to expand this section shows multiple tabs: **Document**, **Notes**, **Emails**, **Local Actions**, **Threads**, **Task History**, **Data History**, and **Watch Data**. Taken together, this shows all of the content related to this item and how it has changed throughout the process so far. This is the same view shown by clicking the “clock” icon from the task list. |
+
+    ### **_Task Content and History_**
+
+    There are two ways to access a task’s history and content:
+
+    1. **From any task listing**. To quickly see the history of a task’s execution without going into its detail view, click the clock icon on the far right of the task. By default, you’ll see the **Emails** tab. 
+    2. **On the Task Detail view**. Click the **Content & History** bar at the bottom of the view to expand the view and see all of the tabs.
+
+    There are multiple tabs available: Attachments, Notes, Emails, Task History, and Data History.
+
+    ### ![TMB22 Taskhistory Jp](/images/TaskManagement/TMB22-Taskhistory.jpg)
+
+    Documents
+
+    The **Documents** list shows all items that have been connected to this record since it was received into the system. These could be files from an email, something uploaded into a system, OCR scanned documents, etc. 
+
+    You will only see attachments that you have permission to View and Download. Any others will be hidden from the list.
+
+    To see the details of an attachment, click the expand icon to its right. This opens the menu that allows you to View or Download the attachment.
+
+    ![TMB23 Downloaddocuments Jp](/images/TaskManagement/TMB23-downloaddocuments.jpg)
+
+    **Notes**
+
+    **Notes** are optional annotations that are added to the record by users at any point as the item moves through the workflow. Notes have specific access levels that control who can read them, so you only see the ones that you have permission to read.
+
+    ![TMB53 Notes1 Jp](/images/TaskManagement/TMB53-Notes1.jpg)
+
+    To see a note’s contents, click its **Name**. This will open the popup where you can view the note. If you were the creator of the note or have claimed the item, you may also have permission to edit it.
+
+    ![TMB70 Note Edit Jp](/images/TaskManagement/TMB70-NoteEdit.jpg)
+
+    **Emails**
+
+    You will see a history of the emails sent and received pertaining to this item throughout its workflow. As with Notes and Attachments, each email has an Access Level determining who can see it.
+
+    Click the document button to the right of any email to open it in a pop-up window.
+
+    ![TMB26 Email Detail Jp](/images/TaskManagement/TMB26-EmailDetail.jpg)
+
+    **Local Actions**
+
+    The Local Actions available are small, granular events that can help you complete the task. They do not change the status of the task itself or move it along in the workflow, and can be optional. For example, a local action could be used when the user simply needs to ask for clarification from another department or the customer.
+
+    There are 2 types of Local Actions: Static Forms and Dynamic Forms
+
+    - **Static forms** enable the user to select an existing form and send it to the recipient. This is typically used for very common requests with few data points.
+    - **Dynamic forms** are built on the fly when the user selects the fields to be included. 
+
+    In either case, the form’s recipient receives a link that opens the form and presents the fields to be filled out. When they submit the form, the fields are updated and the form is available for further processing on that task.
+
+    #### **Threads**
+
+    Threads are the internal messaging about this specific task. They can include text and attachments.
+
+    To open a thread, click its **Name** or the pop-out icon on the right.
+
+    ![TMB71 Thread1 Jp](/images/TaskManagement/TMB71-thread1.jpg)
+
+    ![TMB72 Thread2 Jp](/images/TaskManagement/TMB72-Thread2.jpg)
+
+    **Task History**
+
+    The **Task History** tab shows every step this item has completed so far, along with the step’s status, number of attempts, and who completed it. You can download this table by clicking the Download button.
+
+    You’re able to select between Excel, CSV, Text, and  JSON formats for your download.
+
+    ![TMB27 Task History Download Jp](/images/TaskManagement/TMB27-TaskHistoryDownload.jpg)
+
+    \*\*Data History \*\*
+
+    The **Data History** provides details of the precise content in each field at the end of each task, making it invaluable in troubleshooting. A hash sign (#) means the data is <u>unchanged</u> from the previous step. 
+
+    As with the Task History, you can download this table for offline review.
+
+    <Tip>
+      **HINT**: You must scroll across to the right to see the data for all fields in the records.
+    </Tip>
+    ![TMB28 Data History Jp](/images/TaskManagement/TMB28-DataHistory.jpg)
+
+    **Understanding The Process View**
+
+    The workflow that items move through in the Actionabl system is called a **Process**. It’s best visualized as a flowchart, containing items that move through steps, decisions, and loops to achieve a well-defined goal.
+
+    In **The Process / Task / Stage Structure**, we explored the meaning and relationship between a process and its tasks and stages. The Process View module is where you see the flow in its entirety and can navigate to tasks within each step in the flow.
+
+    Most Actionabl users will see multiple processes on the Process View. Each row on this view represents a single Process. The tan column is the name of the process, the gray columns are the stages within the process, and the numbers next to each are the number of alerts currently in the queue for that stage.
+
+    ![TMB29 Process Manager Closed Jp](/images/TaskManagement/TMB29-ProcessManagerClosed.jpg)
+
+    Click any process to expand the workflow and see details about each task.
+
+    ![TMB1 Process Flow Jp](/images/TaskManagement/TMB1-ProcessFlow.jpg)
+
+    The alerts for each step are color-coded to indicate their type:
+
+    - **Yellow tasks** are **owned by someone** ( you or someone else), so are seen as “in progress” within the system.  The ones you own will appear in your My Tasks module. When you click a yellow icon, you’ll see the complete list including yours <u>and everyone else’s</u>.
+    - **Green tasks** are in queue. In most cases, these are either**User \*\* or**QC tasks\*\* , such as reviewing a proof or authorizing a payment, that are not yet owned. On automated steps (such as Extract Invoice Data), you may occasionally see a green bubble if there are a number of tasks in a backlog for the system to process.
+    - **Red tasks** are unclaimed **Error Tasks**, where the system has encountered something unexpected and needs a user to review and provide direction to proceed. These can be things like missing documents, invalid data, or a problem with a system process like an API call.
+
+    <Tip>
+      \*\*HINT: \*\*Click an alert indicator within the flow to go to a filtered view that includes <u>only</u> the alerts of that type and for that task.
+    </Tip>
   </Accordion>
 </AccordionGroup>
+
+# TAKING ACTION ON TASKS
+
+Most people use Actionabl to respond to alerts and take actions on a task. Now that you understand how the information is organized and displayed in the system, let’s look at how to take actions.
+
+There are three basic categories of actions:
+
+- **Assignments** specify the user who owns (is responsible for) the task \
+  _(Claim/Unclaim/Reassign/Assign/Unassign)_
+- **Editing** makes changes to the task or its data to move it forward in the process or resolve an error \
+  (_Edit/Validate/Save/Complete/Resubmit/Discard)_
+- **Annotating** adds notes to help other task users or provide historic context to the task \
+  (_Notes_)
+
+## **Assignments: Claim/Unclaim/Reassign and Assign/Unassign**
+
+Assignment of a task to a user can either be through a user **claiming** a task or from someone else **assigning** it to them. 
+
+- Users with the appropriate supervisory permissions can assign or reassign a task to a user.
+- Users can claim tasks for themselves or, if they have permission to do so, can reassign a task they own to someone else. They can also unclaim a task they currently own.
+
+### **_SLA - Service Level Agreements_**
+
+Each process and task in the system has a service-level agreement – referred to as an SLA – associated with it. The SLA timer sets a due date/time for each task. When an item moves into a task step, the SLA’s timer starts; if the time runs out, the item on the task list will show a status of “OVERDUE” and its due date will be red. Completion time is logged for all tasks to provide reporting, as well.
+
+When you **claim** a task, the SLA timer starts as soon as you click Claim. If you **unclaim** a task, the timer stops and is reset to zero for the next claimant of that task. The timer restarts when the item is Claimed by someone else.
+
+If someone else assigns you a task, such as a supervisor using the **Assign** button or another assignee using the **Reassign** button, **your timer on that task does not start until you click the Start button** on the task detail page.
+
+### **_Claiming a Task for Yourself_**
+
+1. Click to open the task detail view from any task list.
+2. Click **Claim** in the top menu bar.
+
+![TMB30 Claim Jp](/images/TaskManagement/TMB30-Claim.jpg)
+
+1. The task detail screen opens for you to take action, and the item is now listed in your My Tasks module on the dashboard. You now own this task.
+
+![TMB31 Assignment Actions Jp](/images/TaskManagement/TMB31-AssignmentActions.jpg)
+
+**_Claiming Multiple Tasks At Once_**
+
+1. On the task list that shows the items you want to claim, click **Bulk Actions**.
+
+   ![TMB32 Bulk Actions Jp](/images/TaskManagement/TMB32-BulkActions.jpg)
+2. Click the checkboxes next to each task you wish to claim, then click **Actions**.\
+   ![TMB33 Bulk Action Claims Jp](/images/TaskManagement/TMB33-BulkActionClaims.jpg)
+3. Click **Claim** in the pop-up.\
+   ![TMB34 Claimmultipleitems Jp](/images/TaskManagement/TMB34-Claimmultipleitems.jpg)
+4. The items disappear from the list view displayed and are added to the count for your My Tasks list.
+
+### **_Unclaiming Tasks You Own_**
+
+When you own a task, you can either Unclaim it or, if you have permission, Reassign it to someone else.
+
+- **Unclaiming** removes the assignment from your queue and leaves the task unassigned, ready for someone else to claim it.
+- **Reassigning** places it into someone else’s My Tasks queue. They are <u>not</u> notified of the action, but they will see the task when they look at their queue.
+
+You can do this either through the Task Detail view for a single task or by using Bulk Actions in your My Tasks list.
+
+#### **Unclaim a single task**
+
+In the task detail view, click **Unclaim** in the top action bar to unassign the task.
+
+![TMB35 Unclaimsingletask Jp](/images/TaskManagement/TMB35-Unclaimsingletask.jpg)
+
+**Reassign a single task**
+
+1. Click **\<\< More** in the top action bar to open the expanded action menu.\
+   ![TMB36 1reassign Single Task Jp](/images/TaskManagement/TMB36-1ReassignSingleTask.jpg)
+2. Click **Reassign**, select the user to receive the task from the dropdown list in the popup menu, then click **Submit**. You will only see the Reassign option if you have the appropriate permission level in this process.
+
+![TMB37 2reassign Single Jp](/images/TaskManagement/TMB37-2ReassignSingle.jpg)
+
+![TMB38 3reassign Jp](/images/TaskManagement/TMB38-3Reassign.jpg)
+
+**Unclaim Multiple Tasks**
+
+1. On the My Tasks list, click**Bulk Action**  and click the checkboxes next to the items you wish to unassign. Click the blue Actions button at the top.\
+   ![TMB39 Bulk Unclaim1 Jp](/images/TaskManagement/TMB39-BulkUnclaim1.jpg)
+2. Confirm in the popup that you’ve selected the right tasks, then click **Unclaim**. The tasks disappear from your My Tasks listing and are added back to the appropriate task queue(s).
+
+![TMB40 Bulk Unclaim2 Jp](/images/TaskManagement/TMB40-BulkUnclaim2.jpg)
+
+**Reassign Multiple Tasks**
+
+1. On the My Tasks list, click**Bulk Action**  and click the checkboxes next to the items you wish to unassign. Click the blue Actions button at the top.\
+   ![TMB39 Bulk Unclaim1 Jp](/images/TaskManagement/TMB39-BulkUnclaim1.jpg)
+2. Confirm in the popup that you’ve selected the right tasks, click **Reassign**, then select the appropriate assignee in the popup’s dropdown list. Click **Submit** to save the reassignment.\
+   ![TMB41 Bulk Reassign Jp](/images/TaskManagement/TMB41-BulkReassign.jpg)
+
+   ![TMB42 Reassignstep3 Jp](/images/TaskManagement/TMB42-Reassignstep3.jpg)
+3. Click **Close** to exit the popup, then **Close** again to exit the bulk actions popup.
+
+### **_Assigning Tasks to Other Users_**
+
+If you have supervisory rights in the system, you can assign tasks to other users. This works exactly like reassigning items that you own. 
+
+#### **Assigning a single task to a user**
+
+1. From the detail screen of any unassigned task, click **\<\< More** to expand the action menu.\
+   ![TMB43 Assignsingletask Jp](/images/TaskManagement/TMB43-Assignsingletask.jpg)
+2. Click **Assign**.\
+   ![TMB73 Assign Menu Jp](/images/TaskManagement/TMB73-AssignMenu.jpg)
+3. Select the assignee from the dropdown in the popup, then click **Submit**.\
+   ![TMB45 Assignsingletask4 Jp](/images/TaskManagement/TMB45-assignsingletask4.jpg)
+
+# **Assigning multiple tasks to a user**
+
+You can assign tasks to other users from the general task lists or you can reassign them from the tasks that you have claimed. 
+
+1. On the Task List, click**Bulk Action**  and click the checkboxes next to the items you wish to assign. Then, click the blue Actions button at the top.\
+   ![TMB46 Assignmultipletasks Jp](/images/TaskManagement/TMB46-Assignmultipletasks.jpg)
+2. Confirm in the popup that you’ve selected the right tasks, click ****Assign (orReassign****  if you’ve previously claimed them), then select the appropriate assignee in the popup’s dropdown list. Click **Submit** to save the assignment.\
+   ![TMB47 Assign Reassign Jp](/images/TaskManagement/TMB47-AssignReassign.jpg)
+3. Click **Close** to exit the popup, then **Close** again to exit the bulk actions popup.
+
+## **Editing Task Data**
+
+You may need to edit the data of an item that you own to resolve an error or move it forward through the process. 
+
+1. Open the task detail for the item you own. (If you do not already own the item, you must first Claim it.)
+2. If you claimed this task for yourself, you go directly into an editable view. If you were assigned this task by someone else, you must click **Start** in the top menu to begin working on it. 
+
+### **_Side By Side Edit View_**
+
+For Error tasks, you will see a side-by-side editing view that looks something like this:
+
+![TMB49 Error Task Edit Detail Jp](/images/TaskManagement/TMB49-ErrorTaskEditDetail.jpg)
+
+The two sides of the screen start with identical copies of the record’s data. They show the data as it entered the process and up to the point where the error was encountered.
+
+The error to be corrected is at the top (in this case, “Invalid PAN”).
+
+At any point while editing, click **Save** (found under the **\<\< More** menu) to save the changes you have made <u>without attempting any validation or processing</u> of those changes. This does not update the item's status in any way; it simply preserves the work you’ve done so far.
+
+You have two choices in providing the input to resolve the error. 
+
+<Steps>
+  <Step title="Correct and Run Back Through Automated Process">
+    If this item should be corrected and then run back through automated processing, you’ll be using the **RESUBMIT** action. In this case, changes must be made on the **LEFT** side of the screen. This is a typical choice if the process is complex.
+
+    Click **Validate** at the top of the screen to check the changes made <u>on the left side of the screen</u>. This ensures that the issue is resolved and that no additional issue is identified before sending this record back through automated processing. Make any additional changes you need to after validating.
+
+    1. When you click Validate, if an error is still generated, it will appear in red at the <u>bottom</u> center of the screen.
+    2. If the task runs successfully with the new data you will see the message “Validations passed successfully” in green at the bottom center of the screen.
+
+    Click **Resubmit** to run this corrected data (on the left side of the screen only)  back through the same automated task.
+  </Step>
+  <Step title="Make Simple Change and Don't Re-Validate">
+    If this is a simple change or addition of data within a straightforward process,  you may input the data on the **RIGHT** side of the screen and use the **COMPLETE** action. This bypasses further automation in this step and moves the record on to the next step in its flow.
+
+    If you are _<u>certain</u>_ that the only change needed was the data correction on the right of the screen, click **Complete** to signal that this step is finished and has passed all of the criteria to move to the next task (no further automated validation will be performed in this step).
+  </Step>
+</Steps>
+
+ 
+
+### **_Direct Editing View_**
+
+User and QC tasks do not present their data in a side-by-side view. In this case, the data is organized into groupings and can be directly edited wherever it is found on the screen. Not all fields may be editable, depending on the type of data you’re viewing and how the form’s creator defined its fields. For example, an email’s sender, received date, and message body would typically not be editable.
+
+At any point while you are working on the item, click **Save** (found under the **\<\< More** menu) to save the changes you have made <u>without attempting any validation or processing</u> of those changes. This does not update the item's status in any way; it simply preserves the work you’ve done so far.
+
+![TMB48 QC Task Edit Detail Jp](/images/TaskManagement/TMB48-QCTaskEditDetail.jpg)
+
+Click **Validate** at the top of the screen to check your changes. This ensures that no additional issue is identified before sending this record to the next step.
+
+1. When you click Validate, if an error is generated, it will appear in red at the <u>bottom</u> center of the screen.
+2. If the task runs successfully with the new data you will see the message “Validations passed successfully” in green at the bottom center of the screen.
+
+<Tip>
+  The form validation rules defined by your company for this process determine how fields are validated, saved, and errors displayed.
+</Tip>
+
+After validating the work, click **Complete** to save the task and move it along to its next processing step.
+
+## **Summary**
+
+The Summary gives you an at-a-glance view of the data involved in the task. This can be useful when investigating or resolving an issue and may also be the primary screen involved in some QC tasks.
+
+From the task detail, click **\<\< MORE** in the top menu bar, then click **Summary**.
+
+![TMB50 Summary Jp](/images/TaskManagement/TMB50-Summary.jpg)
+
+The Summary screen shows all data fields for this task and the contents of each. Once you have reviewed the data, click **Close** to return to the task detail view.
+
+![TMB51 Summary2 Jp](/images/TaskManagement/TMB51-Summary2.jpg)
+
+## **Locate**
+
+The Locate view orients you to where in the overall flow this item currently resides. It brings you to a Progress Map to see the item’s progress.
+
+In the top menu bar, click **\<\< MORE** then click **Locate**.
+
+![TMB63 Locatemenu Jp](/images/TaskManagement/TMB63-Locatemenu.jpg)
+
+The progress map highlights the current task for this item in gold for QC and User tasks or red for Error tasks. Tasks that have been completed successfully are green. Future tasks are in pale yellow.
+
+![TMB64 Locate Process View Jp](/images/TaskManagement/TMB64-LocateProcessView.jpg)
+
+**Handling Tasks**
+
+The exact steps to resolve any QC or User task will depend on your business processes and instructions for that task.
+
+### **_QC Tasks_**
+
+QC tasks usually involve some type of inspection of the data, including attachments and notes, or even a physical artifact such as a proof or prototype. 
+
+When you click on a QC task that you own: 
+
+1. Review the item data you see and make any appropriate updates. 
+2. Click **Validate** after making updates. This simply performs field-level validation to ensure that all data is in the correct format and that no required fields are left blank.
+3. You can then click **\<\< MORE** and **Save** to save your changes until you are ready to finish your work on this item.
+4. Click **\<\< MORE** and **Add Label** to label the item. Labels can then be used in searches and filters.
+5. Click on **Content & History** at the bottom of the screen and review any **Notes** and **Attachments**, as well as **Emails** relating to the item.
+6. Complete any offline processes your business requires you to do as part of this task.
+7. When you are finished:
+   1. Resolve the item and move it to the next process task by clicking **Complete**.
+   2. If appropriate, you can **Discard** the item, which removes it from the process. The item is still found by Active Search with a status of “discarded.” (Click **\<\< MORE** and then **Discard**)
+
+### **_Business Exception (User) Tasks _**
+
+In most cases, User tasks are business exceptions that require a person to manually resolve an issue. For example, if an OCR task can’t fully read the data from a scanned document due to poor scanning quality, a User Task may be generated to re-scan the item. 
+
+User tasks can also be manual steps like reviewing results and issuing a payment or shipping out a sample.
+
+When you click on a User Task that you own:
+
+1. Review the item data you see and any information at the top of the screen. 
+2. Click on **Content & History** at the bottom of the screen and review any **Notes** and **Attachments**, as well as **Emails** relating to the item.
+3. Make whatever updates are required to resolve the item. Click **Validate** after making updates to ensure the data is correct. Also, **Save** your work (under **\<\< MORE**) if you have other steps to do or are otherwise not quite ready to finish this task.
+4. Add any labels to the task under **\<\<MORE Add Label**. Labels can then be used in searches and filters.
+5. Complete any offline processes your business requires you to do as part of this task.
+6. When you are finished:
+   1. Resolve the item and move it to the next process task by clicking **Complete**.
+
+If more appropriate, you can **Discard** the item, which removes it from any further processing steps. (Click **\<\< MORE** and then **Discard**)
+
+### **_Error Tasks _**
+
+Business users may receive certain types of Error Tasks. These are usually data-related errors, such as missing or invalid data. They can also be problems like a duplicate invoice or missing document attachment. 
+
+Business users will usually <u>not</u> see Error Tasks related to system processes or technical problems.
+
+When you click on an Error Task that you own:
+
+1. Review the error message at the top of the screen, then the item data you see. 
+2. Click on **Content & History** at the bottom of the screen and review any **Notes** and **Attachments**, as well as **Emails** relating to the item.
+3. Make the updates required to resolve the problem. **Save** your work if you have other steps to do or are otherwise not quite ready to finish this task. 
+4. Add any needed labels by clicking **\<\< MORE** and then **Add Label**. Labels can then be used in searches and filters.
+5. Click **Validate** after making updates to ensure the data is correct <u>if you plan to resubmit the item</u> to run back through this process. 
+6. Complete any offline processes your business requires you to do as part of this task.
+7. When you are finished:
+   1. Resolve the item:
+      1. **Resubmit** it to send it back through this automated step with the corrections you’ve made to it. This will <u>revalidate</u> and <u>reprocess</u> the step completely.
+      2. <u>Bypass</u> automated re-processing and move it to the next process task by clicking **Complete**. This indicates that you have verified that all of the processes within this step have been successfully completed, manually or otherwise. 
+
+If more appropriate, you can **Discard** the item, which removes it from any further processing steps. (Click **\<\< MORE** and then **Discard**)
+
+## **Making Notes on Tasks**
+
+Annotations on tasks may be key to resolving issues or answering future questions. They are an important tool to use whenever something unusual occurs in handling an item.
+
+**_About Notes:_**
+
+- Notes can be rich-text documents and contain text, images, links, tables, and a broad array of formatting. 
+- Each note should be <u>specific</u> to a topic <u>and</u> audience, as you can have multiple notes attached to an item as it moves through the workflow. For example, you could have one for the accounting team and another for logistics.
+- You set an “access level” on a per-note basis, so you can have notes that are **private**, **group**, or **public** access.
+
+### **_Creating a Note_**
+
+1. Open the task detail view for a task that you own.
+2. At the bottom of the screen, click **Content & History** to expand the section, then click the **Notes** tab.\
+   ![TMB53 Notes1 Jp](/images/TaskManagement/TMB53-Notes1.jpg)
+
+   <Tip>
+     **NOTE**: For some tasks, the window opens with a document window in the front. You’ll need to close that window to see the Notes tab:\
+     ![TMB54 Notes2behinddoc Jp](/images/TaskManagement/TMB54-Notes2behinddoc.jpg)
+   </Tip>
+3. Click the green plus icon  on the right of the screen to add a note. The note editor appears as a pop-up.\
+   ![TMB55 Notes Edit Jp](/images/TaskManagement/TMB55-NotesEdit.jpg)
+4. Use the note editor like any text editor, such as Word or Docs. 
+   1. Shortcuts like Copy (Ctrl/Cmd C) and Paste (Ctrl/Cmd V) work here.
+   2. The Insert menu lets you easily add images, links, horizontal lines, and tables.
+   3. Formatting options across the top of the screen provide bold, italic, font color, background color, alignment, and list/indent styles.
+   4. The Edit menu provides Undo / Redo and Select All options, in addition to the usual cut, copy, and paste.
+5. After composing your document, click **Save** to save and close the pop-up.  You can also click **Close** without saving to discard your work.
+6. The note you created is saved as an unnamed Public note on this item.\
+   ![TMB56 Notelisted Jp](/images/TaskManagement/TMB56-Notelisted.jpg)
+7. Now, adjust the note’s name and access level.
+   1. Click the expand icon on the far right of the item to open its edit menu.\
+      ![TMB57 Updatenote Jp](/images/TaskManagement/TMB57-Updatenote.jpg)
+   2. If you need to make changes to the content you just saved, click **Edit Note**.
+   3. To update the note’s name, access level, and task note status, click **Edit**.\
+      ![TMB58 Noteupdate Jp](/images/TaskManagement/TMB58-Noteupdate.jpg)
+   4. Type a descriptive name for the note. 
+   5. Click the down arrow under Access Level and select the appropriate security level. 
+      1. **User** restricts the note and its content to be visible to only you.
+      2. **Group** allows anyone in the same user group as you to see the note and its content.
+      3. **Public** lets anyone who can see this item see the note and its content.
+   6. Indicate if this is a **Local **note by clicking the checkbox. Local notes are only seen on this item during this processing step; when the task is resolved, the note disappears. If you leave this unclicked, the note will remain on the item throughout its life, regardless of its step or status.
+
+   Click **Save** to retain the changes you’ve just made or **Cancel** to exit editing without saving your changes.
+
+## **Discard an Item**
+
+Occasionally, an item flowing through the process may no longer be needed. Examples could include duplicate items or offline tasks that don’t apply to the specific circumstance. When this is the case, **Discard** the item.
+
+1. **Claim** the item and access its task details page.
+2. Click **\<\< MORE** and then **Discard**.
+3. You'll be asked to confirm the deletion of the item and warned that the process will end. This indicates that the item will not flow through any subsequent process steps.\
+   ![TMB59 Discardtask Jp](/images/TaskManagement/TMB59-discardtask.jpg)
+4. Click **OK** to discard it or Cancel to return to the task details page.
+
+<Tip>
+  **NOTE**: When an item is discarded, it is still found via Active search, with a status of “Discarded.”
+</Tip>
+
+## **Bulk actions**
+
+There are a number of actions you can perform simultaneously on a group of selected items. This is called a **Bulk Action**.
+
+Examples:
+
+- Claim / Unclaim 
+- Assign / Reassign
+- Download attachments
+- Complete or Discard
+
+You can only act on tasks that are <u>all in the same process.</u>
+
+1. On any task list, toggle **Bulk Actions** in the top center of the page.
+2. Click the **checkbox** to the left of each item that you want to take this action on.\
+   ![TMB61 Bulkselect Jp](/images/TaskManagement/TMB61-Bulkselect.jpg)
+3. Click the blue **Actions** button to open the bulk actions pop-up. The pop-up contains only the items you selected.\
+   ![TMB60 Bulk Actions Jp](/images/TaskManagement/TMB60-BulkActions.jpg)
+4. The actions available on this group of items are at the top right of the popup. Your options for bulk action are determined by the types of items you’ve selected and the status of those items.
+
+<Tip>
+  **HINT**: Just under the Close link is a download icon you can use to download the displayed list of items.\
+  ![TMB62 Downloadtasks Jp](/images/TaskManagement/TMB62-Downloadtasks.jpg)
+</Tip>
+
+Click the action you would like to take or click Close to cancel and return to the list of all items.
