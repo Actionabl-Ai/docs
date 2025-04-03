@@ -30,11 +30,11 @@ The Actionabl system has two user classifications: Business and Technical. 
 
 - **Business Users** handle tasks such as quality assurance, offline process steps, and issues related to the “content” of your business process. They are generally not in charge of managing a function or technical component of the system.
 
-  Examples:  Accounts receivable associates, production coordinators, customer support representatives, sales team, and quality assurance specialists.
+  _Examples_:  Accounts receivable associates, production coordinators, customer support representatives, sales team, and quality assurance specialists.
 
 - **Technical Users** monitor the operation of the processes and the system itself and respond to errors that indicate something may not work correctly. For example, they resolve error codes or investigate the lack of a success response from an API call. Technical users may also take a proactive role in configuring parts of the workflow or user notifications. 
 
-  Examples:  Process managers, system engineers, manufacturing plant managers, and system administrators.
+  _Examples_:  Process managers, system engineers, manufacturing plant managers, and system administrators.
 
 ### User Groups
 
@@ -47,7 +47,7 @@ Your group helps you avoid noise associated with tasks that don’t relate to yo
 Your team may also use Departments to group users and manage their permissions. Departments, like groups, are granted the rights to certain assets in the system. They can also be used for notifications through a shared email address like "[support@yourcompany.com](mailto:support@yourcompany.com)" or "[hr@yourcompany.com](mailto:hr@yourcompany.com)".
 
 <Info>
-  [**User, Group, and Department management is covered in detail in the User Management Guide**](/UserManagement/user-management)
+  User, Group, and Department management is covered in detail in the [**User Management Guide**](/UserManagement/user-management)
 </Info>
 
 ## **Dashboards**
@@ -84,24 +84,24 @@ The Process View is a special way of looking at a workflow and its components li
 
 A **process** is a complete end-to-end workflow that accomplishes a set of goals. Here's an example:
 
-<Card title="Bank Invoice Process" icon="sparkles">
+<Card title="Bank Invoice Process" icon="pie">
   The **Bank Invoice Process** starts with receiving an invoice from a vendor, extracting its data, validating that invoice against purchase order data and a set of business rules, sending it for possible user review by the Accounts Payable team, then recording it in the accounting system or sending a rejection email if it doesn't meet requirements
 </Card>
 
 Within a process, there are typically multiple **stages**.  A stage is a group of tasks that loops through a meaningful part of the process. Using the Bank Invoice Process example:
 
 <CardGroup cols="2">
-  <Card title="Extract Stage" icon="sparkles">
+  <Card title="Extract Stage" icon="crate-apples">
     The **Extract** stage takes the invoice document and runs it through OCR to pull the relevant data, organize it, and save it for the next step in the process to use
   </Card>
-  <Card title="Validate Stage" icon="sparkles">
+  <Card title="Validate Stage" icon="crate-apples">
     The **Validate** stage then compares that data to a set of business rules to ensure it matches what was ordered, what you agreed to pay, the status of the items ordered, and so on. If discrepancies are found, this stage might include a human quality control check on the invoice.
   </Card>
 </CardGroup>
 
 Each stage contains one or more **tasks**, the core elements of all workflows. A task may be executed by a system, application, or human, but it always has some action (and status) associated with it. For example:
 
-<Card title="Validate Invoice Data Task" icon="sparkles">
+<Card title="Validate Invoice Data Task" icon="apple">
   The **Validate Invoice Data** task in the Validate stage looks at the total amount, items, and quantity data from the invoice and compares it to the data in the purchase order sent to the vendor. If it matches, that task is complete, and the process moves on to the next step. If it doesn’t match, the task creates a new QA Task for the accounts payable team to resolve.
 </Card>
 
