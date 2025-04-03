@@ -91,17 +91,17 @@ A **process** is a complete end-to-end workflow that accomplishes a set of goals
 Within a process, there are typically multiple **stages**.  A stage is a group of tasks that loops through a meaningful part of the process. Using the Bank Invoice Process example:
 
 <CardGroup cols="2">
-  <Card title="Extract Stage" icon="crate-apples">
+  <Card title="Extract Stage" icon="crate-apple">
     The **Extract** stage takes the invoice document and runs it through OCR to pull the relevant data, organize it, and save it for the next step in the process to use
   </Card>
-  <Card title="Validate Stage" icon="crate-apples">
+  <Card title="Validate Stage" icon="crate-apple">
     The **Validate** stage then compares that data to a set of business rules to ensure it matches what was ordered, what you agreed to pay, the status of the items ordered, and so on. If discrepancies are found, this stage might include a human quality control check on the invoice.
   </Card>
 </CardGroup>
 
 Each stage contains one or more **tasks**, the core elements of all workflows. A task may be executed by a system, application, or human, but it always has some action (and status) associated with it. For example:
 
-<Card title="Validate Invoice Data Task" icon="apple">
+<Card title="Validate Invoice Data Task" icon="apple-whole">
   The **Validate Invoice Data** task in the Validate stage looks at the total amount, items, and quantity data from the invoice and compares it to the data in the purchase order sent to the vendor. If it matches, that task is complete, and the process moves on to the next step. If it doesn’t match, the task creates a new QA Task for the accounts payable team to resolve.
 </Card>
 
