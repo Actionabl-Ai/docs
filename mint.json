@@ -43,7 +43,7 @@
     {
       "group": "Administration",
       "pages": [
-        "admin/automation-management-coming-soon"
+        "/Admin/automation-management-coming-soon"
       ]
     }
   ],
