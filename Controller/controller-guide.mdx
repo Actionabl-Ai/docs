@@ -32,7 +32,7 @@ Two modules are unique to the Controller dashboard: **Control Center** and **Pro
 
 For convenience, you can also access the **Search** tools, **Process View**, and **Error Tasks** queue directly from the Controller menu. 
 
-## **CONTROL CENTER**
+## **Control Center**
 
 The Control Center can be thought of as air traffic control at a busy airport. This is where you: 
 
@@ -40,20 +40,24 @@ The Control Center can be thought of as air traffic control at a busy airport. T
 - Schedule routine and repetitive operations through cron jobs
 - Manage the AI Spaces that automate machine-learning tasks by checking their status, pausing them, or starting them.
 
-# **Automation Manager**
+## Process Analytics
+
+The Process Analytics dashboard gives you a visual overview of how items are moving through your automation based on reports and charts that your system administrator builds to monitor your metrics.
+
+# **AUTOMATION MANAGER**
 
 The Automation Manager module shows you all automations and tasks configured in the system, with an at-a-glance view of their status (running, paused, failed, etc.).
 
 It contains 2 tabs:  
 
-- **Automations** tab is the overview of all tasks and processes running in the system. 
-- **Schedules** tab lists all of the schedules that can be used to manage a task or process listed on the Automations tab.
+- **Automations** is the overview of all tasks and processes running in the system. 
+- **Schedules** lists all of the schedules that can be used to manage a task or process listed on the Automations tab.
 
 ![C2 Automation Manager Pn](/images/ControllerGuide/C2-AutomationManager.png)
 
 Each automation or task shows:
 
-- The process it’s running within
+- The process in which it's running
 - The task associated with it
 - How it is executing (Standalone, Call, External, or Polling)
 - Its current status and last run time
@@ -68,21 +72,19 @@ To see all of the automations and tasks relating to a specific process, select t
 
 This should be done whenever you make changes to an automation or task configuration, ensuring that items queued for processing follow the new configuration. 
 
-To pause an automation, click the green indicator on its right.
+![C4A Automations Paused Jp](/images/ControllerGuide/C4A-automations-paused.jpg)
 
-When it has been fully paused, the indicator will turn red.
+To pause an automation, click the **green** indicator on its right.
 
-### **_Restarting A Paused Automation_**
+When it has been fully paused, the indicator will turn **red**.
 
-If a status is in Paused mode, there will be a red indicator on its right side. 
-
-To restart the automation, click its indicator. Once it has restarted, the indicator turns green.
+To **restart a paused automation**, click its red indicator. Once it has restarted, the indicator turns green.
 
 ### **_Refreshing Automation Status_**
 
 To refresh any automation, click the yellow “refresh” icon on the far right of the line. This will pause the current job and restart it. This can be useful in troubleshooting if a process or item appears “stuck.”
 
-# **Automation Scheduler**
+# **AUTOMATION SCHEDULER**
 
 The Automation Scheduler is where you build or edit the schedules that manage the automations and tasks listed in the Automation Manager.
 
@@ -103,27 +105,28 @@ The list shows all of the existing schedules. There are both _standalone_ and _p
   
 </Steps>
 
-1. To see a schedule’s details, click the expand icon on its right.
-2. The automation editor popup will appear. The popup will show different options for each type of automation (by execution mode). This is an example of a “Call” automation.
-
-![C5 Call Automation Example Pn](/images/ControllerGuide/C5-CallAutomationExample.png)
-
 <Steps>
-  <Step title="Change Automation Configuration" stepNumber="3">
+  <Step title="View Schedule Details">
+    Click the expand icon on the right of any schedule to open its details.
+
+    The automation editor popup will appear. The popup will show different options for each type of automation (by execution mode). This is an example of a “Call” automation.\
+    ![C5 Call Automation Example Pn](/images/ControllerGuide/C5-CallAutomationExample.png)
+  </Step>
+  <Step title="Change Automation Configuration">
     1. Click the blue **Edit** button to change the automation’s configuration. Click the gray **Cancel** button to cancel without saving any changes.
-    2. The **Schedule Type** can be set to ****process orstandalone****  , as previously described. For **process** automations, you must specify the process and (optionally) task to which the schedule should apply. If the automation should span all processes and/or tasks, enter an asterisk (\*) in the appropriate field.
+    2. The **Schedule Type** can be set to **process or standalone**, as previously described. For **process** automations, you must specify the process and (optionally) task to which the schedule should apply. If the automation should span all processes and/or tasks, enter an asterisk (\*) in the appropriate field.
 
        <Info>
-         **NOTE**: The Process Name and the Task Name must exactly match the way those items are shown in the Process View, including capitalization. This will happen automatically if you select “Create Automation Schedules” while you’re deploying the process.
+         **NOTE**: The Process Name and Task Name must exactly match the way they are shown in the Process View, including capitalization. This will happen automatically if you select “Create Automation Schedules” while you’re deploying the process.
        </Info>
     3. All automations require a **Connector**. Click the selection icon to pick the connector from the list.
 
        <Tip>
-         **HINT**: Configure connectors on the Task Manager dashboard (for users with technical, supervisory, or system admin rights). Details are in the <u>Task Manager</u> guide (COMING SOON).
+         **HINT**: Configure connectors on the Task Manager dashboard (for users with technical, supervisory, or system admin rights). Details are in the **Task Manager** guide (COMING SOON).
        </Tip>
   </Step>
   <Step title="Set an Execution Mode" stepNumber="4">
-    1. The **Execution Mode** for the automation determines how it runs. The options are:
+    The **Execution Mode** for the automation determines how it runs. The options are:
 
     - **Call** automations run on-demand when an item flowing through the system triggers the appropriate criteria. Some examples would be sending an email or updating a database entry.
     - **External** - The task is started when it is called by an external process using the API. It is called and controlled using the token that can be generated here.
@@ -131,7 +134,7 @@ The list shows all of the existing schedules. There are both _standalone_ and _p
 
     ![C6 Recurrent Schedule Pn](/images/ControllerGuide/C6-RecurrentSchedule.png)
 
-    1. To determine the schedule, specify either a Cron schedule or set a Recurrent Frequency and Recurrent Time Unit.
+    To determine the schedule, specify either a Cron schedule or set a Recurrent Frequency and Recurrent Time Unit.
 
     - A **Recurrent schedule**, defined by its Frequency and Time Unit, schedules the job to run based on a wait interval after the last run of the job is completed.
     - A **Cron** schedules the job to run periodically at a specific scheduled time, date, or interval, like every day at 3 AM or on the 15th of each month.
@@ -141,22 +144,19 @@ The list shows all of the existing schedules. There are both _standalone_ and _p
     </Tip>
   </Step>
   <Step title="Set up a Recurrent Schedule or Cron" stepNumber="5">
-    1. Select **Run Interval** from the dropdown:
-
-    ![C7 Recurrence Settings Jp](/images/ControllerGuide/C7-RecurrenceSettings.jpg)
-
-    1. Enter a **Recurrence Frequency** (in milliseconds). This is the wait time between the <u>end</u> of one execution and the <u>start</u> of the next.
+    1. Select **Run Interval** from the dropdown:\
+       ![C7 Recurrence Settings Jp](/images/ControllerGuide/C7-RecurrenceSettings.jpg)
+    2. Enter a **Recurrence Frequency** (in milliseconds). This is the wait time between the <u>end</u> of one execution and the <u>start</u> of the next.
 
        **_OR_**
-    2. Select a **Cron Schedule** by clicking  the selection icon in the field. Making a selection here overrides any entries in the Run Interval.
+    3. Select a **Cron Schedule** by clicking  the selection icon in the field. Making a selection here overrides any entries in the Run Interval.\
+       ![C8 Cron Schedule Selection Pn](/images/ControllerGuide/C8-CronScheduleSelection.png)
 
-    ![C8 Cron Schedule Selection Pn](/images/ControllerGuide/C8-CronScheduleSelection.png)
-
-    1. **Max Concurrent Runs** specifies how many instances of this automation can run simultaneously (maximum is 25). This is an optional field used only when you need to fine-tune the performance of your system. For processing-intense automations, you may choose to set this to a lower number to avoid system slowdowns. 
-    2. **Disable Rule** is available only on Process automations. Click the selection icon to set the conditional rules in which this automation <u>doesn't</u> run. See _<u>Configuring Disable Rules</u>_ (below) for details on how to create and edit these rules.
-    3. **Disabled/Paused** toggle indicates whether the automation is running within the system. You can pause an automation for troubleshooting, editing, or similar temporary situations and then restart it when you are ready for it to begin processing again.
-    4. **Active** indicates whether the automation is even available to the automation manager. When you deactivate an automation, it is considered to be in a “pre-deletion” status, pending future cleanup and removal. The automation will no longer show up in lists or reports. 
-    5. **Updated By** and **Updated At** show the user who last edited this automation and when they were done.
+    - **Max Concurrent Runs** specifies how many instances of this automation can run simultaneously (maximum is 25). This is an optional field used only when you need to fine-tune the performance of your system. For processing-intense automations, you may choose to set this to a lower number to avoid system slowdowns. 
+    - **Disable Rule** is available only on Process automations. Click the selection icon to set the conditional rules in which this automation <u>doesn't</u> run. See [**Configuring Disable Rules**](/Controller/controller-guide#configuring-disable-rules-for-automations) (below) for details on how to create and edit these rules.
+    - **Disabled/Paused** toggle indicates whether the automation is running within the system. You can pause an automation for troubleshooting, editing, or similar temporary situations and then restart it when you are ready for it to begin processing again.
+    - **Active** indicates whether the automation is even available to the automation manager. When you deactivate an automation, it is considered to be in a “pre-deletion” status, pending future cleanup and removal. The automation will no longer show up in lists or reports. 
+    - **Updated By** and **Updated At** show the user who last edited this automation and when they were done.
   </Step>
 </Steps>
 
@@ -164,31 +164,26 @@ The list shows all of the existing schedules. There are both _standalone_ and _p
 
 There are cases where you will want an automation rule to be selective about when and how it runs within a process. Some examples include:
 
-- You want to notify customers about proofing only if an invoice exceeds a threshold amount.
-- Certain vendors have asked not to receive emails about individual order invoice payments because they prefer an end-of-month summary statement.
-- You want a conditional case that alerts a user and shows new fields if a field has a specific value. For example, in processing a loan application, if a user has input “Owns” for home ownership, pause the automation and display new fields asking about mortgage balances, real estate taxes, etc.
+> - You want to notify customers about proofing only if an invoice exceeds a threshold amount.
+> - Certain vendors have asked not to receive emails about individual order invoice payments because they prefer an end-of-month summary statement.
+> - You want a conditional case that alerts a user and shows new fields if a field has a specific value. For example, in processing a loan application, if a user has input “Owns” for home ownership, pause the automation and display new fields asking about mortgage balances, real estate taxes, etc.
 
 #### **Using An Existing Rule**
 
 1. In the Automation Scheduler list, click the expander icon to the right of the automation you want to apply the rule to.
-2. Click the blue **Edit** button to enter Edit mode.
+2. Click the blue **Edit** button to enter Edit mode.\
+   ![CG7A Existingruleedit Jp](/images/ControllerGuide/CG7A-existingruleedit.jpg)
+3. Click the selection icon in the **Disable Rule** field.
+4. The existing rules are displayed in the list. To view their details, click on the expand icon to the right of any rule.\
+   ![CG7B Exiting Ruleseedetails1 Jp](/images/ControllerGuide/CG7B-ExitingRuleseedetails1.jpg)
 
-![CG7A Existingruleedit Jp](/images/ControllerGuide/CG7A-existingruleedit.jpg)
+   ![CG7C Ruledetails Jp](/images/ControllerGuide/CG7C-Ruledetails.jpg)
 
-1. Click the selection icon in the **Disable Rule** field.
-2. The existing rules are displayed in the list. To view their details, click on the expand icon to the right of any rule.
-
-![CG7B Exiting Ruleseedetails1 Jp](/images/ControllerGuide/CG7B-ExitingRuleseedetails1.jpg)
-
-![CG7C Ruledetails Jp](/images/ControllerGuide/CG7C-Ruledetails.jpg)
-
-<Tip>
-  If you need to adjust a rule’s definition, remember that **<u>changes you make here will take effect in ALL automations that use this rule</u>**.
-</Tip>
-
-1. Click the green **Duplicate** button to create a new copy of the rule if the changes apply only to this automation. The copy appears immediately below the existing one. Make changes in this NEW copy, then save and select the new rule.
-
-![CG7D Duplicaterulecreen Jp](/images/ControllerGuide/CG7D-Duplicaterulecreen.jpg)
+   <Tip>
+     If you need to adjust a rule’s definition, remember that **<u>changes you make here will take effect in ALL automations that use this rule</u>**.
+   </Tip>
+5. Click the green **Duplicate** button to create a new copy of the rule if the changes apply only to this automation. The copy appears immediately below the existing one. Make changes in this NEW copy, then save and select the new rule.\
+   ![CG7D Duplicaterulecreen Jp](/images/ControllerGuide/CG7D-Duplicaterulecreen.jpg)
 
 After saving your change to the rule, **reactivate the automation** so it restarts with the new rule definitions.
 
@@ -208,19 +203,14 @@ If none of the rules match what you need, you can create a new disable rule. The
 
 1. In the Automation Scheduler list, click the expand icon to the right of the automation you want to apply the rule to.
 2. Click the blue **Edit** button to enter Edit mode.
-3. Click the selection icon in the **Disable Rule** field and view the existing rules in the list.
-
-![CG7G Duplicaterules Viewexisting Jp](/images/ControllerGuide/CG7G-Duplicaterules-viewexisting.jpg)
-
-1. Click the expand icon to the right of any of the rules to see its details.
-
-![C10 Disable Rule Selection Detailview Pn](/images/ControllerGuide/C10-DisableRuleSelectionDetailview.png)
-
-1. If one is fairly close to the rule you want to create, click the green Duplicate button while viewing the rule. This makes a copy that will open just underneath the original rule. \
+3. Click the selection icon in the **Disable Rule** field and view the existing rules in the list.\
+   ![CG7G Duplicaterules Viewexisting Jp](/images/ControllerGuide/CG7G-Duplicaterules-viewexisting.jpg)
+4. Click the expand icon to the right of any of the rules to see its details.\
+   ![C10 Disable Rule Selection Detailview Pn](/images/ControllerGuide/C10-DisableRuleSelectionDetailview.png)
+5. If one is fairly close to the rule you want to create, click the green Duplicate button while viewing the rule. This makes a copy that will open just underneath the original rule. \
    \
-   Edit the rule as needed, then save it to activate it in the Automation.
-
-![CG7H Duplicatedruleblank Jp](/images/ControllerGuide/CG7H-Duplicatedruleblank.jpg)
+   Edit the rule as needed, then save it to activate it in the Automation.\
+   ![CG7H Duplicatedruleblank Jp](/images/ControllerGuide/CG7H-Duplicatedruleblank.jpg)
 
 ### Creating a Rule from Scratch
 
@@ -228,22 +218,17 @@ If no rules in the list are close to the one you need, create a new rule from sc
 
 ![C11A Disable Rule From Scratch Step1 Jp](/images/ControllerGuide/C11A-DisableRuleFromScratchStep1.jpg)
 
-1. Select a **Category** for the new rule.
+1. Select a **Category** for the new rule.\
+   ![C19 Create Rule Category Select Jp](/images/ControllerGuide/C19-CreateRuleCategorySelect.jpg)
+2. Select the rule’s **Type**. This determines the fields you have available to build the logic for the rule. Details of the logic available for each type are covered in the next section, [_Building Rule Logic_](/Controller/controller-guide#building-rule-logic).\
+   ![C20 Create Rule Type Select Jp](/images/ControllerGuide/C20-CreateRuleTypeSelect.jpg)
+3. Enter a unique **ID**. This ID is restricted to letters, numbers, and underscores. No spaces or special characters are allowed.
+4. Enter the rule’s **Name**. This is what appears on the popups when you select a rule or when you view an automation’s configuration, so it should be unique and clearly describe the rule’s scope. For example, “Amount LT 1000” or “Opted out of daily invoices”
 
-![C19 Create Rule Category Select Jp](/images/ControllerGuide/C19-CreateRuleCategorySelect.jpg)
-
-1. Select the rule’s **Type**. This determines the fields you have available to build the logic for the rule. Details of the logic available for each type are covered in the next section, _Building Rule Logic_.
-
-![C20 Create Rule Type Select Jp](/images/ControllerGuide/C20-CreateRuleTypeSelect.jpg)
-
-1. Enter a unique **ID**. This id is restricted to letters, numbers, and underscores. No spaces or special characters are allowed.
-2. Enter the rule’s **Name**. This is what appears on the popups when you select a rule or when you view an automation’s configuration, so it should be unique and clearly describe the rule’s scope. For example, “Amount LT 1000” or “Opted out of daily invoices”
-
-<Info>
-  **NOTE**: Names must contain no special characters other than underscore (\_), dash (-), and period (.). They can contain spaces and alphanumeric characters.
-</Info>
-
-1. Click the “**Active**” box (if it is not already selected) to indicate that the rule should apply when it is saved and the automation is restarted.
+   <Info>
+     **NOTE**: Names must contain no special characters other than underscore (\_), dash (-), and period (.). They can contain spaces and alphanumeric characters.
+   </Info>
+5. Click the “**Active**” box (if it is not already selected) to indicate that the rule should apply when it is saved and the automation is restarted.
 
 ### Building Rule Logic
 
@@ -265,12 +250,14 @@ You can “stack” additional conditions onto this rule. At the top of the cond
 
 The green “grouping” icon next to the green plus lets you add a **condition group**. A condition group is treated as a single condition in evaluating the boolean AND/OR above it. Let’s look at some examples to clarify this.
 
-1. This example disables autopay for any invoice greater than or equal to $1000.\
-   ![CG27 GT1000 Jp](/images/ControllerGuide/CG27-GT1000.jpg)
-2. This example disables autopay for invoices greater than $1000 <u>plus</u> ANY invoice from supplier “VendX” for any amount. Using boolean OR matches against either one of these conditions.\
-   ![CG28 O Rcondition Jp](/images/ControllerGuide/CG28-ORcondition.jpg)
-3. The following example uses grouping. It disables autopay for invoices greater than or equal to $1000 <u>but ONLY</u> if they are Manually Completed <u>OR</u> from supplier VendX.\
-   ![CG29 Groupconditions Jp](/images/ControllerGuide/CG29-Groupconditions.jpg)
+> This example disables autopay for any invoice greater than or equal to $1000.\
+> ![CG27 GT1000 Jp](/images/ControllerGuide/CG27-GT1000.jpg)
+>
+> This example disables autopay for invoices greater than $1000 <u>plus</u> ANY invoice from supplier “VendX” for any amount. Using boolean OR matches against either one of these conditions.\
+> ![CG28 O Rcondition Jp](/images/ControllerGuide/CG28-ORcondition.jpg)
+>
+> The following example uses grouping. It disables autopay for invoices greater than or equal to $1000 <u>but ONLY</u> if they are Manually Completed <u>OR</u> from supplier VendX.\
+> ![CG29 Groupconditions Jp](/images/ControllerGuide/CG29-Groupconditions.jpg)
 
 ### **_Defining Additional Actions_**
 
@@ -280,7 +267,7 @@ You may also define additional actions that happen when these conditions are met
 - Setting an error message that generates an error task and stops further execution
 - Calculating a value that can be used within this process (for example, in a Javascript expression)
 
-Click the green plus sign on the right of the “**Action**” field to define more actions.
+Click the green plus sign on the right of the **Action** field to define more actions.
 
 ![CG31 Additional Actions1 Jp](/images/ControllerGuide/CG31-AdditionalActions1.jpg)
 
@@ -303,7 +290,7 @@ Expression rules are built using the same techniques as the default rule, but in
 
 This rule type uses Javascript (either in an attached file or a function entered directly here) to determine the eligibility of a record to run this automation.
 
-Either click the [] icon in the Script File field to select an existing script file or enter the javascript code directly in the “Script” field.
+Either click the [ ] icon in the Script File field to select an existing script file or enter the javascript code directly in the **Script** field.
 
 <Tip>
   HINT: Script files are added directly to the deployed folder in your system. If that folder is under source control, such as Github, follow your company's practices.
@@ -317,7 +304,7 @@ Once you’ve selected a file or entered a script, you can set parameters that g
 
 ![CG38 Rule Parametersdefinition Jp](/images/ControllerGuide/CG38-RuleParametersdefinition.jpg)
 
-# **AI Space Manager**
+# **AI SPACE MANAGER**
 
 AI spaces are components that are part of the machine-learning tasks within a process. The computing needs of an AI space are usually intense, so they are set up as separate-but-trusted environments that work as components within Actionabl.
 
@@ -336,7 +323,7 @@ Details of an AI space include whether it is running, the mode(s) enabled, and a
 - **Worker Mode**: The space allows multiple threads to run simultaneously for parallel processing.
 - **Worker Count**: This shows how many worker threads are actively running in the space.
 
-# **Cron Job Scheduler**
+# **CRON JOB SCHEDULER**
 
 The **Cron Job Scheduler** in Actionabl is where you set up a task to run and match it with a schedule you’ve defined under **Cron Schedules**. This process creates a cron job.
 
@@ -350,47 +337,36 @@ To set up a new cron job schedule, click the green plus icon at the top right of
 
 ![CG51 Crons Newblankjob Jp](/images/ControllerGuide/CG51-Crons-newblankjob.jpg)
 
-The **Type**  is either _Report_, _Batch Job_, or_Task Event\_ . When you pick one, the appropriate additional fields appear to set it up.
+The **Type**  is either _Report_, _Batch Job_, or _Task Event_. When you pick one, the appropriate additional fields appear to set it up.
 
 ## **_Report Cron Setup_**
 
 1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, _bank_invoice_process_run_daily_2am_
-2. Click the browse bracket in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.
-
-![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
-
-1. Click on the browse brackets in the **Report Definition** field to select the report script to schedule. 
-2. **Email template** can be left blank to use the default in the system. Alternatively, click the browse brackets to select a different template.
-
-![CG59 Cron Reports Completed Jp](/images/ControllerGuide/CG59-CronReportsCompleted.jpg)
+2. Click the browse bracket in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.\
+   ![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
+3. Click on the browse brackets in the **Report Definition** field to select the report script to schedule. 
+4. The **email template** can be left blank to use the system's default. Alternatively, click the browse brackets to select a different template.\
+   ![CG59 Cron Reports Completed Jp](/images/ControllerGuide/CG59-CronReportsCompleted.jpg)
 
 ## **_Batch Job Cron Setup_**
 
-1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, bank_invoice_process_run_daily_2am
-2. Click the browse brackets in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.
+1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, _bank_invoice_process_run_daily_2am_
+2. Click the browse brackets [ ] in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.\
+   ![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
+3. Click on the browse brackets in the **Batch Job Script** field to select the script to schedule. \
+   ![CG55 Cron Task Event Jp](/images/ControllerGuide/CG55-CronTaskEvent.jpg)
 
-![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
-
-1. Click on the browse brackets in the **Batch Job Script** field to select the script to schedule. 
-
-![CG55 Cron Task Event Jp](/images/ControllerGuide/CG55-CronTaskEvent.jpg)
-
-- In the list of locations, browse to select the script file you want to schedule. If an item shows as a **_Folder_** type, click it to see the files inside it. Click the double dots **..** to go up a level in browsing. When you find the script file you want, click it to select it.
-
-![CG56 Cron Batch Select Script Jp](/images/ControllerGuide/CG56-CronBatchSelectScript.jpg)
-
+- In the list of locations, browse to select the script file you want to schedule. If an item shows as a **_Folder_** type, click it to see the files inside it. Click the double dots **..** to go up a level in browsing. When you find the script file you want, click it to select it.\
+  ![CG56 Cron Batch Select Script Jp](/images/ControllerGuide/CG56-CronBatchSelectScript.jpg)
 - Click the green **Save** button. If the script is marked **Active** it will run on the next scheduled cron time.
 
 ## **_Task Event Cron Setup_**
 
 1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, _send_docusign_daily_9am_
-2. Select the Event Type. Events are predefined in the system by your system administrator.
-
-![CG58 Cron Task Eventsetup Jp](/images/ControllerGuide/CG58-CronTaskEventsetup.jpg)
-
-1. Click the browse brackets in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon  at the top right of the screen.
-
-# ![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
+2. Select the **Event Type**. Events are predefined in the system by your system administrator.\
+   ![CG58 Cron Task Eventsetup Jp](/images/ControllerGuide/CG58-CronTaskEventsetup.jpg)
+3. Click the browse brackets in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.\
+   ![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
 
 **Cron Schedules**
 
@@ -401,36 +377,27 @@ The Cron Schedules module defines all of the possible schedules that a task coul
 **_Add A New Cron Schedule_**
 
 1. Click the green plus sign at the top right of the screen.
-2. Enter a **unique ID** for the schedule. The ID must contain only letters and numbers, underscores, and dashes. It cannot contain any spaces.
-
-![CG61 Cron Schedulenew1 Jp](/images/ControllerGuide/CG61-CronSchedulenew1.jpg)
-
-1. Type a **Name** for this schedule. The name will appear to users on the list of schedules.
-2. Ensure that **Active** is checked.
-3. Click the plus sign on the right of the cron schedules to start setting up the parameters.
-
-![CG62 Cron Schednew Parameters Jp](/images/ControllerGuide/CG62-CronSchednew-parameters.jpg)
+2. Enter a **unique ID** for the schedule. The ID must contain only letters, numbers, underscores, and dashes, and it cannot contain spaces.\
+   ![CG61 Cron Schedulenew1 Jp](/images/ControllerGuide/CG61-CronSchedulenew1.jpg)
+3. Type a **Name** for this schedule. The name will appear to users on the list of schedules.
+4. Ensure that **Active** is checked.
+5. Click the plus sign on the right of the cron schedules to start setting up the parameters.\
+   ![CG62 Cron Schednew Parameters Jp](/images/ControllerGuide/CG62-CronSchednew-parameters.jpg)
 
 - You can specify an optional **Effective Start Date** and **Effective End Date** for the schedule, which is helpful if you create a temporary cron job.
 - Likewise, you can specify an **Effective Start Time** and **Effective End Time**. If you leave these fields blank and specify a start and end date, the job will start at midnight on the start date and end at 11:59 PM on the end date.
-- Click the browse brackets to specify **Disable Rule(s)** that disqualify items from being included in this cron job. See [**_<u>Configuring Disable Rules for Automations</u>_**](https://docs.google.com/document/d/1P-TO70rqYfM1HmydmtE3XgnMgwAzoAgutgInby3bnio/edit?tab=t.z38ggzyxt3cf#heading=h.drhvuiacy6wr) for details about defining rules.
-- Click the browse brackets next to **Cron Expression** to set up the schedule for jobs to run.
-
-![CG63 Cron Schedblank Jp](/images/ControllerGuide/CG63-CronSchedblank.jpg)
-
+- Click the browse brackets to specify **Disable Rule(s)** that disqualify items from being included in this cron job. For details about defining rules, see [**_Configuring Disable Rules for Automations_**]().
+- Click the browse brackets next to **Cron Expression** to set up the schedule for jobs to run.\
+  ![CG63 Cron Schedblank Jp](/images/ControllerGuide/CG63-CronSchedblank.jpg)
 - Check each appropriate box to build the schedule you want. You can select single or multiple options in each section or select “No Restriction” for sections that do not apply. \
   \
-  The following example sets the schedule to run daily at 9 PM:
+  The following example sets the schedule to run daily at 9 PM:\
+  ![CG64 Cronschedcomplete Jp](/images/ControllerGuide/CG64-Cronschedcomplete.jpg)
 
-![CG64 Cronschedcomplete Jp](/images/ControllerGuide/CG64-Cronschedcomplete.jpg)
-
-<Tip>
-  **HINT**: If you are used to setting up cron jobs using crontab code, the code generated by the schedule is shown at the bottom for ease of verification.
-</Tip>
-
-- Click **Save** at the top right to save this parameter.
-
-![CG65 Cronschedulesave1 Jp](/images/ControllerGuide/CG65-Cronschedulesave1.jpg)
-
+  <Tip>
+    **HINT**: If you are used to setting up cron jobs using crontab code, the code generated by the schedule is shown at the bottom for ease of verification.
+  </Tip>
+- Click **Save** at the top right to save this parameter.\
+  ![CG65 Cronschedulesave1 Jp](/images/ControllerGuide/CG65-Cronschedulesave1.jpg)
 - You can continue adding parameters to this cron schedule if you need.
-- When the schedule contains all of the necessary parameters, click the green Save button to save it. If the “Active” box at the top is checked, this also activates the schedule.
+- When the schedule contains all of the necessary parameters, click the green **Save** button to save it. If the “Active” box at the top is checked, this also activates the schedule.
