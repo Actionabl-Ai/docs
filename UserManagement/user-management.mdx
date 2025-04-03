@@ -88,13 +88,12 @@ Simply creating an asset in the list does <u>not</u> cause any access or restric
 
 To define the action that the asset takes, work with your system administrator, who will create the necessary rules and code that will be needed.
 
-/s
-
 ## **Managing Groups**
 
-There are two types of Groups: **Authorization** and **Task**.
+There are three types of Groups: **Authorization** and **Task**.
 
 - **Authorization** groups allow a user to access a dashboard in the system, such as TaskMaster or Controller. A user account must have at least one of these groups to log in.
+- **Communication** groups determine whether the user can receive notifications and/or see communications via Threads.
 - **Task** groups specify the tasks and modules that the user can access.
 
 **Only users who are members of the Super Auth group can edit a group’s assets or add a new group to the system**. Other Supervisory users can see which assets the group can use and can add or remove users from the group.
@@ -120,13 +119,13 @@ Each system has certain pre-defined groups; your administrator may add more but 
 
 ### **_Viewing A Group’s Assigned Assets_**
 
-Before assigning users to a group, it’s important to see the assets that are available for use to ensure they are appropriate for the user’s responsibilities.
+Before assigning users to a group, it’s important to review the available assets to ensure they are appropriate for the user’s responsibilities.
 
 1. Click the expander icon next to the group to open its details.
 
 ![/images/UserManagement/UM5-Groupdef1.jpg\+\_existingInIndexedDbMintlify](/images/UserManagement/UM5-Groupdef1.jpg)
 
-1. Click **Group Assets**. The popup showing all assets appears, with the assets available to the group checked and listed at the top.
+1. Click **Group Assets**. The popup showing all assets appears with the assets available to the group checked and listed at the top.
 
 ![/images/UserManagement/UM6-GroupAssets.jpg\+\_existingInIndexedDbMintlify](/images/UserManagement/UM6-GroupAssets.jpg)
 
@@ -134,7 +133,7 @@ Before assigning users to a group, it’s important to see the assets that are a
 
 ![/images/UserManagement/UM7-assetpagination.jpg\+\_existingInIndexedDbMintlify](/images/UserManagement/UM7-assetpagination.jpg)
 
-1. On the top right, you can search the list or can download it in Excel, CSV, Text, or JSON format.
+1. On the top right, you can search the list or download it in Excel, CSV, Text, or JSON format.
 
 ![/images/UserManagement/UM8-searchanddownload.jpg\+\_existingInIndexedDbMintlify](/images/UserManagement/UM8-searchanddownload.jpg)
 
@@ -148,12 +147,12 @@ You can add or remove users from a group by using the Group Users function.
 
 ![/images/UserManagement/UM5-Groupdef1.jpg\+\_existingInIndexedDbMintlify](/images/UserManagement/UM5-Groupdef1.jpg)
 
-1. Click **Group Users** to open the list of all system users. All users who are currently assigned to this group are checked and listed at the top of this list for convenience.
+1. Click **Group Users** to open the list of all system users. For convenience, all users currently assigned to this group are checked and listed at the top of the list.
 
 ![/images/UserManagement/UM9-selectuser.jpg\+\_existingInIndexedDbMintlify](/images/UserManagement/UM9-selectuser.jpg)
 
 <Tip>
-  **NOTE**: Pagination is found at the bottom right, if the list is long enough to need it.
+  **NOTE**: Pagination is found at the bottom right if the list is long enough to need it.
 </Tip>
 
 1. Check to add or un-check to remove users from this group.
@@ -198,7 +197,7 @@ Once you click **Save**, you can add users to the department. Because you create
 
 ### **_Duplicating A User_**
 
-This function makes an exact copy of an existing user and copies over over their permissions, groups, or departments. 
+This function makes an exact copy of an existing user and copies their permissions, groups, or departments over. 
 
 1. Click the expand icon to the right of the existing user you wish to duplicate. This opens their details.
 
@@ -280,7 +279,7 @@ Start by clicking **User Groups** and assign them to all of the groups they need
 
 There are three types of user groups:
 
-**Authorization**:  These groups determine which dashboards the user can see.
+- **Authorization**:  These groups determine which dashboards the user can see.
 
 <Tip>
   **NOTE**: Users must have at least one “Authorization” group to allow them to log in. Otherwise, they will receive an error message:\
@@ -321,7 +320,7 @@ You can edit a user's information if you created the user or are a member of the
 | Password                      | ❌              | ☑️                  |
 
 1. Click on the expand icon next to the user you want to edit.
-2. You will see all of the fields available to you. Cick the purple **Edit** button to make the fields editable.
+2. You will see all of the fields available to you. Click the purple **Edit** button to make the fields editable.
 
 ![/images/UserManagement/UM28-editinguser.jpg\+\_existingInIndexedDbMintlify](/images/UserManagement/UM28-editinguser.jpg)
 
@@ -329,4 +328,4 @@ You can edit a user's information if you created the user or are a member of the
 
 ![/images/UserManagement/UM29-edituser2.jpg\+\_existingInIndexedDbMintlify](/images/UserManagement/UM29-edituser2.jpg)
 
-1. Make any changes to their user groups, department, or password, then click CANCEL to close their details. The changes are now saved and will appear wherever this user’s information is displayed in the system. 
+1. Make any needed changes to their user groups, department, or password, then click CANCEL to close their details. The changes are now saved and will appear wherever this user’s information is displayed in the system. 
