@@ -299,7 +299,7 @@ This connector is the action that initiates the entire process. It can be any of
 
 A Start connector cannot be viewed on the Process View or configured by anyone other than an administrator.
 
-### **_App_ **
+### \*\*_App_ \*\*
 
 App connectors link to a third-party application to complete a task, such as sending an email or updating a third-party system via webhook.
 
@@ -334,7 +334,7 @@ Below that is the **App Configuration** section. The fields in this section chan
   Details on configuring App Connectors are found in the **Administration Guide (COMING SOON).**
 </Tip>
 
-### **_OCR_ **
+### \*\*_OCR_ \*\*
 
 OCR stands for optical character recognition, which is used to translate scanned images into meaningful and editable text data. It’s most helpful for cases like receiving a document like a scan of a paper invoice or parts list and then bringing that data into a database.
 
@@ -407,7 +407,7 @@ The **Type** currently is restricted to Actionabl ML, which uses the built-in ma
 **AI Space** identifies the AI processing module or server. In Edit mode, clicking the expand icon shows the connection strings and allows you to select which AI space should be used in this task.
 
 <Tip>
-  Details for configuring ML tasks and AI Spaces are found in the**Administration Guide (Coming Soon).** 
+  Details for configuring ML tasks and AI Spaces are found in the**Administration Guide (Coming Soon).**
 </Tip>
 
 ### **_Bot_**
@@ -430,4 +430,95 @@ The **Type** currently is restricted to Actionabl ML, which uses the built-in ma
 
 <Tip>
   Details for configuring ML tasks and AI Spaces are found in the **Administration Guide.**
+</Tip>
+
+# **RULES**
+
+Rules are the elements of business logic that are used for processing data, making decisions, and determining whether an error has occurred. They are defined by the business in most cases. Some examples of rules are:
+
+- An invoice must be dated on or after the date that an order shipped to the customer.
+- Orders over $$1000 should be routed to vendor A, while orders equal to or under $$
+
+  1000 should go to vendor B.
+- If an order exceeds $25,000 its invoice must go through a QC step with the Accounting team.
+
+There are two types of rules: Task-Specific and Process.
+
+## **_Task-Specific Rules_**
+
+**Task-specific rules** may exist in any task step. When hovering over the task, select View Rules in the dropdown menu.
+
+![ATR26 View Rules Jp](/images/AutomationTaskRules/ATR26-ViewRules.jpg)
+
+Task-specific rules can be ones such as:
+
+- Data validation
+- Transforming data
+
+### **_Process Rules_**
+
+\*\*Process rules **are managed under the**View Decision Model \*\* on Review Rules task steps:
+
+![ATR27 View Descision Model Jp](/images/AutomationTaskRules/ATR27-ViewDescisionModel.jpg)
+
+Process rules determine which branch of logic the item should flow into next.
+
+### **_The Rule Decision Model_**
+
+When you open the Review Rules decision model, you see all elements of the set of rules that are being evaluated at that point in the process.
+
+![ATR28 Rule Decision Model Jp](/images/AutomationTaskRules/ATR28-RuleDecisionModel.jpg)
+
+The top section is the **rule information**. 
+
+- **ID** cannot be changed once the rule is created
+- **Name** is the display name of the rule. This can be changed, but be aware that doing so will change its name for all users of the system and all places where this rule is used.
+- **Type** is the definition of the rule that determines the fields it uses and how it processes them. For example, with the above decision model, the type is set to “Bank Invoice Review Definition” and has 3 fields: 
+  - Two inputs: **Supplier Name** and **Invoice Amount**
+  - One output: a boolean value for **Needs Review?**
+- **Active** is the flag that turns the rule on or off. If a “Review Rules” step exists in the process but its rule is made inactive, the system will ignore the rule and continue processing. If a rule exists at a higher level (system -\> process -\> task -\> sub-task), that rule will take precedence here.
+
+The next section contains the values against which the item’s data is compared to determine the outcome of the step. 
+
+As shown above, there are two input fields: Supplier Name and Invoice Amount. For each of these values, there is a setting specified for the output field (“Needs review?”).
+
+![ATR29 Decision Model Value Match Jp](/images/AutomationTaskRules/ATR29-DecisionModelValueMatch.jpg)
+
+So for example, an invoice from SpiceJet Limited for $4328 would not need review, while one of that same amount from Vodafone Idea Limited would require it. 
+
+The display order is the order in which criteria are calculated. This can be important in some cases, where you want a criterion to only be evaluated if another criteria has been met. For example, using the above data, you might see rules like this:
+
+| Supplier Name                 | Invoice Amount | Needs Review |
+| :---------------------------- | :------------- | :----------- |
+| **\*** (matches any supplier) | \>= 25000.00   | Y            |
+| Vodafone Idea Limited         | \>= 4000.00    | Y            |
+| Go Airlines (India) Limited   | \>= 0          | Y            |
+
+In this case: 
+
+- Invoices greater than or equal to $25,000 from ANY supplier will need review. If this condition is met, no further rule processing is needed.
+- Only invoices greater than or equal to $4,000 from Vodafone require review.  
+- ALL invoices from Go Airlines (India) Limited require review.
+- If other suppliers submit invoices under $25,000, they do not require any review.
+
+You can move a criterion up or down in the order by dragging the **move** icon on its right to the desired position in the list.
+
+The bottom line of the list is where you can add new criteria for the rule when you are in Edit mode. Type the data to match for each of the fields, then select the appropriate setting for the output field. Be sure to click **Save** when you are done, or **Cancel** to leave the screen without saving.
+
+If you make changes to a rule, **you are strongly encouraged to test those changes** to ensure they work as expected. After saving your change, click the Test button and enter the appropriate test data. Review the output and compare it to what you would expect to see. 
+
+Input data is entered in JSON format in the **Input** field. When you click **Test**, the output data and/or any Messages are shown in the bottom section of the form.
+
+To use an uploaded JSON file with test data, click the **Use TestData File** option; this file must be uploaded to the file system by an administrator, just as with other uploaded files.
+
+Examples of test data are shown here:
+
+![ATR30 Rule Test1 Pn](/images/AutomationTaskRules/ATR30-RuleTest1.png)
+
+![ATR31 Rule Test2 Calculate CGST Pn](/images/AutomationTaskRules/ATR31-RuleTest2-CalculateCGST.png)
+
+Click the **trashcan** icon to delete a criterion from the list.
+
+<Tip>
+  Detail on Rules creation and management is included in the **Administration Gulde.**
 </Tip>
