@@ -2,3 +2,9 @@
     height: 7rem;
     margin-left: -35px
 }
+.bg-emerald-50\/50 {
+  background-color: #e4e8fb;
+}
+.border-emerald-500\/20 {
+    border-color: #172eb3;
+}
