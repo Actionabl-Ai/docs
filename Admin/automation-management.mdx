@@ -268,7 +268,7 @@ You can view connectors by hovering over any connector type of task, right-click
 For all connector types, there is a **Task History** button in the bottom left to see the editing history of the item.
 
 <Tip>
-  **Creating and editing Connectors is covered in detail in the Administration Guide (Coming Soon).**
+  Creating and editing Connectors is covered in detail in the **Administration Guide (Coming Soon).**
 </Tip>
 
 | **Type**                  | **Definition**                                                                    | **Icon**                                                |
@@ -299,7 +299,7 @@ This connector is the action that initiates the entire process. It can be any of
 
 A Start connector cannot be viewed on the Process View or configured by anyone other than an administrator.
 
-### **_App _**
+### **_App_ **
 
 App connectors link to a third-party application to complete a task, such as sending an email or updating a third-party system via webhook.
 
@@ -331,10 +331,10 @@ The **Task Information** section at the top shows the basics about this particul
 Below that is the **App Configuration** section. The fields in this section change depending on the type of App selected (from the list above).
 
 <Tip>
-  **Details on configuring App Connectors are found in the Administration Guide (COMING SOON).**
+  Details on configuring App Connectors are found in the **Administration Guide (COMING SOON).**
 </Tip>
 
-### **_OCR _**
+### **_OCR_ **
 
 OCR stands for optical character recognition, which is used to translate scanned images into meaningful and editable text data. It’s most helpful for cases like receiving a document like a scan of a paper invoice or parts list and then bringing that data into a database.
 
@@ -356,10 +356,10 @@ OCR stands for optical character recognition, which is used to translate scanned
 
 **Extraction Type** indicates whether you want to extract fields (named key-value pairs) or plain text (such as the body of an email).
 
-**OCR Cluster **determines the technical settings for character recognition and processing to be used on this task. The clusters are built and optimized for the type of document typically processed in this step, so adjustment here should not be necessary.
+\*\*OCR Cluster \*\*determines the technical settings for character recognition and processing to be used on this task. The clusters are built and optimized for the type of document typically processed in this step, so adjustment here should not be necessary.
 
 <Tip>
-  **Details for configuring OCR tasks and clusters are found in the Administration Guide (Coming Soon).**
+  Details for configuring OCR tasks and clusters are found in the **Administration Guide (Coming Soon).**
 </Tip>
 
 ### **_RPA_**
@@ -373,8 +373,6 @@ The top section is the same **task configuration** as in other connectors. It in
 Below that is the configuration of the RPA itself. 
 
 - **RPA Type** indicates where the RPA should execute: Windows, Web, Java, SAP, Android, or Custom.
-
-
 - **RPA Script** is the Javascript file that is to be run via RPA on the remote destination. This script contains all of the instructions needed to execute the task. It has been previously uploaded to the server by the developer or an administrator using a script written for this purpose.
 - **Application Path**, **User**, and **Password** are the credentials used to run the application on the remote device.
 - The **Unlock Computer** toggle specifies whether the robot first needs to unlock the remote device before executing the task.
@@ -387,7 +385,7 @@ The remainder of the pop-up is where the **parameters** are configured for the p
 As elsewhere, there is a **Task History** button in the bottom left to see the editing history of this item.
 
 <Tip>
-  **Details for configuring RPA tasks and parameters are found in the Administration Guide (Coming Soon).**
+  Details for configuring RPA tasks and parameters are found in the **Administration Guide (Coming Soon).**
 </Tip>
 
 ### **_Bot_**
@@ -397,7 +395,7 @@ Bots are specialized connectors that perform repetitive tasks, such as schedulin
 Unlike an RPA task, where the robot clicks on fields and buttons and can be “visualized” as an operation within an app, a Bot is an invisible actor. Bot tasks, for example, update data in a database.
 
 <Tip>
-  **Details for configuring Bots are found in the Administration Guide (Coming Soon).**
+  Details for configuring Bots are found in the **Administration Guide (Coming Soon).**
 </Tip>
 
 ### **_Machine Learning (ML)_**
@@ -409,5 +407,27 @@ The **Type** currently is restricted to Actionabl ML, which uses the built-in ma
 **AI Space** identifies the AI processing module or server. In Edit mode, clicking the expand icon shows the connection strings and allows you to select which AI space should be used in this task.
 
 <Tip>
-  **Details for configuring ML tasks and AI Spaces are found in the Administration Guide (Coming Soon).**
+  Details for configuring ML tasks and AI Spaces are found in the**Administration Guide (Coming Soon).** 
+</Tip>
+
+### **_Bot_**
+
+Bots are specialized connectors that perform repetitive tasks, such as scheduling jobs to run daily or performing backups. They require little configuration.
+
+Unlike an RPA task, where the robot clicks on fields and buttons and can be “visualized” as an operation within an app, a Bot is an invisible actor. Bot tasks, for example, update data in a database.
+
+<Tip>
+  Details for configuring Bots are found in the **Administration Guide (Coming Soon)**
+</Tip>
+
+### **_Machine Learning (ML)_**
+
+Execution by specialized apps like face or voice recognition is considered a Machine Learning (ML) task. These events are focused on teaching a computer to learn from this data and improve accuracy and understanding each time it runs.
+
+The **Type** currently is restricted to Actionabl ML, which uses the built-in machine learning function for execution. Otherwise, the top section is the same **task configuration** as in other connectors. It includes the ID, display name, number of retries, the icon to use, and the Active flag.
+
+**AI Space** identifies the AI processing module or server. In Edit mode, clicking the expand icon shows the connection strings and allows you to select which AI space should be used in this task.
+
+<Tip>
+  Details for configuring ML tasks and AI Spaces are found in the **Administration Guide.**
 </Tip>
