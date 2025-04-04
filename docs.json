@@ -39,14 +39,9 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://actionabl.mintlify.app",
-          "icon": "book-open-cover"
-        },
-        {
           "anchor": "Contact Us",
           "href": "https://actionabl.ai/#:~:text=About-,Contact,-Us",
-          "icon": "chat"
+          "icon": "message-text"
         }
       ]
     }
