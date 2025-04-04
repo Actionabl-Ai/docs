@@ -1,0 +1,78 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Actionbl Documentation",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "/GettingStarted/getting-started"
+            ]
+          },
+          {
+            "group": "Business and Technical Users",
+            "pages": [
+              "/UserManagement/user-management",
+              "/Controller/controller-guide",
+              "/TaskManagement/task-management-coming-soon"
+            ]
+          },
+          {
+            "group": "Administration",
+            "pages": [
+              "/Admin/automation-management-coming-soon"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Documentation",
+          "href": "https://actionabl.mintlify.app",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Contact Us",
+          "href": "https://actionabl.ai/#:~:text=About-,Contact,-Us",
+          "icon": "chat"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "dark": "/logo/actionabl_logo_dark.svg",
+    "light": "/logo/actionabl_logo_light.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@actionabl.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get Actionabl",
+      "href": "https://actionabl.com"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/ActionablAi",
+      "youtube": "https://www.youtube.com/@Actionabl",
+      "linkedin": "https://linkedin.com/company/actionabl"
+      }
+  }
+}
