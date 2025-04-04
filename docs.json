@@ -59,13 +59,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:support@actionabl.com"
+        "href": "mailto:support@actionabl.ai"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Get Actionabl",
-      "href": "https://actionabl.com"
+      "href": "https://actionabl.ai"
     }
   },
   "footer": {
