@@ -40,7 +40,7 @@
       "anchors": [
         {
           "anchor": "Contact Us",
-          "href": "https://actionabl.ai/#:~:text=About-,Contact,-Us",
+          "href": "https://actionabl.ai/#contact-form",
           "icon": "comments-question"
         }
       ]
@@ -54,7 +54,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:support@actionabl.ai"
+        "href": "https://actionabl.ai/#contact-form"
       }
     ],
     "primary": {
