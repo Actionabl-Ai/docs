@@ -64,7 +64,7 @@ Each automation or task shows:
 
 In the Process Name or Task Name fields, an asterisk (**\***) indicates that the automation is a “**Common Process Automation**.” This means that it runs across all processes or tasks, so any change in its status will affect all items flowing through the system. Examples include data or report archives, which run across the entire system.
 
-To see all of the automations and tasks relating to a specific process, select the process from the dropdown at the top left. This activates the process filter; when this filter is on, you will not see any Common Process Automations listed.
+To see all of the automations and tasks relating to a specific process, select the process from the dropdown at the top right. This activates the process filter; when this filter is on, you will not see any Common Process Automations listed.
 
 ![C3 Process Filter Pn](/images/ControllerGuide/C3-ProcessFilter.png)
 
@@ -146,7 +146,7 @@ The list shows all of the existing schedules. There are both _standalone_ and _p
   <Step title="Set up a Recurrent Schedule or Cron" stepNumber="5">
     1. Select **Run Interval** from the dropdown:\
        ![C7 Recurrence Settings Jp](/images/ControllerGuide/C7-RecurrenceSettings.jpg)
-    2. Enter a **Recurrence Frequency** (in milliseconds). This is the wait time between the <u>end</u> of one execution and the <u>start</u> of the next.
+    2. Select a **Time Unit** and enter a **Recurrence Frequency** (in the selected time unit). This is the wait time between the <u>end</u> of one execution and the <u>start</u> of the next.
 
        **_OR_**
     3. Select a **Cron Schedule** by clicking  the selection icon in the field. Making a selection here overrides any entries in the Run Interval.\
@@ -221,7 +221,7 @@ If no rules in the list are close to the one you need, create a new rule from sc
 1. Select a **Category** for the new rule.\
    ![C19 Create Rule Category Select Jp](/images/ControllerGuide/C19-CreateRuleCategorySelect.jpg)
 2. Select the rule’s **Type**. This determines the fields you have available to build the logic for the rule. Details of the logic available for each type are covered in the next section, [_Building Rule Logic_](/Controller/controller-guide#building-rule-logic).\
-   ![C20 Create Rule Type Select Jp](/images/ControllerGuide/C20-CreateRuleTypeSelect.jpg)
+   ![C20 Create Rule Type Select NEW Jp](/images/ControllerGuide/C20-CreateRuleTypeSelectNEW.jpg)
 3. Enter a unique **ID**. This ID is restricted to letters, numbers, and underscores. No spaces or special characters are allowed.
 4. Enter the rule’s **Name**. This is what appears on the popups when you select a rule or when you view an automation’s configuration, so it should be unique and clearly describe the rule’s scope. For example, “Amount LT 1000” or “Opted out of daily invoices”
 
