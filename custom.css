@@ -1,4 +1,16 @@
-.h-7 {
+.h-7, .h-6 {
     height: 7rem;
     margin-left: -35px
+}
+.bg-emerald-50\/50 {
+  background-color: #e4e8fb;
+}
+.border-emerald-500\/20 {
+    border-color: #172eb3;
+}
+.bg-zinc-50\/50 {
+    background-color: #fcedd4;
+}
+.border-zinc-500\/20 {
+    border-color: #b87502;
 }

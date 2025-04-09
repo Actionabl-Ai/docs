@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "willow",
   "name": "Actionbl Documentation",
-  "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373"
-  },
   "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#172eb3",
+    "light": "#3e59f7",
+    "dark": "#172eb3"
+  },
   "navigation": {
     "tabs": [
       {
@@ -39,14 +39,9 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://actionabl.mintlify.app",
-          "icon": "book-open-cover"
-        },
-        {
           "anchor": "Contact Us",
-          "href": "https://actionabl.ai/#:~:text=About-,Contact,-Us",
-          "icon": "chat"
+          "href": "https://actionabl.ai/#headlessui-dialog-panel-:r7:",
+          "icon": "comments-question"
         }
       ]
     }
@@ -59,7 +54,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:support@actionabl.ai"
+        "href": "https://actionabl.ai/#contact-form"
       }
     ],
     "primary": {
