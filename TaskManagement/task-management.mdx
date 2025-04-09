@@ -60,19 +60,19 @@ There are three accordions in this section:
 
     #### **Process Examples For Training**
 
-    Throughout our guides and training, we use two process examples called **bank invoice processing** and **send notification**.
+    Throughout our guides and training, we use two process examples, called **bank invoice process** and **send notification**.
 
     The following sections describe these processes in common business terms and show how they are translated and displayed within Actionabl. While these are fictional and simplified processes, understanding how they are implemented in Actionabl will help you visualize how your own processes translate from real-world action to automation.
 
-    #### **Bank Invoice Processing**
+    #### **Bank Invoice Process**
 
-    **Goal**: Pay the vendor for their work and post the accounting in our systems. In most cases, this is where the process ends, but it can also end with an invoice being canceled, usually due to a mistake or dispute, in which case we also want to notify the vendor..
+    **Goal**: Pay the vendor for their work and post the accounting in our systems. In most cases, this is where the process ends, but it can also end with an invoice being canceled, usually due to a mistake or dispute, in which case we also want to notify the vendor.
 
     **Business Users**: Accounting or financial staff, production management
 
     **Stages and Tasks:**
 
-    - **Starting Point:** Invoice is received from a vendor who has produced and shipped a customer’s order, based on a Purchase Order the business sent to them.
+    - **Starting Point:** An invoice is received from a vendor who has produced and shipped a customer’s order based on a Purchase Order the business sent to them.
     - **Acknowledge**
       - Send the vendor an acknowledgment that the invoice was received and will be processed.
     - **Extract**
@@ -89,21 +89,21 @@ There are three accordions in this section:
     - **Resolve**
       - If the invoice is approved, 
         - enter it into the accounting system for payment
-        - notify the vendor.
+        - notify the vendor, and
         - update the records for the invoice and its original purchase  order in the system
       - If the invoice is rejected, notify the vendor.
 
     **Business Rules**: 
 
     1. The invoice must be from a valid vendor and have appropriate dates (cannot be from future dates or dates older than 6 months in the past).
-    2. Some invoices will always require special review:
+    2. Some invoices will <u>always</u> require special review:
        - If they are from certain vendors
        - If they exceed certain thresholds in size or scope.
-    3. Some invoices will never require manual review:
+    3. Some invoices will <u>never</u> require manual review:
        - If they are below a certain threshold
        - If they are from VIP vendors who are highly trusted
 
-    When this process and its rules have been coded into Actionabl, it produces a process flow that looks like this in Process View:
+    When this process and its rules have been coded into Actionabl, it produces a process flow that looks like this in the Process View:
 
     ![TMB1 Process Flow Jp](/images/TaskManagement/TMB1-ProcessFlow.jpg)
 
@@ -115,7 +115,7 @@ There are three accordions in this section:
 
     1. If it’s a required field, it contains data
     2. The data in each field is in the correct format (number, text, currency, etc.)
-    3. The data in each field is “valid,” if appropriate—for example, ZIP codes are validated against the USPS database, emails are in the appropriate format, vendor name and ID match against the company’s list of vendors, etc.
+    3. The data in each field is “valid.” For example, ZIP codes are validated against the USPS database, emails are in the appropriate format, vendor name and ID match against the company’s list of vendors, etc. Not all fields require this type of validation.
 
     A task always has:
 
@@ -165,12 +165,12 @@ There are three accordions in this section:
     Let’s look at part of the Bank Invoice Process example:
 
     - The “**Extract**” stage receives the invoice from the vendor via email and processes it through OCR to extract the data from the document, organize it, and save it into the database. This stage has a single OCR task.
-    - The “**Validate**” stage in that flow first checks to make sure the invoice isn’t a duplicate or already paid or canceled, then does basic data validations on the invoice’s data fields. Once that’s complete, it moves the invoice into an automated Quality Control check to see whether it matches what was ordered, has the right unit prices, is billing for a correct quantity, and whether the total matches the allowed total for the PO. This stage has multiple Rules and Decisions, as well as the potential for User tasks.
+    - The “**Validate**” stage in that flow first checks to make sure the invoice isn’t a duplicate or already paid or canceled, then does basic data validations on the invoice’s data fields. Once that’s complete, it moves the invoice into an automated Quality Control check to see whether it matches what was ordered, has the right unit prices, is billing for the correct quantity, and whether the total matches the allowed total for the PO. This stage has multiple Rules and Decisions, as well as the potential for User tasks.
   </Accordion>
   <Accordion title="Organizing Your Tasks" description="Learn about how tasks are grouped and move through processes" icon="sitemap">
     ## **Organizing Your Tasks**
 
-    At any time, there are many items flowing through a process and its tasks and stages. In a typical workflow, you will only need to be aware of a few of them, so hiding the “noise” of the others is important. The modules and alerts in the dashboard are designed to help you focus on the items and tasks that require human attention, while letting all of the others flow through the automation without distraction.
+    At any time, there are many items flowing through a process and its tasks and stages. In a typical workflow, you will only need to be aware of a few of them, so hiding the “noise” of the others is important. The modules and alerts in the dashboard are designed to help you focus on the items and tasks that require human attention while letting all of the others flow through the automation without distraction.
 
     ### **_Dashboard View_**
 
@@ -178,7 +178,7 @@ There are three accordions in this section:
 
     ![TMB2 Menu Jp](/images/TaskManagement/TMB2-Menu.jpg)
 
-    As an item moves through the process flow and reaches a human task (User, QC, or Error), it creates an alert and places it in the appropriate module. A count of these tasks is shown in the colored bubble next to each module’s title; if there are none in that module, no bubble is shown.
+    As an item moves through the process flow and reaches a human task (User, QC, or Error), it creates an alert and places it in the appropriate module. The colored bubble next to each module’s title shows the number of these tasks; if there are none in that module, no bubble is shown.
 
     ### **_Task Statuses_**
 
@@ -201,11 +201,11 @@ There are three accordions in this section:
     </Tip>
     #### **Modules and Alerts**
 
-    Alerts are automatically sorted into their appropriate module on the dashboard. A count of these tasks across _all processes_ in the system is shown in the colored bubble next to each module’s title; if there are no tasks in that module, no bubble is shown.
+    Alerts are automatically sorted into their appropriate module on the dashboard. The colored bubble next to each module's title shows the number of tasks across _all processes_ in the system; if there are no tasks in that module, no bubble is shown.
 
-    Alerts for tasks you’ve claimed or a manager has assigned to you appear in your **My Tasks** view. 
+    Alerts for tasks you've claimed or a manager has assigned to you appear in your **My Tasks** view. 
 
-    To see all tasks in a module, click the module’s name or the bubble. Here’s an example of the Error Tasks list.
+    To see all tasks in a module, click the module's name or the bubble. Here's an example of the Error Tasks list.
 
     ![TMB3 Error Task Queue Jp](/images/TaskManagement/TMB3-ErrorTaskQueue.jpg)
 
@@ -230,15 +230,15 @@ There are three accordions in this section:
 
     - **Notifications** are the process notifications generated by automations in the system, as well as incoming emails.
     - **Threads** are internal messaging pertaining to specific tasks. They are also available in the Content & History section on the tasks themselves.
-    - **Sent Mails** shows the history of email that you’ve sent through the system.
+    - **Sent Mails** shows the history of emails that you've sent through the system.
 
     ### **_Searching and Filtering_**
 
-    It’s frequently helpful to be able to find a specific task or to narrow down a large list of tasks to ones that meet a set of criteria. Searching and filtering functions are designed to help you do this.
+    It's frequently helpful to be able to find a specific task or to narrow down a large list of tasks to ones that meet a set of criteria. Searching and filtering functions are designed to help you do this.
 
-    On any list of task alerts, you’ll see Search and Filter icons at the top right of the list. These are the “**Quick**” options.
+    On any list of task alerts, you'll see Search and Filter icons at the top right. These are the "**Quick**" options.
 
-    On the dashboard’s menu, the Active Search and Archive Search are the “**Full**” search and filtering tools.
+    The "full" search and filtering tools on the dashboard's menu are the Active Search and Archive Search.
 
     ![TMB6A Typesofsearches Jp](/images/TaskManagement/TMB6A-typesofsearches.jpg)
 
@@ -248,17 +248,17 @@ There are three accordions in this section:
     | :--------------------------------------------------------------------- | :------------------------------------ |
     | Searches **only** the columns (fields) currently displayed on the list | Can search ALL columns in the record. |
 
-    If a list being searched spans multiple pages of results, both the Quick and Full searches automatically look through all of the pages.
+    If a list being searched has multiple pages of results, both the Quick and Full searches automatically look through all of them.
 
     #### **Searching and Filtering On Lists**
 
     Each list view has three or more functions to narrow down the results shown.
 
-    **Overdue Only** is a toggle in the top center section. Turning it on immediately filters the results to show only items with a due date in the past.
+    **Overdue Only** is a toggle in the top center section. Turning it on immediately filters the results to show only items with a past due date.
 
     ![TMB8 Tasks Overdue Filter Jp](/images/TaskManagement/TMB8-TasksOverdueFilter.jpg)
 
-    **Process Filter** is at the top right. Select a process from the list and it will only show tasks that are part of that process.
+    The**Process Filter**  is at the top right. Selecting a process from the list will only show tasks that are part of that process.
 
     ![TMB9 Process Filter Jp](/images/TaskManagement/TMB9-ProcessFilter.jpg)
 
@@ -279,45 +279,45 @@ There are three accordions in this section:
 
     ![TMB13 Filter Jp](/images/TaskManagement/TMB13-filter.jpg)
 
-    When you’ve entered your criteria, click **Apply** at the top right to filter the list.
+    When you've entered your criteria, click **Apply** at the top right to filter the list.
 
     ![TMB15 Filter Actions Jp](/images/TaskManagement/TMB15-FilterActions.jpg)
 
     **Full Searching and Filtering Tools**
 
-    In the Dashboard menu, you’ll see **Active Search** and **Archive Search**, which are the “Full” versions of these tools. They enable you to search across processes, statuses, and types of tasks to create a customized list that you can interact with and/or download.
+    In the Dashboard menu, you'll see **Active Search** and **Archive Search**, which are the "Full" versions of these tools. They enable you to search across processes, statuses, and types of tasks to create a customized list that you can interact with and/or download.
 
     These two tools act identically, with the exception that Archive Search looks only at data that is in an Archived state. Data is archived automatically based on how each process is defined and can also be manually archived. Archived data is _<u>not</u>_ included when you use Active Search and vice versa.
 
-    The full search and filtering tools automatically look at all of the data fields stored for any item, regardless of that field’s display status. If a match is found, the item is included in the search results even if the field containing that data isn’t displayed on the list.
+    The full search and filtering tools automatically look at all of the data fields stored for any item, regardless of that field's display status. If a match is found, the item is included in the search results even if the field containing that data isn't displayed on the list.
 
     The Search Tool has three tabs at the top: **Process Search**, **Task Search**, and **Custom Search**. By default, Process Search is displayed when you open the tool. These tabs specify the span of data to be searched - in all cases, what is returned is a list of tasks that match the criteria.
 
     ![TMB13 Filter Jp](/images/TaskManagement/TMB13-filter.jpg)
 
-    Selecting a **Process Search** allows you to specify only a process and then other criteria at the process level.  Selecting **Task Search** lets you specify a specific task within a process, further narrowing the data returned. 
+    Selecting a **Process Search** allows you to specify only a process and then other criteria at the process level. Selecting **Task Search** lets you specify a specific task within a process, further narrowing the data returned. 
 
     **Custom Search** starts with a blank slate and enables you to build a complex query with boolean logic and save that query for future use.
 
     On the Process and Task Search tools, select <u>two or more</u> criteria (in addition to the Process) to use for searching. The screen matches against ALL criteria.
 
     <Tip>
-      HINT: **Start with minimal criteria** and then add more if needed. This strategy helps you avoid missing any data by being too narrow with your search terms. If you are not sure what to use for your second criteria, consider Status or Created Date.
+      HINT: **Start with minimal criteria** and then add more if needed. This strategy helps you avoid missing any data by being too narrow with your search terms. If you are not sure what to use for your second criterion, consider Status or Created Date.
     </Tip>
     <Tip>
       HINT: **You must select two or more items in this section**. Criteria entered in the Advanced Options section do not count toward this minimum.
     </Tip>
     #### **Advanced Options**
 
-    **Advanced Options** are available on both the Process Search and Task Search tabs once you select a process. If you need to narrow things down further or look for items that match a data point that is not shown at the top of the screen, click Advanced Options.
+    **Once you** select a process, the Process Search and Task Search tabs offer advanced options. Click Advanced Options to narrow things down further or look for items that match a data point not shown at the top of the screen.
 
     ![TMB9A Advanced Search Jp](/images/TaskManagement/TMB9A-AdvancedSearch.jpg)
 
-    This expanded view gives you access to <u>all</u> of the data fields available in the selected process, as well as the ability to build a more complex search query. 
+    This expanded view gives you access to <u>all</u> of the data fields available in the selected process and allows you to build a more complex search query. 
 
     ![TMB9B Advanced Search Open Jp](/images/TaskManagement/TMB9B-AdvancedSearchOpen.jpg)
 
-    **_Customizing the data displayed in results_**
+    **_Customizing the data displayed in the results_**
 
     At the bottom of the screen is the **Display Columns** area containing a list of all of the fields, with checkboxes beside each one.
 
@@ -344,14 +344,14 @@ There are three accordions in this section:
          _civil litigation_     \
          _civil_
 
-    | **Match Type**           | **Meaning**                                                                                                                                                                                                                                                                           | **Search For** | **RESULT**                                                                         |
-    | :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------- | :--------------------------------------------------------------------------------- |
-    | **Equals**               | The full data in the field exactly matches the search string, including case and leading/trailing spaces                                                                                                                                                                              | Civil          | Nothing found                                                                      |
-    | **Equals ignore case**   | The full data in the field exactly matches the search string, including leading/trailing spaces. However, the capitalization of the content is ignored.                                                                                                                               | Civil          | _civil_                                                                            |
-    | **Includes**             | The data in the field contains an exact match for the search string, including its capitalization. However, that string may be anywhere in the field, not just at the beginning. Leading and trailing spaces are ignored.   Partial-word matches are found when using “Includes.”     | Civil          | _Civil_  _The Civil War_  _Civility 101_                                           |
-    | **Includes ignore case** | The data in the field contains an exact match for the search string, regardless of its capitalization. However, that string may be anywhere in the field, not just at the beginning. Leading and trailing spaces are ignored.   Partial-word matches are found when using “Includes.” | Civil          | _The Civil War_  _civil litigation_  _Civil_  _Civility 101_  _life as a civilian_ |
-    | **Is not null**          | The field contains any content.                                                                                                                                                                                                                                                       | BLANK          | _The Civil War_  _Civility 101_  _life as a civilian_  _civil litigation_  _civil_ |
-    | **Is null**              | The field is completely empty. It doesn’t contain spaces or invisible special characters.                                                                                                                                                                                             | BLANK          | Nothing found                                                                      |
+    | **Match Type**           | **Meaning**                                                                                                                                                                                                                                                                           | **Search For** | **RESULT**                                                                                     |
+    | :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------- | :--------------------------------------------------------------------------------------------- |
+    | **Equals**               | The full data in the field exactly matches the search string, including case and leading/trailing spaces                                                                                                                                                                              | Civil          | Nothing found                                                                                  |
+    | **Equals ignore case**   | The full data in the field exactly matches the search string, including leading and trailing spaces. However, the content's capitalization is ignored.                                                                                                                                | Civil          | _civil_                                                                                        |
+    | **Includes**             | The data in the field contains an exact match for the search string, including its capitalization. However, that string may be anywhere in the field, not just at the beginning. Leading and trailing spaces are ignored.   Partial-word matches are found when using “Includes.”     | Civil          | _Civil_  \\ _The Civil War_  \\ _Civility 101_                                                 |
+    | **Includes ignore case** | The data in the field contains an exact match for the search string, regardless of its capitalization. However, that string may be anywhere in the field, not just at the beginning. Leading and trailing spaces are ignored.   Partial-word matches are found when using “Includes.” | Civil          | _The Civil War_  \\ _civil litigation_  _Civil_  \\ _Civility 101_  \\ _life as a civilian_    |
+    | **Is not null**          | The field contains any content.                                                                                                                                                                                                                                                       | BLANK          | _The Civil War_  \\ _Civility 101_  \\ _life as a civilian_  \\ _civil litigation_  \\ _civil_ |
+    | **Is null**              | The field is completely empty. It doesn’t contain spaces or invisible special characters.                                                                                                                                                                                             | BLANK          | Nothing found                                                                                  |
 
     - **Numeric fields** contain only numbers, which may include decimals. The field cannot contain dollar signs or other currency symbols. The numbers may be positive or negative.
 
@@ -361,22 +361,21 @@ There are three accordions in this section:
       _-130.45_     \
       _123_
 
-    | **Match Type**            | **Meaning**                                                                                                                                                                                                                               | **Search For** | **RESULT**                                |
-    | :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------- | :---------------------------------------- |
-    | **Equals**                | The field’s value is exactly equal to the Match Value.                                                                                                                                                                                    | 0.5897         | 0.5897                                    |
-    | **Greater than or equal** | The field’s value is either equal to or greater than the Match Value.                                                                                                                                                                     | -131           | _-130.45_  _0.5897_  \\ _10.00_  \\ _123_ |
-    | **Less than or equal**    | The field’s value is either less than or equal to the Match Value.                                                                                                                                                                        | 10 - 125       | _10.00_  \\ _0.5897_  _-130.45_           |
-    | **Between**               | The field’s value must be between two values entered in the Match Value field.  The search considers the terms to be greater/less than or equal to the match value, so the values entered in the Match Value are included in the matches. | 10 - 125       | _10.00_  \\ _123_                         |
-    | **Is not null**           | The field contains any value.                                                                                                                                                                                                             | **BLANK**      | All records                               |
-    | **Is null**               | The field is completely empty. It doesn’t contain spaces or invisible special characters.                                                                                                                                                 | **BLANK**      | Nothing found                             |
+    | **Match Type**            | **Meaning**                                                                                                                                                                                                                               | **Search For** | **RESULT**                                  |
+    | :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------- | :------------------------------------------ |
+    | **Equals**                | The field’s value is exactly equal to the Match Value.                                                                                                                                                                                    | 0.5897         | 0.5897                                      |
+    | **Greater than or equal** | The field’s value is either equal to or greater than the Match Value.                                                                                                                                                                     | -131           | _-130.45_  \\ _0.5897_ \\ _10.00_  \\ _123_ |
+    | **Less than or equal**    | The field’s value is either less than or equal to the Match Value.                                                                                                                                                                        | 10 - 125       | _10.00_  \\ _0.5897_  \\ _-130.45_          |
+    | **Between**               | The field’s value must be between two values entered in the Match Value field.  The search considers the terms to be greater/less than or equal to the match value, so the values entered in the Match Value are included in the matches. | 10 - 125       | _10.00_\\ _123_                             |
+    | **Is not null**           | The field contains any value.                                                                                                                                                                                                             | **BLANK**      | All records                                 |
+    | **Is null**               | The field is completely empty. It doesn’t contain spaces or invisible special characters.                                                                                                                                                 | **BLANK**      | Nothing found                               |
 
     - **Date fields** are special types of numeric fields that evaluate dates entered as _DD-MM-YYYY hh:mm aa_  (_Day-Month-Year hours:minutes am/pm_).
       - Hours are entered in 12-hour format (since AM/PM is appended to the string).
       - **You must specify a time in addition to a date**. To select a full day, use:
 
-    **Start** :   DD-MM-YYYY 12:00 AM\
-    **End**:      DD-MM-YYYY 12:59 PM
-
+        **Start** :   DD-MM-YYYY 12:00 AM\
+        **End**:      DD-MM-YYYY 12:59 PM
     - All dates in the system use the server’s **time zone** setting. This is set by your system administrator when they configure the environment. If you are not sure what the time zone is set to, please contact your admin, as it may differ from your local working time zone. (For example, you may work in Pacific time but the server is on Eastern time.)
 
     Assume the data being searched is these three records:\
@@ -438,7 +437,8 @@ There are three accordions in this section:
     - Are dated as received within the last 30 days
     - Originate with vendors A or B and are greater than $$1000 OR that originate with vendors C or H and are greater than $$
 
-      5000.
+      
+      1.
 
     We would group these conditions like this:
 
@@ -652,11 +652,10 @@ If someone else assigns you a task, such as a supervisor using the **Assign** bu
 1. Click to open the task detail view from any task list.
 2. Click **Claim** in the top menu bar.
 
-![TMB30 Claim Jp](/images/TaskManagement/TMB30-Claim.jpg)
+   ![TMB30 Claim Jp](/images/TaskManagement/TMB30-Claim.jpg)
+3. The task detail screen opens for you to take action, and the item is now listed in your My Tasks module on the dashboard. You now own this task.
 
-1. The task detail screen opens for you to take action, and the item is now listed in your My Tasks module on the dashboard. You now own this task.
-
-![TMB31 Assignment Actions Jp](/images/TaskManagement/TMB31-AssignmentActions.jpg)
+   ![TMB31 Assignment Actions Jp](/images/TaskManagement/TMB31-AssignmentActions.jpg)
 
 **_Claiming Multiple Tasks At Once_**
 
@@ -690,9 +689,9 @@ In the task detail view, click **Unclaim** in the top action bar to unassign the
    ![TMB36 1reassign Single Task Jp](/images/TaskManagement/TMB36-1ReassignSingleTask.jpg)
 2. Click **Reassign**, select the user to receive the task from the dropdown list in the popup menu, then click **Submit**. You will only see the Reassign option if you have the appropriate permission level in this process.
 
-![TMB37 2reassign Single Jp](/images/TaskManagement/TMB37-2ReassignSingle.jpg)
+   ![TMB37 2reassign Single Jp](/images/TaskManagement/TMB37-2ReassignSingle.jpg)
 
-![TMB38 3reassign Jp](/images/TaskManagement/TMB38-3Reassign.jpg)
+   ![TMB38 3reassign Jp](/images/TaskManagement/TMB38-3Reassign.jpg)
 
 **Unclaim Multiple Tasks**
 
@@ -836,10 +835,10 @@ When you click on a QC task that you own: 
 5. Click on **Content & History** at the bottom of the screen and review any **Notes** and **Attachments**, as well as **Emails** relating to the item.
 6. Complete any offline processes your business requires you to do as part of this task.
 7. When you are finished:
-   1. Resolve the item and move it to the next process task by clicking **Complete**.
-   2. If appropriate, you can **Discard** the item, which removes it from the process. The item is still found by Active Search with a status of “discarded.” (Click **\<\< MORE** and then **Discard**)
+   - Resolve the item and move it to the next process task by clicking **Complete**.
+   - If appropriate, you can **Discard** the item, which removes it from the process. The item is still found by Active Search with a status of “discarded.” (Click **\<\< MORE** and then **Discard**)
 
-### \*\*Business Exception (User) Tasks \*\*
+### Business Exception (User) Tasks
 
 In most cases, User tasks are business exceptions that require a person to manually resolve an issue. For example, if an OCR task can’t fully read the data from a scanned document due to poor scanning quality, a User Task may be generated to re-scan the item. 
 
@@ -848,33 +847,31 @@ User tasks can also be manual steps like reviewing results and issuing a payment
 When you click on a User Task that you own:
 
 1. Review the item data you see and any information at the top of the screen. 
-2. Click on **Content & History** at the bottom of the screen and review any **Notes** and **Attachments**, as well as **Emails** relating to the item.
+2. Click on **Content & History** at the bottom of the screen to review any **Notes,** **Attachments**, and **Emails** related to the item.
 3. Make whatever updates are required to resolve the item. Click **Validate** after making updates to ensure the data is correct. Also, **Save** your work (under **\<\< MORE**) if you have other steps to do or are otherwise not quite ready to finish this task.
 4. Add any labels to the task under **\<\<MORE Add Label**. Labels can then be used in searches and filters.
 5. Complete any offline processes your business requires you to do as part of this task.
 6. When you are finished:
-   1. Resolve the item and move it to the next process task by clicking **Complete**.
+   - Resolve the item and move it to the next process task by clicking **Complete**.
+   - If more appropriate, you can **Discard** the item, which removes it from any further processing steps. (Click **\<\< MORE** and then **Discard**)
 
-If more appropriate, you can **Discard** the item, which removes it from any further processing steps. (Click **\<\< MORE** and then **Discard**)
+### Error Tasks
 
-### \*\*Error Tasks \*\*
-
-Business users may receive certain types of Error Tasks. These are usually data-related errors, such as missing or invalid data. They can also be problems like a duplicate invoice or missing document attachment. 
+Business users may be assigned certain types of Error Tasks. These are usually data-related errors, such as missing or invalid data. They can also be problems like duplicate invoices or missing document attachments. 
 
 Business users will usually <u>not</u> see Error Tasks related to system processes or technical problems.
 
 When you click on an Error Task that you own:
 
 1. Review the error message at the top of the screen, then the item data you see. 
-2. Click on **Content & History** at the bottom of the screen and review any **Notes** and **Attachments**, as well as **Emails** relating to the item.
+2. Click on **Content & History** at the bottom of the screen to review any **Notes,** **Attachments**, and **Emails** related to the item.
 3. Make the updates required to resolve the problem. **Save** your work if you have other steps to do or are otherwise not quite ready to finish this task. 
 4. Add any needed labels by clicking **\<\< MORE** and then **Add Label**. Labels can then be used in searches and filters.
 5. Click **Validate** after making updates to ensure the data is correct <u>if you plan to resubmit the item</u> to run back through this process. 
 6. Complete any offline processes your business requires you to do as part of this task.
-7. When you are finished:
-   1. Resolve the item:
-      1. **Resubmit** it to send it back through this automated step with the corrections you’ve made to it. This will <u>revalidate</u> and <u>reprocess</u> the step completely.
-      2. <u>Bypass</u> automated re-processing and move it to the next process task by clicking **Complete**. This indicates that you have verified that all of the processes within this step have been successfully completed, manually or otherwise. 
+7. Resolve the item when you are finished:
+   - **Resubmit** it to send it back through this automated step with the corrections you’ve made. This will <u>revalidate</u> and <u>reprocess</u> the step completely.
+   - <u>Bypass</u> automated re-processing and move it to the next process task by clicking **Complete**. This indicates that you have verified that all of the processes within this step have been successfully completed, manually or otherwise. 
 
 If more appropriate, you can **Discard** the item, which removes it from any further processing steps. (Click **\<\< MORE** and then **Discard**)
 
@@ -885,7 +882,7 @@ Annotations on tasks may be key to resolving issues or answering future question
 **_About Notes:_**
 
 - Notes can be rich-text documents and contain text, images, links, tables, and a broad array of formatting. 
-- Each note should be <u>specific</u> to a topic <u>and</u> audience, as you can have multiple notes attached to an item as it moves through the workflow. For example, you could have one for the accounting team and another for logistics.
+- Each note should be <u>specific</u> to a topic <u>and</u> audience, as multiple notes can be attached to an item as it moves through the workflow. For example, you could have one for the accounting team and another for logistics.
 - You set an “access level” on a per-note basis, so you can have notes that are **private**, **group**, or **public** access.
 
 ### **_Creating a Note_**
@@ -898,28 +895,27 @@ Annotations on tasks may be key to resolving issues or answering future question
      **NOTE**: For some tasks, the window opens with a document window in the front. You’ll need to close that window to see the Notes tab:\
      ![TMB54 Notes2behinddoc Jp](/images/TaskManagement/TMB54-Notes2behinddoc.jpg)
    </Tip>
-3. Click the green plus icon  on the right of the screen to add a note. The note editor appears as a pop-up.\
+3. To add a note, click the **green plus icon** on the right of the screen. The note editor will appear as a pop-up.\
    ![TMB55 Notes Edit Jp](/images/TaskManagement/TMB55-NotesEdit.jpg)
 4. Use the note editor like any text editor, such as Word or Docs. 
-   1. Shortcuts like Copy (Ctrl/Cmd C) and Paste (Ctrl/Cmd V) work here.
-   2. The Insert menu lets you easily add images, links, horizontal lines, and tables.
-   3. Formatting options across the top of the screen provide bold, italic, font color, background color, alignment, and list/indent styles.
-   4. The Edit menu provides Undo / Redo and Select All options, in addition to the usual cut, copy, and paste.
+   - Shortcuts like Copy (Ctrl/Cmd C) and Paste (Ctrl/Cmd V) work here.
+   - The Insert menu lets you easily add images, links, horizontal lines, and tables.
+   - The formatting options across the top of the screen include bold, italic, font color, background color, alignment, and list/indent styles.
+   - The Edit menu provides Undo / Redo and Select All options, in addition to the usual cut, copy, and paste.
 5. After composing your document, click **Save** to save and close the pop-up.  You can also click **Close** without saving to discard your work.
 6. The note you created is saved as an unnamed Public note on this item.\
    ![TMB56 Notelisted Jp](/images/TaskManagement/TMB56-Notelisted.jpg)
-7. Now, adjust the note’s name and access level.
-   1. Click the expand icon on the far right of the item to open its edit menu.\
-      ![TMB57 Updatenote Jp](/images/TaskManagement/TMB57-Updatenote.jpg)
-   2. If you need to make changes to the content you just saved, click **Edit Note**.
-   3. To update the note’s name, access level, and task note status, click **Edit**.\
+7. Now, adjust the note’s name and access level and make any other changes by clicking the **expand icon** on the far right of the item.\
+   ![TMB57 Updatenote Jp](/images/TaskManagement/TMB57-Updatenote.jpg)
+   1. If you need to make changes to the content you just saved, click **Edit Note**.
+   2. To update the note’s name, access level, and task note status, click **Edit**.\
       ![TMB58 Noteupdate Jp](/images/TaskManagement/TMB58-Noteupdate.jpg)
-   4. Type a descriptive name for the note. 
-   5. Click the down arrow under Access Level and select the appropriate security level. 
-      1. **User** restricts the note and its content to be visible to only you.
-      2. **Group** allows anyone in the same user group as you to see the note and its content.
-      3. **Public** lets anyone who can see this item see the note and its content.
-   6. Indicate if this is a \*\*Local \*\*note by clicking the checkbox. Local notes are only seen on this item during this processing step; when the task is resolved, the note disappears. If you leave this unclicked, the note will remain on the item throughout its life, regardless of its step or status.
+   3. Type a descriptive name for the note. 
+   4. Click the down arrow under Access Level and select the appropriate security level. 
+      - **User** restricts the note and its content to be visible to only you.
+      - **Group** allows anyone in the same user group as you to see the note and its content.
+      - **Public** lets anyone who can see this item see the note and its content.
+   5. Click the checkbox to indicate if this is a **Local** note. Local notes are only seen on this item during this processing step; when the task is resolved, the note disappears. If you leave this unclicked, the note will remain on the item throughout its life, regardless of its step or status.
 
    Click **Save** to retain the changes you’ve just made or **Cancel** to exit editing without saving your changes.
 
@@ -934,12 +930,12 @@ Occasionally, an item flowing through the process may no longer be needed. Examp
 4. Click **OK** to discard it or Cancel to return to the task details page.
 
 <Tip>
-  **NOTE**: When an item is discarded, it is still found via Active search, with a status of “Discarded.”
+  **NOTE**: After an item is discarded, it can still be found via Active search, with a status of “Discarded.”
 </Tip>
 
 ## **Bulk actions**
 
-There are a number of actions you can perform simultaneously on a group of selected items. This is called a **Bulk Action**.
+You can perform several actions simultaneously on a group of selected items. This is called a **Bulk Action**.
 
 Examples:
 
@@ -962,4 +958,4 @@ You can only act on tasks that are <u>all in the same process.</u>
   ![TMB62 Downloadtasks Jp](/images/TaskManagement/TMB62-Downloadtasks.jpg)
 </Tip>
 
-Click the action you would like to take or click Close to cancel and return to the list of all items.
+**Click the action** you would like to take or click **Close** to cancel and return to the list of all items.
