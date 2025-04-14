@@ -1,0 +1,611 @@
+---
+title: "Process Administration Guide"
+description: "This document is an Administration Guide for creating and editing Process Automations in the Actionabl system. It is intended for Actionabl Technical Users."
+sidebar-title: "Process Administration"
+icon: "arrow-progress"
+---
+
+# OVERVIEW
+
+[Actionabl.ai](http://Actionabl.ai) is a platform that automates your business processes and alerts users whenever human intervention is needed. 
+
+This guide covers the creation and editing of process automations within the system, including connectors, tasks, rules, and forms.
+
+<Tip>
+  **_If you are a new technical administrator of Actionabl, you should first review Getting Started with Actionabl to familiarize yourself with the key concepts and terms used throughout this document._**
+</Tip>
+
+## _Related Documents:_
+
+- [**_Controller Guide_**](/Controller/controller-guide) covers all aspects of the Controller dashboard, which includes:
+  - Scheduling and management functions for automations, AI spaces, Tasks, and cron jobs
+  - Process analytics
+  - Process view management
+  - Error Task management
+- [**_Task Management Guide_**](/TaskManagement/task-management) is written primarily for your company's business users, but you may find it helpful in understanding the larger concepts of the tasks you’re administering.
+- [**_User Management Guide_**](/UserManagement/user-management) includes all aspects of managing users, groups, and departments. It is intended primarily for supervisory and administrative users.
+- [**_Automation, Rule, and Task Management Guide_**](/Admin/automation-management) details the management of all of the core “actions” in the system through automations, rules, tasks, and connectors. It also details process management and how connectors function, which informs how you administer them.
+
+<Info>
+  **Unless otherwise noted, all Actionabl admin menus mentioned in this document are found under the Admin dashboard, accessed from your user profile.**
+</Info>
+
+# **UNDERSTANDING THE COMPONENTS OF PROCESS AUTOMATION**
+
+In Actionabl, the **Process View** defines an automation and how data flows through the system. It has a number of components:
+
+![PM01 Process Automation Overview Jp](/images/ProcessGuide/PM01-ProcessAutomationOverview.jpg)
+
+- The **Start Event** kicks off the execution of the process. This may be, for example:
+  - A regularly scheduled scan of a folder or file to detect changes
+  - Receipt of an email or message from an external resource
+  - An inbound API call or webhook event
+  - A cron job that runs on a scheduled basis to execute a database query
+- The process is made up of a series of **Tasks**, which may be guided by **Task Rules**.
+- Items pass through the process using the **Connectors** to move through the tasks. Connectors are specific actions that can change the status (and **Stages**) of the item as they move it between task steps.
+- **Decisions** represent logical branches in the flow, where an item may be directed into a different pathway based on the rules and evaluations that occur within the Decision task.
+- At the end of the process, each pathway has a **Resolution Event**, representing the automation's terminal action.
+
+In addition to the elements shown here, a Process Automation also may use:
+
+- **Data sources**, which may be internal or external
+- **Data fields** in the database
+- **Remote workers** to connect to APIs and integration points
+- **External Access** resources, which can retrieve or send data outside the Actionabl system.
+
+<Tip>
+  Please review the [**Task Management Guide**](/TaskManagement/task-management) to understand how processes, tasks, and stages work together to form a process automation. The concepts from that guide are critical to your understanding to enable you to create and manage process automations effectively.
+</Tip>
+
+# DESIGNING A PROCESS AUTOMATION
+
+When designing a process automation, it’s tempting to just start building the flow in the system. However, this is the least efficient approach and can cause frustration. We recommend the following process. 
+
+**Steps 1 through 7 are done outside of Actionabl using your preferred flowcharting method and tools.**
+
+<Steps>
+  <Step title="Build the process flow" stepNumber="1">
+    Start by sketching the process flow. This flow should include all inputs and outputs, decision points, tasks, and status transitions for items flowing through the process.
+  </Step>
+  <Step title="Identify your data sources">
+    Identify all of the data sources that this process uses in each of its tasks. This includes all APIs, communications, human inputs, databases, and forms.
+  </Step>
+  <Step title="Define the data">
+    For each task in the process, clearly define the data it will use, including inputs, outputs, and any translations or calculations.
+
+    Each data point should have an identified source and a storage point.
+  </Step>
+  <Step title="Define Tasks and Rules">
+    In your process flow, fill in the details of each task and all of the rules that govern it. 
+
+    > For example, if you have a task that validates an invoice, list the validations to be performed (e.g., date, vendor, quantities matching a PO, looking for a VIP flag, dollar thresholds, etc.).
+
+    As you build your tasks and rules, group them into the appropriate Stages.
+  </Step>
+  <Step title="Define Decision Points">
+    For each potential branch in the flow, clearly define what the decision is evaluating - the field(s), groupings, logic, and conditions.
+  </Step>
+  <Step title="Define How The Tasks Connect">
+    Each task must have an input and an output connection. The connectors define the actions that will be taken to move the item between this task and its next one. Define each connector and what it does.
+
+    > For example: if a connector reads an incoming email and passes it to a validator, it’s likely an OCR connector that extracts specific fields.
+  </Step>
+  <Step title="Define The Resolution Task(s)">
+    Ensure that every pathway has a well-defined resolution task as its endpoint.
+  </Step>
+  <Step title="Build the Process Components in Actionabl">
+    Now that you have all of the process components defined, you can start building them in the system. If you start at the most granular level and build up from there, the elements you need for more complex items like tasks will already be in place when you’re ready to use them.
+
+    In Actionabl, we recommend that you build items in this order:
+
+    1. Data fields
+    2. Data sources
+    3. Connectors
+    4. The Process Model
+       - Tasks and Stages - The Process Model
+       - Task Rules
+       - Decisions
+    5. Remote workers
+    6. External accesses
+  </Step>
+</Steps>
+
+# MANAGING DATA FIELDS
+
+A Data Field is a container for a defined, discrete, element of data stored in JSON format within Actionabl. A field has the following characteristics:
+
+- **Type** (required) defines the format of the data stored in the field. Supported types are: String, Integer, Float, Boolean, Date, Date Time, Time, Field Set, JSON, Attachment, or Alias.
+- **Unique ID** (required), which cannot contain spaces or special characters other than underscores. Example: member_email_address
+- **Name** (required) is the human-friendly name of the field displayed on internal lists, forms, and reports. If no Display Label is set, this is what shows in the UI for this field. This is usually set to a version of the ID. Example: Member Email
+- **Active** is a flag indicating whether the field is currently in use and should be shown in reporting and the UI. This defaults to checked.
+- **Control Type** governs how inputs to the field are structured. Supported types are: Multiline, Lookup, Dropdown, Checklist, File Select, Link, Currency, Date Format, Text Editor, Multi Select, Record Lookup, User, and Display In Place. Your selection here may cause other input fields to appear, such as the items to select or the number of input lines to display.
+- **Display Label** overrides the Name when the field is displayed in a form or in the UI. Example: Email.
+- **Data Format** controls how the data in the field is displayed in the interface. The selected data format must be compatible with the Type and the Control Type. Valid options are: ID, Folder ID, User ID, Name, Number, Alphanumeric, Percentage, Currency, File Path, URL, Phone Number, Email, Time Interval (DDHHMM), IP Address, Host Name, and Port Number.
+- The**Validation Rule**  is an optional rule that sets guardrails on what can be entered into this field. For example, if the field is “invoice_date,” the validation rule may say that the date entered cannot be earlier than the company’s founding date and also can’t be a future date.**The Validation Rule cannot be violated by any existing entries, not just new entries—it’s not an input validation; it’s a field validation.** 
+- **Field Form** is ??
+- If **Is List** is checked, the field is treated as an array that can contain multiple values. 
+
+In this example, the field is a multi-select field allowing labels to be set on Bank Invoices:
+
+![PM02 Field Example Bank Inv Labels Jp](/images/ProcessGuide/PM02-FieldExampleBankInvLabels.jpg)
+
+This example is an attachment field that can hold multiple file uploads:
+
+## ![PM03 Field Example Attachment List Jp](/images/ProcessGuide/PM03-FieldExampleAttachmentList.jpg)
+
+**Creating New Fields**
+
+If an existing field is configured similarly to the new field, you can Duplicate the existing field and use that as the basis for the new one. Alternatively, click the green plus icon on the top right of the field list to create a new field from scratch.
+
+<Tip>
+  If you are on any page <u>other than 1</u> in the field list when you click the green plus sign, the new field will not appear to be created. However, if you go back to page 1, you will find the dialog for it open at the top of that page.
+</Tip>
+
+![PM07 New Field Empty Jp](/images/ProcessGuide/PM07-NewFieldEmpty.jpg)
+
+In the new field dialog, select a **Type** from the dropdown.
+
+1. Type a unique **ID**. This cannot contain spaces or special characters other than underscore (\_).
+2. Enter a **Name** that will be easily understood in the forms, reports, and areas of the interface where the field appears.
+3. Leave **Active** checked unless you want the field to be inactive and hidden.
+4. Optionally:
+   - Select a **Control Type** from the dropdown. If you do not select one, the system will default to one it assumes is appropriate to the Type you selected. Your selection of a control type may cause additional options to appear, such as the number of input lines or format specifications.
+   - Add a **Display Label** to override the internal Name of this field when it is shown in user forms. 
+   - Specify a **Data Format**. This is a more detailed internal format for storing data, such as “phone number” for an integer field. It restricts the input to the parameter of the format selected.
+   - **Validation Rules** can be used to limit the input in the field. For example, you can specify that a Name cannot contain numbers or that a date cannot be in the future.
+   - Select a **Field Form**.
+   - If the field should contain an array of values (multiple entries), click the “**Is List**” box.
+
+Click **Save** when done.
+
+## Editing Existing Fields
+
+You can only **Edit** fields that you or another user have created; fields created by Actionabl cannot be changed. However, you can **Duplicate** any field in the system and make changes to its structure and characteristics. 
+
+In the **Components** section of the menu, click **Fields** to open the list of fields.
+
+![PM04 Field List Jp](/images/ProcessGuide/PM04-FieldList.jpg)
+
+You can easily filter the list of fields by:
+
+- **Type**. Select from the dropdown list of field types such as Integer, Boolean, or String.
+- **Control Type**. Select from the dropdown list of control types such as Dropdown or File Select.
+- **Cluster**. Select the process or sub-process in which the field is found. Clusters are used in load balancing; they are defined in project_config.js and usually correspond to process definitions.
+
+You can also search for a field using **Table Search** by entering any of the information displayed in the table (name, type, control type, updated by user, etc.).
+
+1. Click the **Expand** icon to open the field you want to edit or duplicate. If you can edit the field, it will look like this:\
+   ![PM05 Editable Field Jp](/images/ProcessGuide/PM05-EditableField.jpg)
+
+   Otherwise, it will look like this:\
+   ![PM06 Not Editable Field Jp](/images/ProcessGuide/PM06-NotEditableField.jpg)
+2. Click **Edit** or **Duplicate** to continue.
+
+   <Info>
+     Duplicating a field only copies its definition, not the data contained in it.
+   </Info>
+3. In the window, you can now select or change all of the elements of the field. 
+4. **If editing an existing field that is in use, be aware that changing its type, data format, validation, or control type may create errors in existing processes or forms that use the field.**
+
+<Warning>
+  **Exercise extreme caution, as editing a field can result in a permanent loss of data if existing field values are converted. Once a process is in production, field types, data formats, validations, or control types should not be changed.**
+</Warning>
+
+# **MANAGING DATA SOURCES**
+
+Data sources are static tables of data that can be queried against as a reference, but that cannot be updated by the automated processes.
+
+> Let’s use an example where we track a list of attendees at a yearly event. Each year’s attendance records are kept in an XLS or CSV file.
+
+Data sources have 3 components:
+
+1. **Data Source Definition**. This is the table definition for the data, specifying the following for each column: field name, display name, data type, and whether the field is hidden. A data source definition can be mapped to multiple data sources as long as their structures are identical. For example, the same data source definition can be used for every year of the event’s attendee records, as long as those records have the same data structure.
+2. **Data Source Mapping**. This entry maps the data source definition to a specific instance of the data and sets the field on which to match the definition to the data. This is where the data source definition for the event would have multiple entries, one for each of the event years.
+3. **Data Source File**. This is the file that contains the actual data (the attendee information for year 2, for example). This can also be a key:value entry you’ve typed or the results of a Bot’s actions.
+
+## ![PM08 Data Source Mapping CHART Jp](/images/ProcessGuide/PM08-DataSourceMappingCHART.jpg)
+
+**_Creating A Data Source Definition_**
+
+1. Go to **Components** -\> **Data Sources**.
+2. At the top, start with the **Data Source Definitions** tab.
+3. Either click the green plus at the top right to start from scratch, or use an existing definition as the model. To do that, click the **Expand** icon next to the model, then click **Duplicate**. For this example, we’re going to duplicate the Generic (Key, Value) definition.\
+   ![PM09 Data Source Definition Step1 Jp](/images/ProcessGuide/PM09-DataSourceDefinitionStep1.jpg)
+4. Enter an **ID**. This cannot contain spaces or special characters other than underscore (\_).
+5. Replace the **Name** copied from the original record with the name for the new definition.
+6. Leave **Active** checked. It should now look something like this:\
+   ![PM10 Data Source Definition Step2 Jp](/images/ProcessGuide/PM10-DataSourceDefinitionStep2.jpg)
+7. Next, specify each of the fields in your data file, along with their “friendly” name and type. 
+   - **Field Name** should exactly match the column header in the data file. 
+   - **Field Title** can be anything you’d like. This is how the data will be labeled in the interface, reports, etc., within Actionabl.
+   - Select a **Data Type** that represents how the data should be interpreted from the source file. 
+   - Click **Hidden** if the field should not be displayed in Actionabl.
+
+     <Tip>
+       - To add more rows to the definition, click the green plus sign at the top of the right-most column.
+       - To delete an unused row, click the red X on its right side.
+       - To change the order of the rows, use the 6-dot icon on the far right to drag the column to its desired position. Row order is critical to mapping the data to the correct fields if your input data does not have headers.
+     </Tip>
+8. Your input should look something like this:\
+   ![PM11 Data Source Definition Step3 Jp](/images/ProcessGuide/PM11-DataSourceDefinitionStep3.jpg)
+9. Click **Save**.
+
+## **_Defining a Data Source Mapping and Source Data_**
+
+Your data source definition maps to:
+
+- A file previously uploaded in the system
+- A file the user is prompted to upload whenever the data source is called
+- Information you directly enter in _key:value_ format
+- The results of a bot’s actions that run when this data source is called
+
+In the **Data Sources** tab, click the green plus sign to create a new data source from scratch.
+
+![PM12 Data Source Blank Jp](/images/ProcessGuide/PM12-DataSourceBlank.jpg)
+
+1. Type a unique **ID** for the data source. This cannot have spaces or special characters other than underscores (\_). Using our previous example, this will be a <u>specific year’s</u> attendees, so its ID and name should reflect that. 
+2. Enter a **Name** for the data source. This is how the source will appear in all menus, reports, and anywhere it’s listed in the system. 
+3. For the **Type**, select the Data Source Definition you just created for it.\
+   ![PM13 Data Source Step1 Jp](/images/ProcessGuide/PM13-DataSourceStep1.jpg)
+
+### **Entry Source Type**
+
+This source assumes you have a relatively small set of data and that you’re going to type it in here. Clicking this loads a table showing the data definition you specified. 
+
+![PM14 Data Source Entry Jp](/images/ProcessGuide/PM14-DataSourceEntry.jpg)
+
+Click the green plus sign at the far right of the table headers to start adding data.
+
+![PM15 Data Source Entry Filled1 Jp](/images/ProcessGuide/PM15-DataSourceEntryFilled1.jpg)
+
+As you add data here, note that the fields specified as Date-Time have a date/time picker and restrict data entry to match. Likewise, the Boolean field, Attended, has a simple checkbox. The “Sign Up Date” field is hidden from inputs.
+
+You can keep adding rows by clicking the green plus sign and delete any that you don’t need by clicking the red X. 
+
+Click **Save** when you’re done and the dataset is ready for use.
+
+### File Source Type
+
+The File source type assumes that you’ve uploaded a file to the filesystem, which makes it available for selection.
+
+To do this, you can place the file in a folder or leave it at the root level for uploaded files on your system. If you aren’t sure how to upload this file, consult with your system administrator or DevOps/IT department.
+
+When you select File as the source type, your input screen will look something like this:
+
+![PM16 Data Source File1 Jp](/images/ProcessGuide/PM16-DataSourceFile1.jpg)
+
+Click the **[ ] icon**  in the **File** field to see the available files in the system.
+
+![PM17 Data Source File2 Jp](/images/ProcessGuide/PM17-DataSourceFile2.jpg)
+
+<Tip>
+  Note on the list that some of the entries (like Attendee Records) are described as **Folders**. Clicking one of these opens the folder and shows the files in it. To return to the previous list level, click the double dots at the top left of the list.\
+  ![PM18 Data Source File3 Jp](/images/ProcessGuide/PM18-DataSourceFile3.jpg)
+</Tip>
+
+1. Click on the **File** you want to use for this mapping. 
+2. Select the **File Type** in the dropdown.
+3. In the **Match Type** dropdown, select how you want to match the fields to the Data Source Definitions. You can use the field index, field name, or field title to match on.
+4. If your input file contains headers, click “**Has Header**” to skip the first row of the file. 
+
+The result should look something like this. Note that the File field shows both the folder and the filename:
+
+![PM19 Data Source File4 Jp](/images/ProcessGuide/PM19-DataSourceFile4.jpg)
+
+**File Upload Source Type**
+
+The File Upload source type differs from the File type in that it prompts the user for an uploaded file when the data source is called. This is especially handy if recent or refreshed data is needed whenever the data source is used. 
+
+![PM20 Data Source File Upload1 Jp](/images/ProcessGuide/PM20-DataSourceFileUpload1.jpg)
+
+1. Specify the **File Type** to be uploaded from the dropdown list.
+2. Specify the **Match Type** from the dropdown, which defines how the file's data is matched to the Data Source Definition.
+3. Indicate whether the input file is assumed to have a **header row**, which should be ignored.
+
+### **Bot Source Type**
+
+The Bot source connects the data source to a bot script, which runs using the specified parameters whenever the data source is called. This is especially useful when a complex process or data assessment is required to generate a result set for use. For example, you might create a script that calls a REST API to fetch data, which is then manipulated to be used as a data source.
+
+![PM21 Data Source Bot1 Jp](/images/ProcessGuide/PM21-DataSourceBot1.jpg)
+
+Click the **browse icon** [ ] in the Bot Script field to select the script to run.
+
+<Tip>
+  See the [**_Automation Management Guide_**](/Admin/automation-management) for information on how to set up Bot scripts, if needed.
+</Tip>
+
+<Tip>
+  Note that some of the entries on the list are described as **Folders**. Clicking one of these opens the folder and shows the files in it. To return to the previous list level, click the double dots at the top left of the list.\
+  ![PM21A Bot Source File Select Jp](/images/ProcessGuide/PM21A-BotSourceFileSelect.jpg)
+</Tip>
+
+After selecting the script, click the green Plus sign to the far right of Script Parameters to set up the script’s inputs. These parameters are passed to the bot each time it is started by this specific Data Source being called.
+
+![PM22 Data Source Bot2 Jp](/images/ProcessGuide/PM22-DataSourceBot2.jpg)
+
+![PM23 Data Source Bot3 Jp](/images/ProcessGuide/PM23-DataSourceBot3.jpg)
+
+Enter the parameters specific to that Bot script. You can also enter parameter groups, if needed.
+
+### **_Uploading Data Source Files_**
+
+Files such as those used in data sources must be uploaded directly to the file system in the **Project/Folders/Resources/Published/Files** folder. For ease of maintenance, we strongly recommend creating subfolders here and using a consistent naming system to organize your files.
+
+File uploads are made by a technical user or administrator who has been granted access, usually using an FTP client.
+
+Once a data source is uploaded, it cannot be directly edited. To update the contents, upload a replacement file with the exact same filename.
+
+# MANAGING TASK ACTIONS
+
+Each task needs an action, so before creating it, we need to ensure that the appropriate actions are defined in the system.
+
+Go to **Components** **-\> Task Actions** to see and edit the actions already defined or to add a new action.
+
+Actions can have one of seven types:
+
+![PM24 Task Action Types Jp](/images/ProcessGuide/PM24-TaskActionTypes.jpg)
+
+**Send Email** actions send an email using one of the system-defined email templates. (_See Email Templates for more information about creating and managing templates._)
+
+- **A Start Process** is a “start task” that initiates a process flow. Examples include receiving an emailed invoice from a vendor or scanning a folder for a newly created file.
+- **Static Form**, **Dynamic Form**, and **Custom Form** task actions are used in tandem with the Local Actions in a task to send a form to the user to fill out. 
+  - Static forms are pre-created and standard forms that the process sends, such as a password reset or a standardized request for information.
+  - Dynamic forms are created on the fly based on the unique information in the task. For example, this could send a request for more information based on certain criteria found in an invoice’s data.
+  - Custom forms **<u>(NOT DEFINED IN TASK MANAGEMENT GUIDE - NEED MORE INFO)</u>**
+- **Start Thread** tasks open a new communication thread associated with the task, which can be used for notifications and other communications.
+- **Bulk Tasks Action** combines multiple task actions into a single one by using a rule.
+
+# **MANAGING CONNECTORS**
+
+While tasks have internal actions, connectors are the pathways and actions that move an item between tasks. There are 6 categories of connectors in Actionabl, each of which is covered in detail below:
+
+- Start Event
+- App
+- OCR
+- RPA
+- Bot
+- AI
+
+Connectors are **created** by going to **Components** -\> **Connectors** and clicking the green plus icon on the top right. 
+
+To **manage or duplicate** an existing connector, click the expand icon next to it in the list.
+
+## ![PM25 Connector List Jp](/images/ProcessGuide/PM25-ConnectorList.jpg)
+
+Managing an Existing Connector
+
+<Warning>
+  **If a connector is currently in use, you must pause the automation(s) in which it’s used prior to making any edits to it.** \
+  \
+  Best Practice is to duplicate the connector, make the changes and <u>thoroughly test them</u>, then replace the old one with the new one in the process automations. You can then restart the automations. You should then delete the old connector to avoid confusion.\
+  \
+  **DO NOT delete a connector until you are certain that no automations or processes use it.**
+</Warning>
+
+When you expand an existing connector, you see its details and can also take the following actions.
+
+You can take the following actions on connectors:
+
+- **Edit** lets you change the connector’s information and behavior.
+- **Test** enables you to input test data and see how the connector processes it. You’ll also be able to see the output data and any messages generated. 
+- **Duplicate** copies the connector so you can use it to build a new one.
+- **Delete** removes the connector from the system.
+- **Cancel** closes the connector’s information without saving any changes.
+
+## ![PM26 Connector Actions Jp](/images/ProcessGuide/PM26-ConnectorActions.jpg)
+
+**Creating Connectors**
+
+Click the green plus sign at the top right of the connector list to open a new connector dialog at the top of the first page of connectors.
+
+<Tip>
+  If you are on any page <u>other than 1</u> in the field list when you click the green plus sign, the new field will not appear to be created. However, if you go back to page 1, you will find the dialog for it open at the top of that page.
+</Tip>
+
+- Select a **Category**. This will change the available Types.
+- Select a **Type** of event. Your selection will change the other inputs available, as detailed below.
+- Enter a unique **ID** for the connector. This cannot contain spaces or special characters other than underscores (\_).
+- Enter a descriptive **Name** for the connector. This is used in lists, displays, process models, and anywhere the connector is shown. 
+- Enter a **Task Retry Count.** This value defaults to **3** and represents the number of times the system will automatically try to restart the connector’s task if it fails before showing the user an error and stopping the process execution.
+- Select a **custom task icon** for this connector, which is used in process modeling and anywhere else that the connector is visually depicted. Your system administrator can upload additional icons to the ?????? folder.
+- Check the **Active** box to make this connector usable and visible in process modeling.
+
+### Start Event Connectors
+
+The Start Event connector represents the action that starts a process.
+
+> Typical examples are:
+>
+> - Receiving an email
+> - Monitoring a folder for a new or changed file
+> - A cron job that periodically runs the process
+
+It can have the following **Types**:
+
+- Cron
+- Http
+- Read email
+- Read Gmail
+- Read Msmail
+- Read Folder
+- Read File
+- FTP
+- Custom Start
+- DB Query
+
+#### **Cron Start Events**
+
+A cron start event indicates that a script, set up under **Control Center -\> Cron Job Scheduler,** will run on a defined schedule and execute a script. The output of that script starts the process.
+
+For example:
+
+- A cron job runs an external API query every night at 2 AM to pull in new account signups from a website.
+- When that job runs and finds new accounts, that starts the process.
+
+The cron job is scheduled like this.
+
+![PM30 Start Event Cron1 Jp](/images/ProcessGuide/PM30-StartEventCron1.jpg)
+
+The connector is set up like this:
+
+![PM31 Start Event Cron2 Jp](/images/ProcessGuide/PM31-StartEventCron2.jpg)
+
+#### **HTTP Start Events**
+
+INFO NEEDED
+
+#### **Read Email / Read Gmail / Read MSMail Start Events**
+
+A start event that monitors an email account and reads incoming messages that match specified criteria has a **Read Email** type. The specific sub-types of this event for Gmail and MSMail differ only in their background processing to correctly connect and authenticate to the type of email service.
+
+> For example:
+>
+> - A process schedule in the Bank Invoice Process uses the Bank Invoice Read Email connector. 
+> - This connector runs every 30 seconds to monitor for incoming emails that match its criteria. 
+> - When one is found, it reads the specified fields and runs the Inbound OCR process on any attachments to create an item in the Actionabl system (such as INV-27), then moves that item into the first task in the Bank Invoice Process.
+
+The Process Schedule is set up like this:
+
+![PM27 Bank Invoice Process Schedule Start Jp](/images/ProcessGuide/PM27-BankInvoiceProcessScheduleStart.jpg)
+
+The Start Event looks like this:
+
+![PM28 Bank Invoice Read Email Connector Jp](/images/ProcessGuide/PM28-BankInvoiceReadEmailConnector.jpg)
+
+![PM29 Bank Invoice Email Start Event Details Jp](/images/ProcessGuide/PM29-BankInvoiceEmailStartEventDetails.jpg)
+
+#### **Read Folder Start Event**
+
+The Read Folder start event monitors the specified folder. When it finds new files that match the criteria in the folder, it triggers the start of the process. 
+
+> For example:
+>
+> - The Bank Invoice Process monitors a folder where some vendors upload their invoices instead of sending them via email.
+> - When it finds a new invoice in that folder, it starts the process.
+
+The folders that can be monitored must exist in the ?????? path on the server.
+
+This connector looks like this:
+
+**IMAGE FPO**
+
+- The **Folder** specifies the folder to monitor. To monitor a sub-folder, make sure that the full path is specified. For example _invoice_folders/uploaded_invoices_
+- **File Types** are the file extensions to watch for. Enter each one then press Enter to save it in the field. Only files whose names specifically match these extensions will be considered. To match any file in the folder, leave this field blank.
+- **Filter** specifies a Javascript file that can be used to further narrow down the files to watch for.
+- **Save as Attachment** indicates that when the file is found, it should be saved in Actionabl as an attachment to the item created. If this is checked:
+  - Specify an **Attachment Category** (Inbound, Inbound OCR, Outbound, User, or Generated).
+  - Indicate the **access permissions** for the attachment (Public, Group, or Individual)
+
+#### **Read File Start Event**
+
+This event type monitors a specific file and starts a process when that file changes. For example, it could monitor a spreadsheet and start the process when rows are added or updated.
+
+#### **FTP Start Event**
+
+The FTP start event monitors the server for inbound FTP actions and starts the process.
+
+#### **Custom Start Event**
+
+A Custom start event executes the specific code script specified using the event's parameters. The script's output is used as input to the first task in the process.
+
+What triggers the script to run?
+
+#### **DB Query Start Event**
+
+The database query start event connects to a database using the connection parameters in the connector. Once connected, it runs an optional Data Processing Script and executes an SQL query. The query's output triggers the start of the process and serves as the input to the first task in the process.
+
+As with Custom Start events - what triggers the script?
+
+### OCR Connectors
+
+OCR connectors pass items from the previous task into an OCR task. They may perform pre-processing on the item, such as ensuring that the file matches a type that can be read through OCR.
+
+There are 4 types of OCR connectors:
+
+- Actionabl OCR uses the built-in Tesseract platform
+- Hyper Science uses the Hyperscience platform
+- Vidado uses the Vidado platform, which is ideal for handwritten as well as typed documents
+- ABBYY uses the ABBYY FineReader platform
+
+#### **Actionabl OCR Connector**
+
+The Actionabl OCR connector uses our built-in Tesseract instance. It asks you to specify whether to extract plain text or fields from the document. If you select this connector type, you can also specify which cluster to run the process in. Clusters are used primarily for load-balancing processes that use intensive CPU resources.
+
+![PM33 OCR Connector Actionabl Jp](/images/ProcessGuide/PM33-OCRConnectorActionabl.jpg)
+
+#### **Hyper Science OCR Connector**
+
+The Hyper Science connector launches an instance of the Hyperscience platform that you define by inputting:
+
+- Base URL of your Hyperscience account
+- Bearer Token for your account
+- Flow UUID defined in Hyperscience
+- Layout UUID defined in Hyperscience
+- You can designate it as Machine Only which ????
+
+![PM34 OCR Connector Hyper Science Jp](/images/ProcessGuide/PM34-OCRConnectorHyperScience.jpg)
+
+#### **Vidado OCR Connector**
+
+#### **ABBYY OCR Connector**
+
+### **_RPA (Robotic Process Automation) Connectors_**
+
+RPA connectors enable the software “robot” to mimic a human’s interaction with a site or piece of software to complete repetitive, rule-based tasks. This can include things like making selections from dropdown menus, entering data, interacting with popup menus, or picking a date in a date-picker field.
+
+There are four “engines,” referred to as Types, that RPAs use to interact with external resources:
+
+- Actionabl RPA (the built-in engine)
+- Ui Path
+- Automation Anywhere
+- Blue Prism
+
+These engines can interact with a number of external resources, including:
+
+- Websites (Web RPA)
+- Windows applications (Win RPA)
+- Java applications (Java RPA)
+- Custom-defined interactions (Custom RPA)
+- SAP (SAP RPA)
+- Android applications (Android RPA)
+
+If you are using something other than the built-in engine, you will configure the RPA in that application. This may also provide you with the ability to interact with resources other than the types listed above.
+
+#### **Actionabl RPA Connector**
+
+The Actionabl RPA connector defines the connector and its actions, as well as the authentication to the external resource it interacts with.
+
+![PM35 RPA Connector Actionabl1 Jp](/images/ProcessGuide/PM35-RPAConnectorActionabl1.jpg)
+
+The **RPA Type** is the type of resource that the script will interact with 
+
+- **RPA Script** is your selection of the script file to be run, which tells the script precisely how to interact with that resource. These are JSON files, which may be organized into folders by RPA Type and topic for ease of maintenance.
+- ****Application path, application user, andapplication password****  define how the script will connect to the external resource. 
+- Click “**Unlock computer**” if the script is interacting with a computer or device that may need to be unlocked before it can run.
+- The **RPA Parameters** section is where you specify the inputs that the script will use or other parameters that the script needs to perform its tasks. These inputs are unique to this connector; the same RPA script can be called by other connectors with other information, if appropriate. 
+
+> For example, 
+>
+> - You have an RPA script that checks a calendar for available time slots to schedule.
+> - When Connector A runs, it uses the script to check the calendar for availability on weekdays, so its RPA parameters specify that.
+> - When Connector B runs, it checks the calendar for weekend availability only, as specified in the RPA parameters.
+
+#### **UI Path RPA Connector**
+
+This RPA connector uses the UI Path service to complete the RPA operations. This connector’s input specifies how to connect to UI Path and which definitions and priorities to use to execute it. The actual RPA script definition is set up within UI Path and the parameters for it are set there, as well.
+
+![PM36 RPA Connector UI Path Jp](/images/ProcessGuide/PM36-RPAConnectorUIPath.jpg)
+
+**Automation Anywhere RPA Connector**
+
+This RPA connector uses the Automation Anywhere service to complete the RPA operations. This connector’s input specifies how to connect to Automation Anywhere. The actual RPA script definition is set up within Automation Anywhere and the parameters for it are set there, as well.
+
+![PM37 RPA Connector Auto Anywhere Jp](/images/ProcessGuide/PM37-RPAConnectorAutoAnywhere.jpg)
+
+#### **Blue Prism RPA Connector**
+
+**<u>Info needed</u>**
+
+### **_AI Connectors_**
+
+There are many AI connector types available. Each plays a very specific role in moving an item between two tasks. When you select the **Type**, the dialog changes the fields available for configuration.
