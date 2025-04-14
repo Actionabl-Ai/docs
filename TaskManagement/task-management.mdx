@@ -73,7 +73,7 @@ There are three accordions in this section:
     **Stages and Tasks:**
 
     - **Starting Point:** An invoice is received from a vendor who has produced and shipped a customer’s order based on a Purchase Order the business sent to them.
-    - **Acknowledge: **Send the vendor an acknowledgment that the invoice was received and will be processed.
+    - \*\*Acknowledge: \*\*Send the vendor an acknowledgment that the invoice was received and will be processed.
     - **Extract**
       - Process the emailed invoice through OCR.
       - Read relevant data (vendor code, vendor name, date of invoice, list of items, etc.).
@@ -126,23 +126,23 @@ There are three accordions in this section:
 
     Within Actionabl, tasks can have the following types:
 
-    | **Type**                  | **Definition**                                                                                                                                                                                                                        | **Icon**                                                |
-    | :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------ |
-    | **Decision**              | Assess whether a condition has been met, like checking whether an email has been received or if a value matches a criterion.                                                                                                          | <img height="75" width="75" src="/images/ICONS/SVGs/DM.svg" class="vertical-align:bottom;" />                     |
-    | **User**                  | This task must always be completed by a human, like reviewing a proof or shipping a product. Your company may also define some types of errors to be user tasks, such as resolving an invoice that doesn’t match the expected amount. | <img height="75" width="75" src="/images/ICONS/SVGs/UR.svg" /> |
-    | **Email**                 | This task sends an email, either internally or externally.    | <img height="75" width="75" src="/images/ICONS/SVGs/Email.svg" class="vertical-align:bottom;" /> |
-    | **SMS**                   | This task sends an SMS text message.                              | <img height="75" width="75" src="/images/ICONS/SVGs/SMS.svg" class="vertical-align:bottom;" /> |
-    | **Chat**                  | This task reads or sends a message in a chat window.    | <img height="75" width="75" src="/images/ICONS/SVGs/Chat.svg" class="vertical-align:bottom;" /> |
-    | **Quality Control (QC)**  | A task that allows the output of the previous task to be double-checked by a human, like reviewing invoice data after it’s extracted by the OCR tool.                                                                                 | <img height="75" width="75" src="/images/ICONS/SVGs/QC.svg" class="vertical-align:bottom;" /> |
-    | **App**                   | Action taken by an external application, like sending email or creating a document.           | <img height="75" width="75" src="/images/ICONS/SVGs/AP.svg" class="vertical-align:bottom;" /> |
-    | **OCR**                   | Optical character recognition to extract data from a scanned document.      | <img height="75" width="75" src="/images/ICONS/SVGs/OR.svg" class="vertical-align:bottom;" /> |
-    | **RPA**                   | Robotic process automation to allow the software to mimic a human action in a web browser or desktop application, like filling in data in Quickbooks Online.                                                                          | <img height="75" width="75" src="/images/ICONS/SVGs/RB.svg" class="vertical-align:bottom;" />            |
-    | **Machine Learning (ML)** | Tasks completed by specialized apps, like face or voice recognition, that build the application’s knowledge for future tasks.                                                                                                         | <img height="75" width="75" src="/images/ICONS/SVGs/ML.svg" class="vertical-align:bottom;" />                    |
-    | **Bot**                   | Automated, repetitive tasks like scheduling data backups or running a process at the same time every day.                                                                                                                             | <img height="75" width="75" src="/images/ICONS/SVGs/robotic-hand.svg" class="vertical-align:bottom;" /> |
-    | **SQL**                   | Tasks that interact with the database via reading, writing, or updating records.                                                                                                                                                      | <img height="75" width="75" src="/images/ICONS/SVGs/Sql.svg" class="vertical-align:bottom;" />                  |
-    | **Rule**                  | Validation of an item’s data against business rules and logical conditions.                                                                                                                                                           | <img height="75" width="75" src="/images/ICONS/SVGs/RL.svg" class="vertical-align:bottom;" />                     |
-    | **Sub-Task**              | A task (or set of tasks) that is started within another task, like looking up a recipient’s full name so it can be included in an automated email.                                                                                    | <img height="75" width="75" src="/images/ICONS/SVGs/SP.svg" class="vertical-align:bottom;" />                    |
-    | **ERROR**                 | A system-generated task alerting a user to a failure in processing an automated step correctly.                                                                                                                                       | N/A                                                     |
+    | **Type**                  | **Definition**                                                                                                                                                                                                                        | **Icon** |
+    | :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------- |
+    | **Decision**              | Assess whether a condition has been met, like checking whether an email has been received or if a value matches a criterion.                                                                                                          |          |
+    | **User**                  | This task must always be completed by a human, like reviewing a proof or shipping a product. Your company may also define some types of errors to be user tasks, such as resolving an invoice that doesn’t match the expected amount. |          |
+    | **Email**                 | This task sends an email, either internally or externally.                                                                                                                                                                            |          |
+    | **SMS**                   | This task sends an SMS text message.                                                                                                                                                                                                  |          |
+    | **Chat**                  | This task reads or sends a message in a chat window.                                                                                                                                                                                  |          |
+    | **Quality Control (QC)**  | A task that allows the output of the previous task to be double-checked by a human, like reviewing invoice data after it’s extracted by the OCR tool.                                                                                 |          |
+    | **App**                   | Action taken by an external application, like sending email or creating a document.                                                                                                                                                   |          |
+    | **OCR**                   | Optical character recognition to extract data from a scanned document.                                                                                                                                                                |          |
+    | **RPA**                   | Robotic process automation to allow the software to mimic a human action in a web browser or desktop application, like filling in data in Quickbooks Online.                                                                          |          |
+    | **Machine Learning (ML)** | Tasks completed by specialized apps, like face or voice recognition, that build the application’s knowledge for future tasks.                                                                                                         |          |
+    | **Bot**                   | Automated, repetitive tasks like scheduling data backups or running a process at the same time every day.                                                                                                                             |          |
+    | **SQL**                   | Tasks that interact with the database via reading, writing, or updating records.                                                                                                                                                      |          |
+    | **Rule**                  | Validation of an item’s data against business rules and logical conditions.                                                                                                                                                           |          |
+    | **Sub-Task**              | A task (or set of tasks) that is started within another task, like looking up a recipient’s full name so it can be included in an automated email.                                                                                    |          |
+    | **ERROR**                 | A system-generated task alerting a user to a failure in processing an automated step correctly.                                                                                                                                       | N/A      |
 
     Examples of tasks:
 
@@ -308,7 +308,7 @@ There are three accordions in this section:
     </Tip>
     #### **Advanced Options**
 
-    **Once you** select a process, the Process Search and Task Search tabs offer advanced options. Click Advanced Options to narrow things down further or look for items that match a data point not shown at the top of the screen.
+    Once you select a process, the Process Search and Task Search tabs offer advanced options. Click Advanced Options to narrow things down further or look for items that match a data point not shown at the top of the screen.
 
     ![TMB9A Advanced Search Jp](/images/TaskManagement/TMB9A-AdvancedSearch.jpg)
 
@@ -334,14 +334,14 @@ There are three accordions in this section:
        ![TMB13A Inputfields Jp](/images/TaskManagement/TMB13A-Inputfields.jpg)
     2. Select the first field to be searched from the list in the **Field Name** box. This list contains all fields in the process selected at the top of the screen.
     3. Select the **Match Type**. The match type governs how the contents of the Field Name is compared with the data in the Match Value field. <u>The match types available relate directly to the type of data in the Field Name being searched</u>. 
-       - **Text and ID fields** are expected to contain only letters and numbers. However, if numbers are present, they cannot be used in any math or processing. They might be a numeric ID or a SKU code, for example, but not a price or a date.\
-         \
-         Assume the data being searched is the following five records:\
-         _The Civil War_\
-         _Civility 101_     \
-         _life as a civilian_     \
-         _civil litigation_     \
-         _civil_
+       - **Text and ID fields** are expected to contain only letters and numbers. However, if numbers are present, they cannot be used in any math or processing. They might be a numeric ID or a SKU code, for example, but not a price or a date.
+
+         > Assume the data being searched is the following five records:\
+         > _The Civil War_\
+         > _Civility 101_     \
+         > _life as a civilian_     \
+         > _civil litigation_     \
+         > _civil_
 
     | **Match Type**           | **Meaning**                                                                                                                                                                                                                                                                           | **Search For** | **RESULT**                                                                                     |
     | :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------- | :--------------------------------------------------------------------------------------------- |
@@ -354,11 +354,11 @@ There are three accordions in this section:
 
     - **Numeric fields** contain only numbers, which may include decimals. The field cannot contain dollar signs or other currency symbols. The numbers may be positive or negative.
 
-      Assume the data being searched is these four records:\
-      _10.00_\
-      _0.5897_\
-      _-130.45_     \
-      _123_
+      > Assume the data being searched is these four records:\
+      > _10.00_\
+      > _0.5897_\
+      > _-130.45_     \
+      > _123_
 
     | **Match Type**            | **Meaning**                                                                                                                                                                                                                               | **Search For** | **RESULT**                                  |
     | :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------- | :------------------------------------------ |
@@ -377,10 +377,10 @@ There are three accordions in this section:
         **End**:      DD-MM-YYYY 12:59 PM
     - All dates in the system use the server’s **time zone** setting. This is set by your system administrator when they configure the environment. If you are not sure what the time zone is set to, please contact your admin, as it may differ from your local working time zone. (For example, you may work in Pacific time but the server is on Eastern time.)
 
-    Assume the data being searched is these three records:\
-    _13-12-1968 09:26 AM_\
-    _07-07-2023 12:26 PM_     \
-    _02-15-1995 01:47 PM_
+    > Assume the data being searched is these three records:\
+    > _13-12-1968 09:26 AM_\
+    > _07-07-2023 12:26 PM_     \
+    > _02-15-1995 01:47 PM_
 
     | **Match Type**            | **Meaning**                                                                                                          | **Search For**                                               | **RESULT**                                        |
     | :------------------------ | :------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------ |
@@ -410,11 +410,12 @@ There are three accordions in this section:
     </Tip>
     1. Indicate the way that these search phrases should be evaluated: as boolean **AND** or **OR** statements.\
        \
-       Boolean **AND** means that <u>both</u> searches must evaluate as TRUE, which translates to returning only the records that match both searches. **OR** means that <u>either</u> search can be TRUE, so it returns all results that match one or the other (or both) of the criteria. \
-       \
-       **Example**\
-       Criteria 1 	    **Field Name**: Active   	 | 	**Match Type**: Is TRUE\
-       Criteria 2 	**Field Name**: Due Date  | 	**Match Type**: Past Current Time\
+       Boolean **AND** means that <u>both</u> searches must evaluate as TRUE, which translates to returning only the records that match both searches. **OR** means that <u>either</u> search can be TRUE, so it returns all results that match one or the other (or both) of the criteria. 
+
+       > **Example**\
+       > Criteria 1 	    **Field Name**: Active   	 | 	**Match Type**: Is TRUE\
+       > Criteria 2 	**Field Name**: Due Date  | 	**Match Type**: Past Current Time
+
        \
        **AND** returns all records that are Active and also have a Due Date that is past the current time.  \
        \
@@ -434,7 +435,7 @@ There are three accordions in this section:
 
     - Haven’t been paid
     - Are dated as received within the last 30 days
-    - Originate with vendors A or B and are greater than $1000 OR that originate with vendors C or H and are greater than $5000
+    - Originate with vendors A or B and are greater than &dollar;1000 OR that originate with vendors C or H and are greater than &dollar;5000
 
     We would group these conditions like this:
 
