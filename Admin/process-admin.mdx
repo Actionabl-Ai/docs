@@ -76,7 +76,7 @@ When designing a process automation, it’s tempting to just start building the 
     Each data point should have an identified source and a storage point.
   </Step>
   <Step title="Define Tasks and Rules">
-    In your process flow, fill in the details of each task and all of the rules that govern it. 
+    In your process flow, fill in the details of each task and all of the rules that govern it.
 
     > For example, if you have a task that validates an invoice, list the validations to be performed (e.g., date, vendor, quantities matching a PO, looking for a VIP flag, dollar thresholds, etc.).
 
@@ -609,3 +609,74 @@ This RPA connector uses the Automation Anywhere service to complete the RPA oper
 ### **_AI Connectors_**
 
 There are many AI connector types available. Each plays a very specific role in moving an item between two tasks. When you select the **Type**, the dialog changes the fields available for configuration.
+
+| **Type**                       | **Definition** |
+| :----------------------------- | :------------- |
+| AI Space                       |                |
+| AI Agent Heal Extraction Error |                |
+| AI Agent Heal Data Error       |                |
+| AI Agent Web RPA               |                |
+| AI Agent Win RPA               |                |
+| AI Agent SAPRPA                |                |
+| AI Agent Form OCR              |                |
+| AI Agent Card OCR              |                |
+| AI Agent Document OCR          |                |
+| AI Agent Doc Classification    |                |
+| AI Agent Page Classification   |                |
+| AI Agent Summarization         |                |
+| AI Agent Topic Summarization   |                |
+| AI Agent Sentiment Analysis    |                |
+| AI Agent Entity Extraction     |                |
+| AI Agent Question Answering    |                |
+| AI Agent JH Validations        |                |
+| AI Agent Custom                |                |
+| AI Agent External              |                |
+
+### **_App Connectors_**
+
+The App connectors represent core task functionality. These are some of the most powerful types of connectors and are widely used throughout a typical Actionabl process flow. They include:
+
+- Sending an email, message, or push notification
+- Reading a file or folder
+- Generating a document
+- Extracting a PDF
+- Sending or retrieving something via FTP
+- Interacting with a system via a REST or SOAP API
+- Executing code
+- Completing an External Task
+- Sending or completing an action via Docusign
+- Executing a SQL query
+- Jack Henry?
+
+#### **Send Email App Connector**
+
+Email app connectors send emails from the system and allow for customization of the template and contents based on where the connector is used.
+
+![PM38 App Connector Email1 Jp](/images/ProcessGuide/PM38-AppConnectorEmail1.jpg)
+
+- **Email Account / Service Profile** is the sending account to use for the email. Leaving this blank uses the default email or service account as defined at the process level.
+- **Email Template** is the template to use for the email’s contents. These templates usually include variables, representing the data passed into the process step.
+
+  <Tip>
+    If a variable is included in the template but is not available in this step of the process, it will be left blank in the resulting email.
+  </Tip>
+
+
+- The **Email Type** is **Reply**, **Reply All, New,** or **Forward**. Your choice determines which fields within the email template are needed and who is included in the sending list.
+- **Save Email** should be checked if you want to keep a copy of the email in the email history. 
+- **Communication Mode** determines whether the recipient is able to respond to the email directly.
+- **Prepared Email Body Field** is what????
+- **Exclude Emails To** is a list of email senders who should be excluded from any replies or reply-alls.
+
+This example is an invoice receipt acknowledgment email connector that is sent immediately upon receiving a vendor’s emailed invoice.
+
+The connector is set up like this:\
+![PM38 App Connector Email2 Jp](/images/ProcessGuide/PM38-AppConnectorEmail2.jpg)
+
+The email template, Bank Invoice Receipt Email, looks like this:
+
+![PM39 App Connector Email Template Jp](/images/ProcessGuide/PM39-AppConnectorEmailTemplate.jpg)
+
+You can expand any of the Email Body sections to see the actual text and variables. Items in **{{ }}** represent variables.
+
+![PM40 App Connector Email Template Expanded Jp](/images/ProcessGuide/PM40-AppConnectorEmailTemplateExpanded.jpg)
