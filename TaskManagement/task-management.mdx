@@ -73,7 +73,7 @@ There are three accordions in this section:
     **Stages and Tasks:**
 
     - **Starting Point:** An invoice is received from a vendor who has produced and shipped a customer’s order based on a Purchase Order the business sent to them.
-    - \*\*Acknowledge: \*\*Send the vendor an acknowledgment that the invoice was received and will be processed.
+    - **Acknowledge**: Send the vendor an acknowledgment that the invoice was received and will be processed.
     - **Extract**
       - Process the emailed invoice through OCR.
       - Read relevant data (vendor code, vendor name, date of invoice, list of items, etc.).
@@ -169,7 +169,7 @@ There are three accordions in this section:
   <Accordion title="Organizing Your Tasks" description="Learn about how tasks are grouped and move through processes" icon="sitemap">
     ## **Organizing Your Tasks**
 
-    At any time, there are many items flowing through a process and its tasks and stages. In a typical workflow, you will only need to be aware of a few of them, so hiding the “noise” of the others is important. The modules and alerts in the dashboard are designed to help you focus on the items and tasks that require human attention while letting all of the others flow through the automation without distraction.
+    At any time, many items are flowing through a process and its tasks and stages. In a typical workflow, you will only need to be aware of a few of them, so hiding the “noise” of the others is important. The modules and alerts in the dashboard are designed to help you focus on the items and tasks that require human attention while letting all of the others flow through the automation without distraction.
 
     ### **_Dashboard View_**
 
@@ -233,7 +233,7 @@ There are three accordions in this section:
 
     ### **_Searching and Filtering_**
 
-    It's frequently helpful to be able to find a specific task or to narrow down a large list of tasks to ones that meet a set of criteria. Searching and filtering functions are designed to help you do this.
+    It's frequently helpful to find a specific task or to narrow down a large list of tasks to ones that meet a set of criteria. Searching and filtering functions are designed to help you do this.
 
     On any list of task alerts, you'll see Search and Filter icons at the top right. These are the "**Quick**" options.
 
@@ -247,7 +247,7 @@ There are three accordions in this section:
     | :--------------------------------------------------------------------- | :------------------------------------ |
     | Searches **only** the columns (fields) currently displayed on the list | Can search ALL columns in the record. |
 
-    If a list being searched has multiple pages of results, both the Quick and Full searches automatically look through all of them.
+    If a list being searched has multiple pages of results, both the Quick and Full searches automatically sort through them.
 
     #### **Searching and Filtering On Lists**
 
@@ -257,7 +257,7 @@ There are three accordions in this section:
 
     ![TMB8 Tasks Overdue Filter Jp](/images/TaskManagement/TMB8-TasksOverdueFilter.jpg)
 
-    The **Process Filter**  is at the top right. Selecting a process from the list will only show tasks that are part of that process.
+    The **Process Filter** is at the top right. Selecting a process from the list will only show tasks that are part of that process.
 
     ![TMB9 Process Filter Jp](/images/TaskManagement/TMB9-ProcessFilter.jpg)
 
@@ -410,7 +410,7 @@ There are three accordions in this section:
     </Tip>
     1. Indicate the way that these search phrases should be evaluated: as boolean **AND** or **OR** statements.\
        \
-       Boolean **AND** means that <u>both</u> searches must evaluate as TRUE, which translates to returning only the records that match both searches. **OR** means that <u>either</u> search can be TRUE, so it returns all results that match one or the other (or both) of the criteria. 
+       Boolean **AND** means that <u>both</u> searches must evaluate as TRUE, which translates to returning only the records that match both searches. **OR** means that <u>either</u> search can be TRUE, so it returns all results that match one or the other (or both) of the criteria.
 
        > **Example**\
        > Criteria 1 	    **Field Name**: Active   	 | 	**Match Type**: Is TRUE\
@@ -435,7 +435,7 @@ There are three accordions in this section:
 
     - Haven’t been paid
     - Are dated as received within the last 30 days
-    - Originate with vendors A or B and are greater than &dollar;1000 OR that originate with vendors C or H and are greater than &dollar;5000
+    - Originate with vendors A or B and are greater than $1000 OR that originate with vendors C or H and are greater than $5000
 
     We would group these conditions like this:
 
@@ -470,7 +470,7 @@ There are three accordions in this section:
 
     **Overdue Only**
 
-    You can quickly view only overdue items by toggling the **Overdue Only** button in the top center of the page.
+    Toggling the **Overdue Only** button in the top center of the page allows you to quickly view only overdue items.
 
     ![TMB18 Overdue Only Jp](/images/TaskManagement/TMB18-OverdueOnly.jpg)
 
@@ -480,7 +480,7 @@ There are three accordions in this section:
 
     #### **Auto-load Tasks**
 
-    The **Auto-load Tasks** toggle in the top center of the page turns on the ability for you to page through all of the detail pages for the tasks on the list without returning to the list view to select the next task.
+    The **Auto-load Tasks** toggle in the top center of the page turns on the ability to scroll through all of the detail pages for the tasks on the list without returning to the list view to select the next task.
 
     ![TMB19 Auto Loadtasks Jp](/images/TaskManagement/TMB19-Auto-loadtasks.jpg)
 
@@ -494,7 +494,7 @@ There are three accordions in this section:
   <Accordion title="Understanding the Task Detail View" description="Take a deep dive into the screen where you’ll spend the majority of your time." icon="magnifying-glass-chart">
     ## **Understanding The Task Detail View**
 
-    Click any task in a list to open its **Task** \*\*Detail \*\*view.
+    Click any task in a list to open its **Task Detail** view.
 
     ### **_Details_**
 
@@ -504,10 +504,10 @@ There are three accordions in this section:
 
     | **Section**             | **Definition**                                                                                                                                                                                                                                                                                                                                                                                     |
     | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Actions**             | The actions available for you to take on this record. This will vary by not only the item being displayed but also its status and your role.                                                                                                                                                                                                                                                       |
-    | **Summary**             | Summarizes the item’s ID, due date, created and update dates, who last updated the item, and its status.                                                                                                                                                                                                                                                                                           |
+    | **Actions**             | The actions you can take on this record will vary depending on the item being displayed, its status, and your role.                                                                                                                                                                                                                                                                                |
+    | **Summary**             | This summary summarizes the item’s ID, due date, created and updated dates, who last updated it, and its status.                                                                                                                                                                                                                                                                                   |
     | **Progress**            | Shows which stage the item is in in the overall process workflow.                                                                                                                                                                                                                                                                                                                                  |
-    | **Error Description**   | If the item is in an error state, the error message and any descriptive information is shown here. Otherwise, this section does not appear.                                                                                                                                                                                                                                                        |
+    | **Error Description**   | If the item is in an error state, the error message and any descriptive information are shown here. Otherwise, this section does not appear.                                                                                                                                                                                                                                                       |
     | **Data**                | The current state of the item’s data. Comparing this to any error message may quickly highlight the problem and how to fix it.                                                                                                                                                                                                                                                                     |
     | **Content and History** | Clicking on the bar to expand this section shows multiple tabs: **Document**, **Notes**, **Emails**, **Local Actions**, **Threads**, **Task History**, **Data History**, and **Watch Data**. Taken together, this shows all of the content related to this item and how it has changed throughout the process so far. This is the same view shown by clicking the “clock” icon from the task list. |
 
@@ -522,7 +522,7 @@ There are three accordions in this section:
 
     ### ![TMB22 Taskhistory Jp](/images/TaskManagement/TMB22-Taskhistory.jpg)
 
-    Documents
+    **Documents**
 
     The **Documents** list shows all items that have been connected to this record since it was received into the system. These could be files from an email, something uploaded into a system, OCR scanned documents, etc. 
 
@@ -544,7 +544,7 @@ There are three accordions in this section:
 
     **Emails**
 
-    You will see a history of the emails sent and received pertaining to this item throughout its workflow. As with Notes and Attachments, each email has an Access Level determining who can see it.
+    You will see a history of the emails sent and received regarding this item throughout its workflow. As with Notes and Attachments, each email has an Access Level that determines who can see it.
 
     Click the document button to the right of any email to open it in a pop-up window.
 
@@ -573,13 +573,13 @@ There are three accordions in this section:
 
     **Task History**
 
-    The **Task History** tab shows every step this item has completed so far, along with the step’s status, number of attempts, and who completed it. You can download this table by clicking the Download button.
+    The **Task History** tab shows every step this item has completed so far, along with the step’s status, number of attempts, and who completed it. Click the **Download** button to download this table.
 
     You’re able to select between Excel, CSV, Text, and  JSON formats for your download.
 
     ![TMB27 Task History Download Jp](/images/TaskManagement/TMB27-TaskHistoryDownload.jpg)
 
-    \*\*Data History \*\*
+    **Data History** 
 
     The **Data History** provides details of the precise content in each field at the end of each task, making it invaluable in troubleshooting. A hash sign (#) means the data is <u>unchanged</u> from the previous step. 
 
@@ -607,18 +607,18 @@ There are three accordions in this section:
     The alerts for each step are color-coded to indicate their type:
 
     - **Yellow tasks** are **owned by someone** ( you or someone else), so are seen as “in progress” within the system.  The ones you own will appear in your My Tasks module. When you click a yellow icon, you’ll see the complete list including yours <u>and everyone else’s</u>.
-    - **Green tasks** are in queue. In most cases, these are either**User \*\* or**QC tasks\*\* , such as reviewing a proof or authorizing a payment, that are not yet owned. On automated steps (such as Extract Invoice Data), you may occasionally see a green bubble if there are a number of tasks in a backlog for the system to process.
+    - **Green tasks** are in the queue. In most cases, these are either **User **or**QC**  tasks, such as reviewing a proof or authorizing a payment, that are not yet owned. On automated steps (such as Extract Invoice Data), you may occasionally see a green bubble if there are a number of tasks in a backlog for the system to process.
     - **Red tasks** are unclaimed **Error Tasks**, where the system has encountered something unexpected and needs a user to review and provide direction to proceed. These can be things like missing documents, invalid data, or a problem with a system process like an API call.
 
     <Tip>
-      \*\*HINT: \*\*Click an alert indicator within the flow to go to a filtered view that includes <u>only</u> the alerts of that type and for that task.
+      **HINT**: Click an alert indicator within the flow to go to a filtered view that includes <u>only</u> the alerts of that type and for that task.
     </Tip>
   </Accordion>
 </AccordionGroup>
 
 # TAKING ACTION ON TASKS
 
-Most people use Actionabl to respond to alerts and take actions on a task. Now that you understand how the information is organized and displayed in the system, let’s look at how to take actions.
+Most people use Actionabl to respond to alerts and take action on a task. Now that you understand how the information is organized and displayed in the system, let’s examine how to take action.
 
 There are three basic categories of actions:
 
@@ -634,7 +634,7 @@ There are three basic categories of actions:
 Assignment of a task to a user can either be through a user **claiming** a task or from someone else **assigning** it to them. 
 
 - Users with the appropriate supervisory permissions can assign or reassign a task to a user.
-- Users can claim tasks for themselves or, if they have permission to do so, can reassign a task they own to someone else. They can also unclaim a task they currently own.
+- Users can claim tasks for themselves or, if they have permission, reassign a task they own to someone else. They can also unclaim a task they currently own.
 
 ### **_SLA - Service Level Agreements_**
 
@@ -692,7 +692,7 @@ In the task detail view, click **Unclaim** in the top action bar to unassign the
 
 **Unclaim Multiple Tasks**
 
-1. On the My Tasks list, click**Bulk Action**  and click the checkboxes next to the items you wish to unassign. Click the blue Actions button at the top.\
+1. On the My Tasks list, click**Bulk Action**  and check the checkboxes next to the items you wish to unassign. Then click the blue Actions button at the top.\
    ![TMB39 Bulk Unclaim1 Jp](/images/TaskManagement/TMB39-BulkUnclaim1.jpg)
 2. Confirm in the popup that you’ve selected the right tasks, then click **Unclaim**. The tasks disappear from your My Tasks listing and are added back to the appropriate task queue(s).
 
@@ -700,7 +700,7 @@ In the task detail view, click **Unclaim** in the top action bar to unassign the
 
 **Reassign Multiple Tasks**
 
-1. On the My Tasks list, click**Bulk Action**  and click the checkboxes next to the items you wish to unassign. Click the blue Actions button at the top.\
+1. On the My Tasks list, click**Bulk Action**  and check the checkboxes next to the items you wish to unassign. Then click the blue Actions button at the top.\
    ![TMB39 Bulk Unclaim1 Jp](/images/TaskManagement/TMB39-BulkUnclaim1.jpg)
 2. Confirm in the popup that you’ve selected the right tasks, click **Reassign**, then select the appropriate assignee in the popup’s dropdown list. Click **Submit** to save the reassignment.\
    ![TMB41 Bulk Reassign Jp](/images/TaskManagement/TMB41-BulkReassign.jpg)
@@ -725,9 +725,9 @@ If you have supervisory rights in the system, you can assign tasks to other user
 
 You can assign tasks to other users from the general task lists or you can reassign them from the tasks that you have claimed. 
 
-1. On the Task List, click**Bulk Action**  and click the checkboxes next to the items you wish to assign. Then, click the blue Actions button at the top.\
+1. On the Task List, click **Bulk Action**  and click the checkboxes next to the items you wish to assign. Then, click the blue Actions button at the top.\
    ![TMB46 Assignmultipletasks Jp](/images/TaskManagement/TMB46-Assignmultipletasks.jpg)
-2. Confirm in the popup that you’ve selected the right tasks, click ****Assign (orReassign****  if you’ve previously claimed them), then select the appropriate assignee in the popup’s dropdown list. Click **Submit** to save the assignment.\
+2. Confirm in the popup that you’ve selected the right tasks, click ****Assign ****(or****Reassign****   if you’ve previously claimed them), then select the appropriate assignee in the popup’s dropdown list. Click **Submit** to save the assignment.\
    ![TMB47 Assign Reassign Jp](/images/TaskManagement/TMB47-AssignReassign.jpg)
 3. Click **Close** to exit the popup, then **Close** again to exit the bulk actions popup.
 
@@ -735,7 +735,7 @@ You can assign tasks to other users from the general task lists or you can reass
 
 You may need to edit the data of an item that you own to resolve an error or move it forward through the process. 
 
-1. Open the task detail for the item you own. (If you do not already own the item, you must first Claim it.)
+1. Open the task detail for the item you own. (If you do not already own the item, you must first **Claim** it.)
 2. If you claimed this task for yourself, you go directly into an editable view. If you were assigned this task by someone else, you must click **Start** in the top menu to begin working on it. 
 
 ### **_Side By Side Edit View_**
@@ -766,7 +766,7 @@ You have two choices in providing the input to resolve the error. 
   <Step title="Make Simple Change and Don't Re-Validate">
     If this is a simple change or addition of data within a straightforward process,  you may input the data on the **RIGHT** side of the screen and use the **COMPLETE** action. This bypasses further automation in this step and moves the record on to the next step in its flow.
 
-    If you are _<u>certain</u>_ that the only change needed was the data correction on the right of the screen, click **Complete** to signal that this step is finished and has passed all of the criteria to move to the next task (no further automated validation will be performed in this step).
+    If you are _<u>certain</u>_ that the only change needed is the data correction on the right of the screen, click **Complete** to signal that this step is finished and has passed all of the criteria to move to the next task (no further automated validation will be performed in this step).
   </Step>
 </Steps>
 
@@ -783,10 +783,10 @@ At any point while you are working on the item, click **Save** (found under the 
 Click **Validate** at the top of the screen to check your changes. This ensures that no additional issue is identified before sending this record to the next step.
 
 1. When you click Validate, if an error is generated, it will appear in red at the <u>bottom</u> center of the screen.
-2. If the task runs successfully with the new data you will see the message “Validations passed successfully” in green at the bottom center of the screen.
+2. If the task runs successfully with the new data you will see the message “Validations successful” in green at the bottom center of the screen.
 
 <Tip>
-  The form validation rules defined by your company for this process determine how fields are validated, saved, and errors displayed.
+  Your company's form validation rules for this process determine how fields are validated, saved, and errors displayed.
 </Tip>
 
 After validating the work, click **Complete** to save the task and move it along to its next processing step.
@@ -799,7 +799,7 @@ From the task detail, click **\<\< MORE** in the top menu bar, then click **Summ
 
 ![TMB50 Summary Jp](/images/TaskManagement/TMB50-Summary.jpg)
 
-The Summary screen shows all data fields for this task and the contents of each. Once you have reviewed the data, click **Close** to return to the task detail view.
+The Summary screen shows all data fields for this task and their contents. Once you have reviewed the data, click **Close** to return to the task detail view.
 
 ![TMB51 Summary2 Jp](/images/TaskManagement/TMB51-Summary2.jpg)
 
@@ -829,7 +829,7 @@ When you click on a QC task that you own: 
 2. Click **Validate** after making updates. This simply performs field-level validation to ensure that all data is in the correct format and that no required fields are left blank.
 3. You can then click **\<\< MORE** and **Save** to save your changes until you are ready to finish your work on this item.
 4. Click **\<\< MORE** and **Add Label** to label the item. Labels can then be used in searches and filters.
-5. Click on **Content & History** at the bottom of the screen and review any **Notes** and **Attachments**, as well as **Emails** relating to the item.
+5. Click on **Content & History** at the bottom of the screen to review any **Notes,** **Attachments**, and **Emails** related to the item.
 6. Complete any offline processes your business requires you to do as part of this task.
 7. When you are finished:
    - Resolve the item and move it to the next process task by clicking **Complete**.
@@ -846,7 +846,7 @@ When you click on a User Task that you own:
 1. Review the item data you see and any information at the top of the screen. 
 2. Click on **Content & History** at the bottom of the screen to review any **Notes,** **Attachments**, and **Emails** related to the item.
 3. Make whatever updates are required to resolve the item. Click **Validate** after making updates to ensure the data is correct. Also, **Save** your work (under **\<\< MORE**) if you have other steps to do or are otherwise not quite ready to finish this task.
-4. Add any labels to the task under **\<\<MORE Add Label**. Labels can then be used in searches and filters.
+4. Add any labels to the task under **\<\<MORE **then **Add Label**. Labels can then be used in searches and filters.
 5. Complete any offline processes your business requires you to do as part of this task.
 6. When you are finished:
    - Resolve the item and move it to the next process task by clicking **Complete**.
@@ -924,7 +924,7 @@ Occasionally, an item flowing through the process may no longer be needed. Examp
 2. Click **\<\< MORE** and then **Discard**.
 3. You'll be asked to confirm the deletion of the item and warned that the process will end. This indicates that the item will not flow through any subsequent process steps.\
    ![TMB59 Discardtask Jp](/images/TaskManagement/TMB59-discardtask.jpg)
-4. Click **OK** to discard it or Cancel to return to the task details page.
+4. Click **OK** to discard it or **Cancel** to return to the task details page.
 
 <Tip>
   **NOTE**: After an item is discarded, it can still be found via Active search, with a status of “Discarded.”
@@ -951,7 +951,7 @@ You can only act on tasks that are <u>all in the same process.</u>
 4. The actions available on this group of items are at the top right of the popup. Your options for bulk action are determined by the types of items you’ve selected and the status of those items.
 
 <Tip>
-  **HINT**: Just under the Close link is a download icon you can use to download the displayed list of items.\
+  **HINT**: Just under the Close link is a download icon that allows you to download the displayed list of items.\
   ![TMB62 Downloadtasks Jp](/images/TaskManagement/TMB62-Downloadtasks.jpg)
 </Tip>
 
