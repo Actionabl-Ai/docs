@@ -133,7 +133,7 @@ This example is an attachment field that can hold multiple file uploads:
 
 ## ![PM03 Field Example Attachment List Jp](/images/ProcessGuide/PM03-FieldExampleAttachmentList.jpg)
 
-**Creating New Fields**
+## **Creating New Fields**
 
 If an existing field is configured similarly to the new field, you can Duplicate the existing field and use that as the basis for the new one. Alternatively, click the green plus icon on the top right of the field list to create a new field from scratch.
 
@@ -205,7 +205,7 @@ Data sources have 3 components:
 
 ## ![PM08 Data Source Mapping CHART Jp](/images/ProcessGuide/PM08-DataSourceMappingCHART.jpg)
 
-**_Creating A Data Source Definition_**
+## **_Creating A Data Source Definition_**
 
 1. Go to **Components** -\> **Data Sources**.
 2. At the top, start with the **Data Source Definitions** tab.
@@ -292,7 +292,7 @@ The result should look something like this. Note that the File field shows both 
 
 ![PM19 Data Source File4 Jp](/images/ProcessGuide/PM19-DataSourceFile4.jpg)
 
-**File Upload Source Type**
+### **File Upload Source Type**
 
 The File Upload source type differs from the File type in that it prompts the user for an uploaded file when the data source is called. This is especially handy if recent or refreshed data is needed whenever the data source is used. 
 
@@ -327,7 +327,7 @@ After selecting the script, click the green Plus sign to the far right of Script
 
 Enter the parameters specific to that Bot script. You can also enter parameter groups, if needed.
 
-### **_Uploading Data Source Files_**
+## **_Uploading Data Source Files_**
 
 Files such as those used in data sources must be uploaded directly to the file system in the **Project/Folders/Resources/Published/Files** folder. For ease of maintenance, we strongly recommend creating subfolders here and using a consistent naming system to organize your files.
 
@@ -372,7 +372,7 @@ To **manage or duplicate** an existing connector, click the expand icon next to 
 
 ## ![PM25 Connector List Jp](/images/ProcessGuide/PM25-ConnectorList.jpg)
 
-Managing an Existing Connector
+## Managing an Existing Connector
 
 <Warning>
   **If a connector is currently in use, you must pause the automation(s) in which it’s used prior to making any edits to it.** \
@@ -394,7 +394,7 @@ You can take the following actions on connectors:
 
 ## ![PM26 Connector Actions Jp](/images/ProcessGuide/PM26-ConnectorActions.jpg)
 
-**Creating Connectors**
+## **Creating Connectors**
 
 Click the green plus sign at the top right of the connector list to open a new connector dialog at the top of the first page of connectors.
 
@@ -596,7 +596,7 @@ This RPA connector uses the UI Path service to complete the RPA operations. This
 
 ![PM36 RPA Connector UI Path Jp](/images/ProcessGuide/PM36-RPAConnectorUIPath.jpg)
 
-**Automation Anywhere RPA Connector**
+#### **Automation Anywhere RPA Connector**
 
 This RPA connector uses the Automation Anywhere service to complete the RPA operations. This connector’s input specifies how to connect to Automation Anywhere. The actual RPA script definition is set up within Automation Anywhere and the parameters for it are set there, as well.
 
@@ -660,8 +660,6 @@ Email app connectors send emails from the system and allow for customization of 
   <Tip>
     If a variable is included in the template but is not available in this step of the process, it will be left blank in the resulting email.
   </Tip>
-
-
 - The **Email Type** is **Reply**, **Reply All, New,** or **Forward**. Your choice determines which fields within the email template are needed and who is included in the sending list.
 - **Save Email** should be checked if you want to keep a copy of the email in the email history. 
 - **Communication Mode** determines whether the recipient is able to respond to the email directly.
@@ -677,6 +675,6 @@ The email template, Bank Invoice Receipt Email, looks like this:
 
 ![PM39 App Connector Email Template Jp](/images/ProcessGuide/PM39-AppConnectorEmailTemplate.jpg)
 
-You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces **\{\{\}\}** represent variables.
+You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces **{{}}** represent variables.
 
 ![PM40 App Connector Email Template Expanded Jp](/images/ProcessGuide/PM40-AppConnectorEmailTemplateExpanded.jpg)
