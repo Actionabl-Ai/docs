@@ -14,3 +14,6 @@
 .border-zinc-500\/20 {
     border-color: #b87502;
 }
+td {
+  vertical-align: bottom;
+}
