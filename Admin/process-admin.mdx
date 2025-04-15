@@ -34,15 +34,13 @@ This guide covers the creation and editing of process automations within the sys
 
 In Actionabl, the **Process View** defines an automation and how data flows through the system. It has a number of components:
 
-![PM01 Process Automation Overview Jp](/images/ProcessGuide/PM01-ProcessAutomationOverview.jpg)
-
 - The **Start Event** kicks off the execution of the process. This may be, for example:
   - A regularly scheduled scan of a folder or file to detect changes
   - Receipt of an email or message from an external resource
   - An inbound API call or webhook event
   - A cron job that runs on a scheduled basis to execute a database query
-- The process is made up of a series of **Tasks**, which may be guided by **Task Rules**.
-- Items pass through the process using the **Connectors** to move through the tasks. Connectors are specific actions that can change the status (and **Stages**) of the item as they move it between task steps.
+- The process is made up of a series of **Tasks**, which may be guided by **Task Rules** or use **Connectors** to processes to complete actions.
+- Items pass through the process using the **Flows** to move through the tasks. Flows can change the status (and **Stages**) of the item as they move it between task steps.
 - **Decisions** represent logical branches in the flow, where an item may be directed into a different pathway based on the rules and evaluations that occur within the Decision task.
 - At the end of the process, each pathway has a **Resolution Event**, representing the automation's terminal action.
 
@@ -675,6 +673,6 @@ The email template, Bank Invoice Receipt Email, looks like this:
 
 ![PM39 App Connector Email Template Jp](/images/ProcessGuide/PM39-AppConnectorEmailTemplate.jpg)
 
-You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces **{{}}** represent variables.
+You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces  represent variables.
 
 ![PM40 App Connector Email Template Expanded Jp](/images/ProcessGuide/PM40-AppConnectorEmailTemplateExpanded.jpg)
