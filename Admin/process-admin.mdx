@@ -75,20 +75,25 @@ When designing a process automation, it’s tempting to just start building the 
 
     Each data point should have an identified source and a storage point.
   </Step>
-  <Step title="Define Tasks and Rules">
-    In your process flow, fill in the details of each task and all of the rules that govern it.
+  <Step title="Define Tasks, Rules, and Connectors">
+    In your process flow, fill in the details of each task and all of the connectors and rules that govern it.
 
     > For example, if you have a task that validates an invoice, list the validations to be performed (e.g., date, vendor, quantities matching a PO, looking for a VIP flag, dollar thresholds, etc.).
+    >
+    > If your task uses an action like OCR or a bot, list the specific actions to be performed and the inputs and outputs of those actions.
 
-    As you build your tasks and rules, group them into the appropriate Stages.
+    As you build your tasks, connectors, and rules, group them into the appropriate Stages.
   </Step>
   <Step title="Define Decision Points">
     For each potential branch in the flow, clearly define what the decision is evaluating - the field(s), groupings, logic, and conditions.
   </Step>
-  <Step title="Define How The Tasks Connect">
-    Each task must have an input and an output connection. The connectors define the actions that will be taken to move the item between this task and its next one. Define each connector and what it does.
+  <Step title="Define How Items Flow Between Tasks">
+    Each task must have an input and an output flow. The flow is what moves the item between this task and its next one and may involve logical rules to determine which task comes next. Define each flow and each possible branch an item can follow. 
 
-    > For example: if a connector reads an incoming email and passes it to a validator, it’s likely an OCR connector that extracts specific fields.
+    <Tip>
+      When a task such as a decision model has multiple outbound flows, one of those flows must be defined as the default. The other flow(s) are then defined by their rule (such as "is_approved=yes") to direct the item into them.
+    </Tip>
+    > For example: if a task is a decision model determining whether an item must be manually reviewed, it will have two outbound flows: one for "yes" and one for "no." The "yes" flow directs the item into a manual review step, while the "no" flow goes to an automated payment task.
   </Step>
   <Step title="Define The Resolution Task(s)">
     Ensure that every pathway has a well-defined resolution task as its endpoint.
@@ -121,7 +126,7 @@ A Data Field is a container for a defined, discrete, element of data stored in J
 - **Control Type** governs how inputs to the field are structured. Supported types are: Multiline, Lookup, Dropdown, Checklist, File Select, Link, Currency, Date Format, Text Editor, Multi Select, Record Lookup, User, and Display In Place. Your selection here may cause other input fields to appear, such as the items to select or the number of input lines to display.
 - **Display Label** overrides the Name when the field is displayed in a form or in the UI. Example: Email.
 - **Data Format** controls how the data in the field is displayed in the interface. The selected data format must be compatible with the Type and the Control Type. Valid options are: ID, Folder ID, User ID, Name, Number, Alphanumeric, Percentage, Currency, File Path, URL, Phone Number, Email, Time Interval (DDHHMM), IP Address, Host Name, and Port Number.
-- The**Validation Rule**  is an optional rule that sets guardrails on what can be entered into this field. For example, if the field is “invoice_date,” the validation rule may say that the date entered cannot be earlier than the company’s founding date and also can’t be a future date.**The Validation Rule cannot be violated by any existing entries, not just new entries—it’s not an input validation; it’s a field validation.** 
+- The **Validation Rule** is an optional rule that sets guardrails on what can be entered into this field. For example, if the field is “invoice_date,” the validation rule may say that the date entered cannot be earlier than the company’s founding date and also can’t be a future date. **The Validation Rule cannot be violated by any existing entries, not just new entries—it’s not an input validation; it’s a field validation.** 
 - **Field Form** is ??
 - If **Is List** is checked, the field is treated as an array that can contain multiple values. 
 
@@ -345,7 +350,8 @@ Actions can have one of seven types:
 
 ![PM24 Task Action Types Jp](/images/ProcessGuide/PM24-TaskActionTypes.jpg)
 
-**Send Email** actions send an email using one of the system-defined email templates. (_See Email Templates for more information about creating and managing templates._)
+- **Send Email** actions send an email using one of the system-defined email templates. (_See Email Templates for more information about creating and managing templates._)
+
 
 - **A Start Process** is a “start task” that initiates a process flow. Examples include receiving an emailed invoice from a vendor or scanning a folder for a newly created file.
 - **Static Form**, **Dynamic Form**, and **Custom Form** task actions are used in tandem with the Local Actions in a task to send a form to the user to fill out. 
@@ -357,7 +363,9 @@ Actions can have one of seven types:
 
 # **MANAGING CONNECTORS**
 
-While tasks have internal actions, connectors are the pathways and actions that move an item between tasks. There are 6 categories of connectors in Actionabl, each of which is covered in detail below:
+While tasks represent a set of internal actions and rules that achieve a specific goal, connectors are where the actions actually take place. 
+
+There are 6 categories of connectors in Actionabl, each of which is covered in detail below:
 
 - Start Event
 - App
@@ -412,7 +420,7 @@ Click the green plus sign at the top right of the connector list to open a new c
 
 ### Start Event Connectors
 
-The Start Event connector represents the action that starts a process.
+The Start Event connector is the action that starts a process.
 
 > Typical examples are:
 >
@@ -437,10 +445,10 @@ It can have one of the following **Types**:
 
 A cron start event indicates that a script, set up under **Control Center -\> Cron Job Scheduler,** will run on a defined schedule and execute a script. The output of that script starts the process.
 
-For example:
-
-- A cron job runs an external API query every night at 2 AM to pull in new account signups from a website.
-- When that job runs and finds new accounts, that starts the process.
+> For example:
+>
+> - A cron job runs an external API query every night at 2 AM to pull in new account signups from a website.
+> - When that job runs and finds new accounts, that starts the process.
 
 The cron job is scheduled like this.
 
@@ -506,15 +514,15 @@ The FTP start event monitors the server for inbound FTP actions and starts the p
 
 #### **Custom Start Event**
 
-A Custom start event executes the specific code script specified using the event's parameters. The script's output is used as input to the first task in the process.
+A Custom Start event executes the code script specified using the event's parameters. The script's output is used as input to the first task in the process.
 
-What triggers the script to run?
+**_What triggers the script to run?_**
 
 #### **DB Query Start Event**
 
 The database query start event connects to a database using the connection parameters in the connector. Once connected, it runs an optional Data Processing Script and executes an SQL query. The query's output triggers the start of the process and serves as the input to the first task in the process.
 
-As with Custom Start events - what triggers the script?
+**_As with Custom Start events - what triggers the script?_**
 
 ### OCR Connectors
 
@@ -541,7 +549,7 @@ The Hyper Science connector launches an instance of the Hyperscience platform th
 - Bearer Token for your account
 - Flow UUID defined in Hyperscience
 - Layout UUID defined in Hyperscience
-- You can designate it as Machine Only which ????
+- You can designate it as Machine Only which **_????_**
 
 ![PM34 OCR Connector Hyper Science Jp](/images/ProcessGuide/PM34-OCRConnectorHyperScience.jpg)
 
@@ -663,7 +671,7 @@ Email app connectors send emails from the system and allow for customization of 
 - The **Email Type** is **Reply**, **Reply All, New,** or **Forward**. Your choice determines which fields within the email template are needed and who is included in the sending list.
 - **Save Email** should be checked if you want to keep a copy of the email in the email history. 
 - **Communication Mode** determines whether the recipient is able to respond to the email directly.
-- **Prepared Email Body Field** is what????
+- **Prepared Email Body Field** is **_what????_**
 - **Exclude Emails To** is a list of email senders who should be excluded from any replies or reply-alls.
 
 This example is an invoice receipt acknowledgment email connector that is sent immediately upon receiving a vendor’s emailed invoice.
@@ -675,6 +683,6 @@ The email template, Bank Invoice Receipt Email, looks like this:
 
 ![PM39 App Connector Email Template Jp](/images/ProcessGuide/PM39-AppConnectorEmailTemplate.jpg)
 
-You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces  represent variables.
+You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces \{\{\}\} represent variables.
 
 ![PM40 App Connector Email Template Expanded Jp](/images/ProcessGuide/PM40-AppConnectorEmailTemplateExpanded.jpg)
