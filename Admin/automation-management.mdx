@@ -9,7 +9,7 @@ description: "This document is a Guide to functionality and processes concerning
 
 [Actionabl.ai](http://Actionabl.ai) is a platform that automates your business processes and alerts users whenever human intervention is needed. 
 
-This guide covers aspects of managing the**automations** , **processes, tasks, connectors, and rules** within the system.
+This guide covers aspects of managing the **automations** , **processes, tasks, connectors, and rules** within the system.
 
 <Info>
   If you are a new technical or supervisory user of Actionabl, you should first review [**Getting Started with Actionabl**](/GettingStarted/getting-started) to familiarize yourself with key concepts and terms used throughout this document. 
@@ -22,13 +22,13 @@ This guide covers aspects of managing the**automations** , **processes, tasks, c
   - Process analytics
   - Process view management
   - Error Task management
-- [**<u>Task Management Guide</u>**](/TaskManagement/task-management-coming-soon) (COMING SOON) is written primarily for your company's business users, but you may find it helpful in understanding the larger task-related concepts and processes that they are working with you to resolve.
+- [**<u>Task Management Guide</u>**](/TaskManagement/task-management) is written primarily for your company's business users, but you may find it helpful in understanding the larger task-related concepts and processes that they are working with you to resolve.
 - [**<u>User Management Guide</u>**](/UserManagement/user-management) includes all aspects of managing users, groups, and departments. It is intended primarily for supervisory and administrative users.
-- **Process Administration Guide** (FUTURE) is used to learn how to create, edit, and manage processes and all of their components. This includes the creation of tasks, connectors, data fields, data sources, and remote workers.
+- **Process Administration Guide** (COMING SOON) is used to learn how to create, edit, and manage processes and all of their components. This includes the creation of tasks, connectors, data fields, data sources, and remote workers.
 
 # **MANAGING AUTOMATIONS, TASKS, RULES, AND APPS**
 
-**If you are a Supervisory or Administrative user**, you likely have access to manage certain things about the **tasks** that are flowing through a process and the ****rules, apps, connectors, ****and****automations****   within that process. Some non-admin users may also have been granted the right to edit some of these items.
+**If you are a Supervisory or Administrative user**, you likely have access to manage certain things about the **tasks** that are flowing through a process and the **rules, apps, connectors,** and **automations** within that process. Some non-admin users may also have been granted the right to edit some of these items.
 
 Most of the tasks in this guide are accessed through the **Process View** (which is available on most dashboards).
 
@@ -59,7 +59,7 @@ To access management functions:
 3. To access **Automation Management**, place your cursor <u>outside of any task</u> and **RIGHT-click**. Select **Automation Manager** from the menu. (You can also access task management from this menu.)
 
    ![ATR05 Openautomationmanagermenu Jp](/images/AutomationTaskRules/ATR05-openautomationmanagermenu.jpg)
-4. To access ****Task Management ****or the****Task-Specific Rules**** , hover over any of the process steps and **RIGHT-click**. On that menu, select either **View Task Management** or **View Rules**.\
+4. To access **Task Management** or the **Task-Specific Rules**, hover over any of the process steps and **RIGHT-click**. On that menu, select either **View Task Management** or **View Rules**.\
    ![ATR06 Opentaskmanagementmenu Jp](/images/AutomationTaskRules/ATR06-opentaskmanagementmenu.jpg)
 5. To view the **Decision Model business logic rules**, hover over a Review Rules step and **RIGHT-click**. On that menu, select **View Decision Model**.\
    ![ATR07 Viewdecisionmodelmenuoverreviewrules Jp](/images/AutomationTaskRules/ATR07-viewdecisionmodelmenuoverreviewrules.jpg)
@@ -145,8 +145,6 @@ The **Error Handling** section specifies how any error condition that occurs dur
 ![ATR14 Errortaskassignment Jp](/images/AutomationTaskRules/ATR14-Errortaskassignment.jpg)
 
 - **Workgroup** sets the User Group(s) who can see and access the error task. Typically, your administrator will have created an error-handling group that is a subset of the users for this process.
-
-
 - **Reassign to Last User** is a checkbox to automatically assign an error task to the last user who claimed or was assigned this same type of error task. 
 - **User** lets you select a specific user to always be assigned this error task.
 - **Auto Assign** assigns the task to the user with the fewest current assignments, who is available, and who also belongs to the group assigned to the task.
@@ -162,8 +160,6 @@ The **Tasks Notification** section is where you configure all <u>non-error</u> a
 ![ATR15 All Tasknotifications Jp](/images/AutomationTaskRules/ATR15-AllTasknotifications.jpg)
 
 - The first line selects which **types of tasks** should receive notifications: Error, User, and/or QC.
-
-
 - Next, indicate the **type(s) of notifications** the system should send: Email, SMS, and/or WhatsApp messages.
 - The **Recipient Email** and **Phone Number** on the next line is <u>only</u> used if you want to <u>override</u> the email and phone associated with the automatically assigned group and/or user in the previous step. If this is left blank, the notifications will use the contact information available on the profile settings for the user(s) that match the workgroup and/or assignment settings.
 - **Email Template** lets you override the default email template in the system and send a customized message for notifications from this process. 
@@ -193,7 +189,7 @@ When you scroll to the bottom of the message template’s setup, you will see se
 **Message Template** works just like Email Template, but is used for SMS and WhatsApp messaging.
 
 <Info>
-  The Process Administration Guide (COMING SOON) provides more details on creating and managing email and messaging templates.
+  The **Process Administration Guide** (COMING SOON) provides more details on creating and managing email and messaging templates.
 </Info>
 
 - The final section is **Data Fields**. This is where you specify fields that may be referenced explicitly and included in the Email and Messaging templates (default or otherwise). **All fields used within the email or messaging template must be specified here, or the data will not be available when the process runs.** If you do not specify a field here and it is called within the template that field will be left blank in the messaging.
@@ -273,17 +269,17 @@ You can view connectors by hovering over any connector type of task, right-click
 For all connector types, there is a **Task History** button in the bottom left to see the editing history of the item.
 
 <Tip>
-  Creating and editing Connectors is covered in detail in the **Administration Guide (Coming Soon).**
+  Creating and editing Connectors is covered in detail in the **Process Administration Guide _(COMING SOON)_.**
 </Tip>
 
 | **Type**                  | **Definition**                                                                    | **Icon**                                                |
 | :------------------------ | :-------------------------------------------------------------------------------- | :------------------------------------------------------ |
-| **Start Event**           | The action that kicks off a process flow, such as receipt of an email or webhook. | ![Start Sv](/images/ICONS/SVGs/Start.svg)               |
-| **App**                   | Action taken by an application                                                    | ![AP Sv](/images/ICONS/SVGs/AP.svg)                     |
-| **OCR**                   | Optical character recognition to extract data from a digital document             | ![OR Sv](/images/ICONS/SVGs/OR.svg)                     |
-| **RPA**                   | Robotic process automation to allow the software to mimic a human action          | ![RB Sv](/images/ICONS/SVGs/RB.svg)                     |
-| **Machine Learning (ML)** | Specialized apps like face or voice recognition                                   | ![ML Sv](/images/ICONS/SVGs/ML.svg)                     |
-| **Bot**                   | Automated, repetitive tasks like scheduling data backups                          | ![Robotic Hand Sv](/images/ICONS/SVGs/robotic-hand.svg) |
+| **Start Event**           | The action that kicks off a process flow, such as receipt of an email or webhook. |  <img width="75" height="75" src="/images/ICONS/SVGs/Start.svg" />   |
+| **App**                   | Action taken by an application                                                    |  <img width="75" height="75" src="/images/ICONS/SVGs/AP.svg" />    |
+| **OCR**                   | Optical character recognition to extract data from a digital document             |  <img width="75" height="75" src="/images/ICONS/SVGs/OR.svg" />    |
+| **RPA**                   | Robotic process automation to allow the software to mimic a human action          |  <img width="75" height="75" src="/images/ICONS/SVGs/RB.svg" />    |
+| **Machine Learning (ML)** | Specialized apps like face or voice recognition                                   |  <img width="75" height="75" src="/images/ICONS/SVGs/ML.svg" />    |
+| **Bot**                   | Automated, repetitive tasks like scheduling data backups                          |  <img width="75" height="75" src="/images/ICONS/SVGs/robotic-hand" /> |
 
 Hover over a connector task type and RIGHT-click, then select **View Connector** to see its settings.
 
@@ -415,13 +411,16 @@ The **Type** is currently restricted to Actionabl ML, which uses the built-in ma
   Details for configuring ML tasks and AI Spaces are found in the **Process** **Administration Guide (Coming Soon).**
 </Tip>
 
-# \
+# \\
+
 **RULES**
 
 Rules are the elements of business logic that are used for processing data, making decisions, and determining whether an error has occurred. They are defined by the business in most cases. Some examples of rules are:
 
 - An invoice must be dated on or after the date that an order shipped to the customer.
-- Orders over $1,000 should be routed to vendor A, while orders equal to or under $1,000 should go to vendor B.
+- Orders over $$1,000 should be routed to vendor A, while orders equal to or under $$
+
+  1,000 should go to vendor B.
 - If an order exceeds $25,000 its invoice must go through a QC step with the Accounting team.
 
 There are two types of rules: Task-Specific and Process.
