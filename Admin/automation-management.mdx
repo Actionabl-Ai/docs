@@ -269,17 +269,17 @@ You can view connectors by hovering over any connector type of task, right-click
 For all connector types, there is a **Task History** button in the bottom left to see the editing history of the item.
 
 <Tip>
-  Creating and editing Connectors is covered in detail in the **Process Administration Guide _(COMING SOON)_.**
+  Creating and editing Connectors is covered in detail in the **_Process Administration Guide (COMING SOON)._**
 </Tip>
 
-| **Type**                  | **Definition**                                                                    | **Icon**                                                |
-| :------------------------ | :-------------------------------------------------------------------------------- | :------------------------------------------------------ |
-| **Start Event**           | The action that kicks off a process flow, such as receipt of an email or webhook. |  <img width="75" height="75" src="/images/ICONS/SVGs/Start.svg" />   |
-| **App**                   | Action taken by an application                                                    |  <img width="75" height="75" src="/images/ICONS/SVGs/AP.svg" />    |
-| **OCR**                   | Optical character recognition to extract data from a digital document             |  <img width="75" height="75" src="/images/ICONS/SVGs/OR.svg" />    |
-| **RPA**                   | Robotic process automation to allow the software to mimic a human action          |  <img width="75" height="75" src="/images/ICONS/SVGs/RB.svg" />    |
-| **Machine Learning (ML)** | Specialized apps like face or voice recognition                                   |  <img width="75" height="75" src="/images/ICONS/SVGs/ML.svg" />    |
-| **Bot**                   | Automated, repetitive tasks like scheduling data backups                          |  <img width="75" height="75" src="/images/ICONS/SVGs/robotic-hand" /> |
+| **Type**                  | **Definition**                                                                    | **Icon** |
+| :------------------------ | :-------------------------------------------------------------------------------- | :------- |
+| **Start Event**           | The action that kicks off a process flow, such as receipt of an email or webhook. |          |
+| **App**                   | Action taken by an application                                                    |          |
+| **OCR**                   | Optical character recognition to extract data from a digital document             |          |
+| **RPA**                   | Robotic process automation to allow the software to mimic a human action          |          |
+| **Machine Learning (ML)** | Specialized apps like face or voice recognition                                   |          |
+| **Bot**                   | Automated, repetitive tasks like scheduling data backups                          |          |
 
 Hover over a connector task type and RIGHT-click, then select **View Connector** to see its settings.
 
@@ -411,9 +411,7 @@ The **Type** is currently restricted to Actionabl ML, which uses the built-in ma
   Details for configuring ML tasks and AI Spaces are found in the **Process** **Administration Guide (Coming Soon).**
 </Tip>
 
-# \\
-
-**RULES**
+# **RULES**
 
 Rules are the elements of business logic that are used for processing data, making decisions, and determining whether an error has occurred. They are defined by the business in most cases. Some examples of rules are:
 
@@ -423,7 +421,7 @@ Rules are the elements of business logic that are used for processing data, maki
   1,000 should go to vendor B.
 - If an order exceeds $25,000 its invoice must go through a QC step with the Accounting team.
 
-There are two types of rules: Task-Specific and Process.
+There are two types of rules: **Task-Specific** and **Process**.
 
 ## **_Task-Specific Rules_**
 
@@ -465,22 +463,24 @@ As shown above, there are two input fields: Supplier Name and Invoice Amount. Fo
 
 ![ATR29 Decision Model Value Match Jp](/images/AutomationTaskRules/ATR29-DecisionModelValueMatch.jpg)
 
-So for example, an invoice from SpiceJet Limited for $4328 would not need review, while one of that same amount from Vodafone Idea Limited would require it. 
+> So for example, an invoice from SpiceJet Limited for $4,328 would not need review, while one of that same amount from Vodafone Idea Limited would require it. 
 
-The display order is the order in which criteria are calculated. This can be important in some cases where you want a criterion to only be evaluated if another criterion has been met. For example, using the above data, you might see rules like this:
+The display order is the order in which criteria are calculated. This can be important in some cases where you want a criterion to only be evaluated if another criterion has been met.
 
-| Supplier Name                 | Invoice Amount | Needs Review |
-| :---------------------------- | :------------- | :----------- |
-| **\*** (matches any supplier) | \>= 25000.00   | Y            |
-| Vodafone Idea Limited         | \>= 4000.00    | Y            |
-| Go Airlines (India) Limited   | \>= 0          | Y            |
+> For example, using the above data, you might see rules like this:
+>
+> | Supplier Name                 | Invoice Amount | Needs Review |
+> | :---------------------------- | :------------- | :----------- |
+> | **\*** (matches any supplier) | \>= 25000.00   | Y            |
+> | Vodafone Idea Limited         | \>= 4000.00    | Y            |
+> | Go Airlines (India) Limited   | \>= 0          | Y            |
 
-In this case: 
-
-- Invoices greater than or equal to $25,000 from ANY supplier will need review. If this condition is met, no further rule processing is needed.
-- Only invoices greater than or equal to $4,000 from Vodafone require review.  
-- ALL invoices from Go Airlines (India) Limited require review.
-- If other suppliers submit invoices under $25,000, they do not require any review.
+> In this case: 
+>
+> - Invoices greater than or equal to $25,000 from ANY supplier will need review. If this condition is met, no further rule processing is needed.
+> - Only invoices greater than or equal to $4,000 from Vodafone require review.  
+> - ALL invoices from Go Airlines (India) Limited require review.
+> - If other suppliers submit invoices under $25,000, they do not require any review.
 
 You can move a criterion up or down in the order by dragging the **move** icon on its right to the desired position in the list.
 
@@ -501,5 +501,5 @@ Examples of test data are shown here:
 Click the **trashcan** icon to delete a criterion from the list.
 
 <Tip>
-  Detail on Rules creation and management is included in the **Administration Gulde.**
+  Detail on Rules creation and management is included in the **Process Administration Gulde _(COMING SOON)_.**
 </Tip>
