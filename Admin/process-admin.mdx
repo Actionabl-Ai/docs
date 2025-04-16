@@ -88,7 +88,7 @@ When designing a process automation, it’s tempting to just start building the 
     For each potential branch in the flow, clearly define what the decision is evaluating - the field(s), groupings, logic, and conditions.
   </Step>
   <Step title="Define How Items Flow Between Tasks">
-    Each task must have an input and an output flow. The flow is what moves the item between this task and its next one and may involve logical rules to determine which task comes next. Define each flow and each possible branch an item can follow. 
+    Each task must have an input and an output flow. The flow is what moves the item between this task and its next one and may involve logical rules to determine which task comes next. Define each flow and each possible branch an item can follow.
 
     <Tip>
       When a task such as a decision model has multiple outbound flows, one of those flows must be defined as the default. The other flow(s) are then defined by their rule (such as "is_approved=yes") to direct the item into them.
@@ -351,8 +351,6 @@ Actions can have one of seven types:
 ![PM24 Task Action Types Jp](/images/ProcessGuide/PM24-TaskActionTypes.jpg)
 
 - **Send Email** actions send an email using one of the system-defined email templates. (_See Email Templates for more information about creating and managing templates._)
-
-
 - **A Start Process** is a “start task” that initiates a process flow. Examples include receiving an emailed invoice from a vendor or scanning a folder for a newly created file.
 - **Static Form**, **Dynamic Form**, and **Custom Form** task actions are used in tandem with the Local Actions in a task to send a form to the user to fill out. 
   - Static forms are pre-created and standard forms that the process sends, such as a password reset or a standardized request for information.
@@ -363,7 +361,7 @@ Actions can have one of seven types:
 
 # **MANAGING CONNECTORS**
 
-While tasks represent a set of internal actions and rules that achieve a specific goal, connectors are where the actions actually take place. 
+While tasks represent a set of internal actions and rules that achieve a specific goal, connectors are where the actions actually take place.
 
 There are 6 categories of connectors in Actionabl, each of which is covered in detail below:
 
@@ -491,11 +489,11 @@ The Read Folder start event monitors the specified folder. When it finds new fil
 > - The Bank Invoice Process monitors a folder where some vendors upload their invoices instead of sending them via email.
 > - When it finds a new invoice in that folder, it starts the process.
 
-The folders that can be monitored must exist in the ?????? path on the server.
+This event can monitor and folder on the server; make sure to specify a full path to the folder.
 
 This connector looks like this:
 
-**IMAGE FPO**
+**IMAGE FPO - PM47**
 
 - The **Folder** specifies the folder to monitor. To monitor a sub-folder, make sure that the full path is specified. For example _invoice_folders/uploaded_invoices_
 - **File Types** are the file extensions to watch for. Enter each one then press Enter to save it in the field. Only files whose names specifically match these extensions will be considered. To match any file in the folder, leave this field blank.
@@ -508,15 +506,46 @@ This connector looks like this:
 
 This event type monitors a specific file and starts a process when that file changes. For example, it could monitor a spreadsheet and start the process when rows are added or updated.
 
+For example, let's look at the Consortium Attendees file we defined as a data source.
+
+Set up the start event and then click the browse icon [ ] next to Data Source.
+
+![PM41 Start Event Read File1 Jp](/images/ProcessGuide/PM41-StartEventReadFile1.jpg)
+
+To verify that you're looking at the right data source:
+
+- Click the Expand icon next to any of the data sources to see its definition and click Display Data to access its data.\
+  ![PM42 Start Event Read File2 Jp](/images/ProcessGuide/PM42-StartEventReadFile2.jpg)
+
+  ![PM43 Start Event Read File3display Data Jp](/images/ProcessGuide/PM43-StartEventReadFile3DisplayData.jpg)
+
+On the list of data sources, click the data source name to display its schema. 
+
+Next to each field you want to map into this process item, click the browse icon [] under the **Process Field** and select the field that it should map to.
+
+![PM44 Start Event Read File4 Jp](/images/ProcessGuide/PM44-StartEventReadFile4.jpg)
+
+Click the field that this data should map to from the list of all fields in this process.
+
+![PM45 Start Event Read File5 Jp](/images/ProcessGuide/PM45-StartEventReadFile5.jpg)
+
+Continue mapping fields in this way until you have mapped all data that you want to bring in for this process item. **This step ignores unmapped fields.** For example, the “Attended Sessions” data in the screenshot below will be ignored.
+
+![PM46 Start Event Read File6 Jp](/images/ProcessGuide/PM46-StartEventReadFile6.jpg)
+
+Once you've mapped all of the desired fields, click **Save**.
+
+You can now **test** the mapping to ensure it is acting as you expect.
+
 #### **FTP Start Event**
 
-The FTP start event monitors the server for inbound FTP actions and starts the process.
+The FTP start event monitors the server on the FTP port. When defining this event, you can define the FTP commands to execute (both inbound and outbound) and the action to be taken when the process starts.
 
 #### **Custom Start Event**
 
 A Custom Start event executes the code script specified using the event's parameters. The script's output is used as input to the first task in the process.
 
-**_What triggers the script to run?_**
+For example, say that a remote website contains a file that you want to monitor and download when it changes. You would use a Custom Start event to write a script using a Web RPA. This Custom Start event is then triggered by a Cron job to periodically run the script.
 
 #### **DB Query Start Event**
 
@@ -663,7 +692,7 @@ Email app connectors send emails from the system and allow for customization of 
 ![PM38 App Connector Email1 Jp](/images/ProcessGuide/PM38-AppConnectorEmail1.jpg)
 
 - **Email Account / Service Profile** is the sending account to use for the email. Leaving this blank uses the default email or service account as defined at the process level.
-- **Email Template** is the template to use for the email’s contents. These templates usually include variables, representing the data passed into the process step.
+- **Email Template** selects the template that defines the email’s contents and recipients. These templates usually include variables, representing the data passed into the process step.
 
   <Tip>
     If a variable is included in the template but is not available in this step of the process, it will be left blank in the resulting email.
@@ -683,6 +712,6 @@ The email template, Bank Invoice Receipt Email, looks like this:
 
 ![PM39 App Connector Email Template Jp](/images/ProcessGuide/PM39-AppConnectorEmailTemplate.jpg)
 
-You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces \{\{\}\} represent variables.
+You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces {} represent variables.
 
 ![PM40 App Connector Email Template Expanded Jp](/images/ProcessGuide/PM40-AppConnectorEmailTemplateExpanded.jpg)
