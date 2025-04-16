@@ -221,10 +221,10 @@ Data sources have 3 components:
 6. Leave **Active** checked. It should now look something like this:\
    ![PM10 Data Source Definition Step2 Jp](/images/ProcessGuide/PM10-DataSourceDefinitionStep2.jpg)
 7. Next, specify each of the fields in your data file, along with their “friendly” name and type. 
-   - **Field Name** should exactly match the column header in the data file. 
+   - **Field Name** should exactly match the column header in the data source file. 
    - **Field Title** can be anything you’d like. This is how the data will be labeled in the interface, reports, etc., within Actionabl.
    - Select a **Data Type** that represents how the data should be interpreted from the source file. 
-   - Click **Hidden** if the field should not be displayed in Actionabl.
+   - Click **Hidden** if the field should not be displayed in Actionabl. Its data is still available for use in rules and calculations.
 
      <Tip>
        - To add more rows to the definition, click the green plus sign at the top of the right-most column.
@@ -240,7 +240,7 @@ Data sources have 3 components:
 Your data source definition maps to:
 
 - A file previously uploaded in the system
-- A file the user is prompted to upload whenever the data source is called
+- A file the user will upload whenever the data source is called
 - Information you directly enter in _key:value_ format
 - The results of a bot’s actions that run when this data source is called
 
@@ -353,9 +353,9 @@ Actions can have one of seven types:
 - **Send Email** actions send an email using one of the system-defined email templates. (_See Email Templates for more information about creating and managing templates._)
 - **A Start Process** is a “start task” that initiates a process flow. Examples include receiving an emailed invoice from a vendor or scanning a folder for a newly created file.
 - **Static Form**, **Dynamic Form**, and **Custom Form** task actions are used in tandem with the Local Actions in a task to send a form to the user to fill out. 
-  - Static forms are pre-created and standard forms that the process sends, such as a password reset or a standardized request for information.
-  - Dynamic forms are created on the fly based on the unique information in the task. For example, this could send a request for more information based on certain criteria found in an invoice’s data.
-  - Custom forms **<u>(NOT DEFINED IN TASK MANAGEMENT GUIDE - NEED MORE INFO)</u>**
+  - _Static forms_ are pre-created and standard forms that the process sends, such as a password reset or a standardized request for information.
+  - _Dynamic forms_ are created on the fly based on the unique information in the task. For example, this could send a request for more information based on certain criteria found in an invoice’s data.
+  - _Custom forms_ let you select a pre-created form that is defined using a custom script. The form-level actions are customized to this task.
 - **Start Thread** tasks open a new communication thread associated with the task, which can be used for notifications and other communications.
 - **Bulk Tasks Action** combines multiple task actions into a single one by using a rule.
 
@@ -413,7 +413,7 @@ Click the green plus sign at the top right of the connector list to open a new c
 - Enter a unique **ID** for the connector. This cannot contain spaces or special characters other than underscores (\_).
 - Enter a descriptive **Name** for the connector. This is used in lists, displays, process models, and anywhere the connector is shown. 
 - Enter a **Task Retry Count.** This value defaults to **3** and represents the number of times the system will automatically try to restart the connector’s task if it fails before showing the user an error and stopping the process execution.
-- Select a **custom task icon** for this connector, which is used in process modeling and anywhere else that the connector is visually depicted. Your system administrator can upload additional icons to the ?????? folder.
+- Select a **custom task icon** for this connector, which is used in process modeling and anywhere else that the connector is visually depicted. Your system administrator can upload additional icons to the /public_asset/images/bpmn or /public_asset/images/bpmn_png folders.
 - Check the **Active** box to make this connector usable and visible in process modeling.
 
 ### Start Event Connectors
@@ -489,7 +489,7 @@ The Read Folder start event monitors the specified folder. When it finds new fil
 > - The Bank Invoice Process monitors a folder where some vendors upload their invoices instead of sending them via email.
 > - When it finds a new invoice in that folder, it starts the process.
 
-This event can monitor and folder on the server; make sure to specify a full path to the folder.
+This event can monitor any folder on the server; make sure to specify a full path to the folder.
 
 This connector looks like this:
 
@@ -498,7 +498,7 @@ This connector looks like this:
 - The **Folder** specifies the folder to monitor. To monitor a sub-folder, make sure that the full path is specified. For example _invoice_folders/uploaded_invoices_
 - **File Types** are the file extensions to watch for. Enter each one then press Enter to save it in the field. Only files whose names specifically match these extensions will be considered. To match any file in the folder, leave this field blank.
 - **Filter** specifies a Javascript file that can be used to further narrow down the files to watch for.
-- **Save as Attachment** indicates that when the file is found, it should be saved in Actionabl as an attachment to the item created. If this is checked:
+- **Save as Attachment** indicates that when the file is found, it should be saved in Actionabl as an attachment (in the folder designated for attachments) and a reference to it is added to the item created. If this is checked:
   - Specify an **Attachment Category** (Inbound, Inbound OCR, Outbound, User, or Generated).
   - Indicate the **access permissions** for the attachment (Public, Group, or Individual)
 
@@ -551,7 +551,7 @@ For example, say that a remote website contains a file that you want to monitor 
 
 The database query start event connects to a database using the connection parameters in the connector. Once connected, it runs an optional Data Processing Script and executes an SQL query. The query's output triggers the start of the process and serves as the input to the first task in the process.
 
-**_As with Custom Start events - what triggers the script?_**
+This start event is triggered by a cron that runs the database query event on a scheduled basis.
 
 ### OCR Connectors
 
@@ -683,7 +683,7 @@ The App connectors represent core task functionality. These are some of the most
 - Completing an External Task
 - Sending or completing an action via Docusign
 - Executing a SQL query
-- Jack Henry?
+- Jack Henry SymXchange connector for credit union use
 
 #### **Send Email App Connector**
 
@@ -697,10 +697,10 @@ Email app connectors send emails from the system and allow for customization of 
   <Tip>
     If a variable is included in the template but is not available in this step of the process, it will be left blank in the resulting email.
   </Tip>
-- The **Email Type** is **Reply**, **Reply All, New,** or **Forward**. Your choice determines which fields within the email template are needed and who is included in the sending list.
+- The **Email Type** is **Reply**, **Reply All**, **New,** or **Forward**. Your choice determines which fields within the email template are needed and who is included in the sending list.
 - **Save Email** should be checked if you want to keep a copy of the email in the email history. 
 - **Communication Mode** determines whether the recipient is able to respond to the email directly.
-- **Prepared Email Body Field** is **_what????_**
+- **Prepared Email Body Field** is used if the sender is manually drafting the body of the email. This field contains the draft of the email content that will be sent by the Send Mail connector.
 - **Exclude Emails To** is a list of email senders who should be excluded from any replies or reply-alls.
 
 This example is an invoice receipt acknowledgment email connector that is sent immediately upon receiving a vendor’s emailed invoice.
