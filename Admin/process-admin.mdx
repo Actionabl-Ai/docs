@@ -359,6 +359,77 @@ Actions can have one of seven types:
 - **Start Thread** tasks open a new communication thread associated with the task, which can be used for notifications and other communications.
 - **Bulk Tasks Action** combines multiple task actions into a single one by using a rule.
 
+# **MANAGING RECORDS**
+
+Records are definitions of connections or templates that can be used in a process, task management, or a connector. They include things like:
+
+- FTP site definitions
+- Email account definitions
+- Email templates
+- Messaging templates
+- External site credentials
+
+Records are managed under **Components -\> Records**.
+
+![PM62 Records 1 Jp](/images/ProcessGuide/PM62-Records1.jpg)
+
+PM62
+
+## Managing Existing Records
+
+To see the content of an existing record, click the Expand icon on its far right. The fields displayed will vary based on the type of record you’re viewing.
+
+**Example of an email template record:**
+PM63
+
+**Example Service Account Profile record:**
+
+**PM64**
+
+**Example FTP Account record:**
+
+**PM65**
+
+## **Creating New Records**
+
+Start by clicking the green plus icon at the top right of the record list. The New Entry dialog appears:
+
+**PM66**
+
+Select the **Type** of record to be created.
+
+- **Email Account**: Access definition for an email account that can be used by the system to read or send emails.
+- **Email Template**: Content template for an email that can be sent by the system.
+- **FTP site**: Access definition for an FTP account
+- **Message Template**: Content template for SMS or notification messages that can be sent by the system.
+- **Parameters**: key:value pairs of commonly used parameters that can be called into other processes
+- **Service Account**: Access definition for a Google, Dropbox, Microsoft, Box, or Docusign service account that the system can use.
+- **Service Profile**: Defines the authorization and security access for a service account
+- **Email Template** **Section**: Reusable section of content that can be called into an email template, such as support contact information.
+- **ESign Template**: Template that creates and defines the routing for a document requiring electronic signatures.
+
+### Creating Email Account Records
+
+PM67
+
+### Creating Email Template Records
+
+PM68
+
+### Creating Email Template Section Records
+
+### Creating Message Template Records
+
+### Creating FTP Site Records
+
+### Creating Parameter Records
+
+### Creating Service Account Records
+
+### Creating Service Profile Records
+
+### Creating ESign Template Records
+
 # **MANAGING CONNECTORS**
 
 While tasks represent a set of internal actions and rules that achieve a specific goal, connectors are where the actions actually take place.
