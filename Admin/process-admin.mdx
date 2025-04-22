@@ -61,7 +61,7 @@ In addition to the elements shown here, a Process Automation also may use:
 
 When designing a process automation, it’s tempting to just start building the flow in the system. However, this is the least efficient approach and can cause frustration. We recommend the following process. 
 
-**Steps 1 through 7 are done outside of Actionabl using your preferred flowcharting method and tools.**
+**Steps 1 through 7 are done outside of Actionabl using your preferred flowcharting method and tools. Step 8 is done in Actionabl.**
 
 <Steps>
   <Step title="Build the process flow" stepNumber="1">
@@ -239,8 +239,8 @@ Data sources have 3 components:
 
 Your data source definition maps to:
 
-- A file previously uploaded in the system
-- A file the user will upload whenever the data source is called
+- A file previously uploaded to the system
+- A file that the user will upload whenever the data source is called
 - Information you directly enter in _key:value_ format
 - The results of a bot’s actions that run when this data source is called
 
@@ -358,6 +358,78 @@ Actions can have one of seven types:
   - _Custom forms_ let you select a pre-created form that is defined using a custom script. The form-level actions are customized to this task.
 - **Start Thread** tasks open a new communication thread associated with the task, which can be used for notifications and other communications.
 - **Bulk Tasks Action** combines multiple task actions into a single one by using a rule.
+
+# **MANAGING RECORDS**
+
+Records are definitions of connections or templates that can be used in a process, task management, or a connector. They include things like:
+
+- FTP site definitions
+- Email account definitions
+- Email templates
+- Messaging templates
+- External site credentials
+
+Records are managed under **Components -\> Records**.
+
+![PM62 Records 1 Jp](/images/ProcessGuide/PM62-Records1.jpg)
+
+PM62
+
+## Managing Existing Records
+
+To see the content of an existing record, click the Expand icon on its far right. The fields displayed will vary based on the type of record you’re viewing.
+
+**Example of an email template record:** ![PM63 Record Example Email Template Jp](/images/ProcessGuide/PM63-RecordExampleEmailTemplate.jpg)
+
+PM63
+
+**Example Service Account Profile record:**
+
+**PM64**
+
+**Example FTP Account record:**
+
+**PM65**
+
+## **Creating New Records**
+
+Start by clicking the green plus icon at the top right of the record list. The New Entry dialog appears:
+
+**PM66**
+
+Select the **Type** of record to be created.
+
+- **Email Account**: Access definition for an email account that can be used by the system to read or send emails.
+- **Email Template**: Content template for an email that can be sent by the system.
+- **FTP site**: Access definition for an FTP account
+- **Message Template**: Content template for SMS or notification messages that can be sent by the system.
+- **Parameters**: key:value pairs of commonly used parameters that can be called into other processes
+- **Service Account**: Access definition for a Google, Dropbox, Microsoft, Box, or Docusign service account that the system can use.
+- **Service Profile**: Defines the authorization and security access for a service account
+- **Email Template** **Section**: Reusable section of content that can be called into an email template, such as support contact information.
+- **ESign Template**: Template that creates and defines the routing for a document requiring electronic signatures.
+
+### Creating Email Account Records
+
+PM67
+
+### Creating Email Template Records
+
+PM68
+
+### Creating Email Template Section Records
+
+### Creating Message Template Records
+
+### Creating FTP Site Records
+
+### Creating Parameter Records
+
+### Creating Service Account Records
+
+### Creating Service Profile Records
+
+### Creating ESign Template Records
 
 # **MANAGING CONNECTORS**
 
@@ -521,7 +593,7 @@ To verify that you're looking at the right data source:
 
   ![PM43 Start Event Read File3display Data Jp](/images/ProcessGuide/PM43-StartEventReadFile3DisplayData.jpg)
 
-On the list of data sources, click the data source name to display its schema. 
+On the list of data sources, click the data source name to display its schema.
 
 Next to each field you want to map into this process item, click the browse icon [] under the **Process Field** and select the field that it should map to.
 
@@ -714,12 +786,11 @@ The email template, Bank Invoice Receipt Email, looks like this:
 
 ![PM39 App Connector Email Template Jp](/images/ProcessGuide/PM39-AppConnectorEmailTemplate.jpg)
 
-You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces \{\{ \}\} represent variables.
+You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces { } represent variables.
 
 ![PM40 App Connector Email Template Expanded Jp](/images/ProcessGuide/PM40-AppConnectorEmailTemplateExpanded.jpg)
 
 #### **Send Message App Connector**
-
 
 #### **Push Notification App Connector**
 
