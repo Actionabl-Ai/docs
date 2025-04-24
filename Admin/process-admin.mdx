@@ -41,7 +41,7 @@ In Actionabl, the **Process View** defines an automation and how data flows thro
   - Receipt of an email or message from an external resource
   - An inbound API call or webhook event
   - A cron job that runs on a scheduled basis to execute a database query
-- The process is made up of a series of **Tasks**, which may be guided by **Task Rules** or use **Connectors** to processes to complete actions.
+- The process is made up of a series of **Tasks**, which may be guided by **Task Rules** and use **Connectors** to complete actions.
 - Items pass through the process using the **Flows** to move through the tasks. Flows can change the status (and **Stages**) of the item as they move it between task steps.
 - **Decisions** represent logical branches in the flow, where an item may be directed into a different pathway based on the rules and evaluations that occur within the Decision task.
 - At the end of the process, each pathway has a **Resolution Event**, representing the automation's terminal action.
@@ -52,6 +52,7 @@ In addition to the elements shown here, a Process Automation also may use:
 - **Data fields** in the database
 - **Remote workers** to connect to APIs and integration points
 - **External Access** resources, which can retrieve or send data outside the Actionabl system.
+- **Records**, which define messaging templates and connections to things like FTP sites, email accounts, or other outside accounts.
 
 <Tip>
   Please review the [**Task Management Guide**](/TaskManagement/task-management) to understand how processes, tasks, and stages work together to form a process automation. The concepts from that guide are critical to your understanding to enable you to create and manage process automations effectively.
@@ -105,13 +106,14 @@ When designing a process automation, it’s tempting to just start building the 
 
     1. Data fields
     2. Data sources
-    3. Connectors
-    4. The Process Model
+    3. Records
+    4. Connectors
+    5. The Process Model
        - Tasks and Stages - The Process Model
        - Task Rules
        - Decisions
-    5. Remote workers
-    6. External accesses
+    6. Remote workers
+    7. External accesses
   </Step>
 </Steps>
 
@@ -127,7 +129,7 @@ A Data Field is a container for a defined, discrete, element of data stored in J
 - **Display Label** overrides the Name when the field is displayed in a form or in the UI. Example: Email.
 - **Data Format** controls how the data in the field is displayed in the interface. The selected data format must be compatible with the Type and the Control Type. Valid options are: ID, Folder ID, User ID, Name, Number, Alphanumeric, Percentage, Currency, File Path, URL, Phone Number, Email, Time Interval (DDHHMM), IP Address, Host Name, and Port Number.
 - The **Validation Rule** is an optional rule that sets guardrails on what can be entered into this field. For example, if the field is “invoice_date,” the validation rule may say that the date entered cannot be earlier than the company’s founding date and also can’t be a future date. **The Validation Rule cannot be violated by any existing entries, not just new entries—it’s not an input validation; it’s a field validation.** 
-- **Field Form** is ??
+- **Field Form** is the form in which this field is used, if it’s part of a field set.
 - If **Is List** is checked, the field is treated as an array that can contain multiple values. 
 
 In this example, the field is a multi-select field allowing labels to be set on Bank Invoices:
@@ -140,7 +142,7 @@ This example is an attachment field that can hold multiple file uploads:
 
 ## **Creating New Fields**
 
-If an existing field is configured similarly to the new field, you can Duplicate the existing field and use that as the basis for the new one. Alternatively, click the green plus icon on the top right of the field list to create a new field from scratch.
+If an existing field is configured similarly to the new field, you can duplicate the existing field and use that as the basis for the new one. Alternatively, click the green plus icon on the top right of the field list to create a new field from scratch.
 
 <Tip>
   If you are on any page <u>other than 1</u> in the field list when you click the green plus sign, the new field will not appear to be created. However, if you go back to page 1, you will find the dialog for it open at the top of that page.
@@ -148,12 +150,11 @@ If an existing field is configured similarly to the new field, you can Duplicate
 
 ![PM07 New Field Empty Jp](/images/ProcessGuide/PM07-NewFieldEmpty.jpg)
 
-In the new field dialog, select a **Type** from the dropdown.
-
-1. Type a unique **ID**. This cannot contain spaces or special characters other than underscore (\_).
-2. Enter a **Name** that will be easily understood in the forms, reports, and areas of the interface where the field appears.
-3. Leave **Active** checked unless you want the field to be inactive and hidden.
-4. Optionally:
+1. In the new field dialog, select a **Type** from the dropdown.
+2. Type a unique **ID**. This cannot contain spaces or special characters other than underscore (\_).
+3. Enter a **Name** that will be easily understood in the forms, reports, and areas of the interface where the field appears.
+4. Leave **Active** checked unless you want the field to be inactive and hidden.
+5. Optionally:
    - Select a **Control Type** from the dropdown. If you do not select one, the system will default to one it assumes is appropriate to the Type you selected. Your selection of a control type may cause additional options to appear, such as the number of input lines or format specifications.
    - Add a **Display Label** to override the internal Name of this field when it is shown in user forms. 
    - Specify a **Data Format**. This is a more detailed internal format for storing data, such as “phone number” for an integer field. It restricts the input to the parameter of the format selected.
@@ -193,7 +194,7 @@ You can also search for a field using **Table Search** by entering any of the in
 4. **If editing an existing field that is in use, be aware that changing its type, data format, validation, or control type may create errors in existing processes or forms that use the field.**
 
 <Warning>
-  **Exercise extreme caution, as editing a field can result in a permanent loss of data if existing field values are converted. Once a process is in production, field types, data formats, validations, or control types should not be changed.**
+  **Exercise EXTREME CAUTION, as editing a field can result in a permanent loss of data if existing field values are converted. Once a process is in production, field types, data formats, validations, or control types should not be changed.**
 </Warning>
 
 # **MANAGING DATA SOURCES**
@@ -253,6 +254,8 @@ In the **Data Sources** tab, click the green plus sign to create a new data sour
 3. For the **Type**, select the Data Source Definition you just created for it.\
    ![PM13 Data Source Step1 Jp](/images/ProcessGuide/PM13-DataSourceStep1.jpg)
 
+The next step will vary depending on the Source you select.
+
 ### **Entry Source Type**
 
 This source assumes you have a relatively small set of data and that you’re going to type it in here. Clicking this loads a table showing the data definition you specified. 
@@ -284,13 +287,13 @@ Click the **[ ] icon**  in the **File** field to see the available files in the 
 ![PM17 Data Source File2 Jp](/images/ProcessGuide/PM17-DataSourceFile2.jpg)
 
 <Tip>
-  Note on the list that some of the entries (like Attendee Records) are described as **Folders**. Clicking one of these opens the folder and shows the files in it. To return to the previous list level, click the double dots at the top left of the list.\
+  Note that some of the list entries (like Attendee Records) are described as **Folders**. Clicking one of these opens the folder and shows the files in it. To return to the previous list level, click the double dots at the top left of the list.\
   ![PM18 Data Source File3 Jp](/images/ProcessGuide/PM18-DataSourceFile3.jpg)
 </Tip>
 
 1. Click on the **File** you want to use for this mapping. 
 2. Select the **File Type** in the dropdown.
-3. In the **Match Type** dropdown, select how you want to match the fields to the Data Source Definitions. You can use the field index, field name, or field title to match on.
+3. In the **Match Type** dropdown, select how you want to match the fields to the Data Source Definitions. You can use the field index (the row number in the input file), field name, or field title to match on.
 4. If your input file contains headers, click “**Has Header**” to skip the first row of the file. 
 
 The result should look something like this. Note that the File field shows both the folder and the filename:
@@ -381,21 +384,19 @@ To see the content of an existing record, click the Expand icon on its far right
 
 **Example of an email template record:** ![PM63 Record Example Email Template Jp](/images/ProcessGuide/PM63-RecordExampleEmailTemplate.jpg)
 
-PM63
-
 **Example Service Account Profile record:**
 
-**PM64**
+![PM64 Record Example Service Profile Jp](/images/ProcessGuide/PM64-RecordExampleServiceProfile.jpg)
 
 **Example FTP Account record:**
 
-**PM65**
+![PM65 Record Example FTP Jp](/images/ProcessGuide/PM65-RecordExampleFTP.jpg)
 
 ## **Creating New Records**
 
 Start by clicking the green plus icon at the top right of the record list. The New Entry dialog appears:
 
-**PM66**
+![PM66 Record Create1 Jp](/images/ProcessGuide/PM66-RecordCreate1.jpg)
 
 Select the **Type** of record to be created.
 
@@ -407,29 +408,334 @@ Select the **Type** of record to be created.
 - **Service Account**: Access definition for a Google, Dropbox, Microsoft, Box, or Docusign service account that the system can use.
 - **Service Profile**: Defines the authorization and security access for a service account
 - **Email Template** **Section**: Reusable section of content that can be called into an email template, such as support contact information.
-- **ESign Template**: Template that creates and defines the routing for a document requiring electronic signatures.
+- **ESign Template**: Template that creates and defines the routing for a DocuSign document requiring electronic signatures.
 
 ### Creating Email Account Records
 
-PM67
+![PM67 Create Record Email Account Jp](/images/ProcessGuide/PM67-CreateRecordEmailAccount.jpg)
 
-### Creating Email Template Records
+This can use any IMAP/SMTP email account.
 
-PM68
+### Creating Email Templates
 
-### Creating Email Template Section Records
+![PM68 Create Record Email Template Jp](/images/ProcessGuide/PM68-CreateRecordEmailTemplate.jpg)
 
-### Creating Message Template Records
+The middle section of this dialog defines the intended recipient(s), CC, and BCC addresses for the email to be sent. These entries can be left blank, in which case the task that calls this template will fill in this data.
+
+The bottom section defines the content of the email, including subject line, sender/reply-to, type of email,  and a custom body.
+
+When you select a Body Type, you will see the fields available to you change.
+
+**Default Email Body**
+
+![PM69 Create Recorde Email Template Default Jp](/images/ProcessGuide/PM69-CreateRecordeEmailTemplateDefault.jpg)
+
+**Mail Gen Email Body**
+
+![PM70 Create Record Email Template Mail Gen Jp](/images/ProcessGuide/PM70-CreateRecordEmailTemplateMailGen.jpg)
+
+**Custom Email Body**
+
+![PM71 Create Record Email Template Custom Jp](/images/ProcessGuide/PM71-CreateRecordEmailTemplateCustom.jpg)
+
+<Tip>
+  Detailed instructions on building and managing Email Templates are provided in the Communications Administration Guide (COMING SOON).
+</Tip>
+
+### Creating Email Template Sections
+
+When you use the Mail Gen email template type, you can use predefined sections to build your email. Email sections are reusable snippets that can be brought into multiple email templates to provide consistent messaging, formatting, or functionality.
+
+> Examples:
+>
+> - Greetings / Salutations
+> - Tables of data
+> - Contact and hours of operation
+> - Paragraphs containing a refund policy
+> - Links to learning and documentation resources for your product
+
+When a section is used in an email template, it appears like this.
+
+![PM72 Create Record Email Section1 Jp](/images/ProcessGuide/PM72-CreateRecordEmailSection1.jpg)
+
+Clicking the Expand button allows you to see the content of the section.
+
+<Tip>
+  If you are in Edit mode on the email template, you can also edit the section's content. For text items, clicking “Edit Paragraph” opens a rich-text editor in a separate popup. Other items can be directly edited.
+
+  Click **Save** in the popups and when finished editing the sections to ensure your work is saved.
+
+  ![PM73 Create Record Email Section2 Jp](/images/ProcessGuide/PM73-CreateRecordEmailSection2.jpg)
+</Tip>
+
+<Tip>
+  Detailed instructions on building and managing Email Sections are provided in the Communications Administration Guide (COMING SOON).
+</Tip>
+
+### Creating Message Templates
+
+Message templates are used for SMS messages and threads. The structure of the message templates is simple because there is no formatting involved, but they can include variables, which are enclosed in double curly braces { }.
+
+![PM74 Create Record Message Template1 Jp](/images/ProcessGuide/PM74-CreateRecordMessageTemplate1.jpg)
+
+When completed, it looks something like this:
+
+![PM75 Create Record Message Template2 Jp](/images/ProcessGuide/PM75-CreateRecordMessageTemplate2.jpg)
 
 ### Creating FTP Site Records
 
+An FTP Site record provides a full definition for connecting to and using an FTP or SFTP site. It looks like this:
+
+![PM76 Create Record FTP1 Jp](/images/ProcessGuide/PM76-CreateRecordFTP1.jpg)
+
+- The **Host** should be entered as a plain URL like [ftp.domain.com](http://ftp.domain.com) 
+- The **Port** number should correspond with the Protocol and FTP Api you select. If you are unsure which port to use, check with the technical support for the FTP server to determine how to connect.
+- The **User** and **Password** are the credentials used to connect to the FTP user account.
+- **FTP Api** is your selection of the type of FTP service to use. **Default** is the most usual choice, but you can also select **Win Scp** or **Win Scp Api** if needed. Consult with your technical support if you aren’t certain.
+- **Protocol** is where you choose between FTP, SFTP, or SCP. If using SCP, you’ll need to select one of the SCP options in the FTP Api field.
+- If there are **additional connecting parameters** for connecting to FTP, such as a default directory, add them in the bottom section.
+
+The result will look something like this:
+
+![PM77 Create Record FTP2 Jp](/images/ProcessGuide/PM77-CreateRecordFTP2.jpg)
+
 ### Creating Parameter Records
+
+Parameter records are lists of parameters (Name, Type, and Value) that can be used by Connectors and Tasks to complete actions. They are helpful when the same parameters are frequently used to define a task, such as a company name, address,  filename, or path.
+
+![PM139 Parameter Records Pn](/images/ProcessGuide/PM139-ParameterRecords.png)
 
 ### Creating Service Account Records
 
+Service accounts define an external account that the system can use to connect to and perform actions in an external service.
+
+> Available Account Types:
+>
+> - Docusign
+> - Google Workspace
+> - Microsoft
+> - Dropbox
+> - Box
+
+Setting up a service account requires the full credentials to the remote account and, when appropriate, also allows you to create or revoke an access token in the account.
+
+Multiple service accounts can connect to the same service as long as they use different account credentials. For security, each service account should use a dedicated login and have the least privileges needed to perform its role.
+
+The fields available when setting up a service account will vary with your selection of service type.
+
+#### **Setting up a Google Service Account**
+
+For a Google Service Account you will need a Client ID and a Client Secret as well as your Google Tenant ID. Details for setup in Google are available in their [<u>Developer Documentation</u>](https://developers.google.com/workspace/guides/create-credentials).
+
+**_The Client ID and Secret are only shown once in Google and are NOT visible after you enter them in Actionabl_**, so save them in a safe place. 
+
+<Tip>
+  If you lose these credentials, you must revoke the existing keys and generate new ones, then enter the new ones into the service account setup in Actionabl.
+</Tip>
+
+In Actionabl, select a Service Type of **Google** to set up the service account.
+
+1. Enter the **Client ID** and **Client Secret** in the fields in the Service Account configuration on Actionabl. 
+2. Enter the **Tenant ID** of your Google account.
+3. Account ID and User ID can be left blank. 
+4. Enter the **Sender ID**, which is your unique Google account ID. It’s found in the project information section in your Google Cloud project.
+5. Enter the **Server Key**. This is the API key for your project. It can be found in the APIs & Services section under Credentials in your Google Cloud Console, or for some projects, in the project settings in Google Cloud. 
+
+When complete, the record should look something like this:
+
+![PM79 Create Record Service Account Google2 Jp](/images/ProcessGuide/PM79-CreateRecordServiceAccountGoogle2.jpg)
+
+**Setting up a Microsoft Service Account**
+
+For a MIcrosoft Service Account you will need a Client ID and a Client Secret. Details for setup within Microsoft are available in their [<u>Partner Center documentation</u>](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/create-or-update-client-ids-and-secrets).
+
+**_The Client ID and Secret are only shown once in Microsoft and are NOT visible after you enter them in Actionabl_**, so save them in a safe place. You should also record the start and end dates for the secret as this is also not available once you close this dialog.
+
+<Tip>
+  If you lose these credentials, you must revoke the existing keys and generate new ones, then enter the new ones into the service account setup in Actionabl.
+</Tip>
+
+<Warning>
+  The new client secret may take up to 15 minutes to activate. During that time, you can save it in Actionabl, but testing this record may not be successful until it has activated in Microsoft.
+</Warning>
+
+In Actionabl, select a Service Type of **Microsoft** to set up the service account.
+
+1. Enter the **Client ID** and **Client Secret** you just generated.
+2. Enter the **Tenant ID**.
+3. You can leave Account ID and User ID blank.
+4. You can leave Sender ID and Server Key blank.
+
+Once set up in Actionabl, your Microsoft Service Account record should look something like this:
+
+![PM82 Create Service Account Microsoft Jp](/images/ProcessGuide/PM82-CreateServiceAccountMicrosoft.jpg)
+
+**Setting up a Box Service Account**
+
+A service account is automatically created in [Box.com](http://Box.com) when you create a custom app or partner integration in the developer console using the JWT authentication method. Once this is created, you will need to create Client ID and Client Secret and to retrieve your Box Tenant ID (in the Microsoft Entra admin center under Properties).
+
+In Actionabl, select a Service Type of **Box** to set up the service account.
+
+1. Enter the **Client ID** and **Client Secret** generated in Box. 
+
+To get the Client ID for your application, log in to your Box developer console and click the Edit Application link for the application you're working with. In the OAuth 2.0 Parameters section of the configuration page, find the item labelled client_id. The text of that item is your application's Client ID.
+
+1. Enter your Box **Tenant ID**.
+2. No other information is required on the popup.
+3. Click **Save**.
+
+![PM138 App Connect SQL Data Process Pn](/images/ProcessGuide/PM138-AppConnectSQLDataProcess.png)
+
+**Setting up a Dropbox Service Account**
+
+Your Dropbox Service Account starts with setting up a new app in Dropbox on the App Console in your account. Details about how this works are found in [<u>Dropbox’s documentation</u>](https://developers.dropbox.com/oauth-guide).
+
+After setting up the app, you will see an App Key and App Secret, which you’ll use for Actionabl setup. You will also need to retrieve your Dropbox Tenant ID  or Team ID from the admin console or Developer Portal.
+
+In Actionabl:
+
+- Enter the Dropbox App Key in the **Client ID** field.
+- Enter the Dropbox App Secret in the **Client Secret** field.
+- Enter either your Dropbox Tenant ID or Team ID in the Tenant ID field.
+- No other information is required in this popup.
+- Click **Save**.
+
+![PM84 Create Service Account Dropbox Jp](/images/ProcessGuide/PM84-CreateServiceAccountDropbox.jpg)
+
+**Setting up a DocuSign Service Account**
+
+Set up your DocuSign integration by creating a free developer account in the DocuSign Developer Center and generating a Client ID and Client Secret. You will also need to retrieve your DocuSign API Account ID, which serves as your Tenant ID.
+
+You will likely also need to set up a DocuSign Connect connection to enable the real-time integration.
+
+In Actionabl:
+
+1. Select a **Service Type** of **DocuSign.**
+2. Enter the **Client ID** and **Client Secret** in the appropriate fields.
+3. Enter your **DocuSign API Account ID** in the Tenant ID field.
+4. No other information is required in this popup.
+5. Click **Save**.
+
+![PM85 Create Service Account Docusign Jp](/images/ProcessGuide/PM85-CreateServiceAccountDocusign.jpg)
+
 ### Creating Service Profile Records
 
+A service profile record uses the service account previously defined to connect to the external service so an action can be performed. The Profile is what a Connector uses to log in to the remote service and complete a specific task.
+
+For the Google Service Account that was created, for example, we may have 6 Profile Records that have unique privileges and accesses.
+
+![PM80 Create Service Profile1 Jp](/images/ProcessGuide/PM80-CreateServiceProfile1.jpg)
+
+Each profile is granted specific accesses and has a unique token for its connection:
+
+![PM81 Create Service Profile Google2 Jp](/images/ProcessGuide/PM81-CreateServiceProfileGoogle2.jpg)
+
+When you create a new Service Profile, you first need to select which Service Account it uses. This will determine the fields and configurations available to it.
+
+![PM86 Create Service Profile1 Jp](/images/ProcessGuide/PM86-CreateServiceProfile1.jpg)
+
+![PM87 Create Service Profile2 Jp](/images/ProcessGuide/PM87-CreateServiceProfile2.jpg)
+
+Next, you will need to select an **Auth Grant Type**.
+
+![PM91 Service Profile Auth Grant Jp](/images/ProcessGuide/PM91-ServiceProfileAuthGrant.jpg)
+
+- Authorization allows the app to act as the user after logging in and consenting.
+- Refresh Token allows the app to act as the user long-term (over multiple sessions) after logging in and consenting
+- Client Credentials allow the app to act on its own (using its own credentials) using app secrets
+- Password should be avoided if possible as it’s a much less secure authentication type
+- JWT Grant allows the app to act on its own (using its own credentials) using securely signed tokens
+
+After you create and save the profile account, you will be able to create or revoke its tokens.
+
+Click **Create Token** to create a new one. You will not see the token or any confirmation that it has been created. However, the token will be used automatically in the API calls made to Google to represent this profile as an authenticated user.
+
+If you have problems with authentication or make changes on the remote end of the API connection, you may need to **revoke** the token and then create a new one. 
+
+To turn off authentication between the two systems, click **Revoke Token** to remove the token. This will prevent all future API calls from authenticating.
+
+#### **Creating a Google Service Profile**
+
+It’s strongly recommended that you define the profile’s ID and Name based on the authorization scope(s) being granted to the profile. If you have multiple Google accounts, include the account name in the ID and profile name as well.
+
+![PM88 Create Service Profile Google1 Jp](/images/ProcessGuide/PM88-CreateServiceProfileGoogle1.jpg)
+
+There are two “tiers” of authorization scopes to define in a Google Service Profile: Drive access and App access.
+
+**Drive Access options:**
+
+- **Google Drive Full Access** provides read/write and create/delete access to the Google Drive account and all files and folders within it <u>or shared to it</u>.
+- **Google Drive Readonly** provides read only access to the full Google Drive and all of its files and folders. This can be overridden by app-specific access.
+- **Google Drive** (files created with this app) provides full access (read/write and create/delete) throughout the Google Drive, but only to files created by Actionabl.
+
+**App Access options** override drive-level permissions on an app-specific basis:
+
+- **Google Spreadsheets Full Access** provides read/write and create/delete access to all spreadsheet files in the Google Drive, regardless of their folder. If Drive access is “readonly” and you select this option, you will only be able to create/delete and read/write spreadsheet files in the drive or to files shared to the account.
+- **Google Spreadsheets Readonly** provides read only access to spreadsheet files throughout the Google Drive. If Drive access is “full access” and you select Readonly for spreadsheets, spreadsheet files will be read only.
+- **Google Documents Full Access** provides read/write and create/delete access to all documet files in the Google Drive, regardless of their folder. If Drive access is “readonly” and you select this option, you will only be able to create/delete and read/write spreadsheet files in the drive.
+- **Google Documents Readonly** provides read only access to document files throughout the Google Drive. If Drive access is “full access” and you select Readonly for documents, document files will be read only.
+- **Gmail Full Access** provides full access to the Gmail account to read and send emails as that account. This works independently from Drive access unless there is a need to also manage file attachments.
+- **Gmail Readonly** provides read only access to the Gmail account. This will allow inbound and outbound emails to be read but will prevent attachments from being saved or responses from being drafted or sent.
+
+For clarity, here are some common scenarios:
+
+**Profile that can read and write Spreadsheet files only**
+
+![PM89 Create Google Profile1 Jp](/images/ProcessGuide/PM89-CreateGoogleProfile1.jpg)
+
+**Profile for full Gmail Send/Receive access**
+
+![PM90 Service Profile Gmail Full Access Jp](/images/ProcessGuide/PM90-ServiceProfileGmailFullAccess.jpg)
+
+#### **Creating a Microsoft Service Profile**
+
+The Microsoft Service Profile has 7 authentication scopes available:
+
+![PM92 Create Service Profile Microsoft1 Jp](/images/ProcessGuide/PM92-CreateServiceProfileMicrosoft1.jpg)
+
+- **Default Tenant Access **uses the tenant ID from the connector to identify your organization in the connection.
+- **Offline access** grants permission for the application to save a local copy of files so they can be accessed even when a network connection is not available
+- **Have full access to all files user can access** grants the Actionabl app permission to act completely as the user, including read/write and create/delete access to the user’s accessible files.
+- **Sign in and read user profile** gives the ability to read data from the user’s profile
+- **Email Read** provides read-only access to the user’s email but no ability to save attachments
+- **Email Send** provides the ability to send email as the user, but not to read emails or responses. It does not automatically provide access to attach files from the user’s Microsoft account to the email.
+- **Email Read and Write** grants full access to read and write emails. However, it does not automatically provide access to attach files from the user’s Microsoft account to the email.
+
+**Example showing full access to a Microsoft Service Account**
+
+![PM93 Create Service Profile Microsoft2 Jp](/images/ProcessGuide/PM93-CreateServiceProfileMicrosoft2.jpg)
+
+#### **Creating a Box Service Profile**
+
+For Box, the only service profile option is whether to **grant full access**.
+
+![PM95 Create Service Profile Dropbox Jp](/images/ProcessGuide/PM95-CreateServiceProfileDropbox.jpg)
+
+#### **Creating a DocuSign Service Profile**
+
+For DocuSIgn, the service profile designates whether this account can “impersonate” a signature. This would provide the authority to sign a document on behalf of a person or organization.
+
+![PM96 Create Service Profile Docu Sign Jp](/images/ProcessGuide/PM96-CreateServiceProfileDocuSign.jpg)
+
 ### Creating ESign Template Records
+
+ESign Template Records use the DosuSign Service Profile to route a signature “packet” of documents (as file attachments to emails) to signers for their approvals.
+
+![PM116 Record Esign Template 2 Jp](/images/ProcessGuide/PM116-RecordEsignTemplate-2.jpg)
+
+> For example, let’s assume you are sending a set of 3 documents, each of which need to be signed:
+>
+> - Disclosure of terms
+> - Credit check authorization
+> - Application for credit issuance
+>
+> These documents will be sent in a single packet called “Credit Application” to the applicant and co-applicant, plus the business’ credit manager.
+
+- **Title** is used as the file name for the signing "packet" document that is generated from this template.
+- The **Documents** section includes each of the documents being sent and defines the order in which the user sees them when signing. Documents designated as "Form Fill" contain variables in certain fields that the system will populate (using a data preparation rule) before generating the document and sending it out for signature. For example, this could prepopulate each applicant's name, address, and phone.
+- The **Signers** section defines the recipients and the order in which they need to sign. 
+  - Each Signer has a **Signer Tabs** section, which specifies exactly where in each document they need to sign.
+  - The **Anchors** define the X,Y coordinates for their signature or input. These are defined in the document when it is created outside of Actionabl. 
 
 # **MANAGING CONNECTORS**
 
@@ -453,6 +759,7 @@ To **manage or duplicate** an existing connector, click the expand icon next to 
 ## Managing an Existing Connector
 
 <Warning>
+  **WARNING\!**\
   **If a connector is currently in use, you must pause the automation(s) in which it’s used prior to making any edits to it.** \
   \
   Best Practice is to duplicate the connector, make the changes and <u>thoroughly test them</u>, then replace the old one with the new one in the process automations. You can then restart the automations. You should then delete the old connector to avoid confusion.\
@@ -530,7 +837,19 @@ The connector is set up like this:
 
 #### **HTTP Start Events**
 
-INFO NEEDED
+The HTTP start event occurs when an outside system calls Actionabl from a preconfigured URL.
+
+> For example, you may have a service that handles shipping of orders; when the order ships, their application calls Actionabl and provides a tracking number, shipping invoice, and date of shipment.
+
+![PM141 Start Event HTTP Jp](/images/ProcessGuide/PM141-StartEventHTTP.jpg)
+
+In this example, we want to save the attachment of the shipping invoice as an Inbound OCR with everyone in the workgroup having access to it. 
+
+In subsequent tasks in the flow, we ould then read the invoice and send it for processing, extract the tracking information and email it to the customer, and update the order’s status to _shipped_.
+
+<Tip>
+  The configuration of the URL and API access tokens for the connection are done using the Automation Scheduler. Details for this setup are in the [<u>Automation Management</u>](https://docs.actionabl.ai/Admin/automation-management) guide
+</Tip>
 
 #### **Read Email / Read Gmail / Read MSMail Start Events**
 
@@ -554,7 +873,7 @@ The Start Event looks like this:
 
 #### **Read Folder Start Event**
 
-The Read Folder start event monitors the specified folder. When it finds new files that match the criteria in the folder, it triggers the start of the process. 
+The Read Folder start event monitors the specified folder. When it finds new, changed, or deleted files that match the criteria in the <u>filter</u>, it triggers the start of the process. 
 
 > For example:
 >
@@ -567,10 +886,8 @@ This connector looks like this:
 
 ![PM47 Start Event Read Folder Bank Inv 1 Jp](/images/ProcessGuide/PM47-StartEventReadFolderBankInv1.jpg)
 
-**IMAGE FPO - PM47**
-
 - The **Folder** specifies the folder to monitor. To monitor a sub-folder, make sure that the full path is specified. For example _invoice_folders/uploaded_invoices_
-- **File Types** are the file extensions to watch for. Enter each one then press Enter to save it in the field. Only files whose names specifically match these extensions will be considered. To match any file in the folder, leave this field blank.
+- **File Types** are the file extensions to watch for. Enter each one, then press Enter to save it in the field. Only files whose names specifically match these extensions will be considered. To match any file in the folder, leave this field blank.
 - **Filter** specifies a Javascript file that can be used to further narrow down the files to watch for.
 - **Save as Attachment** indicates that when the file is found, it should be saved in Actionabl as an attachment (in the folder designated for attachments) and a reference to it is added to the item created. If this is checked:
   - Specify an **Attachment Category** (Inbound, Inbound OCR, Outbound, User, or Generated).
@@ -619,7 +936,7 @@ The FTP start event monitors the server on the FTP port. When defining this even
 
 A Custom Start event executes the code script specified using the event's parameters. The script's output is used as input to the first task in the process.
 
-For example, say that a remote website contains a file that you want to monitor and download when it changes. You would use a Custom Start event to write a script using a Web RPA. This Custom Start event is then triggered by a Cron job to periodically run the script.
+Custom Start Events are run manually when a user clicks them in the task list.
 
 #### **DB Query Start Event**
 
@@ -634,9 +951,9 @@ OCR connectors pass items from the previous task into an OCR task. They may perf
 There are 4 types of OCR connectors:
 
 - Actionabl OCR uses the built-in Tesseract platform
-- Hyper Science uses the Hyperscience platform
-- Vidado uses the Vidado platform, which is ideal for handwritten as well as typed documents
-- ABBYY uses the ABBYY FineReader platform
+- Hyper Science uses the Hyperscience platform on a separate account that you license and configure
+- Vidado uses the Vidado platform _(integration by request)_
+- ABBYY uses the ABBYY FineReader platform _(integration by request)_
 
 #### **Actionabl OCR Connector**
 
@@ -646,19 +963,23 @@ The Actionabl OCR connector uses our built-in Tesseract instance. It asks you to
 
 #### **Hyper Science OCR Connector**
 
-The Hyper Science connector launches an instance of the Hyperscience platform that you define by inputting:
+The Hyper Science connector launches an instance of your own Hyperscience account that you define by inputting:
 
 - Base URL of your Hyperscience account
 - Bearer Token for your account
 - Flow UUID defined in Hyperscience
 - Layout UUID defined in Hyperscience
-- You can designate it as Machine Only which **_????_**
+- You can designate it as Machine Only which causes it to execute in Hyperscience without any human intervention. This uses the the machine learning models to make decisions and perform actions without human approval or correction.
 
 ![PM34 OCR Connector Hyper Science Jp](/images/ProcessGuide/PM34-OCRConnectorHyperScience.jpg)
 
 #### **Vidado OCR Connector**
 
+Available by request. Please contact Actionabl for information.
+
 #### **ABBYY OCR Connector**
+
+Available by request. Please contact Actionabl for information.
 
 ### **_RPA (Robotic Process Automation) Connectors_**
 
@@ -669,7 +990,7 @@ There are four “engines,” referred to as Types, that RPAs use to interact wi
 - Actionabl RPA (the built-in engine)
 - Ui Path
 - Automation Anywhere
-- Blue Prism
+- Blue Prism (COMING SOON)
 
 These engines can interact with a number of external resources, including:
 
@@ -682,17 +1003,20 @@ These engines can interact with a number of external resources, including:
 
 If you are using something other than the built-in engine, you will configure the RPA in that application. This may also provide you with the ability to interact with resources other than the types listed above.
 
+We recommend using the Actionabl RPA connector when you are creating an automation from scratch and you understand how to connect the RPA into your business process flow. If your existing process flow uses UI Path or Automation Anywhere in any part of the flow, use these connectors instead to quickly roll out your solution.
+
 #### **Actionabl RPA Connector**
 
 The Actionabl RPA connector defines the connector and its actions, as well as the authentication to the external resource it interacts with.
 
 ![PM35 RPA Connector Actionabl1 Jp](/images/ProcessGuide/PM35-RPAConnectorActionabl1.jpg)
 
-The **RPA Type** is the type of resource that the script will interact with 
+- The **RPA Type** is the type of resource that the script will interact with 
+
 
 - **RPA Script** is your selection of the script file to be run, which tells the script precisely how to interact with that resource. These are JSON files, which may be organized into folders by RPA Type and topic for ease of maintenance.
-- ****Application path, application user, andapplication password****  define how the script will connect to the external resource. 
-- Click “**Unlock computer**” if the script is interacting with a computer or device that may need to be unlocked before it can run.
+- ****Application path, application user, ****and****application password****   define how the script will connect to the external resource. 
+- Click **Unlock computer** if the script is interacting with a computer or device that may need to be unlocked before it can run.
 - The **RPA Parameters** section is where you specify the inputs that the script will use or other parameters that the script needs to perform its tasks. These inputs are unique to this connector; the same RPA script can be called by other connectors with other information, if appropriate. 
 
 > For example, 
@@ -709,39 +1033,39 @@ This RPA connector uses the UI Path service to complete the RPA operations. This
 
 #### **Automation Anywhere RPA Connector**
 
-This RPA connector uses the Automation Anywhere service to complete the RPA operations. This connector’s input specifies how to connect to Automation Anywhere. The actual RPA script definition is set up within Automation Anywhere and the parameters for it are set there, as well.
+This RPA connector completes RPA operations using the Automation Anywhere service. Its input specifies how to connect to Automation Anywhere. The actual RPA script definition and parameters are set up within Automation Anywhere, as well.
 
 ![PM37 RPA Connector Auto Anywhere Jp](/images/ProcessGuide/PM37-RPAConnectorAutoAnywhere.jpg)
 
 #### **Blue Prism RPA Connector**
 
-**<u>Info needed</u>**
+COMING SOON. Integration available by request.
 
 ### **_AI Connectors_**
 
 There are many AI connector types available. Each plays a very specific role in moving an item between two tasks. When you select the **Type**, the dialog changes the fields available for configuration.
 
-| **Type**                       | **Definition** |
-| :----------------------------- | :------------- |
-| AI Space                       |                |
-| AI Agent Heal Extraction Error |                |
-| AI Agent Heal Data Error       |                |
-| AI Agent Web RPA               |                |
-| AI Agent Win RPA               |                |
-| AI Agent SAPRPA                |                |
-| AI Agent Form OCR              |                |
-| AI Agent Card OCR              |                |
-| AI Agent Document OCR          |                |
-| AI Agent Doc Classification    |                |
-| AI Agent Page Classification   |                |
-| AI Agent Summarization         |                |
-| AI Agent Topic Summarization   |                |
-| AI Agent Sentiment Analysis    |                |
-| AI Agent Entity Extraction     |                |
-| AI Agent Question Answering    |                |
-| AI Agent JH Validations        |                |
-| AI Agent Custom                |                |
-| AI Agent External              |                |
+| **Type**                       | **Definition**                                                                                                                               |
+| :----------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| AI Space                       | Allows the user to run a model and execute actions against it.                                                                               |
+| AI Agent Heal Extraction Error | After extracting data from a document using OCR, this agent corrects any errors in the data.                                                 |
+| AI Agent Heal Data Error       | After validating data, this agent corrects any errors found in it.                                                                           |
+| AI Agent Web RPA               | Performs a Web RPA action, such as logging into a system and entering invoice data into a web form.                                          |
+| AI Agent Win RPA               | Performs automation on Windows applications.                                                                                                 |
+| AI Agent SAPRPA                | Performs automations on SAP.                                                                                                                 |
+| AI Agent Form OCR              | Extracts data from a form using OCR.                                                                                                         |
+| AI Agent Card OCR              | Extracts data from an ID card, such as a driver’s license or PAN card.                                                                       |
+| AI Agent Document OCR          | Extracts data from a document.                                                                                                               |
+| AI Agent Doc Classification    | Identifies the type of document being read, such as a driver’s license or PAN card.                                                          |
+| AI Agent Page Classification   | Classifies each page in a document and returns classifierwise page numbers.                                                                  |
+| AI Agent Summarization         | Summarizes the document being read.                                                                                                          |
+| AI Agent Topic Summarization   | Summarizes a specific topic within the document being read.                                                                                  |
+| AI Agent Sentiment Analysis    | Given a text block, identifies the sentiment (e.g., humorous, informative, sad, hateful, etc.)                                               |
+| AI Agent Entity Extraction     | Extracts structures data from a mixed (structured/unstructured) document.                                                                    |
+| AI Agent Question Answering    | Asking questions based on the document provided for which user will receive answers.                                                         |
+| AI Agent JH Validations        | Validations information such as account or loan data from the SymXchange/JackHenry account.                                                  |
+| AI Agent Custom                | Custom-created AI Agent, which runs <u>locally</u> on the AI model. Used when you need something that differs from the existing agents.      |
+| AI Agent External              | Custom-created AI Agent, which runs on the AI model <u>on the cloud</u>. Used when you need something that differs from the existing agents. |
 
 ### **_App Connectors_**
 
@@ -786,33 +1110,319 @@ The email template, Bank Invoice Receipt Email, looks like this:
 
 ![PM39 App Connector Email Template Jp](/images/ProcessGuide/PM39-AppConnectorEmailTemplate.jpg)
 
-You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces { } represent variables.
+You can expand any of the Email Body sections to see the actual text and variables. Items in double curly braces   represent variables.
 
 ![PM40 App Connector Email Template Expanded Jp](/images/ProcessGuide/PM40-AppConnectorEmailTemplateExpanded.jpg)
 
 #### **Send Message App Connector**
 
+The send message app connectors send SMS text messages from the system using a template you create within the connector or a predefined message template. The template can reference variables for data fields that are passed into the task where the connector is called. If the template references a variable that is empty, the field will simply be left blank in the message.
+
+The connector is set up like this:
+
+![PM48 App Connector Message1 Jp](/images/ProcessGuide/PM48-AppConnectorMessage1.jpg)
+
+To select or edit the message template, start by clicking **Edit** in the actions menu, then click the browse icon [] in the Message Template field. If there is a selected template, you’ll see its contents like this:
+
+![PM49 App Connector Message2 Jp](/images/ProcessGuide/PM49-AppConnectorMessage2.jpg)
+
+You can edit the message content by clicking **Edit** again in this popup. Make your changes and click **Save**.
+
+If you click **Cancel** here instead, you’ll see a list of all message templates that have been defined in the system and can select one to use here.
+
+![PM50 App Connector Message3 Jp](/images/ProcessGuide/PM50-AppConnectorMessage3.jpg)
+
+It is strongly recommended that you **Test** any message configuration after saving it, especially if variables are being used.
+
 #### **Push Notification App Connector**
+
+In Actionabl, push notifications are found in the Communications dashboard under Notifications. The Push Notification app connector creates a push notification for the item. They are commonly used to alert that a task has been created or completed.
+
+The connector is very simple.
+
+![PM51 App Connector Push Notification Jp](/images/ProcessGuide/PM51-AppConnectorPushNotification.jpg)
+
+The content of the notification is an alert that the task action has been taken.
+
+![PM52 App Connector Push Notification2 Jp](/images/ProcessGuide/PM52-AppConnectorPushNotification2.jpg)
 
 #### **Read Folder App Connector**
 
+The Read Folder app connector monitors a specified folder on the system and takes action when it finds files that match the configuration and/or filter specified. 
+
+When a new, matching file is found, the connector can save it as an attachment to the item, configure access to it, and assign it a category.
+
+The connector is set up like this:
+
+![PM53 App Connector Read Folder1 Jp](/images/ProcessGuide/PM53-AppConnectorReadFolder1.jpg)
+
+Selection Criteria:
+
+- The**Folder**  must specify the <u>full path</u> to the folder to be monitored. Any folder on the server can be monitored, not just paths in the Actionabl application.
+- **File types** are the extensions to watch for. Each is entered separately followed by Enter, creating selection “cards” within the field. Keep in mind that for extensions such as JPEG where the filename could be either .jpg or .jpeg, both entries are needed. 
+- **Filter** lets you select existing filter scripts in the system that can be used to determine matching criteria.
+
+ Attachment Configuration:
+
+- Click **Save as Attachment** to save the file as an attachment to the current item. The file is saved in the “attachments” folder configured for this project and a link to the attachment is added to the item.
+- If you select Save as Attachment, you must also:
+  - Specify an **Attachment Category** (Inbound, Inbound OCR, Outbound, User, or Generated).
+  - Indicate the **access permissions** for the attachment (Public, Group, or Individual)
+
+Once configured, the connector will look something like this:
+
+![PM54 App Connector Read Folder2 Jp](/images/ProcessGuide/PM54-AppConnectorReadFolder2.jpg)
+
 #### **Read File App Connector**
+
+This event type reads the specified file and uses the file’s content to add to the item. Once the file has been read, a corresponding file with the suffix _.done_ is created, which prevents the file from being read again.
+
+For example, let's look at the Consortium Attendees file we previously defined as a data source. Click the browse icon [ ] next to Data Source and select the file.
+
+The connector looks like this after selecting a file:
+
+![PM55 App Connector Read File1 Jp](/images/ProcessGuide/PM55-AppConnectorReadFile1.jpg)
+
+Click the browse icon [ ] next to each field that you want to use in this process, then select the process field it should map to.
+
+![PM56 App Connector Read File2 Jp](/images/ProcessGuide/PM56-AppConnectorReadFile2.jpg)
+
+Continue mapping fields in this way until you have mapped all data that you want to bring in for this process item. **This step ignores unmapped fields.** For example, the “Attended Sessions” data in the screenshot below will be ignored.
+
+![PM57 App Connector Read File3 Jp](/images/ProcessGuide/PM57-AppConnectorReadFile3.jpg)
+
+Once you've mapped all of the desired fields, click **Save**.
+
+You can now **test** the mapping to ensure it is acting as you expect.
 
 #### **Generate Document App Connector**
 
+The Generate Document app connector lets you generate a document based on data passed into the connector from the task.
+
+> For example, this connector can be used to:
+>
+> - Generate a nicely formatted Order Confirmation in Microsoft Word
+> - Create an inquiry update that can be viewed online in HTML
+> - Generate a certificate of completion in PDF.
+
+<Tip>
+  The document template must first exist in the system to be able to create and configure the App Connector for it. Details on managing document templates are found in the **Communications Management Administration Guide** (coming soon).
+</Tip>
+
+The connector configuration starts out looking like this:
+
+![PM58 App Connector Gen Doc1 Jp](/images/ProcessGuide/PM58-AppConnectorGenDoc1.jpg)
+
+**_Document Configuration:_**
+
+- **Document Name** is the filename for the document as it’s saved in the system without the file type extension. File names can contain spaces but not special characters. For example: _order confirmation_, not _order confirmation.docx_
+- **Document Type** is where you select the type of file you’re creating from the dropdown list (PDF, Excel, CSV, HTML, Word, PDFForm)
+- **Document Template** is where you select the pre-built template, which also contains variables that will be used to generate the output document.
+  - If you are not sure whether a template is the right one or if you need to see its contents, click the 3-dot menu on its right to download it to your computer and view it in the appropriate application.
+  - The downloaded template will show you all of the variables it uses, such as in this example from Word.\
+    ![PM59 App Connector Gen Doc2 Jp](/images/ProcessGuide/PM59-AppConnectorGenDoc2.jpg)
+
+**_Parameter Definitions_**
+
+Each variable defined in the document template is a parameter that must be passed into it to create the document. Some, like “CURRENT_DATE”, “USER_ID”, and “USER_NAME” are generated automatically by the system, while others must be explicitly mapped or entered. Any variables that are not defined are left blank in the generated file.
+
+Start defining the parameters by clicking the green Plus sign to the far right of Template Parameters in the connector.
+
+![PM60 App Connector Gen Doc3 Jp](/images/ProcessGuide/PM60-AppConnectorGenDoc3.jpg)
+
+![PM61 App Connector Gen Doc4 Jp](/images/ProcessGuide/PM61-AppConnectorGenDoc4.jpg)
+
+- The **Name** of each parameter must exactly match the way the variable is defined in the template file including capitalization. Do not include the curly braces or any special characters (like slashes or percent signs) in the name.
+
+
+- The **Type** of the parameter determines how it will be entered and processed.
+  - **String** requires alphanumeric input and accepts all special characters that can be used in a Javascript JSON object. It is not necessary to escape or backslash special characters when entering them. Strings are directly typed in the field.
+  - **Integer** accepts only whole numbers without decimals. Integers are directly typed in the field.
+  - **Float** accepts decimal numbers, which are directly typed in the field.
+  - **Boolean** generates a checkbox for a yes/no value. If checked, the parameter evaluates to “True.”
+  - **Date** provides a date-picker to select a calendar date in DD-MM-YYYY format (or the format specified in your system’s configuration)
+  - **Date Time** provides a date picker that includes a time selector to indicate time in 12-hour format and AM or PM.
+  - **Time** allows you to type in a time in 12-hour format, specifying AM or PM, directly in the field.
+  - **Field** maps the contents of a field in this item from the browse selector into the document.
+  - **Record** lets you browse and select a messaging template or other data record to embed into this document.
+  - **Cron Schedule** shows the available cron schedules when you click the browse icon and maps the selected schedule’s descriptor into the document.
+  - **Excel Cluster** shows the available Excel templates in the systemwhen you click the browse icon. When you select a template, this item will be matched against it to check if it complies with that template’s format**.**
+
 #### **Extract PDF App Connector**
+
+COMING SOON
 
 #### **FTP App Connector**
 
+This connector logs in to a FTP site and executes one or more FTP commands. It ca be configured to retry multiple times in case of failure or an incomplete command or response.
+
+![PM98 App Connect FTP1 Jp](/images/ProcessGuide/PM98-AppConnectFTP1.jpg)
+
+- **FTP Site** is a selection of an FTP site record. Click the expand icon next to any site to see or edit its full record. You can also click the green plus at the top right to add a new site record.\
+  ![PM99 App Connect FTP2 Jp](/images/ProcessGuide/PM99-AppConnectFTP2.jpg)
+
+  ![PM100 App Connect FTP3 Jp](/images/ProcessGuide/PM100-AppConnectFTP3.jpg)
+- **Max Number of Tries **is the number of times that <u>each FTP command defined in the connector</u> should be retried if it fails the first time. This defaults to 1. \
+  \
+  This differs from the Task Retry Count on the previous line, which defines how many times the overall connector can be restarted if it fails. 
+- The **Try Interval** is the time in milliseconds that the connector should wait before trying a failed task again.
+- **Cutoff Time** specifies a time in 12-hour format (HH:MM am/pm) after which no further FTP commands in this task should be attempted. This could be used, for example, to ensure that no items are retrieved after a business cutoff of 05:00 PM until the connector re-starts on the next business day.  
+- **Error on incomplete commands** is a flag that stops the connector from continuing to attempt FTP commands if an incomplete or erroneous command is encountered. For example, if there is a command to get a file in a specific folder and that folder is not found, no further commands would be executed.
+
+Below this section is where you would enter the actual FTP commands to be executed once the connector successfully connects to the FTP site. Click the green plus sign to start adding the FTP commands, which will be executed in the order they are listed.
+
+![PM101 App Connect FTP4 Jp](/images/ProcessGuide/PM101-AppConnectFTP4.jpg)
+
+**FTP Command Types**
+
+The FTP command types available are:
+
+- Get Once
+- Put Once
+- Del Once
+- Sync Once
+- Get Repetitive
+- Put Reptitive
+- Del Repetive
+- Sync Repetitive
+
+The “**Once**” types match on the first instance in the remote server and execute only on that first match. The “**Repetitive**” types can match on multiple instances and will act on all of them.
+
+- **Get** retrieves the matching file(s) from the remote FTP server and copies it onto the Actionabl system.
+- **Put** places the file(s) from the Actionabl system into the designated folder on the FTP server.
+- **Del** deletes the file(s) from the remote FTP server.
+- **Sync** finds the most recent copy of the file(s) on the remote FTP server and the Actionabl server and copies it to the other server.
+
+**FTP Command Parameters**
+
+- **Command Parameters** are optional parameters that would be entered on the FTP command line to further define the action to be taken. The parameters that can be used here are the Linux ones relating to file transfer found on the FTP man page. 
+- **FTP Folder** is the path of the targeted folder on the remote FTP site, starting at the default folder defined in the connection.
+- **Local Folder** is the full path to the Actionabl folder targeted by the command.
+- **Prepared File List** is where you select or create the file(s) on the Actionabl site to be acted on by the command. In the Field List that pops up, you can create a new file list like this:
+
+  ![PM115 App Connect FTP Prepared Files Jp](/images/ProcessGuide/PM115-AppConnectFTP-PreparedFiles.jpg)
+- If you don’t have or want a prepared file list or if the file to be acted on is on the remote site, define it in the **File List** instead. Click the green plus sign to add the file.\
+  ![PM102 App Connect FTP5 Jp](/images/ProcessGuide/PM102-AppConnectFTP5.jpg)
+  - Type in the **File Name** to be acted on. You can use wildcards to select groups of files or can enter additional matching filenames by using the green plus sign.
+  - Click **Required** if this file is required in the action. If you do and the file is not found, the command will stop. If “Error on incomplete commands” is selected above, the connector will stop processing and generate an error; otherwise, the next FTP command in the list will start.
+  - If you are receiving a Zip file and need to unzip it for the next command to use, click **Unzip**.
+  - If you’ve used wildcards to select a group of files and need to Zip them for the next command, click **Zip**.
+
+> **Examples**:
+>
+> Retrieve all .xlsx invoices from an outbound_invoices folder on Vendor1’s site, zip them, then delete them on the remote site so they aren’t retrieved again.
+>
+> ![PM103 App Connect FTP6 Jp](/images/ProcessGuide/PM103-AppConnectFTP6.jpg)
+>
+> Retrieve all xlsx files from the outbound_invoices folder on the site. This looks for multiple files and bring each one over in a separate FTP command until no more matching files are found.
+>
+> ![PM104 App Connect FTP7 Jp](/images/ProcessGuide/PM104-AppConnectFTP7.jpg)
+>
+> Sync the balance_due.pdf file between the Actionabl site and the Vendor1 site. Throw an error if either of the files are missing.
+>
+> ![PM105 App Connect FTP8 Jp](/images/ProcessGuide/PM105-AppConnectFTP8.jpg)
+
 #### **REST API App Connector**
+
+The REST API connector sends a request to the defined API and ingests a response (data) or status code. The response from that request is passed into the task in Actionabl.
+
+A REST API call can retrieve data, identify the status of a request, send data, or delete a record on the remote system, depending on how the system integrations are set up. Actionabl supports the following methods:
+
+- **Get** - retrieves the full content of the called URL. It makes no server-side changes.
+- **Put** - creates a single, specific new resource or replaces the existing resource at the called URL. A Put call is idempotent, so if it is sent identically multiple times it doesn’t create multiple resources on the other end.
+- **Post** - Can create one or more resources in the called folder URL. Unlike a Put call, it is NOT idempotent so each time it is called it will create another copy or resource on the other other end. This is the most common type of call used by HTML forms; each time it is sent represents another submission of the form.
+- **Delete** - deletes the specified resource at the called URL.
+- **Patch** - modifies only part of the called URL, such as updating one field or a counter
+- **Options** - requests the called URL to respond with information about which methods it supports and whether a proposed request will work before submitting it. It makes no server-side changes.
+- **Head** - retrieves the called URL’s metadata headers. This can be used, for example, to check a document’s length before retrieving it. It makes no server-side changes.
+
+The API call is set up like this:
+
+![PM106 App Connect REST1 Jp](/images/ProcessGuide/PM106-AppConnectREST1.jpg)
+
+- **Name** will be shown in the list for execution management. It should be descriptive.
+- **Method** is one of the above methods, which dictates the structure of what is sent.
+- **URL** is the destination URL on the remote system.
+
+The **Request Detail elements** now need to be built to fully define the call. Click the **green plus sign** and select one of the elements to build it.
+
+<Tip>
+  - You will need to click **Edit** after saving each element to build the other elements of the request details
+</Tip>
+
+![PM107 App Connect Rest2 Jp](/images/ProcessGuide/PM107-AppConnectRest2.jpg)
+
+**The Authorization Element**
+
+**Authorization** will ask for the authorization type (No Auth, Basic, Bearer, or API Key) and then will ask for the specifics to authorize using that type. 
+
+- **No Auth** doesn’t require any further input
+- **Basic** requires a username and password
+- **Bearer** asks for a Bearer Token
+- **API Key** asks for a Key and Value.
+- Click **Save,** and the authorization is saved. 
+
+
+- **Body** asks you to specify a **Body Type** and then will provide the appropriate field(s) to enter the data. You can choose from None, JSON, Encoded form, XML, Text, and Binary.
+  - Select a Body Type, click **Save,** and the type definition is saved.
+  - Once you select a Body Type, you’ll be able to enter the **Body Fields**, which define the mappings between that type and the recipient API’s data.\
+    ![PM108 App Connect Rest3 Jp](/images/ProcessGuide/PM108-AppConnectRest3.jpg)
+  - The **Name** should be the field name on the recipient API
+  - **Type** is the field type of the source data. Field allows you to select a field in the current process to send.
+  - **Value** is either a hardcoded value or the contents of a field in the current process.\
+    ![PM109 App Connect Rest4 Jp](/images/ProcessGuide/PM109-AppConnectRest4.jpg)
+  - Click **Save** and the body definition is saved as detail within the Body Type.\
+    ![PM110 App Connect Rest5 Jp](/images/ProcessGuide/PM110-AppConnectRest5.jpg)
+  - Click **Edit**, then click the green plus sign to continue building the Request Details.
+
+**The Headers Element**
+
+Click **Headers** to start building the request’s headers. Add each of the key-value header pairs and a description by using the green plus sign to add a new line.
+
+![PM111 App Connect Rest6 Jp](/images/ProcessGuide/PM111-AppConnectRest6.jpg)
+
+![PM112 App Connect Rest7 Jp](/images/ProcessGuide/PM112-AppConnectRest7.jpg)
+
+**The Query Parameters Element**
+
+Click **Query Params** to add query parameters to the call. These are added in Key-Value pairs with optional descriptions, just like the Headers. Query parameters are most frequently used for filtering and pagination within a URL string. **They are the last things parsed in the query**.
+
+![PM113 App Connect Rest8 Jp](/images/ProcessGuide/PM113-AppConnectRest8.jpg)
+
+\
+**The Completed Connector**
+
+Once all of the elements of the API call are built and saved, the connector looks something like this:
+
+![PM114 App Connect Rest9 Jp](/images/ProcessGuide/PM114-AppConnectRest9.jpg)
+
+When you edit the Connector, you can then see and edit the contents of any of its Request Elements by clicking that section.
+
+<Tip>
+  Always use the Test button after saving to send test data through this connector to the API and see its responses.
+</Tip>
 
 #### **SOAP API App Connector**
 
+The SOAP API protocol is more closely based on XML and has a more rigid structure and control of datatypes than the REST protocol. As such, it’s more widely used for scenarios where standardized data is being passed between systems.
+
+_Details are coming soon\!_
+
 #### **Code App Connector**
+
+The Code app connector is the most powerful and flexible option for experienced and technical users. It enables you to define a script that completes the actions for the connector, which can include connections to external APIs, data manipulation and transformation, and much more.
+
+These can be **Javascript** or **Python** scripts, which are saved in folders on the file system. The connector definition points to the file to be executed.
+
+![PM117 App Connect Code Jp](/images/ProcessGuide/PM117-AppConnectCode.jpg)
 
 #### **External Task App Connector**
 
+COMING SOON
+
 #### **Docusign App Connector**
+
+The DocuSign App Connector uses a Service Profile and an ESign template you previously created to send a set of documents out for signatures.
 
 #### **SQL App Connector**
 
