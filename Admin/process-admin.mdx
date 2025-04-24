@@ -474,7 +474,7 @@ Clicking the Expand button allows you to see the content of the section.
 
 ### Creating Message Templates
 
-Message templates are used for SMS messages and threads. The structure of the message templates is simple because there is no formatting involved, but they can include variables, which are enclosed in double curly braces { }.
+Message templates are used for SMS messages and threads. The structure of the message templates is simple because there is no formatting involved, but they can include variables, which are enclosed in double curly braces  .
 
 ![PM74 Create Record Message Template1 Jp](/images/ProcessGuide/PM74-CreateRecordMessageTemplate1.jpg)
 
@@ -693,7 +693,7 @@ The Microsoft Service Profile has 7 authentication scopes available:
 
 ![PM92 Create Service Profile Microsoft1 Jp](/images/ProcessGuide/PM92-CreateServiceProfileMicrosoft1.jpg)
 
-- **Default Tenant Access **uses the tenant ID from the connector to identify your organization in the connection.
+- \*\*Default Tenant Access \*\*uses the tenant ID from the connector to identify your organization in the connection.
 - **Offline access** grants permission for the application to save a local copy of files so they can be accessed even when a network connection is not available
 - **Have full access to all files user can access** grants the Actionabl app permission to act completely as the user, including read/write and create/delete access to the user’s accessible files.
 - **Sign in and read user profile** gives the ability to read data from the user’s profile
@@ -1012,10 +1012,8 @@ The Actionabl RPA connector defines the connector and its actions, as well as th
 ![PM35 RPA Connector Actionabl1 Jp](/images/ProcessGuide/PM35-RPAConnectorActionabl1.jpg)
 
 - The **RPA Type** is the type of resource that the script will interact with 
-
-
 - **RPA Script** is your selection of the script file to be run, which tells the script precisely how to interact with that resource. These are JSON files, which may be organized into folders by RPA Type and topic for ease of maintenance.
-- ****Application path, application user, ****and****application password****   define how the script will connect to the external resource. 
+- ********Application path, application user, andapplication password********   define how the script will connect to the external resource. 
 - Click **Unlock computer** if the script is interacting with a computer or device that may need to be unlocked before it can run.
 - The **RPA Parameters** section is where you specify the inputs that the script will use or other parameters that the script needs to perform its tasks. These inputs are unique to this connector; the same RPA script can be called by other connectors with other information, if appropriate. 
 
@@ -1233,8 +1231,6 @@ Start defining the parameters by clicking the green Plus sign to the far right o
 ![PM61 App Connector Gen Doc4 Jp](/images/ProcessGuide/PM61-AppConnectorGenDoc4.jpg)
 
 - The **Name** of each parameter must exactly match the way the variable is defined in the template file including capitalization. Do not include the curly braces or any special characters (like slashes or percent signs) in the name.
-
-
 - The **Type** of the parameter determines how it will be entered and processed.
   - **String** requires alphanumeric input and accepts all special characters that can be used in a Javascript JSON object. It is not necessary to escape or backslash special characters when entering them. Strings are directly typed in the field.
   - **Integer** accepts only whole numbers without decimals. Integers are directly typed in the field.
@@ -1246,7 +1242,7 @@ Start defining the parameters by clicking the green Plus sign to the far right o
   - **Field** maps the contents of a field in this item from the browse selector into the document.
   - **Record** lets you browse and select a messaging template or other data record to embed into this document.
   - **Cron Schedule** shows the available cron schedules when you click the browse icon and maps the selected schedule’s descriptor into the document.
-  - **Excel Cluster** shows the available Excel templates in the systemwhen you click the browse icon. When you select a template, this item will be matched against it to check if it complies with that template’s format**.**
+  - **Excel Cluster** shows the available Excel templates in the systemwhen you click the browse icon. When you select a template, this item will be matched against it to check if it complies with that template’s format\*\*.\*\*
 
 #### **Extract PDF App Connector**
 
@@ -1262,7 +1258,7 @@ This connector logs in to a FTP site and executes one or more FTP commands. It c
   ![PM99 App Connect FTP2 Jp](/images/ProcessGuide/PM99-AppConnectFTP2.jpg)
 
   ![PM100 App Connect FTP3 Jp](/images/ProcessGuide/PM100-AppConnectFTP3.jpg)
-- **Max Number of Tries **is the number of times that <u>each FTP command defined in the connector</u> should be retried if it fails the first time. This defaults to 1. \
+- \*\*Max Number of Tries \*\*is the number of times that <u>each FTP command defined in the connector</u> should be retried if it fails the first time. This defaults to 1. \
   \
   This differs from the Task Retry Count on the previous line, which defines how many times the overall connector can be restarted if it fails. 
 - The **Try Interval** is the time in milliseconds that the connector should wait before trying a failed task again.
@@ -1360,9 +1356,7 @@ The **Request Detail elements** now need to be built to fully define the call. C
 - **Basic** requires a username and password
 - **Bearer** asks for a Bearer Token
 - **API Key** asks for a Key and Value.
-- Click **Save,** and the authorization is saved. 
-
-
+- Click **Save,** and the authorization is saved.
 - **Body** asks you to specify a **Body Type** and then will provide the appropriate field(s) to enter the data. You can choose from None, JSON, Encoded form, XML, Text, and Binary.
   - Select a Body Type, click **Save,** and the type definition is saved.
   - Once you select a Body Type, you’ll be able to enter the **Body Fields**, which define the mappings between that type and the recipient API’s data.\
@@ -1422,8 +1416,266 @@ COMING SOON
 
 #### **Docusign App Connector**
 
-The DocuSign App Connector uses a Service Profile and an ESign template you previously created to send a set of documents out for signatures.
+The DocuSign App Connector sends a set of documents out for signatures using a Service Profile and an ESign template you previously created.
+
+![PM118 App Connect Docusign Jp](/images/ProcessGuide/PM118-AppConnectDocusign.jpg)
+
+**Download Signed Documents** copies the PDF of the signed documents out of the referenced DocuSign account into the download folder on the Actionabl server
 
 #### **SQL App Connector**
 
+A SQL app connector lets you enter a SQL query and define a database on which to run it. The output of the query is then available to the next task in the process.
+
+The structure of the connector is this:
+
+![PM119 App Connect SQL1 Jp](/images/ProcessGuide/PM119-AppConnectSQL1.jpg)
+
+Aside from the actual SQL query and the database connection information, you will need to specify:
+
+- **Operation Type**: Read, Update, Create, or Delete
+- You can also select a **Data Processing Script** file, which is run after the SQL query.\
+  ![PM138 App Connect SQL Data Process Pn](/images/ProcessGuide/PM138-AppConnectSQLDataProcess.png)
+
 #### **Jack Henry SymXChange API App Connector**
+
+If you have defined your Jack Henry integration via a Service Profile, you can run a Jack Henry operation using this connector type. 
+
+Use the Browse icon on the **Jack Henry Operation** line to select from a JSON file containing the operation’s definition.
+
+### ![PM102 App Connect FTP5 Jp](/images/ProcessGuide/PM102-AppConnectFTP5.jpg)
+
+**_Bot Connectors_**
+
+The Bot connector uses the Bot source type previously defined to run a code script in a JSON file.
+
+# MANAGING TASK RULES
+
+COMING SOON
+
+# MANAGING REMOTE WORKERS
+
+COMING SOON
+
+# MANAGING EXTERNAL ACCESSES
+
+COMING SOON
+
+# **BUILDING THE PROCESS MODEL**
+
+The process model is a flow that includes:
+
+- Start event
+- Tasks
+- Flows that connect tasks
+- Decisions that provide branching logic
+- Resolution point(s)
+
+## **Methods of Building Process Models**
+
+There are various ways to approach building the process model; the output of all of them is a BPMN flow, which is implemented in Actionabl to activate it. You should build your flow using whichever methodology best fits your needs and preferences.
+
+### **_Process Modeler_**
+
+The**Process Modeler**  lets you start with a blank page and flowcharting tools, which you then place and define to build the flow. We will use this method as we build the process in this section.
+
+![PM121 Process Modeler Jp](/images/ProcessGuide/PM121-ProcessModeler.jpg)
+
+Also in the Process Modeler, you can open an existing flow, then use **Save As** to copy it as the basis for creating a new one. This is especially useful for complicated flows where you want to change a specific section of them.
+
+![PM122 Process Save As Jp](/images/ProcessGuide/PM122-ProcessSaveAs.jpg)
+
+### Process Wizard
+
+In the Process Wizard, you have three options: **AI Modeler**, **Linear Modeler**, and **Template Modeler**.
+
+- The **AI Modeler** starts with an image or a document and builds the process draft for you from that. 
+  - **Image** can be any flowchart image in JPEG or PNG format.\
+    ![PM124 Process Wizard AI1 Jp](/images/ProcessGuide/PM124-ProcessWizardAI1.jpg)
+
+    ![PM125 Process Wizard AI2 Jp](/images/ProcessGuide/PM125-ProcessWizardAI2.jpg)
+  - Document _(COMING SOON)_
+- The **Linear Modeler** enables you to build the process using line-by-line text definitions of its tasks and rules. This is an ideal choice if your process is evolving and you may need to add steps or rearrange the order of items later. After building the process this way, you would generate the BPMN for it, which is used to implement it in Actionabl.\
+  ![PM123 Process Wizard Linear Example Jp](/images/ProcessGuide/PM123-ProcessWizardLinearExample.jpg)
+- Template Modeler _(COMING SOON)_
+
+## **Tasks and Decisions**
+
+**Tasks** are the steps that an item moves through as it works its way through a process. A task calls connectors and actions and uses rules to complete a clear goal, then moves the data resulting from those elements across the flow to the next task or decision.
+
+**Decisions** (and Gateways) are special tasks that evaluate a set of data against a **Decision Model** or a set of **task rules**, which determine which flow the item should follow.
+
+![PM126 Task Decisions Jp](/images/ProcessGuide/PM126-TaskDecisions.jpg)
+
+<Tip>
+  While the other elements are built before starting to build the process model, Tasks and Decisions are created while you build it.
+</Tip>
+
+## **Building the Model from Scratch**
+
+When you open a new process model, you’ll see the **process configuration** at the bottom and a default **Start Event** icon on the canvas.
+
+![PM127 Processbuild1 Jp](/images/ProcessGuide/PM127-processbuild1.jpg)
+
+ 1. Start by adding an **ID** and **Name** for the process. 
+ 2. Define any **parameters** you know you’ll need at the process level (you can always build and fill these in as you go or at the end before deploying).
+ 3. Click the **Process Configuration settings** icon to set up defaults like a default Service Profile or email account that the tasks should use.\
+    ![PM128 Process Config Dialog Jp](/images/ProcessGuide/PM128-ProcessConfigDialog.jpg)
+
+    <Tip>
+      At any point, you can Maximize, Expand, or Collapse the configuration section at the bottom to make more room to lay out your process flow.\
+      ![PM129 Process Config Toolbar Jp](/images/ProcessGuide/PM129-ProcessConfigToolbar.jpg)
+    </Tip>
+ 4. In the **Process Fields** section, add all of the data fields that should be available to this process as inputs OR as outputs. There are three ways to do this:
+    1. Click the green plus sign to add fields individually
+    2. Click the green “table” icon to select multiple (or all) fields and add them in bulk
+    3. Click the magic wand to use the wizard to add fields.\
+       ![PM146 Add Fields To Process1 Jp](/images/ProcessGuide/PM146-AddFieldsToProcess1.jpg)
+ 5. For each field that you add to the process, you can:
+    1. Add a **default value**, which is the starting value that the field provides for each item as it <u>enters</u> the process if it’s blank. This value can be overwritten by subsequent steps in the process.
+    2. **Summary Field** should be checked if this field should appear in the search result summary when items are listed.
+    3. **Task List Field** should be checked if this field should be an “available column” that can be selected in the task list.
+    4. **Watch** should be checked if this field should be part of Watch Data in the Content & History section on the item details.\
+       ![PM147 Process Fields Jp](/images/ProcessGuide/PM147-ProcessFields.jpg)
+ 6. Click **Save As** in the top right menu and name the process to save your work so far. **<u>Remember to do this frequently as you work\!</u>**
+ 7. Click the default **Start Event** icon on the canvas. It becomes active and the configuration panel at the bottom now relates to it.\
+    ![PM130 Start Event1 Jp](/images/ProcessGuide/PM130-StartEvent1.jpg)
+ 8. Add the configuration settings for this task, which will follow the item it creates through the process:
+    1. **Business ID Prefix** is used in conjunction with the numeric Business ID Value to uniquely identify each item. For example: INV-24 is invoice 24. PAY-38 is payment 38.
+    2. **Business ID Value** is the unique identifier that combines with the Business ID prefix. It can be a sequence number, current time, or a random unique ID.
+    3. **Process Title** is the value for the item shown on the Task Lists, and can be the value of a field in the record. \
+       ![PM131 Start Event Config2 Jp](/images/ProcessGuide/PM131-StartEventConfig2.jpg)
+ 9. Select the **Connector** that this start event will use.
+10. If this process can have multiple start events indicate whether this is the **default** one. For example, if invoice auto-payment can be started manually with a form OR by receiving an invoice via email, indicate which one of these is the default.
+11. If the start event is something requiring a user interface, such as a form or user selection, click **UI Configuration**.
+    1. Click **Create Start Form** if you want the user to see a form on the screen when this process starts.
+    2. Select the **Form** to present to them (or create a new form, if appropriate).
+    3. Add a **Title** for the form to display.
+    4. If this form should only be available to members of a **workgroup**, select that.
+    5. If the form should open in **full screen mode**, check the box.
+    6. If you want to represent this start event form with a **custom icon**, select it here.\
+       ![PM132 Start Event UI Config Jp](/images/ProcessGuide/PM132-StartEventUIConfig.jpg)
+    7. Click OK to save the UI configuration.
+12. In the Start Event <u>and in every other task</u>, select the **Task Input** fields that will be used as Input and Output, as well as any **Rules** that should apply to this task. As you select the fields, they are automatically moved to the top of the Task Input list. If an input is required, click its **RQD** box.\
+    ![PM148 Start Event Inputs Jp](/images/ProcessGuide/PM148-StartEventInputs.jpg)
+13. Add the first Task in the flow. In this case, we’re going to add an RPA that will check the invoice to determine if it’s eligible for auto payment.
+     1. Click and drag the task’s icon from the Tools onto the canvas to the right of the Start Event icon.
+     2. Click the Start Event icon and select its “connection” arrows, then drag to connect the two icons.\
+        ![PM133 Connectedicons Jp](/images/ProcessGuide/PM133-connectedicons.jpg)
+     3. Click the RPA task and review its configuration at the bottom.
+     4. Update its **ID** and **Name** to signal what its goal is.
+     5. Select the **Connector** to use for this task’s actions.
+     6. If the task has a UI component, select **Task UI Configuration** and make the appropriate selections.
+     7. Add a **Stage** for this task and name it.
+     8. If desired, select a **background color** for the task.
+     9. If desired, select a **color** to use for the outline and descriptive text for the task.\
+        ![PM134 Task Config1 Jp](/images/ProcessGuide/PM134-TaskConfig1.jpg)
+    10. Select the **Task Input** and **Task Output** fields specific to this task. As you select the fields, they are automatically moved to the top of the Task Input list. If an input is required, click its **RQD** box.\
+        ![PM149 Task Inputs Outputs Jp](/images/ProcessGuide/PM149-taskInputsOutputs.jpg)
+    11. Select the Rules that are involved with this task.
+        1. **Pre Rules** are applied to the item as it is passed to into this task and before the task takes any other action on it. These are typically things like error checking and basic data validation.
+        2. **Task Rules** are the rules that apply during the task’s execution. These can include data transformation or checking conditions.
+        3. **Post Rules** are applied after the task’s execution completes and before the item passes into the flow to go to the next task. These may be data transformation like updating a status code or flag.
+        4. **SOE** (stop on error) should be set if a rule should stop processing if an error is encountered. This will cause the item to stop flowing through the process and will generate an error task.
+    12. Add the next tasks in the sequence using the same steps. For each item you add, make sure:
+        1. The ID is unique and contains only lowercase letters, numbers, dashes (-), and underscores (\_).
+        2. You’ve identified the input and output fields and the rules that apply to this task.
+        3. The Task Type is correct and a connector is defined.
+        4. Flows connect each new task to its predecessors.
+
+### **_Decisions_**
+
+Decisions can be handled in two ways:
+
+- Using a **Decision** task
+- Using an **Exclusive Gateway**
+
+**Decision Tasks** use decision models that you built using the **Decision Modeler**. These can include complex rules and have multiple output paths.
+
+For example, this decision task looks at a set of 6 query criteria and decides how to assign the task, with three possible assignments as the output (auto1, auto2, or team1).\
+![Pm135 Decision Task1 Jp](/images/ProcessGuide/pm135-DecisionTask1.jpg)
+
+![PM143 Decision Task Jp](/images/ProcessGuide/PM143-DecisionTask.jpg)
+
+**Exclusive Gateways**, by contrast, use simple task rules and can have only 2 output options - a “true” path and a “false” path.
+
+![PM142 Decision Gateway Jp](/images/ProcessGuide/PM142-DecisionGateway.jpg)
+
+### **_The Decision Modeler_**
+
+To build complex rules that assess items against multiple criteria and route them within the flow, use the **Decision Modeler**.
+
+### **_Groups and Stages_**
+
+Stages represent a set of statuses that an item can have as it moves through a process. For example, in the “Pay Invoice” <u>stage</u>, an item might have either _manual_pay_ or _auto_pay_ as its <u>status</u>, but in either case it has been approved and is waiting for a payment action to take place.
+
+Groups are an easy way to visualize the stages in a process, but they don’t have an active function. They are represented by dashed lines in the process model.
+
+### ![PM136 Groups Jp](/images/ProcessGuide/PM136-Groups.jpg)
+
+**_Flow Connectors_**
+
+The arrows that connect tasks to each other represent the flow of items. 
+
+Flows may contain **logical expressions** that determine whether an item can use them, such as autopay=false in the example below. They may also have visible **Names** that can help a user understand the diagram, such as “No” in this example. You can also select a **Color** for the flow, if desired.
+
+![PM140 Flows Jp](/images/ProcessGuide/PM140-Flows.jpg)
+
+The choices of **Default Path** and **Error Path** as flow behaviors work together with the Expression to guide an item’s flow through the process. 
+
+- **Default Path** is followed when multiple flows exit a task. It indicates which flow should be followed if the item doesn’t match the Expression in any of the other flows when it exits the task’s execution.
+- **Error Path** is followed when a problem occurs that prevents the item from flowing further during or after the tasks’s execution. This could be things like the presence of invalid data, required attachments that are missing, or other issues.
+
+### \
+**_End Event_**
+
+Every process requires an End Event, just as it had a Start Event. 
+
+While there may be multiple resolution tasks at the end of different flows, such as an invoice rejection email being sent vs an invoice payment confirmation, all of those resolution tasks must flow into an End Event. This signals to the process that it is complete and should stop processing.
+
+![PM137 End Event Jp](/images/ProcessGuide/PM137-EndEvent.jpg)
+
+# **USING THE PROCESS REPORT**
+
+The process report can be generated by clicking Report at the top of the process manager view.
+
+![PM150 Report1 Jp](/images/ProcessGuide/PM150-Report1.jpg)
+
+The Process Report is a detailed, textual review of the process, which includes a list of all of the fields available to it, each of the Tasks in it, which connectors are used, and their configurations. It is an invaluable tool in troubleshooting and in communicating/teaching about a process.
+
+The report generated is a PDF, which you can download or print from the dialog box when it opens.
+
+![PM151 Report2 Jp](/images/ProcessGuide/PM151-Report2.jpg)
+
+![PM152 Reports3 Jp](/images/ProcessGuide/PM152-Reports3.jpg)
+
+# TESTING THE PROCESS AUTOMATION
+
+As you’re building your process, you should be testing each element to make sure that it works as you expect. Using the **Test** command in the menu for the items gives you a quick and reliable way to do this.
+
+As the process comes together, there are pieces that you cannot test individually, such as the flows and logic. Before deploying to your production environments, we recommend using the **Process View** in your test environment to manually start the process using test items that you create for each of the scenarios. 
+
+It’s important to make sure that your test items cover each of the decision flows and rules within the process.
+
+# **IMPLEMENTING THE PROCESS AUTOMATION**
+
+Once you have built and tested the process flow and are ready to use it, clicking Deploy in the top menu makes it active.
+
+![PM144 Deploy Process Jp](/images/ProcessGuide/PM144-DeployProcess.jpg)
+
+After you click Deploy, you’ll receive a popup to configure the server, schedules, etc.
+
+![PM145 Deploy Process Jp](/images/ProcessGuide/PM145-DeployProcess.jpg)
+
+- The **Deployment Name** should match the name of the process
+- Select the **Server** on which this deployment should run
+- If the process should be restricted to certain workgroup(s), select them in the **Process Departments** dropdown.
+- If this process is a subprocess that is referenced as a step in another process, click the **Deploy as Subprocess** checkbox.
+- **Create Automation Schedules** is required to be checked on the first deploy of this process to activate its schedules. After that, it’s optional unless you change any of the process’ schedules or connectors. 
+
+Depending on the type of **Start Event** you’ve selected, the process will either:
+
+- Run immediately (Custom start, DB query, FTP)
+- Run when the next matching Cron schedule occurs (Cron)
+- Start listening for inbound events (HTTP, Read Email, Read Folder) 
+
+You can see the process’ status in the **Control Center -\> Automation Manager** dashboard, where you can pause or restart a running process.
