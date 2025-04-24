@@ -9,7 +9,7 @@ description: "This document is a User Guide to Task Management functionality and
 
 [Actionabl.ai](http://Actionabl.ai) is a platform that automates your business processes and alerts users whenever human intervention is needed. 
 
-This guide covers Tasks reviewed and resolved by Business users, including:
+This guide covers Tasks reviewed and resolved by **Business** users, including:
 
 - **User Tasks** - a task that must always be completed by a human, like reviewing a proof.
 - **Quality Control (QC) Tasks** - a task whose output must be double-checked by a human, like issuing a payment to a vendor.
@@ -353,7 +353,7 @@ There are three accordions in this section:
     | :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------- | :-------------------------------------------------------------------------------------------- |
     | **Equals**               | The full data in the field exactly matches the search string, including case and leading/trailing spaces                                                                                                                                                                              | Civil          | Nothing found                                                                                 |
     | **Equals ignore case**   | The full data in the field exactly matches the search string, including leading and trailing spaces. However, the content's capitalization is ignored.                                                                                                                                | Civil          | _civil_                                                                                       |
-    | **Includes**             | The data in the field contains an exact match for the search string, including its capitalization. However, that string may be anywhere in the field, not just at the beginning. Leading and trailing spaces are ignored.   Partial-word matches are found when using “Includes.”     | Civil          | _Civil_  \\ _The Civil War_  \\ _Civility 101_                                                |
+    | **Includes**             | The data in the field contains an exact match for the search string, including its capitalization. However, that string may be anywhere in the field, not just at the beginning. Leading and trailing spaces are ignored.   Partial-word matches are found when using “Includes.”     | Civil          | _Civil_  \ _The Civil War_ \ _Civility 101_                                                   |
     | **Includes ignore case** | The data in the field contains an exact match for the search string, regardless of its capitalization. However, that string may be anywhere in the field, not just at the beginning. Leading and trailing spaces are ignored.   Partial-word matches are found when using “Includes.” | Civil          | _The Civil War_ \\ _civil litigation_  \\ _Civil_  \\ _Civility 101_  \\ _life as a civilian_ |
     | **Is not null**          | The field contains any content.                                                                                                                                                                                                                                                       | BLANK          | _The Civil War_  \\ _Civility 101_ \\ _life as a civilian_  \\ _civil litigation_ \\ _civil_  |
     | **Is null**              | The field is completely empty. It doesn’t contain spaces or invisible special characters.                                                                                                                                                                                             | BLANK          | Nothing found                                                                                 |
@@ -441,7 +441,9 @@ There are three accordions in this section:
 
     - Haven’t been paid
     - Are dated as received within the last 30 days
-    - Originate with vendors A or B and are greater than $1000 OR that originate with vendors C or H and are greater than $5000
+    - Originate with vendors A or B and are greater than $$1000 OR that originate with vendors C or H and are greater than $$
+
+      5000
 
     We would group these conditions like this:
 
