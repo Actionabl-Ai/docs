@@ -25,6 +25,7 @@ _Related Documents:_
   - Automation management, including processes, tasks, connectors, and rules 
 - [**<u>User Management</u>**](/UserManagement/user-management) includes asset and access control for users through Groups and Departments
 - [**Automation, Task, & Rule Administration**](/Admin/automation-management) covers the core of setting up and managing the tasks, automations, connectors, and rules that make up the process flows.
+- [**Process Administration Guide**](/Admin/process-admin)  is used to learn how to create, edit, and manage processes and all of their components. This includes the creation of tasks, connectors, data fields, data sources, and more.
 
 # **CONTROLLER DASHBOARD OVERVIEW**
 
@@ -152,7 +153,7 @@ The list shows all of the existing schedules. There are both _standalone_ and _p
     3. Select a **Cron Schedule** by clicking  the selection icon in the field. Making a selection here overrides any entries in the Run Interval.\
        ![C8 Cron Schedule Selection Pn](/images/ControllerGuide/C8-CronScheduleSelection.png)
 
-    - **Max Concurrent Runs** specifies how many instances of this automation can run simultaneously (maximum is 25). This is an optional field used only when you need to fine-tune the performance of your system. For processing-intense automations, you may choose to set this to a lower number to avoid system slowdowns. 
+    - **Max Concurrent Runs** specifies how many instances of this automation can run simultaneously (maximum is 25). This is an optional field used only when you need to fine-tune the performance of your system. For processing-intensive automations, you may choose to set this to a lower number to avoid system slowdowns. 
     - **Disable Rule** is available only on Process automations. Click the selection icon to set the conditional rules in which this automation <u>doesn't</u> run. See [**Configuring Disable Rules**](/Controller/controller-guide#configuring-disable-rules-for-automations) (below) for details on how to create and edit these rules.
     - **Disabled/Paused** toggle indicates whether the automation is running within the system. You can pause an automation for troubleshooting, editing, or similar temporary situations and then restart it when you are ready for it to begin processing again.
     - **Active** indicates whether the automation is even available to the automation manager. When you deactivate an automation, it is considered to be in a “pre-deletion” status, pending future cleanup and removal. The automation will no longer show up in lists or reports. 
@@ -182,21 +183,21 @@ There are cases where you will want an automation rule to be selective about whe
    <Tip>
      If you need to adjust a rule’s definition, remember that **<u>changes you make here will take effect in ALL automations that use this rule</u>**.
    </Tip>
-5. Click the green **Duplicate** button to create a new copy of the rule if the changes apply only to this automation. The copy appears immediately below the existing one. Make changes in this NEW copy, then save and select the new rule.\
+5. If the changes apply <u>only</u> to this automation, click the green **Duplicate** button to create a new copy of the rule. The copy appears immediately below the existing one. Make changes in this NEW copy, then save and select the new rule.\
    ![CG7D Duplicaterulecreen Jp](/images/ControllerGuide/CG7D-Duplicaterulecreen.jpg)
 
-After saving your change to the rule, **reactivate the automation** so it restarts with the new rule definitions.
+After saving your changes to the rule, **reactivate the automation** so it restarts with the new rule definitions.
 
 1. Go to **Automation Manager**  in the Control Center.
 2. Find the automation on the list.
 3. If you deactivated it before making changes, all you need to do is click the red **play** button to restart it.
-4. If you did not deactivate it first, you need to refresh it so the changes take effect. This will stop the automation and restart it. Click the orange **refresh** button on the right of the rule, then click **Yes** in the popup. You will see the automation’s status change to “Restarting” for a few seconds and then back to “Running” once the refresh is complete
+4. If you did not deactivate it first, you need to refresh it so the changes take effect. This will stop the automation and restart it. Click the orange **refresh** button on the right of the rule, then click **Yes** in the pop-up. You will see the automation’s status change to “Restarting” for a few seconds and then back to “Running” once the refresh is complete.
 
 ![CG7F Restartautomationconfirmation Jp](/images/ControllerGuide/CG7F-Restartautomationconfirmation.jpg)
 
 #### **Creating a New Disable Rule**
 
-If none of the rules match what you need, you can create a new disable rule. There are two ways to do this:
+If none of the rules match your needs, you can create a new disable rule. There are two ways to do this:
 
 - **Duplicate an existing rule as a starting point**. This is recommended where possible as it will save you time and promote better consistency.
 - **Create a rule from scratch**. Best used when no existing rules are close to your desired result.
@@ -214,13 +215,13 @@ If none of the rules match what you need, you can create a new disable rule. The
 
 ### Creating a Rule from Scratch
 
-If no rules in the list are close to the one you need, create a new rule from scratch by clicking the green plus sign at the top right of the popup.
+If no rules in the list are close to the one you need, click the green plus sign at the top right of the popup to create a new rule from scratch.
 
 ![C11A Disable Rule From Scratch Step1 Jp](/images/ControllerGuide/C11A-DisableRuleFromScratchStep1.jpg)
 
 1. Select a **Category** for the new rule.\
    ![C19 Create Rule Category Select Jp](/images/ControllerGuide/C19-CreateRuleCategorySelect.jpg)
-2. Select the rule’s **Type**. This determines the fields you have available to build the logic for the rule. Details of the logic available for each type are covered in the next section, [_Building Rule Logic_](/Controller/controller-guide#building-rule-logic).\
+2. Select the rule’s **Type**. This determines the fields you have available to build the logic for the rule. The next section, Building Rule Logic, covers the logic available for each type.\
    ![C20 Create Rule Type Select NEW Jp](/images/ControllerGuide/C20-CreateRuleTypeSelectNEW.jpg)
 3. Enter a unique **ID**. This ID is restricted to letters, numbers, and underscores. No spaces or special characters are allowed.
 4. Enter the rule’s **Name**. This is what appears on the popups when you select a rule or when you view an automation’s configuration, so it should be unique and clearly describe the rule’s scope. For example, “Amount LT 1000” or “Opted out of daily invoices”
@@ -242,7 +243,7 @@ Regardless of the rule type, click the green plus sign to the right of the crite
 
 This defines a **condition** that, when matched, causes the item to be bypassed when the automation runs. 
 
-In this example, attached to the “AutoPay” automation, any invoice with a total amount greater than or equal to $1000 will disable the AutoPay automation.
+In this example, attached to the “AutoPay” automation, any invoice with a total amount greater than or equal to \$1000 will disable the AutoPay automation.
 
 ![CG26 Inv Gt1000rule Jp](/images/ControllerGuide/CG26-InvGT1000Rule.jpg)
 
@@ -250,13 +251,13 @@ You can “stack” additional conditions onto this rule. At the top of the cond
 
 The green “grouping” icon next to the green plus lets you add a **condition group**. A condition group is treated as a single condition in evaluating the boolean AND/OR above it. Let’s look at some examples to clarify this.
 
-> This example disables autopay for any invoice greater than or equal to $1000.\
+> This example disables autopay for any invoice greater than or equal to \$1000.\
 > ![CG27 GT1000 Jp](/images/ControllerGuide/CG27-GT1000.jpg)
 >
-> This example disables autopay for invoices greater than $1000 <u>plus</u> ANY invoice from supplier “VendX” for any amount. Using boolean OR matches against either one of these conditions.\
+> This example disables autopay for invoices greater than \$1000 <u>plus</u> ANY invoice from supplier “VendX” for any amount. Using boolean OR matches against either one of these conditions.\
 > ![CG28 O Rcondition Jp](/images/ControllerGuide/CG28-ORcondition.jpg)
 >
-> The following example uses grouping. It disables autopay for invoices greater than or equal to $1000 <u>but ONLY</u> if they are Manually Completed <u>OR</u> from supplier VendX.\
+> The following example uses grouping. It disables autopay for invoices greater than or equal to \$1000 <u>but ONLY</u> if they are Manually Completed <u>OR</u> from supplier VendX.\
 > ![CG29 Groupconditions Jp](/images/ControllerGuide/CG29-Groupconditions.jpg)
 
 ### **_Defining Additional Actions_**
@@ -365,7 +366,7 @@ The **Type**  is either _Report_, _Batch Job_, or _Task Event_. When you pick on
 1. Specify a unique **Name** for the cron. This should be informative when browsing the list of all crons. For example, _send_docusign_daily_9am_
 2. Select the **Event Type**. Events are predefined in the system by your system administrator.\
    ![CG58 Cron Task Eventsetup Jp](/images/ControllerGuide/CG58-CronTaskEventsetup.jpg)
-3. Click the browse brackets in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.\
+3. Click the browse brackets [ ] in the **Cron Schedule** field, then select which of the available schedules you wish for this job. You can add a new schedule by clicking the green plus icon at the top right of the screen.\
    ![CG57 Cron Batch Select Cronchedule Jp](/images/ControllerGuide/CG57-CronBatchSelectCronchedule.jpg)
 
 **Cron Schedules**
@@ -386,8 +387,8 @@ The Cron Schedules module defines all of the possible schedules that a task coul
 
 - You can specify an optional **Effective Start Date** and **Effective End Date** for the schedule, which is helpful if you create a temporary cron job.
 - Likewise, you can specify an **Effective Start Time** and **Effective End Time**. If you leave these fields blank and specify a start and end date, the job will start at midnight on the start date and end at 11:59 PM on the end date.
-- Click the browse brackets to specify **Disable Rule(s)** that disqualify items from being included in this cron job. For details about defining rules, see [**_Configuring Disable Rules for Automations_**]().
-- Click the browse brackets next to **Cron Expression** to set up the schedule for jobs to run.\
+- Click the browse brackets [ ] to specify **Disable Rule(s)** that disqualify items from being included in this cron job. For details about defining rules, see [**_Configuring Disable Rules for Automations_**]().
+- Click the browse brackets [ ] next to **Cron Expression** to set up the schedule for jobs to run.\
   ![CG63 Cron Schedblank Jp](/images/ControllerGuide/CG63-CronSchedblank.jpg)
 - Check each appropriate box to build the schedule you want. You can select single or multiple options in each section or select “No Restriction” for sections that do not apply. \
   \

@@ -30,7 +30,8 @@
           {
             "group": "Administration",
             "pages": [
-              "/Admin/automation-management"
+              "/Admin/automation-management",
+              "/Admin/process-admin"
             ]
           }
         ]

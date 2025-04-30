@@ -9,7 +9,7 @@ description: "This document is a Guide to functionality and processes concerning
 
 [Actionabl.ai](http://Actionabl.ai) is a platform that automates your business processes and alerts users whenever human intervention is needed. 
 
-This guide covers aspects of managing the **automations** , **processes, tasks, connectors, **and**rules**  within the system.
+This guide covers aspects of managing the **automations** , ****processes, tasks, connectors, andrules****  within the system.
 
 <Info>
   If you are a new technical or supervisory user of Actionabl, you should first review [**Getting Started with Actionabl**](/GettingStarted/getting-started) to familiarize yourself with key concepts and terms used throughout this document. 
@@ -24,7 +24,7 @@ This guide covers aspects of managing the **automations** , **processes, tasks, 
   - Error Task management
 - [**<u>Task Management Guide</u>**](/TaskManagement/task-management) is written primarily for your company's business users, but you may find it helpful in understanding the larger task-related concepts and processes that they are working with you to resolve.
 - [**<u>User Management Guide</u>**](/UserManagement/user-management) includes all aspects of managing users, groups, and departments. It is intended primarily for supervisory and administrative users.
-- **Process Administration Guide** (COMING SOON) is used to learn how to create, edit, and manage processes and all of their components. This includes the creation of tasks, connectors, data fields, data sources, and remote workers.
+- [**Process Administration Guide**](/Admin/process-admin)  is used to learn how to create, edit, and manage processes and all of their components. This includes the creation of tasks, connectors, data fields, data sources, and more.
 
 # **MANAGING AUTOMATIONS, TASKS, RULES, AND APPS**
 
@@ -189,7 +189,7 @@ When you scroll to the bottom of the message template’s setup, you will see se
 **Message Template** works just like Email Template, but is used for SMS and WhatsApp messaging.
 
 <Info>
-  The **Process Administration Guide** (COMING SOON) provides more details on creating and managing email and messaging templates.
+  The **Communications Management Guide** (COMING SOON) provides more details on creating and managing email and messaging templates.
 </Info>
 
 - The final section is **Data Fields**. This is where you specify fields that may be referenced explicitly and included in the Email and Messaging templates (default or otherwise). **All fields used within the email or messaging template must be specified here, or the data will not be available when the process runs.** If you do not specify a field here and it is called within the template that field will be left blank in the messaging.
@@ -269,17 +269,17 @@ You can view connectors by hovering over any connector type of task, right-click
 For all connector types, there is a **Task History** button in the bottom left to see the editing history of the item.
 
 <Tip>
-  Creating and editing Connectors is covered in detail in the **_Process Administration Guide (COMING SOON)._**
+  Creating and editing Connectors is covered in detail in the [**_Process Administration Guide_**](/Admin/process-admin)**_._**
 </Tip>
 
-| **Type**                  | **Definition**                                                                    | **Icon**                                         |
-| :------------------------ | :-------------------------------------------------------------------------------- | :----------------------------------------------- |
-| **Start Event**           | The action that kicks off a process flow, such as receipt of an email or webhook. | ![ICON Paused Jp](/images/ICONS/ICON-Paused.jpg) |
-| **App**                   | Action taken by an application                                                    |                                                  |
-| **OCR**                   | Optical character recognition to extract data from a digital document             |                                                  |
-| **RPA**                   | Robotic process automation to allow the software to mimic a human action          |                                                  |
-| **Machine Learning (ML)** | Specialized apps like face or voice recognition                                   |                                                  |
-| **Bot**                   | Automated, repetitive tasks like scheduling data backups                          |                                                  |
+| **Type**                  | **Definition**                                                                    | **Icon**                                                |
+| :------------------------ | :-------------------------------------------------------------------------------- | :------------------------------------------------------ |
+| **Start Event**           | The action that kicks off a process flow, such as receipt of an email or webhook. | ![Start Sv](/images/ICONS/SVGs/Start.svg)               |
+| **App**                   | Action taken by an application                                                    | ![AP Sv](/images/ICONS/SVGs/AP.svg)                     |
+| **OCR**                   | Optical character recognition to extract data from a digital document             | ![OR Sv](/images/ICONS/SVGs/OR.svg)                     |
+| **RPA**                   | Robotic process automation to allow the software to mimic a human action          | ![RB Sv](/images/ICONS/SVGs/RB.svg)                     |
+| **Machine Learning (ML)** | Specialized apps like face or voice recognition                                   | ![ML Sv](/images/ICONS/SVGs/ML.svg)                     |
+| **Bot**                   | Automated, repetitive tasks like scheduling data backups                          | ![Robotic Hand Sv](/images/ICONS/SVGs/robotic-hand.svg) |
 
 Hover over a connector task type and RIGHT-click, then select **View Connector** to see its settings.
 
@@ -324,7 +324,7 @@ The **Task Information** section at the top shows the basics about this particul
 
 - **ID** is the unique ID for this connector in the system and cannot be changed.
 - **Name** is the display name for this connector. It can be changed without impacting the workflow, but the change will be visible to all system users and in all processes where this particular connector is used.
-- **Task Retry Count** is the number of times that this task will automatically be attempted if it fails. This is set to 3 by default and an entry is only needed here if you wish to override that.
+- **Task Retry Count** is the number of times that this task will automatically be attempted if it fails. This is set to 3 by default, and an entry is only needed here if you wish to override that.
 - **Custom Task Icon** is the icon shown for this step in the process view.
 - **Icon Type** is set to either **Solo** or **Superimpose**. Solo is a simple icon, such as a stop sign. Superimpose is a layering of multiple icons, such as a stop sign displayed over an OCR icon to show that the process is intended to prevent an OCR process from running.
 - **Active** is the toggle for turning this task on or off. Tasks need to be turned off when duplicating them to create a new task and whenever making changes to a task. An inactive task is in “draft” mode and will not be attempted when the process runs.
@@ -332,7 +332,7 @@ The **Task Information** section at the top shows the basics about this particul
 Below that is the **App Configuration** section. The fields in this section change depending on the type of App selected (from the list above).
 
 <Tip>
-  Details on configuring App Connectors are found in the **Process** **Administration Guide (COMING SOON).**
+  Details on configuring App Connectors are found in the [****Process Administration Guide****](/Admin/process-admin)**.**
 </Tip>
 
 ### _OCR_ 
@@ -347,7 +347,7 @@ OCR stands for optical character recognition, which is used to translate scanned
 
 **Name** is the display name for this connector. It can be changed without impacting the workflow, but the change will be visible to all system users and in all processes where this particular connector is used.
 
-**Task Retry Count** is the number of times that this task will automatically be attempted if it fails. This is set to 3 by default and an entry is only needed here if you wish to override that.
+**Task Retry Count** is the number of times that this task will automatically be attempted if it fails. This is set to 3 by default, and an entry is only needed here if you wish to override that.
 
 **Custom Task Icon** is the icon shown for this step in the process view.
 
@@ -360,7 +360,7 @@ OCR stands for optical character recognition, which is used to translate scanned
 **OCR Cluster** determines the technical settings for character recognition and processing to be used on this task. The clusters are built and optimized for the type of document typically processed in this step, so adjustment here should not be necessary.
 
 <Tip>
-  Details for configuring OCR tasks and clusters are found in the **Process** **Administration Guide (Coming Soon).**
+  Details for configuring OCR tasks and clusters are found in the [****Process Administration Guide****](/Admin/process-admin)**.**
 </Tip>
 
 ### **_RPA_**
@@ -386,7 +386,7 @@ The remainder of the pop-up contains the **parameters** to be configured for th
 As elsewhere, there is a **Task History** button in the bottom left to see the editing history of this item.
 
 <Tip>
-  Details for configuring RPA tasks and parameters are found in the **Process** **Administration Guide (Coming Soon).**
+  Details for configuring RPA tasks and parameters are found in the [****Process Administration Guide****](/Admin/process-admin)**.**
 </Tip>
 
 ### **_Bot_**
@@ -396,7 +396,7 @@ Bots are specialized connectors that perform repetitive tasks, such as schedulin
 Unlike an RPA task, where the robot clicks on fields and buttons and can be “visualized” as an operation within an app, a Bot is an invisible actor. Bot tasks, for example, update data in a database.
 
 <Tip>
-  Details for configuring Bots are found in the **Process** **Administration Guide (Coming Soon).**
+  Details for configuring Bots are found in the [****Process Administration Guide****](/Admin/process-admin)**.**
 </Tip>
 
 ### **_Machine Learning (ML)_**
@@ -408,7 +408,7 @@ The **Type** is currently restricted to Actionabl ML, which uses the built-in ma
 **AI Space** identifies the AI processing module or server. In Edit mode, clicking the expand icon shows the connection strings and allows you to select which AI space should be used in this task.
 
 <Tip>
-  Details for configuring ML tasks and AI Spaces are found in the **Process** **Administration Guide (Coming Soon).**
+  Details for configuring ML tasks and AI Spaces are found in the [****Process Administration Guide****](/Admin/process-admin)**.**
 </Tip>
 
 # **RULES**
@@ -416,10 +416,8 @@ The **Type** is currently restricted to Actionabl ML, which uses the built-in ma
 Rules are the elements of business logic that are used for processing data, making decisions, and determining whether an error has occurred. They are defined by the business in most cases. Some examples of rules are:
 
 - An invoice must be dated on or after the date that an order shipped to the customer.
-- Orders over $$1,000 should be routed to vendor A, while orders equal to or under $$
-
-  1,000 should go to vendor B.
-- If an order exceeds $25,000 its invoice must go through a QC step with the Accounting team.
+- Orders over \$1,000 should be routed to vendor A, while orders equal to or under \$1,000 should go to vendor B.
+- If an order exceeds \$25,000, its invoice must go through a QC step with the Accounting team.
 
 There are two types of rules: **Task-Specific** and **Process**.
 
@@ -463,7 +461,7 @@ As shown above, there are two input fields: Supplier Name and Invoice Amount. Fo
 
 ![ATR29 Decision Model Value Match Jp](/images/AutomationTaskRules/ATR29-DecisionModelValueMatch.jpg)
 
-> So for example, an invoice from SpiceJet Limited for $4,328 would not need review, while one of that same amount from Vodafone Idea Limited would require it. 
+> So for example, an invoice from SpiceJet Limited for \$4,328 would not need review, while one of that same amount from Vodafone Idea Limited would require it. 
 
 The display order is the order in which criteria are calculated. This can be important in some cases where you want a criterion to only be evaluated if another criterion has been met.
 
@@ -477,10 +475,10 @@ The display order is the order in which criteria are calculated. This can be imp
 
 > In this case: 
 >
-> - Invoices greater than or equal to $25,000 from ANY supplier will need review. If this condition is met, no further rule processing is needed.
-> - Only invoices greater than or equal to $4,000 from Vodafone require review.  
+> - Invoices greater than or equal to \$25,000 from ANY supplier will need review. If this condition is met, no further rule processing is needed.
+> - Only invoices greater than or equal to \$4,000 from Vodafone require review.  
 > - ALL invoices from Go Airlines (India) Limited require review.
-> - If other suppliers submit invoices under $25,000, they do not require any review.
+> - If other suppliers submit invoices under \$25,000, they do not require any review.
 
 You can move a criterion up or down in the order by dragging the **move** icon on its right to the desired position in the list.
 
@@ -501,5 +499,5 @@ Examples of test data are shown here:
 Click the **trashcan** icon to delete a criterion from the list.
 
 <Tip>
-  Detail on Rules creation and management is included in the **_Process Administration Gulde (COMING SOON)._**
+  Detail on Rules creation and management is included in the [**_Process Administration Guide_**](/Admin/process-admin)**_._**
 </Tip>
